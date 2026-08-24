@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-mode="dia">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Morás Experience — Control Your Experience</title>
+<meta name="description" content="Morás Experience. Estado da Arte, Infinitamente Verde. O último terreno da Rua Morás, Vila Madalena. Uma realização RRG.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="grid" aria-hidden="true">
+  <i class="v" style="left:var(--rail)"></i>
+  <i class="v" style="right:var(--rail)"></i>
+  <i class="h" style="top:var(--navh)"></i>
+  <s style="left:var(--rail);top:var(--navh)"></s>
+  <s style="left:calc(100% - var(--rail));top:var(--navh)"></s>
+</div>
+
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-mark" aria-label="Morás Experience"><img src="simbolo-nav.png" alt="" width="400" height="264"></a>
+  <div class="nav-right">
+    <a href="#perfis" class="nl">Perfis</a>
+    <a href="#fachada" class="nl">Fachada</a>
+    <a href="#local" class="nl">Localização</a>
+    <a href="#mapa" class="nl">Mapa de Calor</a>
+    <a href="#flexcave" class="nl">Flex Cave</a>
+    <a href="#produto" class="nl">As Casas</a>
+    <a href="#contato" class="ctan">Agendar visita</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="hero">
+  <div class="plate"></div>
+  <div class="veil"></div>
+  <div class="hero-in">
+    <h1 class="lockup reveal"><img src="logo-corten.png" alt="Morás Experience" width="1400" height="1204"></h1>
+    <div class="hero-sig reveal">Estado da Arte · Infinitamente Verde</div>
+    <div class="hero-metros reveal" role="group" aria-label="Área privativa das unidades">
+      <span class="hm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 3h18v18H3z"/><path d="M3 9h4M17 3v4M21 15h-4M7 21v-4"/></svg></span>
+      <span class="hm-lbl">Área privativa</span>
+      <span class="hm-rule" aria-hidden="true"></span>
+      <span class="hm-val">238,74<i>—</i>477,78</span><span class="hm-un">m²</span>
+    </div>
+  </div>
+  <div class="cue"><i></i><span>Desça</span></div>
+  <div class="hero-note">Imagem provisória. O plano-sequência da fachada em CGI entra aqui quando ficar pronto.</div>
+</header>
+
+<div class="marq"><div class="marq-t" id="marq"></div></div>
+
+<!-- MANIFESTO -->
+<section id="perfis">
+  <a class="egg" href="#contato" data-bicho="Onça-pintada" aria-label="Agendar visita">
+    <i style="--bicho:url(bichos/onca.png)"></i><span>Agendar visita</span>
+  </a>
+
+ <div class="wrap">
+  <span class="eyebrow reveal">Perfis</span>
+  <h2 class="kicker reveal" style="margin-top:18px;color:var(--acc)">O ordinário<br>não serve.</h2>
+  <p class="perfis-call reveal">Três perfis. Uma exigência em comum.<br><b>Escolha o seu.</b></p>
+ </div>
+ <div class="perfis" id="perfisGrid"></div>
+ <div class="wrap"><p class="perfis-nota">Sua escolha acompanha você até o fim e chega ao nosso time antes da primeira conversa.</p>
+  <div class="pickchip" id="pickchip"></div></div>
+</section>
+
+<section id="fachada" class="g-preto">
+  <a class="egg" href="#contato" data-bicho="Tucano" aria-label="Agendar visita">
+    <i style="--bicho:url(bichos/tucano.png)"></i><span>Agendar visita</span>
+  </a>
+
+  <div class="fach">
+    <div class="fach-stage">
+      <div class="fach-img" data-st="0" style="background-image:url(fachada-01-acordando.jpg)"></div>
+      <div class="fach-img" data-st="1" style="background-image:url(fachada-02-trabalhando.jpg)"></div>
+      <div class="fach-img" data-st="2" style="background-image:url(fachada-03-dormindo.jpg)"></div>
+      <div class="fach-grade"></div>
+      <div class="fach-cap">Rua Morás, 466 · Vila Madalena<br>Perspectiva de esquina · imagem preliminar</div>
+    </div>
+
+    <div class="fach-side">
+      <span class="eyebrow reveal">Sistema Camaleão</span>
+      <h2 class="kicker reveal">A fachada<br>tem rotina.</h2>
+      <p class="lead reveal" style="color:var(--dim)">O mesmo edifício, três estados.</p>
+
+      <div class="fach-state reveal">
+        <b id="fachNome">Acordando</b>
+        <i id="fachSub">Flex Cave em transição</i>
+        <p id="fachDesc">Metade aberta, metade fechada. Cada morador decide o seu ponto. A fachada nunca é a mesma duas vezes, porque é a soma de dezoito escolhas.</p>
+      </div>
+
+      <!-- três botões grandes: clicar é o caminho principal.
+           O trilho continua arrastável, mas ninguém é obrigado a arrastar. -->
+      <div class="fach-ctrl reveal">
+        <div class="fach-btns" role="tablist" aria-label="Estado da fachada">
+          <button class="fach-stop" data-v="0" role="tab" aria-selected="true"><i>01</i><span>Acordando</span></button>
+          <button class="fach-stop" data-v="50" role="tab" aria-selected="false"><i>02</i><span>Trabalhando</span></button>
+          <button class="fach-stop" data-v="100" role="tab" aria-selected="false"><i>03</i><span>Dormindo</span></button>
+        </div>
+
+        <div class="fach-rail" id="fachRail" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Ajuste fino do estado da fachada" tabindex="0">
+          <div class="fach-line"><i id="fachFill"></i></div>
+          <div class="fach-knob" id="fachKnob"></div>
+        </div>
+
+        <div class="fach-hint"><s aria-hidden="true"></s><span>Deslize ou use as setas</span><em aria-hidden="true">→</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="local" class="plot-light">
+  <a class="egg" href="#contato" data-bicho="Coruja" aria-label="Agendar visita">
+    <i style="--bicho:url(bichos/coruja.png)"></i><span>Agendar visita</span>
+  </a>
+
+ <div class="wrap">
+  <div class="shead">
+    <div><span class="eyebrow reveal">Localização · 23°33′16″S 46°41′26″W</span>
+      <h2 class="kicker reveal">O epicentro.</h2></div>
+    <div><p class="lead reveal">No centro de tudo, existe um núcleo.</p>
+      <p class="dimtxt reveal" style="margin-top:16px">A poucos minutos dos principais eixos, sem se expor ao fluxo de nenhum deles.</p></div>
+  </div>
+
+  <div class="plotter reveal">
+    <div class="plot-frame">
+      <svg viewBox="0 0 1000 700" id="locmap" aria-label="Prancha de localização"></svg>
+      <span class="brk tl"></span><span class="brk tr"></span>
+      <span class="brk bl"></span><span class="brk br"></span>
+      <div class="plot-hud tl"><b>Rua Morás, 466</b><i>Vila Madalena · São Paulo</i></div>
+      <div class="plot-hud tr"><b>Z1</b><i>Zona estritamente residencial</i></div>
+      <div class="plot-hud bl"><b>1.685 m²</b><i>Área do terreno</i></div>
+      <div class="plot-hud br"><b>01</b><i>Último lote da via</i></div>
+      <div class="plot-scale"><i></i><span>500 m</span></div>
+    </div>
+    <aside class="plot-side">
+      <span class="eyebrow">Eixos de acesso</span>
+      <div class="dest" id="dest"></div>
+      <p class="plot-nota">Prancha esquemática, sem escala.<br>Tempos de deslocamento a serem fornecidos pela RRG.</p>
+    </aside>
+  </div>
+ </div>
+</section>
+
+<section id="mapa">
+  <a class="egg" href="#contato" data-bicho="Arara" aria-label="Agendar visita">
+    <i style="--bicho:url(bichos/arara.png)"></i><span>Agendar visita</span>
+  </a>
+
+ <div class="wrap">
+  <div class="mhead">
+    <div><span class="eyebrow reveal">Centralidades · 08 órbitas</span>
+      <h2 class="kicker reveal" style="margin-top:18px">Mapa<br>de Calor</h2></div>
+    <div><p class="lead reveal">Centralidade, no Morás, se mede andando.</p>
+      <p class="dimtxt reveal" style="margin-top:18px">Cada anel é um intervalo real de caminhada. Você decide o quanto quer andar.</p></div>
+  </div>
+  <div class="mshell">
+    <aside class="panel">
+      <span class="eyebrow">Seu raio de caminhada</span>
+      <div class="ctrl"><b id="radv">30</b><span class="eyebrow">min a pé</span></div>
+      <input type="range" id="rad" min="3" max="75" value="30" step="1" aria-label="Minutos a pé">
+      <div class="ticks"><span>3</span><span>15</span><span>30</span><span>45</span><span>75</span></div>
+      <div class="cats" id="cats"></div>
+      <div style="margin-top:24px;padding-top:18px;border-top:1px solid var(--rule)">
+        <span class="eyebrow">Ao seu alcance</span>
+        <div id="count" style="font-family:var(--serif);font-size:42px;font-weight:500;color:var(--acc);line-height:1;margin-top:9px;letter-spacing:-.03em">0</div>
+        <div class="eyebrow" style="margin-top:7px">endereços</div>
+      </div>
+    </aside>
+    <div class="stage" id="stage"><svg viewBox="0 0 600 600" id="map" aria-label="Mapa de calor"></svg><div class="tip" id="tip"></div></div>
+  </div>
+  <div class="mfoot">
+    <div><span class="big" id="total">0</span> <span class="eyebrow" style="margin-left:9px">endereços mapeados</span></div>
+    <div><span class="big">08</span> <span class="eyebrow" style="margin-left:9px">órbitas</span></div>
+    <div><span class="big">05</span> <span class="eyebrow" style="margin-left:9px">anéis</span></div>
+  </div>
+ </div>
+</section>
+
+<!-- FLEX CAVE · a cena -->
+<section id="flexcave" class="fc">
+  <div class="fc-stage" id="fcstage">
+    <div class="fc-view" id="fcview"></div>
+    <div class="fc-panels" id="fcp"></div>
+    <div class="fc-onca" id="fconca"></div>
+    <div class="fc-light"></div>
+    <div class="fc-scrim"></div>
+        <a class="egg" href="#contato" data-bicho="Lobo-guará" aria-label="Agendar visita">
+      <i style="--bicho:url(bichos/lobo.png)"></i><span>Agendar visita</span>
+    </a>
+    <div class="fc-meter"><span>Fechamento</span><i><b id="fcbar"></b></i></div>
+    <div class="fc-copy">
+      <span class="eyebrow" style="color:rgba(239,235,226,.5)">Sistema Camaleão · Pele externa</span>
+      <h2>Flex Cave</h2>
+      <div class="fc-state">
+        <p id="fcs0">Aberto, expõe a vista Z1 como <b>extensão natural da unidade</b>.</p>
+        <p id="fcs1" class="off">Fechado, cria uma <b>caverna pessoal</b> e grava a marca na fachada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="produto" class="g-corten">
+  <a class="egg" href="#contato" data-bicho="Mico-leão-dourado" aria-label="Agendar visita">
+    <i style="--bicho:url(bichos/mico.png)"></i><span>Agendar visita</span>
+  </a>
+
+ <div class="wrap">
+  <div class="shead">
+    <div><span class="eyebrow reveal">O Produto</span>
+      <h2 class="kicker reveal" style="color:var(--acc)">Casas<br>Sobrepostas</h2></div>
+    <div><p class="lead reveal">Toda casa tem jardim. Aqui, cada apartamento tem o seu na varanda.</p>
+      <p class="dimtxt reveal" style="margin-top:16px"><b style="color:var(--acc);font-weight:400">E o jardim é a Z1.</b> A zona preservada em frente não é vista: é o quintal de cada unidade, e ninguém pode construir nela.</p></div>
+  </div>
+
+  <div class="band reveal">
+    <div><b>1.685</b><span>m² de terreno</span></div>
+    <div><b>09</b><span>Pavimentos, torre única</span></div>
+    <div><b>2,95</b><span>Aproveitamento privativo sobre a área do terreno</span></div>
+    <div><b>18</b><span>Unidades no total</span></div>
+  </div>
+
+  <div class="typo-wrap">
+    <div class="typo-nav" id="tnav" role="tablist"></div>
+    <div class="typo-panel" id="tpanel" role="tabpanel"></div>
+  </div>
+
+  <div class="trio">
+    <div class="reveal"><span class="eyebrow">Fachada da torre</span>
+      <h4>Aço corten<br>e vegetação</h4>
+      <p>Uma rocha ascendente. Painéis revestidos em corten com vegetação integrada ao desenho, em continuidade visual com a Vila Madalena.</p></div>
+    <div class="reveal"><span class="eyebrow">O easter egg</span>
+      <h4>A onça<br>rupestre</h4>
+      <p>Com os painéis fechados, o encaixe revela uma onça-pintada em pintura rupestre que se projeta verticalmente até o topo do edifício.</p></div>
+    <div class="reveal"><span class="eyebrow">Da terra ao mar</span>
+      <h4>Floresta,<br>depois praia</h4>
+      <p>Térreo elevado, escada escultural e um percurso de madeira tratada, rocha aparente, areia e vegetação nativa.</p></div>
+  </div>
+
+  <!-- PROTÓTIPO DIGITAL · antes era seção própria, agora fecha AS CASAS -->
+  <div class="bim-in reveal">
+    <div class="bim-head">
+      <span class="eyebrow">Protótipo digital</span>
+      <p class="h2" style="margin-top:14px">O edifício existe inteiro<br>antes do concreto.</p>
+      <p class="dimtxt" style="margin-top:16px">Percorra sua unidade em escala real, escolha acabamentos e acompanhe a obra.</p>
+    </div>
+    <a class="bim-cta" href="#" target="_blank" rel="noopener">
+      <span class="bim-panel"></span>
+      <span class="bim-lbl"><b>Entrar no protótipo</b><em>Link externo · a definir</em></span>
+      <span class="bim-arrow">↗</span>
+    </a>
+  </div>
+ </div>
+</section>
+
+<section id="contato" style="background:var(--bg2)">
+ <div class="wrap">
+  <div class="conv">
+    <div>
+      <span class="eyebrow reveal">Pré-lançamento</span>
+      <h2 class="h2 reveal" style="margin:20px 0 26px">A visita é<br><em>por convite.</em></h2>
+      <p class="body reveal">O estande de vendas do Morás Experience recebe por agendamento. Deixe seus dados e nossa equipe entra em contato para definir dia e horário.</p>
+      <div class="gate reveal"><span class="eyebrow">Acesso antecipado</span>
+        <p>Tem um código de convite? Plantas, tipologias e o tour no protótipo digital são liberados antes da abertura pública.</p></div>
+    </div>
+    <div class="reveal">
+      <form onsubmit="event.preventDefault();var b=this.querySelector('.submit');b.textContent='Recebido. Entraremos em contato';b.disabled=true">
+        <div class="field"><label for="n">Nome completo</label><input id="n" required autocomplete="name"></div>
+        <div class="field"><label for="e">E-mail</label><input id="e" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="t">Telefone</label><input id="t" type="tel" required autocomplete="tel"></div>
+        <div class="field"><label for="i">Interesse</label><select id="i">
+          <option>Visita ao estande de vendas</option><option>Material do pré-lançamento</option>
+          <option>Sou corretor ou parceiro</option><option>Arquitetura, arte ou paisagismo</option><option>Imprensa</option></select></div>
+        <input type="hidden" id="perfilField" name="perfil">
+        <button class="submit" type="submit">Agendar visita</button>
+        <p class="legal">Placeholder. Substituir por texto de consentimento validado pelo jurídico (LGPD) e integrar ao CRM.</p>
+      </form>
+    </div>
+  </div>
+ </div>
+</section>
+
+
+
+<footer>
+  <div class="foot-arvore" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;color:var(--marca)">
+          <img class="fmark" src="simbolo-creme.png" alt="" width="600" height="397">
+          <div style="color:var(--branco)"><div style="font-family:var(--serif);font-size:17px;letter-spacing:.16em">MORÁS</div>
+          <div class="eyebrow" style="margin-top:3px;color:var(--dim)">Experience</div></div></div>
+        <p style="margin-top:26px;font-size:12.5px;color:var(--dim);max-width:30ch;line-height:1.85">Rua Morás, 466. Vila Madalena, São Paulo.<br>Estado da Arte, Infinitamente Verde.</p>
+        <a class="frrg" href="https://rrg.com.br" target="_blank" rel="noopener">Conheça a RRG →</a>
+      </div>
+      <div><span class="eyebrow">Os 3 Cs</span>
+        <div class="f3c" style="margin-top:18px">
+          <div>01. Criação<span>A potência de imaginar no invisível, de forma coletiva.</span></div>
+          <div>02. Construção<span>Protótipo digital, rastreabilidade e controle total.</span></div>
+          <div>03. Comercialização<span>Da compra do imóvel até a entrega decorada.</span></div>
+        </div></div>
+      <div><span class="eyebrow">Navegar</span>
+        <div style="margin-top:18px">
+          <a class="flink" href="#perfis">Perfis</a>
+          <a class="flink" href="#fachada">Fachada</a>
+          <a class="flink" href="#local">Localização</a>
+          <a class="flink" href="#mapa">Mapa de Calor</a>
+          <a class="flink" href="#flexcave">Flex Cave</a>
+          <a class="flink" href="#produto">As Casas</a>
+          <a class="flink" href="#produto">Protótipo digital</a>
+          <a class="flink" href="#contato">Agendar visita</a>
+          <a class="flink" href="https://rrg.com.br" target="_blank" rel="noopener">rrg.com.br ↗</a>
+        </div></div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 RRG · Feito para durar</span>
+      <span>Placeholder legal: CRECI · Registro de incorporação · Memorial</span>
+      <span>Imagens meramente ilustrativas · Projeto em desenvolvimento</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+try{
+
+addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('solid',scrollY>40),{passive:true});
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+try{
+/* imagens de referência (fallback cromático embutido) */
+const FB=['#1E2415','#2A1A10','#141C18','#22190F','#182016'];
+function paintPh(){document.querySelectorAll('.ph[data-img],.perfil-bg[data-img]').forEach((t,i)=>{
+  t.style.backgroundColor=FB[i%FB.length];
+  t.style.backgroundImage=`url("https://images.unsplash.com/photo-${t.dataset.img}?q=80&w=1600&auto=format&fit=crop"),linear-gradient(160deg,${FB[(i+1)%FB.length]},${FB[i%FB.length]})`})}
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+try{
+/* marquee, vocabulário oficial da marca */
+const VOC=['Escultura viva','Estilize seu cenário','Infinitamente Verde','A estética do sport luxury',
+ 'Habita a arte','Mais Morás e menos carbono','O palco do seu cenário','Atemporal','Carbono Zero',
+ 'Morás é Mais','Intensidade refinada','Liberdade acústica','Metaverso georreferenciado','Feito para durar'];
+document.getElementById('marq').innerHTML=[...VOC,...VOC].map(v=>`<span>${v}</span>`).join('');
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+try{
+/* tipologias */
+const TIPOS=[
+ {k:'Tipo',n:'Apartamento Tipo',d:'A planta perfeita, sem necessidade de incorporar varandas. Cada pavimento oferece uma experiência única: nas unidades mais baixas, a vista é voltada para a copa das árvores; nas intermediárias, há integração direta com o verde da Z1; nas mais altas, o visual se abre para a paisagem urbana de São Paulo.',
+  img:'1560448204-e02f11c3d0e2',s:[['239 m²','Área privativa'],['04','Suítes'],['04','Vagas'],['14','Unidades']]},
+ {k:'Garden A',n:'Garden A',d:'Térreo com jardim privativo. A experiência de casa levada ao limite: área externa própria, contato direto com o paisagismo e privacidade para viver do seu jeito.',
+  img:'1600585154340-be6161a56a0c',s:[['474 m²','Área privativa'],['270 m²','De jardim'],['04','Suítes'],['4 carros','Vaga box']]},
+ {k:'Garden B',n:'Garden B',d:'A mesma lógica de casa em escala mais compacta, com jardim privativo e integração plena entre interior e exterior.',
+  img:'1600607687939-ce8a6c25118c',s:[['375 m²','Área privativa'],['193 m²','De jardim'],['03','Suítes'],['4 carros','Vaga box']]},
+ {k:'Cobertura',n:'Cobertura Duplex',d:'O topo da torre. Dois pavimentos, ampla área descoberta e a leitura completa da paisagem, da Z1 preservada ao horizonte da cidade.',
+  img:'1600566753190-17f0baa2a6c3',s:[['478 m²','Área privativa'],['238 m²','Descoberta'],['04','Suítes'],['02','Unidades']]}];
+const tnav=document.getElementById('tnav'),tpanel=document.getElementById('tpanel');
+TIPOS.forEach((t,i)=>{const b=document.createElement('button');b.setAttribute('role','tab');
+  b.setAttribute('aria-selected',i===0);b.innerHTML=`<i>0${i+1}</i><b>${t.k}</b>`;
+  b.onclick=()=>{[...tnav.children].forEach(c=>c.setAttribute('aria-selected','false'));
+    b.setAttribute('aria-selected','true');paintTipo(i)};tnav.appendChild(b)});
+function paintTipo(i){const t=TIPOS[i];
+  tpanel.innerHTML=`<div class="typo-txt fade"><h3><small>Tipologia 0${i+1}</small>${t.n}</h3>
+    <p class="body" style="margin-top:22px">${t.d}</p>
+    <div class="specs">${t.s.map(s=>`<div><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div></div>
+    <div class="slot fade" style="aspect-ratio:4/5"><span>Perspectiva<br>${t.n}<br><br>CGI em produção</span></div>`}
+paintTipo(0);
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+try{
+/* ══ SESSÃO 1 · PERFIS ══════════════════════════════════
+   Textos do brand book, seção "Dois perfis · Superluxo".
+   ══════════════════════════════════════════════════════ */
+const PERFIS=[
+ {k:'Luxo Intelectual',e:'A cultura como valor',c:'#3A2A16',
+  p:'A arte e a cultura como novos vetores de valor. Em um mundo onde o luxo material é onipresente, o luxo cultural define a verdadeira exclusividade. A residência vira um manifesto de valores pessoais.',
+  img:'1577720580479-7d839d829c73'},
+ {k:'Quiet Luxury',e:'Sofisticação discreta',c:'#2C2A22',
+  p:'Paleta neutra e terrosa, estética minimalista e materialidade autoral. A comunicação de exclusividade através do silêncio.',
+  img:'1615529162924-f8605388461d'},
+ {k:'Luxo Tradicional',e:'Sofisticação declarada',c:'#3E1A10',
+  p:'Paletas ricas, parcerias de grife e linguagem visual que celebra a própria conquista sem hesitar.',
+  img:'1618221195710-dd6b41faaea6'}];
+const pbox=document.getElementById('perfisGrid');
+pbox.innerHTML=PERFIS.map((p,i)=>`
+ <button class="perfil" aria-pressed="false" data-k="${p.k}">
+   <span class="perfil-bg" data-img="${p.img}"></span>
+   <span class="perfil-tint" style="background:linear-gradient(180deg,transparent 30%,${p.c}dd)"></span>
+   <span class="perfil-placa"></span>
+   <span class="perfil-num">0${i+1}</span>
+   <span class="perfil-pick">✓</span>
+   <span class="perfil-in"><em>${p.e}</em><h3>${p.k}</h3><p>${p.p}</p></span>
+ </button>`).join('');
+const chip=document.getElementById('pickchip');
+let escolhido=null;
+pbox.querySelectorAll('.perfil').forEach(b=>{b.onclick=()=>{
+  const on=b.getAttribute('aria-pressed')==='true';
+  pbox.querySelectorAll('.perfil').forEach(x=>x.setAttribute('aria-pressed','false'));
+  if(on){escolhido=null;pbox.classList.remove('has-pick');chip.classList.remove('on')}
+  else{b.setAttribute('aria-pressed','true');escolhido=b.dataset.k;
+       pbox.classList.add('has-pick');chip.textContent='Seu perfil · '+escolhido;chip.classList.add('on')}
+  const f=document.getElementById('perfilField'); if(f)f.value=escolhido||'';
+}});
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+try{
+
+/* ══ FACHADA · três estados numa linha do tempo arrastável ══════
+   Crossfade contínuo entre os renders: 0 dormindo · 50 acordando · 100 trabalhando.
+   ══════════════════════════════════════════════════════════════ */
+const EST=[
+ {v:0,  n:'Acordando',   s:'Flex Cave em transição',
+  d:'Metade aberta, metade fechada. Cada morador decide o seu ponto. A fachada nunca é a mesma duas vezes, porque é a soma de dezoito escolhas.'},
+ {v:50, n:'Trabalhando', s:'Flex Cave aberto',
+  d:'Placas recolhidas. A Z1 entra como extensão natural da unidade. Luz, ventilação cruzada e a copa das árvores dentro de casa.'},
+ {v:100,n:'Dormindo',    s:'Flex Cave fechado',
+  d:'Placas totalmente fechadas. O edifício vira um bloco maciço. Privacidade absoluta, isolamento acústico e térmico no limite. A caverna pessoal.'}];
+
+const fRail=document.getElementById('fachRail'), fKnob=document.getElementById('fachKnob'),
+      fFill=document.getElementById('fachFill'), fImgs=[...document.querySelectorAll('.fach-img')],
+      fNome=document.getElementById('fachNome'), fSub=document.getElementById('fachSub'),
+      fDesc=document.getElementById('fachDesc'), fStops=[...document.querySelectorAll('.fach-stop')];
+let fVal=0;
+
+function pintaFachada(v){
+  fVal=Math.max(0,Math.min(100,v));
+  /* transform em vez de left/width: não recalcula layout, roda na GPU */
+  fKnob.style.transform='translate3d('+(fRail.clientWidth*fVal/100).toFixed(1)+'px,0,0)';
+  fFill.style.transform='scaleX('+(fVal/100).toFixed(4)+')';
+  fRail.setAttribute('aria-valuenow',Math.round(fVal));
+  /* mistura contínua entre os três renders */
+  const t=fVal/50;
+  fImgs[0].style.opacity=Math.max(0,1-t).toFixed(3);
+  fImgs[1].style.opacity=(t<=1?t:Math.max(0,2-t)).toFixed(3);
+  fImgs[2].style.opacity=Math.max(0,t-1).toFixed(3);
+  /* o texto assume o estado mais próximo */
+  const e=EST.reduce((a,b)=>Math.abs(b.v-fVal)<Math.abs(a.v-fVal)?b:a);
+  if(fNome.textContent!==e.n){fNome.textContent=e.n;fSub.textContent=e.s;fDesc.textContent=e.d;}
+  fStops.forEach(s=>{const on=+s.dataset.v===e.v;
+    s.classList.toggle('on',on); s.setAttribute('aria-selected',on);});
+}
+/* ── Controle ────────────────────────────────────────────────
+   O clique nos três botões é o caminho principal e resolve tudo.
+   O trilho continua funcionando para quem quiser arrastar, mas
+   NÃO volta mais para a parada mais próxima ao soltar — era isso
+   que fazia a barra "brigar" e voltar sozinha.
+   ─────────────────────────────────────────────────────────── */
+const secFach=document.getElementById('fachada');
+const palco=secFach.querySelector('.fach-stage');
+
+/* Uma pintura por quadro de tela. Sem isso o pointermove dispara
+   dezenas de vezes por quadro, a imagem repinta em todas, e o
+   arraste fica pesado — era essa a sensação de travado. */
+let pedido=null, alvo=0;
+function agenda(v){
+  alvo=v;
+  if(pedido)return;
+  pedido=requestAnimationFrame(()=>{pedido=null;pintaFachada(alvo)});
+}
+function largura(){return fRail.getBoundingClientRect()}
+
+let arrastando=false, origemX=0, origemV=0, noPalco=false;
+
+function inicia(e,dePalco){
+  arrastando=true; noPalco=dePalco;
+  origemX=e.clientX; origemV=fVal;
+  secFach.classList.add('arrastando');
+  (dePalco?palco:fRail).setPointerCapture(e.pointerId);
+  if(!dePalco){const r=largura();agenda((e.clientX-r.left)/r.width*100);}
+}
+function move(e){
+  if(!arrastando)return;
+  e.preventDefault();
+  if(noPalco){
+    /* na imagem: a largura toda do palco cobre o curso inteiro,
+       então o gesto é curto e o edifício acompanha a mão */
+    agenda(origemV+(e.clientX-origemX)/palco.offsetWidth*115);
+  }else{
+    const r=largura();
+    agenda((e.clientX-r.left)/r.width*100);
+  }
+}
+function solta(){
+  if(!arrastando)return;
+  arrastando=false;
+  secFach.classList.remove('arrastando');
+  /* encosta suavemente no estado mais próximo: fica limpo, e nunca
+     parado num meio-termo sem nome. A transição do CSS faz o resto. */
+  const p=EST.reduce((a,b)=>Math.abs(b.v-fVal)<Math.abs(a.v-fVal)?b:a);
+  pintaFachada(p.v);
+}
+
+fRail.addEventListener('pointerdown',e=>inicia(e,false));
+palco.addEventListener('pointerdown',e=>inicia(e,true));
+[fRail,palco].forEach(el=>{
+  el.addEventListener('pointermove',move);
+  ['pointerup','pointercancel','lostpointercapture'].forEach(ev=>el.addEventListener(ev,solta));
+});
+
+/* setas do teclado, com o foco em qualquer lugar da seção */
+function passo(dir){
+  const i=EST.indexOf(EST.reduce((a,b)=>Math.abs(b.v-fVal)<Math.abs(a.v-fVal)?b:a));
+  pintaFachada(EST[Math.min(EST.length-1,Math.max(0,i+dir))].v);
+}
+secFach.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowUp'){e.preventDefault();passo(1)}
+  if(e.key==='ArrowLeft' ||e.key==='ArrowDown'){e.preventDefault();passo(-1)}
+});
+
+fStops.forEach(s=>s.addEventListener('click',ev=>{ev.stopPropagation();pintaFachada(+s.dataset.v)}));
+addEventListener('resize',()=>pintaFachada(fVal));
+pintaFachada(0);
+
+/* ══ MAPA DE LOCALIZAÇÃO — esquemático, na linguagem do livro ══ */
+const AV=[
+ {k:'mp',d:'M 26 296 C 128 426, 208 518, 300 646 S 404 792, 418 906',l:'Marginal Pinheiros',o:'46%'},
+ {k:'fr',d:'M 38 340 L 206 522',l:'Av. Prof. Fonseca Rodrigues',o:'50%'},
+ {k:'pm',d:'M 206 522 L 322 552 L 452 610',l:'Av. Pedroso de Morais',o:'46%',m:1},
+ {k:'em',d:'M 322 716 L 452 610',l:'Av. Eusébio Matoso',o:'48%'},
+ {k:'rb',d:'M 452 610 L 700 642 L 862 600',l:'Av. Rebouças',o:'26%',m:1},
+ {k:'fl',d:'M 452 610 L 492 790 L 534 878',l:'Av. Brig. Faria Lima',o:'54%',m:1},
+ {k:'sm',d:'M 598 314 L 626 442',l:'Av. Sumaré',o:'48%'},
+ {k:'da',d:'M 626 442 L 748 508',l:'Av. Dr. Arnaldo',o:'50%'},
+ {k:'hp',d:'M 382 310 L 486 424',l:'R. Heitor Penteado',o:'48%'},
+ {k:'cs',d:'M 822 400 L 908 498',l:'R. da Consolação',o:'50%'},
+ {k:'pa',d:'M 866 582 L 924 664',l:'Av. Paulista',o:'50%',m:1},
+ {k:'eu',d:'M 572 706 L 648 792',l:'Av. Europa',o:'50%'},
+ {k:'br',d:'M 658 682 L 738 762',l:'Av. Brasil',o:'50%',m:1},
+ {k:'nj',d:'M 552 802 L 702 852',l:'Av. Nove de Julho',o:'48%',m:1},
+ {k:'cj',d:'M 442 832 L 522 894',l:'Av. Cidade Jardim',o:'50%'},
+ {k:'jk',d:'M 566 882 L 768 942',l:'Av. Pres. Juscelino Kubitschek',o:'46%'}];
+const MX=427,MY=545;
+const lm=document.getElementById('locmap');
+let L='';
+
+/* 1 · malha de pontos: densidade e brilho crescem em direção ao epicentro.
+      É a mesma ideia do mapa de calor, agora como terreno. */
+L+='<g class="dotgrid">';
+for(let y=18;y<700;y+=15){
+  for(let x=18;x<1000;x+=15){
+    const d=Math.hypot(x-MX,y-MY);
+    const t=Math.max(0,1-d/560);
+    const op=(0.035+t*t*0.42).toFixed(3);
+    const r=(0.7+t*1.5).toFixed(2);
+    if(+op>0.045) L+=`<circle cx="${x}" cy="${y}" r="${r}" opacity="${op}"/>`;
+  }
+}
+L+='</g>';
+
+/* 2 · curvas de nível a partir do ponto zero */
+[70,130,200,285,385,500].forEach(r=>{L+=`<circle class="contour" cx="${MX}" cy="${MY}" r="${r}"/>`});
+
+/* 3 · áreas verdes e a Z1 que o edifício enfrenta */
+L+=`<ellipse cx="196" cy="452" rx="74" ry="48" class="park"/><text class="parklbl" x="196" y="456" text-anchor="middle">Villa-Lobos</text>
+ <ellipse cx="852" cy="928" rx="78" ry="50" class="park"/>
+ <path class="zone" d="M 330 512 C 348 480, 400 472, 420 496 C 438 518, 428 552, 404 570
+   C 376 590, 330 584, 320 558 C 314 540, 320 524, 330 512 Z"/>
+ <text class="parklbl" x="368" y="532" text-anchor="middle">Z1 preservada</text>`;
+
+/* 4 · vias, com rótulo correndo pelo próprio traçado */
+AV.forEach(a=>{L+=`<path id="av-${a.k}" class="av${a.m?' av-m':''}" d="${a.d}"/>`});
+AV.forEach(a=>{L+=`<text id="lb-${a.k}" class="avlbl" dy="-6"><textPath href="#av-${a.k}" startOffset="${a.o}">${a.l}</textPath></text>`});
+
+/* 5 · o ponto zero: mira, pulso e chamada com linha-guia */
+L+=`<path class="av av-m" d="M 402 538 L 452 552" style="stroke-width:3;opacity:1"/>
+ <circle class="ping" cx="${MX}" cy="${MY}" r="14" fill="none" stroke="var(--marca)" stroke-width="1"/>
+ <circle cx="${MX}" cy="${MY}" r="21" fill="none" stroke="rgba(232,205,166,.45)" stroke-width="1"/>
+ <path class="lead-line" d="M ${MX} ${MY-21} L ${MX} ${MY-62} L ${MX+120} ${MY-62}"/>
+ <circle cx="${MX}" cy="${MY}" r="3.4" fill="var(--marca)"/>
+ <path d="M ${MX-34} ${MY} H ${MX-9} M ${MX+9} ${MY} H ${MX+34} M ${MX} ${MY-34} V ${MX-390} M ${MX} ${MY+9} V ${MY+34}"
+   stroke="rgba(232,205,166,.6)" stroke-width="1" fill="none"/>
+ <text class="pinlbl" x="${MX+128}" y="${MY-58}">Rua Morás</text>
+ <text class="parklbl" x="${MX+128}" y="${MY-42}">Último lote · Z1 em frente</text>
+ <text class="parklbl" x="560" y="238" style="letter-spacing:.3em">Vila Madalena</text>`;
+lm.innerHTML=L;
+
+/* 6 · a lista acende a via no desenho */
+const DEST=[['Av. Pedroso de Morais','pm'],['Av. Brig. Faria Lima','fl'],['Av. Rebouças','rb'],
+ ['Av. Nove de Julho','nj'],['Av. Brasil','br'],['Av. Paulista','pa']];
+const dbox=document.getElementById('dest');
+dbox.innerHTML=DEST.map(([n,k],i)=>
+  `<button data-k="${k}"><em>${String(i+1).padStart(2,'0')}</em><span>${n}</span></button>`).join('');
+dbox.querySelectorAll('button').forEach(b=>{
+  const via=document.getElementById('av-'+b.dataset.k), lab=document.getElementById('lb-'+b.dataset.k);
+  const on=v=>{via?.classList.toggle('hot',v);lab?.classList.toggle('hot',v)};
+  b.addEventListener('mouseenter',()=>on(true));
+  b.addEventListener('mouseleave',()=>on(false));
+  b.addEventListener('focus',()=>on(true));
+  b.addEventListener('blur',()=>on(false));
+});
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+try{
+/* ══ MAPA DE CALOR ══ */
+const CATS=[
+ {k:'verde', n:'Parques & Áreas Verdes', c:'#6E8A52', a:-90},
+ {k:'arte',  n:'Arte & Cultura',         c:'#A24A18', a:-45},
+ {k:'gastro',n:'Gastronomia',            c:'#E8CDA6', a:0},
+ {k:'shops', n:'Shops & Design',         c:'#B08D63', a:45},
+ {k:'perf',  n:'Alta Performance',       c:'#5E7E88', a:90},
+ {k:'saude', n:'Saúde',                  c:'#8FA189', a:135},
+ {k:'edu',   n:'Educação',               c:'#7A5C9E', a:180},
+ {k:'work',  n:'Empresas & Edifícios',   c:'#9A9384', a:225}];
+const D={
+verde:[["ParCão",8],["Horta das Corujas",15],["Praça Pôr do Sol",19],["Praça Horácio Sabino",24],["Praça Gastão Vidigal",26],["Praça Coronel Pires",30],["Praça Morungaba",37],["Praça Conde de Barcelos",39],["Praça Adolpho Bloch",43],["Parque do Povo",54],["Parque Villa-Lobos",59],["Parque Ibirapuera",60],["Pacaembu",60],["Parque Mario Covas",66],["Parque Trianon",70]],
+arte:[["Museu A CASA do Objeto Brasileiro",7],["Instituto Tomie Ohtake",7],["Museu da Pessoa",7],["Almeida & Dale",8],["Galeria Raquel Arnaud",9],["Galeria Eduardo Fernandes",11],["Cinesala",15],["Teatro das Artes",30],["Mendes Wood DM",35],["Nara Roesler",40],["MuBE",41],["MIS",41],["Fundação Ema Klabin",41],["DAN Galeria",42],["Galatea",56],["Teatro B32",56],["Gomide & Co",56],["Galeria Vermelho",56],["Galeria Superfície",60],["Teatro Santander",60],["CineSesc",60],["Museu do Futebol",60],["IMS Paulista",60],["Cine Belas Artes",61],["Teatro Renaissance",62],["Galleria Continua",68]],
+gastro:[["Motique",3],["O Escandinavo",3],["Hirá Ramen Izakaya",3],["Bar Astor",6],["MIYA Wine Bar",10],["Miyabi Omakase",13],["Corrutela",14],["NOMO",15],["Tanuki Sushi",15],["PIÚ",16],["Standing Sushi Bar",18],["Bosco",23],["Taberna 474",23],["MOMA Pinheiros",25],["Kotori",25],["Sushi Vaz Omakase",26],["JUN Sakamoto",28],["Maní",28],["Evvai",29],["The Kith",30],["Varanda Faria Lima",35],["TUJU",44],["Nino Cucina",44],["Corrientes 348",45],["MOMA Itaim",46],["Rubaiyat",46],["Barbacoa",48],["Gusto Cucina",49],["Cala del Tanit",49],["SAL Gastronomia",50],["D.O.M",51],["Trattoria Fasano",52],["Temperani",53],["Nakka Jardins",56],["Baleia Rooftop",58],["Muramaki Omakase",58],["Balaio IMS",62]],
+shops:[["R. Matheus Grou · Design e Moda",18],["R. Ferreira de Araujo",18],["Shopping Eldorado",28],["Iguatemi Faria Lima",35],["Av. Europa 600-900 · Luxo automotivo",40],["Av. Europa 380-600 · Casa e Arte",42],["Praça Adolpho Bloch",50],["R. Oscar Freire",50],["Shops Jardins",52],["Galeria Jardins",52],["JK Iguatemi",60],["Alameda Lorena",60],["Jardim Pamplona",63]],
+perf:[["Buddha Spa Alto de Pinheiros",6],["Humane Gym",8],["Buddha Spa Vila Madalena",9],["Aquasport Vila Madalena",10],["Espaço Kurma",10],["Aigai Spa",11],["Vidya Studio Pinheiros",19],["Tennis Lounge Jardins",20],["Bodytech Eldorado",28],["Riplay Jardins · Beach Tennis",30],["Bodytech Iguatemi",35],["Clube Hebraica",40],["Esporte Clube Pinheiros",40],["Academia SIX Itaim",41],["Clube Athletico Paulistano",46],["Harmony Society Tennis",50],["RaceBootCamp Jardins",50],["BioRitmo Itaim",52],["Les Cinq Gym",60],["Squash Jardins",60],["The Spa at Renaissance",60],["BioRitmo Paulista",65],["Spa Longevity Sisley",66],["Anantara Spa · Tivoli",73]],
+saude:[["Prevent Senior Pinheiros",9],["Fleury · Gabriel Monteiro",35],["Fleury Brasil II",36],["Alta Diagnósticos Jardins",38],["InCor",47],["Einstein · Av. Brasil",49],["Sírio-Libanês Itaim",55],["Fleury · Alameda Jaú",58],["Fleury · Av. Brasil",59],["CDB Centro de Diagnósticos",59],["Sírio-Libanês Bela Vista",63],["Einstein Ibirapuera",63],["Einstein Paulista",64],["Clínica Trianon",72]],
+edu:[["Colégio Palmares",8],["Le Cordon Bleu",9],["St. Francis College",22],["Goethe-Institut",26],["St. Nicholas School",28],["Ciclo das Vinhas",30],["Escola Vera Cruz",31],["St. Paul's School",32],["Escola Wilma Kövesi",35],["Colégio Santa Cruz",43],["Beacon School Berlioz",43],["Escola Concept",43],["FAAP",59],["ESPM",66],["Colégio Dante Alighieri",66],["FGV",72]],
+work:[["Galeria Ag.",3],["Demarest Advogados",6],["GUT",9],["Wieden + Kennedy",12],["DAVID",13],["SOLIS Investimentos",13],["Cescon Barrieu",17],["Amazon Bio square",20],["Norte Ventures",20],["Stone Pagamentos",21],["Brio Investimentos",22],["Mercado Bitcoin",30],["Iguatemi Plaza",34],["Cloudwalk · InfinitePay",40],["Pinheiro Neto",41],["Red Bull Brasil",43],["TSA Advogados",43],["Machado Meyer",48],["Faria Lima Financial Center",51],["LeFosse",51],["Pátio Victor Malzoni",52],["TozziniFreire",53],["Morgan Stanley Brasil",54],["Machado Nunes",55],["Birmann 32",57],["SP Corporate Towers",60],["Mattos Filho",60],["Banco Safra",63],["Complexo Cetenco Plaza",70]]};
+const RINGS=[[5,.20],[10,.34],[15,.46],[30,.66],[60,.88]];
+function radius(t){let p=0,r0=0;for(const[m,r]of RINGS){if(t<=m)return(r0+(t-p)/(m-p)*(r-r0))*255;p=m;r0=r}
+  return Math.min(1,.88+(t-60)/30*.12)*255}
+const svg=document.getElementById('map'),tip=document.getElementById('tip'),stage=document.getElementById('stage');
+const CX=300,CY=300;let parts='',total=0;
+RINGS.forEach(([m,r])=>{parts+=`<circle class="ring" cx="${CX}" cy="${CY}" r="${r*255}"/>
+  <text class="rlbl" x="${CX+4}" y="${CY-r*255-5}">${m} min a pé</text>`});
+parts+=`<circle cx="${CX}" cy="${CY}" r="4.5" fill="var(--acc)"/>
+  <circle cx="${CX}" cy="${CY}" r="13" fill="none" stroke="var(--acc)" stroke-width=".8" opacity=".5"/>
+  <text class="corelbl" x="${CX}" y="${CY+30}" text-anchor="middle">Morás Experience</text>`;
+CATS.forEach(cat=>{const LL=D[cat.k];total+=LL.length;
+  LL.forEach((it,i)=>{const sp=40,ang=(cat.a-sp/2+(i+.5)/LL.length*sp+(i%3-1)*1.9)*Math.PI/180,
+    r=radius(it[1]),x=CX+Math.cos(ang)*r,y=CY+Math.sin(ang)*r;
+    parts+=`<g class="poi" data-c="${cat.k}" data-t="${it[1]}" data-n="${it[0].replace(/"/g,'')}" style="transform-origin:${CX}px ${CY}px">
+      <circle cx="${x}" cy="${y}" r="3.1" fill="${cat.c}" opacity=".92"/><circle cx="${x}" cy="${y}" r="9" fill="transparent"/></g>`})});
+svg.innerHTML=parts;document.getElementById('total').textContent=total;
+const catBox=document.getElementById('cats'),on={};
+CATS.forEach(c=>{on[c.k]=true;const b=document.createElement('button');b.className='cat';
+  b.setAttribute('aria-pressed','true');
+  b.innerHTML=`<span class="dot" style="background:${c.c}"></span>${c.n}<span class="n">${D[c.k].length}</span>`;
+  b.onclick=()=>{on[c.k]=!on[c.k];b.setAttribute('aria-pressed',on[c.k]);draw()};catBox.appendChild(b)});
+const rad=document.getElementById('rad'),radv=document.getElementById('radv'),cnt=document.getElementById('count');
+function draw(){const max=+rad.value;radv.textContent=max;let n=0;
+  svg.querySelectorAll('.poi').forEach(g=>{const v=on[g.dataset.c]&&+g.dataset.t<=max;
+    g.style.opacity=v?1:.05;g.style.transform=v?'scale(1)':'scale(.9)';if(v)n++});
+  cnt.textContent=n}
+rad.oninput=draw;draw();
+svg.addEventListener('mouseover',e=>{const g=e.target.closest('.poi');if(!g||+g.style.opacity<.5)return;
+  const r=g.querySelector('circle').getBoundingClientRect(),s=stage.getBoundingClientRect();
+  tip.innerHTML=`<b>${g.dataset.n}</b><i>${g.dataset.t} min</i>`;
+  tip.style.left=(r.left-s.left+r.width/2)+'px';tip.style.top=(r.top-s.top)+'px';tip.style.opacity=1});
+svg.addEventListener('mouseout',()=>tip.style.opacity=0);
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+try{
+/* ══ FLEX CAVE ══════════════════════════════════════════
+   Os painéis fecham conforme o scroll e a onça rupestre aparece.
+   O símbolo da marca ocupa o lugar da arte rupestre até a curadoria definir o artista.
+   ══════════════════════════════════════════════════════ */
+const NP=7,fc=document.getElementById('flexcave'),fcp=document.getElementById('fcp'),
+      fconca=document.getElementById('fconca'),
+      fcbar=document.getElementById('fcbar'),fcs0=document.getElementById('fcs0'),fcs1=document.getElementById('fcs1'),
+      fcview=document.getElementById('fcview');
+/* A cena atrás das placas é a MULHER NA VARANDA (Infinitamente Verde).
+   Assim que varanda.jpg existir na pasta SITE, ela assume sozinha.
+   Enquanto não existe, o navegador cai na segunda camada. */
+fcview.style.backgroundImage=
+  'url("varanda.jpg"), url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2400&auto=format&fit=crop")';
+fcp.innerHTML=Array.from({length:NP},()=>'<div class="fc-p"><i></i></div>').join('');
+
+fconca.innerHTML='<span class="corten-sym" aria-label="Símbolo Morás Experience"></span>';
+const slats=[...fcp.querySelectorAll('i')];
+slats.forEach((s,i)=>{s.parentElement.style.zIndex = i;});
+const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
+const easeIO=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+function flexcave(){
+  const r=fc.getBoundingClientRect(),h=fc.offsetHeight-innerHeight;
+  const p=cl(-r.top/h,0,1);
+  slats.forEach((s,i)=>{
+    /* janela de correr: cada folha desliza lateralmente e estaciona na lateral.
+       Deslocamento em % da própria largura. 90% em vez de 100% deixa a pilha visível. */
+    /* vidro deslizante: todas as folhas estacionam à esquerda e correm para a direita.
+       Cascata de 8% mantém a pilha visível quando aberto. */
+    const open = -i*92;
+    const d = i/NP*.30;                                /* fecha em onda, da esquerda para a direita */
+    const t=easeIO(cl((p-d)/.52,0,1));
+    s.style.transform=`translate3d(${(open*(1-t)).toFixed(2)}%,0,0)`;
+  });
+  const rev=cl((p-.46)/.22,0,1);
+  fconca.style.opacity=rev.toFixed(3);
+  fconca.style.transform=`scale(${(0.9+rev*0.1).toFixed(3)})`;
+  fcbar.style.height=(p*100).toFixed(1)+'%';
+  fcs0.classList.toggle('off',p>.5); fcs1.classList.toggle('off',p<=.5);
+  fcview.style.transform=`scale(${(1.06+p*0.06).toFixed(3)})`;
+}
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+try{
+/* ══ PARALLAX ══ */
+const paras=[...document.querySelectorAll('.bleed .ph, #verde .ph, #lugar .ph')];
+function parallax(){paras.forEach(el=>{
+  const r=el.getBoundingClientRect();
+  if(r.bottom<0||r.top>innerHeight)return;
+  const p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+  el.style.backgroundPosition=`center calc(50% + ${(p*-42).toFixed(1)}px)`})}
+
+let tick=false;
+function onScroll(){if(tick)return;tick=true;requestAnimationFrame(()=>{flexcave();parallax();tick=false})}
+addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+try{
+/* ══ TÍTULOS: revelação linha a linha ══ */
+document.querySelectorAll('.kicker').forEach(k=>{
+  k.innerHTML=k.innerHTML.split(/<br\s*\/?>/i)
+    .map(l=>`<span class="kline"><span>${l.trim()}</span></span>`).join('')});
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+try{
+/* ══ NÚMEROS: contagem ══ */
+function countUp(el){
+  const raw=el.textContent.trim();
+  const m=raw.match(/^([^\d]*?)([\d.,]+)(.*)$/);
+  if(!m)return; const [,pre,num,post]=m;
+  const dec=(num.split(',')[1]||'').length;
+  const target=parseFloat(num.replace(/\./g,'').replace(',','.'));
+  if(!isFinite(target))return;
+  if(target<10&&dec===0)return;                    /* 09, 01, 04, Z1 ficam parados */
+  const grouped=num.includes('.');                 /* 2026 nunca vira 2.026 */
+  const pad=/^0\d/.test(num)?num.split(',')[0].length:0;
+  const fmt=new Intl.NumberFormat('pt-BR',{minimumFractionDigits:dec,maximumFractionDigits:dec,useGrouping:grouped});
+  const t0=performance.now(),dur=1200;
+  (function step(t){const p=cl((t-t0)/dur,0,1);
+    let s=fmt.format(target*easeIO(p)); if(pad)s=s.padStart(pad,'0');
+    el.textContent=pre+s+post;
+    if(p<1)requestAnimationFrame(step)})(t0);
+}
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+try{
+/* rede de segurança: se algo impedir a animação, o conteúdo aparece do mesmo jeito */
+if(!('IntersectionObserver' in window)){
+  document.querySelectorAll('.reveal,.scale,.kline').forEach(e=>e.classList.add('in'));
+  throw new Error('sem IntersectionObserver, conteúdo revelado direto');
+}
+/* reveal, por último para pegar o conteúdo injetado */
+paintPh();
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){
+  x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal,.scale').forEach(e=>io.observe(e));
+/* réguas de números não têm .reveal em todos os casos */
+const ioN=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){countUp(x.target);ioN.unobserve(x.target)}}),{threshold:.6});
+document.querySelectorAll('.band b, .tnum b').forEach(e=>ioN.observe(e));
+/* títulos entram por linha */
+const ioK=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){
+  [...x.target.children].forEach((l,i)=>setTimeout(()=>l.classList.add('in'),i*90));ioK.unobserve(x.target)}}),{threshold:.25});
+document.querySelectorAll('.kicker').forEach(e=>ioK.observe(e));
+flexcave();parallax();
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+
+setTimeout(()=>{document.querySelectorAll('.reveal:not(.in)').forEach(e=>{
+  const r=e.getBoundingClientRect();
+  if(r.top<innerHeight&&r.bottom>0)e.classList.add('in');})},2500);
+</script>
+</body>
+</html>
