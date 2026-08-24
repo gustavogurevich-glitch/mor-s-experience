@@ -32,8 +32,53 @@
     <a href="#flexcave" class="nl">Flex Cave</a>
     <a href="#produto" class="nl">As Casas</a>
     <a href="#contato" class="ctan">Agendar visita</a>
+    <!-- abaixo de 1180px os links somem: este botão devolve a navegação -->
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuMob">
+      <s></s><s></s>
+    </button>
   </div>
 </nav>
+
+<!-- ═══ MENU · celular e iPad ════════════════════════════════════ -->
+<div class="menu-mob" id="menuMob" hidden>
+  <nav class="mm-links" aria-label="Seções">
+    <a href="#perfis"><i>01</i>Perfis</a>
+    <a href="#fachada"><i>02</i>Fachada</a>
+    <a href="#local"><i>03</i>Localização</a>
+    <a href="#mapa"><i>04</i>Mapa de Calor</a>
+    <a href="#flexcave"><i>05</i>Flex Cave</a>
+    <a href="#produto"><i>06</i>As Casas</a>
+  </nav>
+  <div class="mm-pe">
+    <a class="mm-cta" href="#contato">Agendar visita</a>
+    <p>Rua Morás, 458 · Vila Madalena<br>São Paulo</p>
+  </div>
+</div>
+
+<!-- ═══ WHATSAPP FLUTUANTE ═══════════════════════════════════════
+     Discreto, entra só depois do hero. Duas opções de conversa,
+     cada uma já com a mensagem escrita.
+     ═════════════════════════════════════════════════════════════ -->
+<div class="zap-fab" id="zapFab" aria-live="polite">
+  <div class="zap-menu" id="zapMenu" role="dialog" aria-label="Falar no WhatsApp" hidden>
+    <div class="zap-top">
+      <b>Fale com a gente</b>
+      <button class="zap-x" id="zapX" aria-label="Fechar">&times;</button>
+    </div>
+    <a class="zap-op" data-msg="1" href="#" target="_blank" rel="noopener">
+      <i>01</i><span><b>Agendar visita à Loja</b>Conhecer o projeto pessoalmente</span><s>&rarr;</s>
+    </a>
+    <a class="zap-op" data-msg="2" href="#" target="_blank" rel="noopener">
+      <i>02</i><span><b>Plantas e livro institucional</b>Receber o material completo</span><s>&rarr;</s>
+    </a>
+    <p class="zap-pe">Resposta em horário comercial.</p>
+  </div>
+
+  <button class="zap-btn" id="zapBtn" aria-expanded="false" aria-controls="zapMenu">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+    <em class="zap-lbl">Fale com a gente</em>
+  </button>
+</div>
 
 <!-- HERO -->
 <header id="hero">
@@ -82,7 +127,7 @@
       <div class="fach-img" data-st="1" style="background-image:url(fachada-02-trabalhando.jpg)"></div>
       <div class="fach-img" data-st="2" style="background-image:url(fachada-03-dormindo.jpg)"></div>
       <div class="fach-grade"></div>
-      <div class="fach-cap">Rua Morás, 466 · Vila Madalena<br>Perspectiva de esquina · imagem preliminar</div>
+      <div class="fach-cap">Rua Morás, 458 · Vila Madalena<br>Perspectiva de esquina · imagem preliminar</div>
     </div>
 
     <div class="fach-side">
@@ -131,19 +176,22 @@
 
   <div class="plotter reveal">
     <div class="plot-frame">
-      <svg viewBox="0 0 1000 700" id="locmap" aria-label="Prancha de localização"></svg>
+      <img class="plot-img" src="mapa-local.jpg" alt="Mapa de localização do Morás Experience na Vila Madalena"
+           width="1600" height="1600" loading="lazy">
       <span class="brk tl"></span><span class="brk tr"></span>
       <span class="brk bl"></span><span class="brk br"></span>
-      <div class="plot-hud tl"><b>Rua Morás, 466</b><i>Vila Madalena · São Paulo</i></div>
+      <div class="plot-hud tl"><b>Rua Morás, 458</b><i>Vila Madalena · São Paulo</i></div>
       <div class="plot-hud tr"><b>Z1</b><i>Zona estritamente residencial</i></div>
       <div class="plot-hud bl"><b>1.685 m²</b><i>Área do terreno</i></div>
       <div class="plot-hud br"><b>01</b><i>Último lote da via</i></div>
-      <div class="plot-scale"><i></i><span>500 m</span></div>
     </div>
+    <p class="plot-arrasta"><s></s>Arraste o mapa para o lado</p>
     <aside class="plot-side">
       <span class="eyebrow">Eixos de acesso</span>
+      <p class="plot-call">O Morás não está sobre<br>nenhum grande eixo.<br><b>Está no meio de todos.</b></p>
+      <p class="plot-txt">Seis vias estruturais da cidade a poucos minutos de carro — sem o ruído, o trânsito e a exposição de quem mora em cima de uma delas.</p>
       <div class="dest" id="dest"></div>
-      <p class="plot-nota">Prancha esquemática, sem escala.<br>Tempos de deslocamento a serem fornecidos pela RRG.</p>
+      <p class="plot-nota">Mapa esquemático, sem escala.<br>Tempos de deslocamento a serem fornecidos pela RRG.</p>
     </aside>
   </div>
  </div>
@@ -271,7 +319,7 @@
         <p>Tem um código de convite? Plantas, tipologias e o tour no protótipo digital são liberados antes da abertura pública.</p></div>
     </div>
     <div class="reveal">
-      <form onsubmit="event.preventDefault();var b=this.querySelector('.submit');b.textContent='Recebido. Entraremos em contato';b.disabled=true">
+      <form id="formVisita">
         <div class="field"><label for="n">Nome completo</label><input id="n" required autocomplete="name"></div>
         <div class="field"><label for="e">E-mail</label><input id="e" type="email" required autocomplete="email"></div>
         <div class="field"><label for="t">Telefone</label><input id="t" type="tel" required autocomplete="tel"></div>
@@ -298,7 +346,7 @@
           <img class="fmark" src="simbolo-creme.png" alt="" width="600" height="397">
           <div style="color:var(--branco)"><div style="font-family:var(--serif);font-size:17px;letter-spacing:.16em">MORÁS</div>
           <div class="eyebrow" style="margin-top:3px;color:var(--dim)">Experience</div></div></div>
-        <p style="margin-top:26px;font-size:12.5px;color:var(--dim);max-width:30ch;line-height:1.85">Rua Morás, 466. Vila Madalena, São Paulo.<br>Estado da Arte, Infinitamente Verde.</p>
+        <p style="margin-top:26px;font-size:12.5px;color:var(--dim);max-width:30ch;line-height:1.85">Rua Morás, 458. Vila Madalena, São Paulo.<br>Estado da Arte, Infinitamente Verde.</p>
         <a class="frrg" href="https://rrg.com.br" target="_blank" rel="noopener">Conheça a RRG →</a>
       </div>
       <div><span class="eyebrow">Os 3 Cs</span>
@@ -513,83 +561,134 @@ fStops.forEach(s=>s.addEventListener('click',ev=>{ev.stopPropagation();pintaFach
 addEventListener('resize',()=>pintaFachada(fVal));
 pintaFachada(0);
 
-/* ══ MAPA DE LOCALIZAÇÃO — esquemático, na linguagem do livro ══ */
-const AV=[
- {k:'mp',d:'M 26 296 C 128 426, 208 518, 300 646 S 404 792, 418 906',l:'Marginal Pinheiros',o:'46%'},
- {k:'fr',d:'M 38 340 L 206 522',l:'Av. Prof. Fonseca Rodrigues',o:'50%'},
- {k:'pm',d:'M 206 522 L 322 552 L 452 610',l:'Av. Pedroso de Morais',o:'46%',m:1},
- {k:'em',d:'M 322 716 L 452 610',l:'Av. Eusébio Matoso',o:'48%'},
- {k:'rb',d:'M 452 610 L 700 642 L 862 600',l:'Av. Rebouças',o:'26%',m:1},
- {k:'fl',d:'M 452 610 L 492 790 L 534 878',l:'Av. Brig. Faria Lima',o:'54%',m:1},
- {k:'sm',d:'M 598 314 L 626 442',l:'Av. Sumaré',o:'48%'},
- {k:'da',d:'M 626 442 L 748 508',l:'Av. Dr. Arnaldo',o:'50%'},
- {k:'hp',d:'M 382 310 L 486 424',l:'R. Heitor Penteado',o:'48%'},
- {k:'cs',d:'M 822 400 L 908 498',l:'R. da Consolação',o:'50%'},
- {k:'pa',d:'M 866 582 L 924 664',l:'Av. Paulista',o:'50%',m:1},
- {k:'eu',d:'M 572 706 L 648 792',l:'Av. Europa',o:'50%'},
- {k:'br',d:'M 658 682 L 738 762',l:'Av. Brasil',o:'50%',m:1},
- {k:'nj',d:'M 552 802 L 702 852',l:'Av. Nove de Julho',o:'48%',m:1},
- {k:'cj',d:'M 442 832 L 522 894',l:'Av. Cidade Jardim',o:'50%'},
- {k:'jk',d:'M 566 882 L 768 942',l:'Av. Pres. Juscelino Kubitschek',o:'46%'}];
-const MX=427,MY=545;
-const lm=document.getElementById('locmap');
-let L='';
+/* ══ FORMULÁRIO · AGENDAR VISITA ═══════════════════════════════
+   Os dados vão para gustavo@rrg.com.br.
 
-/* 1 · malha de pontos: densidade e brilho crescem em direção ao epicentro.
-      É a mesma ideia do mapa de calor, agora como terreno. */
-L+='<g class="dotgrid">';
-for(let y=18;y<700;y+=15){
-  for(let x=18;x<1000;x+=15){
-    const d=Math.hypot(x-MX,y-MY);
-    const t=Math.max(0,1-d/560);
-    const op=(0.035+t*t*0.42).toFixed(3);
-    const r=(0.7+t*1.5).toFixed(2);
-    if(+op>0.045) L+=`<circle cx="${x}" cy="${y}" r="${r}" opacity="${op}"/>`;
-  }
+   CHAVE: cole abaixo a chave de acesso do Web3Forms.
+   Sem ela, o botão abre o programa de e-mail já preenchido —
+   assim nenhum contato se perde enquanto a chave não chega.
+   ════════════════════════════════════════════════════════════ */
+const DESTINO='gustavo@rrg.com.br';
+const CHAVE_FORM='';        /* <<< cole a chave do Web3Forms aqui */
+
+/* ══ MENU DE CELULAR E IPAD ════════════════════════════════════ */
+const burger=document.getElementById('burger'), mm=document.getElementById('menuMob');
+function menuAbre(){
+  mm.hidden=false; requestAnimationFrame(()=>document.body.classList.add('mm-on'));
+  burger.setAttribute('aria-expanded','true'); burger.setAttribute('aria-label','Fechar menu');
 }
-L+='</g>';
+function menuFecha(){
+  document.body.classList.remove('mm-on');
+  burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','Abrir menu');
+  setTimeout(()=>{if(!document.body.classList.contains('mm-on'))mm.hidden=true},420);
+}
+burger.addEventListener('click',()=>
+  document.body.classList.contains('mm-on')?menuFecha():menuAbre());
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',menuFecha));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')menuFecha()});
+/* girar o aparelho fecha, senão o menu fica preso num tamanho antigo */
+addEventListener('resize',()=>{if(innerWidth>1180)menuFecha()});
 
-/* 2 · curvas de nível a partir do ponto zero */
-[70,130,200,285,385,500].forEach(r=>{L+=`<circle class="contour" cx="${MX}" cy="${MY}" r="${r}"/>`});
+/* ══ WHATSAPP FLUTUANTE ════════════════════════════════════════
+   Número no formato 55 + DDD + linha, só dígitos.
+   Aparece depois do hero, abre com duas conversas prontas.
+   ════════════════════════════════════════════════════════════ */
+const ZAP='5511975755256';
+const ZAP_MSGS={
+  1:'Olá! Vim pelo site do Morás Experience e gostaria de agendar uma visita à Loja.',
+  2:'Olá! Vim pelo site do Morás Experience e gostaria de receber as plantas e o livro institucional.'
+};
 
-/* 3 · áreas verdes e a Z1 que o edifício enfrenta */
-L+=`<ellipse cx="196" cy="452" rx="74" ry="48" class="park"/><text class="parklbl" x="196" y="456" text-anchor="middle">Villa-Lobos</text>
- <ellipse cx="852" cy="928" rx="78" ry="50" class="park"/>
- <path class="zone" d="M 330 512 C 348 480, 400 472, 420 496 C 438 518, 428 552, 404 570
-   C 376 590, 330 584, 320 558 C 314 540, 320 524, 330 512 Z"/>
- <text class="parklbl" x="368" y="532" text-anchor="middle">Z1 preservada</text>`;
+const fab=document.getElementById('zapFab'), zBtn=document.getElementById('zapBtn'),
+      zMenu=document.getElementById('zapMenu'), zX=document.getElementById('zapX'),
+      heroEl=document.getElementById('hero');
 
-/* 4 · vias, com rótulo correndo pelo próprio traçado */
-AV.forEach(a=>{L+=`<path id="av-${a.k}" class="av${a.m?' av-m':''}" d="${a.d}"/>`});
-AV.forEach(a=>{L+=`<text id="lb-${a.k}" class="avlbl" dy="-6"><textPath href="#av-${a.k}" startOffset="${a.o}">${a.l}</textPath></text>`});
-
-/* 5 · o ponto zero: mira, pulso e chamada com linha-guia */
-L+=`<path class="av av-m" d="M 402 538 L 452 552" style="stroke-width:3;opacity:1"/>
- <circle class="ping" cx="${MX}" cy="${MY}" r="14" fill="none" stroke="var(--marca)" stroke-width="1"/>
- <circle cx="${MX}" cy="${MY}" r="21" fill="none" stroke="rgba(232,205,166,.45)" stroke-width="1"/>
- <path class="lead-line" d="M ${MX} ${MY-21} L ${MX} ${MY-62} L ${MX+120} ${MY-62}"/>
- <circle cx="${MX}" cy="${MY}" r="3.4" fill="var(--marca)"/>
- <path d="M ${MX-34} ${MY} H ${MX-9} M ${MX+9} ${MY} H ${MX+34} M ${MX} ${MY-34} V ${MX-390} M ${MX} ${MY+9} V ${MY+34}"
-   stroke="rgba(232,205,166,.6)" stroke-width="1" fill="none"/>
- <text class="pinlbl" x="${MX+128}" y="${MY-58}">Rua Morás</text>
- <text class="parklbl" x="${MX+128}" y="${MY-42}">Último lote · Z1 em frente</text>
- <text class="parklbl" x="560" y="238" style="letter-spacing:.3em">Vila Madalena</text>`;
-lm.innerHTML=L;
-
-/* 6 · a lista acende a via no desenho */
-const DEST=[['Av. Pedroso de Morais','pm'],['Av. Brig. Faria Lima','fl'],['Av. Rebouças','rb'],
- ['Av. Nove de Julho','nj'],['Av. Brasil','br'],['Av. Paulista','pa']];
-const dbox=document.getElementById('dest');
-dbox.innerHTML=DEST.map(([n,k],i)=>
-  `<button data-k="${k}"><em>${String(i+1).padStart(2,'0')}</em><span>${n}</span></button>`).join('');
-dbox.querySelectorAll('button').forEach(b=>{
-  const via=document.getElementById('av-'+b.dataset.k), lab=document.getElementById('lb-'+b.dataset.k);
-  const on=v=>{via?.classList.toggle('hot',v);lab?.classList.toggle('hot',v)};
-  b.addEventListener('mouseenter',()=>on(true));
-  b.addEventListener('mouseleave',()=>on(false));
-  b.addEventListener('focus',()=>on(true));
-  b.addEventListener('blur',()=>on(false));
+document.querySelectorAll('.zap-op').forEach(a=>{
+  a.href=`https://wa.me/${ZAP}?text=${encodeURIComponent(ZAP_MSGS[a.dataset.msg])}`;
 });
+
+/* só existe depois que o hero sai da tela */
+let visivel=false;
+function checaFab(){
+  if(!heroEl.offsetHeight) return;      /* antes do layout, não decide nada */
+  const passou = heroEl.getBoundingClientRect().bottom < 80;
+  if(passou===visivel)return;
+  visivel=passou;
+  fab.classList.toggle('on',passou);
+  if(passou && !sessionStorage.getItem('zapVisto')){
+    /* na primeira vez ele se apresenta e recolhe sozinho */
+    fab.classList.add('aberto-lbl');
+    sessionStorage.setItem('zapVisto','1');
+    setTimeout(()=>fab.classList.remove('aberto-lbl'),4200);
+  }
+  if(!passou) fecha();
+}
+function abre(){zMenu.hidden=false;requestAnimationFrame(()=>fab.classList.add('menu'));
+  zBtn.setAttribute('aria-expanded','true');fab.classList.remove('aberto-lbl')}
+function fecha(){fab.classList.remove('menu');zBtn.setAttribute('aria-expanded','false');
+  setTimeout(()=>{if(!fab.classList.contains('menu'))zMenu.hidden=true},380)}
+
+zBtn.addEventListener('click',()=>fab.classList.contains('menu')?fecha():abre());
+zX.addEventListener('click',fecha);
+document.addEventListener('click',e=>{if(!fab.contains(e.target))fecha()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')fecha()});
+addEventListener('scroll',checaFab,{passive:true});
+checaFab();
+
+const fv=document.getElementById('formVisita');
+fv.addEventListener('submit', async ev=>{
+  ev.preventDefault();
+  const b=fv.querySelector('.submit'), original=b.textContent;
+  const d={
+    nome:  fv.querySelector('#n').value.trim(),
+    email: fv.querySelector('#e').value.trim(),
+    tel:   fv.querySelector('#t').value.trim(),
+    interesse: fv.querySelector('#i').value,
+    perfil: (fv.querySelector('#perfilField')||{}).value || 'não informado'
+  };
+
+  /* rede de segurança: sem chave, abre o e-mail já escrito */
+  if(!CHAVE_FORM){
+    const corpo=encodeURIComponent(
+      `Nome: ${d.nome}\nE-mail: ${d.email}\nTelefone: ${d.tel}\n`+
+      `Interesse: ${d.interesse}\nPerfil escolhido no site: ${d.perfil}\n`);
+    b.textContent='Abrindo seu e-mail…';
+    location.href=`mailto:${DESTINO}?subject=${encodeURIComponent('Agendar visita — Morás Experience')}&body=${corpo}`;
+    setTimeout(()=>{b.textContent=original},2500);
+    return;
+  }
+
+  b.disabled=true; b.textContent='Enviando…';
+  try{
+    const r=await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json',Accept:'application/json'},
+      body:JSON.stringify({
+        access_key:CHAVE_FORM,
+        subject:'Agendar visita — Morás Experience',
+        from_name:'Site Morás Experience',
+        Nome:d.nome, 'E-mail':d.email, Telefone:d.tel,
+        Interesse:d.interesse, 'Perfil escolhido':d.perfil
+      })
+    });
+    if(!(await r.json()).success) throw 0;
+    b.textContent='Recebido. Entraremos em contato';
+    fv.querySelectorAll('input,select').forEach(c=>c.value='');
+  }catch(_){
+    b.disabled=false;
+    b.textContent='Não deu. Escreva para gustavo@rrg.com.br';
+  }
+});
+}catch(e){console.error('[Morás] bloco falhou:',e)}
+try{
+/* ══ EIXOS DE ACESSO ═══════════════════════════════════════════
+   A prancha virou imagem (mapa-local.jpg), que já traz os nomes
+   das vias impressos. A lista ao lado ficou só como referência.
+   ════════════════════════════════════════════════════════════ */
+const DEST=['Av. Pedroso de Morais','Av. Brig. Faria Lima','Av. Rebouças',
+            'Av. Nove de Julho','Av. Brasil','Av. Paulista'];
+document.getElementById('dest').innerHTML=DEST.map((n,i)=>
+  `<div class="dest-i"><em>${String(i+1).padStart(2,'0')}</em><span>${n}</span></div>`).join('');
 }catch(e){console.error('[Morás] bloco falhou:',e)}
 try{
 /* ══ MAPA DE CALOR ══ */

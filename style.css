@@ -858,10 +858,10 @@ section{padding:clamp(58px,6.2vw,108px) var(--pad)}
    ──────────────────────────────────────────────────────────── */
 .egg{position:absolute;z-index:40;top:clamp(18px,2.2vw,34px);right:var(--pad);
   display:flex;align-items:center;gap:0;text-decoration:none;
-  opacity:.3;transition:opacity .6s var(--e)}
+  opacity:.46;transition:opacity .6s var(--e)}
 .egg:hover,.egg:focus-visible{opacity:1}
-.egg i{display:block;flex:none;width:clamp(34px,3.4vw,50px);aspect-ratio:1;
-  background-image:var(--bicho),url(simbolo-corten.png);
+.egg i{display:block;flex:none;width:clamp(44px,4.2vw,62px);aspect-ratio:1;
+  background-image:var(--bicho);
   background-repeat:no-repeat;background-position:center;background-size:contain;
   transition:transform .7s var(--e),filter .7s var(--e)}
 .egg:hover i{transform:translateY(-3px) rotate(-3deg)}
@@ -876,8 +876,8 @@ section{padding:clamp(58px,6.2vw,108px) var(--pad)}
   filter:brightness(0) invert(1) sepia(.35) saturate(2.4) hue-rotate(-14deg) opacity(.9)}
 /* dentro do Flex Cave o palco é sticky, então o bicho vai junto */
 .fc .egg{top:clamp(76px,9vh,104px)}
-@media(max-width:820px){.egg{top:14px;right:16px}
-  .egg span{display:none}.egg i{width:30px}}
+@media(max-width:820px){.egg{top:14px;right:16px;opacity:.5}
+  .egg span{display:none}.egg i{width:38px}}
 
 /* ── HERO · leitura de área, mais instrumento e menos etiqueta ─ */
 .hero-metros{gap:clamp(12px,1.2vw,18px);padding:13px clamp(16px,1.6vw,22px)}
@@ -1010,4 +1010,417 @@ footer{padding-bottom:clamp(240px,26vw,400px)}
   footer{padding-bottom:clamp(180px,44vw,260px)}
   .foot-arvore{background-position:center 74%}
   .fbot{position:static;margin-top:clamp(140px,40vw,220px)}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   31. MAPA REAL, VARANDA E ÁRVORE
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── EPICENTRO · a prancha desenhada virou o mapa de verdade ──
+   A imagem é quadrada. A moldura acompanha, e os quatro blocos
+   de dado continuam nos cantos, sobre um véu que garante leitura.
+   ──────────────────────────────────────────────────────────── */
+.plot-frame{aspect-ratio:1/1;background:#EDE7D9;overflow:hidden;
+  max-width:min(100%,880px);margin-inline:auto}
+.plot-img{width:100%;height:100%;object-fit:cover;display:block}
+@media(min-width:1040px){
+  .plotter{grid-template-columns:minmax(0,1fr) 290px;align-items:center}
+  .plot-frame{margin-inline:0}
+}
+/* véu suave nos cantos: o mapa é claro e o texto é escuro */
+.plot-frame::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(58% 40% at 0% 0%,rgba(237,231,217,.94),transparent 72%),
+    radial-gradient(58% 40% at 100% 0%,rgba(237,231,217,.94),transparent 72%),
+    radial-gradient(58% 40% at 0% 100%,rgba(237,231,217,.94),transparent 72%),
+    radial-gradient(58% 40% at 100% 100%,rgba(237,231,217,.94),transparent 72%)}
+.plot-hud{z-index:2}
+.brk{z-index:2}
+/* lista de eixos, agora só referência: o mapa já traz os nomes */
+.dest-i{display:flex;align-items:baseline;gap:14px;
+  padding:13px 0;border-top:1px solid var(--rule)}
+.dest-i em{font-style:normal;font-family:var(--serif);font-size:11px;
+  letter-spacing:.14em;color:var(--dim);min-width:20px}
+.dest-i span{font-size:13.5px}
+@media(max-width:820px){.plot-frame{max-width:none}
+  .plot-hud.tr,.plot-hud.br{display:none}}
+
+/* ── FLEX CAVE · a varanda entra atrás das placas ───────────── */
+.fc-view{background-color:#2A1B14;
+  background-position:center 42%!important;background-size:cover!important;
+  filter:saturate(.94) brightness(.82)}
+.fc-view::after{background:linear-gradient(180deg,
+  rgba(12,11,10,.6),transparent 26%,transparent 52%,rgba(12,11,10,.9))}
+
+/* ── EPICENTRO · a coluna ganha explicação, como no brand book ─
+   A lista solta não dizia nada. Agora tem chamada e texto de apoio
+   antes dela, e o bloco encosta no topo do mapa em vez de flutuar.
+   ──────────────────────────────────────────────────────────── */
+@media(min-width:1040px){.plotter{align-items:start}}
+.plot-side .eyebrow{padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.plot-call{margin-top:clamp(20px,2.2vw,28px);font-family:var(--serif);
+  font-weight:400;font-size:clamp(19px,1.75vw,25px);line-height:1.28;
+  letter-spacing:-.015em}
+.plot-call b{font-weight:400;font-style:italic;color:var(--acc)}
+.plot-txt{margin-top:clamp(14px,1.5vw,20px);font-size:13px;line-height:1.85;
+  color:var(--dim);max-width:34ch}
+.dest{margin-top:clamp(22px,2.4vw,32px)}
+.plot-nota{margin-top:22px;font-size:9px;line-height:2.2;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+
+/* ── EASTER EGG · o convite abre para DENTRO da tela ──────────
+   O bicho mora encostado na borda direita. Se o rótulo crescer
+   para a direita ele sai da tela e fica cortado pela metade.
+   Invertendo a ordem, ele cresce para a esquerda.
+   ──────────────────────────────────────────────────────────── */
+.egg{flex-direction:row-reverse}
+.egg span{padding:0}
+.egg:hover span,.egg:focus-visible span{padding:0 12px 0 0}
+
+/* ── RODAPÉ · só o chão escuro e o texto ─────────────────────
+   A árvore saiu: em faixa própria sobrava vazio, e atrás do
+   texto atrapalhava a leitura. O rodapé fecha no sólido.
+   ──────────────────────────────────────────────────────────── */
+footer{position:relative;overflow:hidden;background:#1B0700;
+  padding:clamp(50px,5.4vw,84px) var(--pad) 30px}
+.foot-arvore{display:none}
+.fg{gap:clamp(30px,3.6vw,56px)}
+.f3c div{margin-bottom:13px}
+.fbot{position:relative;left:auto;right:auto;bottom:auto;z-index:2;
+  margin-top:clamp(38px,4.2vw,64px);padding-top:22px;
+  border-top:1px solid rgba(239,235,226,.22)}
+
+/* ── EASTER EGG · o rótulo precisa caber inteiro ─────────────
+   O corte não era a borda da tela: era o max-width de 15ch,
+   estreito demais para "Agendar visita" com este espaçamento.
+   ──────────────────────────────────────────────────────────── */
+.egg span{max-width:0;white-space:nowrap;overflow:hidden}
+.egg:hover span,.egg:focus-visible span{max-width:190px;padding:0 12px 0 0}
+
+/* ── WHATSAPP FLUTUANTE ──────────────────────────────────────
+   Discreto por padrão, aço corten, entra só depois do hero.
+   Ao clicar abre duas conversas prontas — a pessoa escolhe o
+   assunto em vez de encarar uma tela em branco, que é o que
+   faz o botão converter.
+   ──────────────────────────────────────────────────────────── */
+.zap-fab{position:fixed;right:clamp(16px,2.2vw,32px);bottom:clamp(16px,2.2vw,32px);
+  z-index:950;display:flex;flex-direction:column;align-items:flex-end;gap:12px;
+  opacity:0;visibility:hidden;translate:0 14px;
+  transition:opacity .6s var(--e),translate .6s var(--e),visibility .6s}
+.zap-fab.on{opacity:1;visibility:visible;translate:0}
+
+.zap-btn{all:unset;position:relative;display:flex;align-items:center;gap:0;
+  cursor:pointer;overflow:hidden;flex:none;
+  height:clamp(50px,5vw,58px);padding:0;border-radius:99px;
+  color:var(--marca-lit);font-family:var(--sans);
+  border:1px solid rgba(232,205,166,.4);
+  background:linear-gradient(150deg,rgba(255,205,140,.17),transparent 46%,rgba(16,4,0,.55)),
+             var(--corten-img) center/cover;
+  background-blend-mode:overlay,normal;background-color:#4A1A05;
+  box-shadow:0 8px 28px rgba(30,8,0,.4);
+  transition:box-shadow .5s var(--e),border-color .5s var(--e),transform .4s var(--e)}
+.zap-btn::before{content:"";display:block;width:clamp(50px,5vw,58px);flex:none}
+.zap-btn svg{position:absolute;left:0;top:50%;translate:0 -50%;
+  width:clamp(50px,5vw,58px);height:23px;z-index:1;
+  filter:drop-shadow(0 1px 3px rgba(0,0,0,.55))}
+.zap-btn:hover{transform:translateY(-2px);border-color:var(--marca-lit);
+  box-shadow:0 12px 34px rgba(30,8,0,.55)}
+.zap-btn:focus-visible{outline:2px solid var(--marca-lit);outline-offset:3px}
+/* o rótulo só aparece na primeira vez, depois recolhe */
+.zap-lbl{max-width:0;overflow:hidden;white-space:nowrap;font-style:normal;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:0;
+  transition:max-width .7s var(--e),opacity .5s var(--e),padding .7s var(--e);padding:0}
+.zap-fab.aberto-lbl .zap-lbl{max-width:200px;opacity:1;padding:0 22px 0 2px}
+/* pulso único de chegada, sem ficar piscando para sempre */
+.zap-fab.on .zap-btn{animation:zapPulso 2.4s var(--e) 1}
+@keyframes zapPulso{
+  0%{box-shadow:0 8px 28px rgba(30,8,0,.4),0 0 0 0 rgba(232,205,166,.5)}
+  55%{box-shadow:0 8px 28px rgba(30,8,0,.4),0 0 0 16px rgba(232,205,166,0)}
+  100%{box-shadow:0 8px 28px rgba(30,8,0,.4),0 0 0 0 rgba(232,205,166,0)}}
+
+/* painel de opções */
+.zap-menu{width:min(320px,calc(100vw - 40px));overflow:hidden;
+  background:#200A02;border:1px solid rgba(232,205,166,.26);
+  box-shadow:0 24px 60px rgba(10,3,0,.6);
+  opacity:0;translate:0 12px;scale:.97;transform-origin:bottom right;
+  transition:opacity .38s var(--e),translate .38s var(--e),scale .38s var(--e)}
+.zap-fab.menu .zap-menu{opacity:1;translate:0;scale:1}
+.zap-top{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:16px 18px;border-bottom:1px solid rgba(232,205,166,.18);
+  background:linear-gradient(150deg,rgba(255,205,140,.12),transparent 60%),
+             var(--corten-img) center/cover;
+  background-blend-mode:overlay,normal;background-color:#4A1A05}
+.zap-top b{font-family:var(--serif);font-weight:400;font-size:16px;
+  letter-spacing:.01em;color:var(--marca-lit)}
+.zap-x{all:unset;cursor:pointer;width:24px;height:24px;display:grid;place-items:center;
+  border-radius:50%;font-size:19px;line-height:1;color:rgba(232,205,166,.7);
+  transition:color .3s,background .3s}
+.zap-x:hover{color:var(--marca-lit);background:rgba(232,205,166,.14)}
+
+.zap-op{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;
+  padding:16px 18px;border-bottom:1px solid rgba(232,205,166,.12);
+  transition:background .35s var(--e),padding-left .35s var(--e)}
+.zap-op:hover{background:rgba(232,205,166,.07);padding-left:23px}
+.zap-op i{font-style:normal;font-family:var(--serif);font-size:11px;
+  letter-spacing:.14em;color:rgba(232,205,166,.55)}
+.zap-op span{display:block;font-size:11px;line-height:1.6;color:rgba(239,235,226,.5)}
+.zap-op span b{display:block;font-family:var(--sans);font-weight:500;font-size:13.5px;
+  letter-spacing:.005em;color:var(--branco);margin-bottom:3px}
+.zap-op s{text-decoration:none;font-size:14px;color:rgba(232,205,166,.45);
+  transition:transform .35s var(--e),color .35s var(--e)}
+.zap-op:hover s{transform:translateX(4px);color:var(--marca-lit)}
+.zap-pe{padding:13px 18px;font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(239,235,226,.36)}
+
+@media(prefers-reduced-motion:reduce){.zap-fab.on .zap-btn{animation:none}}
+@media(max-width:820px){
+  .zap-fab{right:14px;bottom:14px}
+  .zap-menu{width:min(300px,calc(100vw - 28px))}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   32. CELULAR E IPAD
+   Três faixas: até 640 (celular), 641–1024 (iPad retrato),
+   1025–1180 (iPad paisagem, que era o pior caso: layout largo
+   e nenhum menu).
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── BOTÃO DO MENU ──────────────────────────────────────────── */
+.burger{all:unset;display:none;cursor:pointer;flex:none;
+  width:40px;height:40px;place-items:center;position:relative}
+.burger s{position:absolute;left:11px;width:18px;height:1.5px;background:var(--acc);
+  text-decoration:none;transition:transform .45s var(--e),width .45s var(--e)}
+.burger s:nth-child(1){top:17px}
+.burger s:nth-child(2){top:23px;width:13px}
+body.mm-on .burger s:nth-child(1){transform:translateY(3px) rotate(45deg)}
+body.mm-on .burger s:nth-child(2){transform:translateY(-3px) rotate(-45deg);width:18px}
+@media(max-width:1180px){.burger{display:grid}}
+
+/* ── PAINEL DO MENU ─────────────────────────────────────────── */
+.menu-mob{position:fixed;inset:0;z-index:880;display:flex;flex-direction:column;
+  justify-content:center;gap:clamp(28px,5vh,56px);
+  padding:calc(var(--navh) + 30px) var(--pad) 30px;
+  background:#1B0700;color:var(--branco);
+  opacity:0;visibility:hidden;transition:opacity .42s var(--e),visibility .42s}
+.menu-mob::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:var(--corten-img) center/cover;opacity:.22;mix-blend-mode:overlay}
+body.mm-on{overflow:hidden}
+body.mm-on .menu-mob{opacity:1;visibility:visible}
+.mm-links{position:relative;display:grid}
+.mm-links a{display:flex;align-items:baseline;gap:clamp(14px,3vw,26px);
+  padding:clamp(13px,2vh,20px) 0;border-bottom:1px solid rgba(232,205,166,.16);
+  font-family:var(--serif);font-weight:400;letter-spacing:-.01em;
+  font-size:clamp(24px,6.5vw,38px);line-height:1;color:var(--branco);
+  opacity:0;translate:0 14px;transition:color .3s,opacity .5s var(--e),translate .5s var(--e)}
+body.mm-on .mm-links a{opacity:1;translate:0}
+.mm-links a:nth-child(1){transition-delay:.06s}.mm-links a:nth-child(2){transition-delay:.11s}
+.mm-links a:nth-child(3){transition-delay:.16s}.mm-links a:nth-child(4){transition-delay:.21s}
+.mm-links a:nth-child(5){transition-delay:.26s}.mm-links a:nth-child(6){transition-delay:.31s}
+.mm-links a:active{color:var(--marca)}
+.mm-links i{font-style:normal;font-family:var(--sans);font-size:10px;
+  letter-spacing:.24em;color:rgba(232,205,166,.5);min-width:24px}
+.mm-pe{position:relative;display:grid;gap:18px;justify-items:start}
+.mm-cta{display:block;width:100%;text-align:center;
+  padding:19px 24px;border-radius:99px;background:var(--marca);color:#3A1304;
+  font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:500}
+.mm-pe p{font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  line-height:2;color:rgba(232,205,166,.55)}
+
+/* ── IPAD PAISAGEM · 1025 a 1180 ─────────────────────────────
+   Era o pior caso: largo demais para o layout de celular e sem
+   menu nenhum. Agora tem o botão, e as seções de duas colunas
+   ganham respiro.
+   ──────────────────────────────────────────────────────────── */
+@media(max-width:1180px) and (min-width:1025px){
+  .kicker{font-size:clamp(30px,4.2vw,52px)}
+  .plotter{grid-template-columns:minmax(0,1fr) 262px}
+  .mshell{grid-template-columns:258px minmax(0,1fr)}
+  .stage{max-width:min(100%,600px)}
+  .plot-frame{max-width:min(100%,660px)}
+  .fach-side{padding:clamp(40px,4.6vw,68px) var(--pad) clamp(40px,4.6vw,68px) clamp(26px,3.4vw,54px)}
+  .fach-state{min-height:13em}
+}
+
+/* ── IPAD RETRATO · 641 a 1024 ──────────────────────────────── */
+@media(max-width:1024px){
+  section{padding:clamp(54px,6vw,80px) var(--pad)}
+  .shead{grid-template-columns:1fr;gap:22px}
+  .kicker{font-size:clamp(30px,5.6vw,46px)}
+  .lead{max-width:52ch}
+  /* fachada empilha: a imagem quadrada não pode virar tira */
+  .fach{grid-template-columns:1fr}
+  .fach-stage{aspect-ratio:4/3}
+  .fach-side{padding:clamp(34px,5vw,52px) var(--pad)}
+  .fach-state{min-height:0}
+  .perfil-in h3{font-size:clamp(18px,2.6vw,24px)}
+  .perfil-in p{font-size:12px}
+  /* epicentro e mapa: uma coluna, desenho grande e centralizado */
+  .plotter,.mshell{grid-template-columns:1fr}
+  .plot-frame{max-width:min(100%,620px);margin-inline:auto}
+  .plot-side{max-width:620px;margin-inline:auto;width:100%}
+  .stage{max-width:min(100%,560px)}
+  .panel{max-width:620px;margin-inline:auto;width:100%}
+  .mfoot{justify-content:center}
+  /* casas */
+  .band{grid-template-columns:repeat(2,1fr)}
+  .band>div:nth-child(3){border-left:0}
+  .typo-wrap{grid-template-columns:1fr}
+  .typo-nav{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(16px,3vw,32px)}
+  .trio{grid-template-columns:1fr}
+  .conv{grid-template-columns:1fr;gap:clamp(34px,5vw,54px)}
+  .fg{grid-template-columns:1fr 1fr}
+  .fg>div:first-child{grid-column:1/-1}
+}
+
+/* ── CELULAR · até 640 ──────────────────────────────────────── */
+@media(max-width:640px){
+  :root{--pad:20px;--navh:56px}
+  body{font-size:15px}
+  section{padding:44px var(--pad)}
+  .kicker{font-size:clamp(28px,9vw,40px);line-height:.92}
+  .h2{font-size:clamp(22px,7vw,30px)}
+  .lead{font-size:16.5px;max-width:none}
+  .body,.dimtxt{font-size:15px;max-width:none}
+  .shead{gap:18px}
+
+  /* NAV · só marca, CTA curta e o botão do menu */
+  .nav{padding:9px var(--pad);gap:8px}
+  .nav-mark img{width:34px}
+  .ctan{padding:9px 14px;font-size:8.5px;letter-spacing:.14em}
+  .nav-right{gap:8px}
+
+  /* HERO · a foto vira faixa e o texto vem abaixo, sem sobreposição */
+  #hero{height:auto;min-height:0;padding:0 0 34px}
+  .plate{position:relative;inset:auto;width:100%;aspect-ratio:5/4;
+    background-position:76% center;background-size:cover}
+  .veil{display:none}
+  .hero-in{position:relative;top:auto;translate:0;max-width:none;
+    padding:26px var(--pad) 0}
+  .lockup{width:min(240px,62vw)}
+  .hero-sig{margin-top:16px;font-size:8px;letter-spacing:.3em}
+  .hero-metros{width:100%;flex-wrap:wrap;gap:10px;padding:13px 15px;margin-top:22px}
+  .hm-val{font-size:22px;gap:8px}
+  .hm-val i{width:20px}
+  .cue,.hero-note{display:none}
+
+  /* MARQUEE mais discreto */
+  .marq{padding:13px 0}
+  .marq span{font-size:8.5px;padding:0 16px}
+  .marq span::after{margin-left:32px}
+
+  /* PERFIS · um por vez, altura de cartão */
+  .perfis{grid-template-columns:1fr;height:auto;gap:2px;margin-top:26px}
+  .perfil{min-height:70vw}
+  .perfil-in{padding:22px}
+  .perfil-in h3{font-size:25px}
+  .perfil-in p{font-size:13.5px;max-width:none}
+  .perfis-call{font-size:19px;margin-top:16px}
+  .perfis-nota{font-size:12px}
+
+  /* FACHADA · botões em coluna, que é onde eles cabem */
+  .fach-stage{aspect-ratio:1/1}
+  .fach-cap{font-size:7px;letter-spacing:.18em;right:14px;bottom:12px}
+  .fach-side{padding:30px var(--pad) 6px}
+  .fach-state b{font-size:30px}
+  .fach-state p{font-size:14px;max-width:none}
+  .fach-btns{grid-template-columns:1fr;gap:1px}
+  .fach-stop{grid-template-columns:auto 1fr;display:grid;align-items:center;
+    gap:14px;justify-items:start;padding:15px 16px}
+  .fach-stop span{font-size:11px;letter-spacing:.18em}
+  .fach-rail{padding:22px 0 8px}
+  .fach-hint{font-size:8px;letter-spacing:.18em}
+
+  /* EPICENTRO · o mapa rola de lado, senão os nomes ficam ilegíveis */
+  .plot-frame{aspect-ratio:auto;height:78vw;max-width:none;
+    overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
+  .plot-img{width:auto;height:100%;max-width:none;min-width:150%}
+  .plot-frame::after,.brk{display:none}
+  .plot-hud{position:static;max-width:none;padding:0}
+  .plot-hud.tl,.plot-hud.tr,.plot-hud.bl,.plot-hud.br{
+    display:inline-block;width:48%;vertical-align:top;text-align:left;
+    top:auto;bottom:auto;left:auto;right:auto;margin-top:16px}
+  .plot-hud b{font-size:15px}
+  .plot-arrasta{display:flex}
+  .plot-call{font-size:19px}
+  .plot-txt{max-width:none}
+
+  /* MAPA DE CALOR */
+  .stage{max-width:none;height:auto}
+  .cat{font-size:13px;padding:12px 0}
+  .ctrl b{font-size:30px}
+  input[type=range]{height:3px}
+  input[type=range]::-webkit-slider-thumb{width:24px;height:24px}
+  .tip{font-size:11px;padding:8px 11px}
+  .mfoot{gap:12px 24px}
+
+  /* FLEX CAVE mais curto: 190vh no celular é rolagem demais */
+  #flexcave{height:150vh}
+  .fc-copy{bottom:26px;max-width:none}
+  .fc-copy h2{font-size:32px}
+  .fc-state p{font-size:16px}
+  .corten-sym{width:min(64vw,300px)}
+
+  /* AS CASAS */
+  .band{grid-template-columns:1fr}
+  .band>div{padding:20px 0;border-left:0;border-top:1px solid var(--rule)}
+  .band>div:first-child{border-top:0;padding-top:0}
+  .band b{font-size:32px}
+  .typo-nav{grid-template-columns:1fr}
+  .typo-panel{grid-template-columns:1fr}
+  .specs{grid-template-columns:repeat(2,1fr)}
+  .bim-cta{grid-template-columns:1fr;gap:16px}
+  .bim-arrow{justify-self:end}
+
+  /* VISITA */
+  #contato .h2{font-size:clamp(26px,8vw,34px);margin:18px 0 22px!important}
+  .field input,.field select{font-size:16px}   /* 16px evita o zoom do iOS */
+  .submit{padding:20px 24px;letter-spacing:.22em}
+
+  /* RODAPÉ */
+  .fg{grid-template-columns:1fr;gap:34px}
+  .fbot{flex-direction:column;gap:9px;align-items:flex-start;
+    margin-top:32px;font-size:8px}
+
+  /* EASTER EGG · fora do caminho do polegar e do nav */
+  .egg{top:auto;bottom:16px;right:16px;opacity:.5}
+  .egg i{width:36px}
+
+  /* WHATSAPP · o bicho está embaixo à direita, então ele sobe */
+  .zap-fab{right:14px;bottom:14px}
+  .zap-btn{height:52px}
+  .zap-btn::before{width:52px}
+  .zap-btn svg{width:52px}
+  .zap-menu{width:calc(100vw - 28px)}
+}
+
+/* o aviso de arrastar o mapa só existe no celular */
+.plot-arrasta{display:none;align-items:center;gap:9px;margin-top:12px;
+  font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
+.plot-arrasta s{width:20px;height:1px;background:currentColor;
+  opacity:.5;text-decoration:none}
+
+/* telas bem estreitas */
+@media(max-width:380px){
+  .specs{grid-template-columns:1fr}
+  .hm-lbl{display:none}
+  .ctan{font-size:8px;padding:8px 11px}
+}
+
+/* iPad e celular não têm hover: o que dependia dele passa a ser toque */
+@media(hover:none){
+  .egg{opacity:.5}
+  .egg span{display:none}
+  .zap-fab.aberto-lbl .zap-lbl{max-width:200px}
+  .fach-stage{cursor:default}
+}
+
+/* três colunas de perfil só existem acima de 860px; entre 861 e
+   1024 elas ficam mais baixas, abaixo disso viram cartões */
+@media(min-width:861px) and (max-width:1024px){
+  .perfis{height:clamp(340px,44vw,420px)}
+}
+/* entre 641 e 860 os perfis já estão empilhados: altura livre */
+@media(min-width:641px) and (max-width:860px){
+  .perfis{height:auto}
+  .perfil{min-height:clamp(300px,42vw,380px)}
 }
