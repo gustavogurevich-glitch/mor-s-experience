@@ -1,14 +1,13 @@
-BICHOS · easter eggs do canto superior direito
+SITE · arquivos do site publicado
 
-Salve aqui os PNGs gerados no ChatGPT, com fundo transparente,
-exatamente com estes nomes:
+FALTA CHEGAR AQUI:
+  varanda.jpg          -> mulher na varanda, cena atrás das placas do Flex Cave
+  bichos/onca.png      -> easter egg da seção PERFIS
+  bichos/tucano.png    -> easter egg da seção FACHADA
+  bichos/coruja.png    -> easter egg da seção LOCALIZAÇÃO
+  bichos/arara.png     -> easter egg da seção MAPA DE CALOR
+  bichos/lobo.png      -> easter egg da seção FLEX CAVE
+  bichos/mico.png      -> easter egg da seção AS CASAS
 
-  onca.png     -> seção PERFIS
-  tucano.png   -> seção FACHADA
-  coruja.png   -> seção LOCALIZAÇÃO
-  arara.png    -> seção MAPA DE CALOR
-  lobo.png     -> seção FLEX CAVE
-  mico.png     -> seção AS CASAS
-
-Assim que o arquivo estiver aqui, ele aparece sozinho no site.
-Enquanto não estiver, aparece o símbolo da Morás no lugar.
+Todos entram sozinhos assim que o arquivo estiver na pasta.
+Nada quebra enquanto não estiverem.

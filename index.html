@@ -127,7 +127,26 @@
       <div class="fach-img" data-st="1" style="background-image:url(fachada-02-trabalhando.jpg)"></div>
       <div class="fach-img" data-st="2" style="background-image:url(fachada-03-dormindo.jpg)"></div>
       <div class="fach-grade"></div>
-      <div class="fach-cap">Rua Morás, 458 · Vila Madalena<br>Perspectiva de esquina · imagem preliminar</div>
+
+      <!-- Os controles vivem DENTRO da imagem. A mudança acontece
+           exatamente onde o dedo toca, sem precisar rolar para ver.
+           A legenda do endereço mora aqui também, sobre o degradê
+           escuro — no céu claro do render ela era ilegível. -->
+      <div class="fach-ctrl">
+        <div class="fach-hint">
+          <span class="fh-toque"><s aria-hidden="true"></s>Toque ou arraste a imagem</span>
+          <span class="fh-end">Rua Morás, 458 · Vila Madalena · perspectiva de esquina</span>
+        </div>
+        <div class="fach-btns" role="tablist" aria-label="Estado da fachada">
+          <button class="fach-stop" data-v="0" role="tab" aria-selected="true"><i>01</i><span>Acordando</span></button>
+          <button class="fach-stop" data-v="50" role="tab" aria-selected="false"><i>02</i><span>Trabalhando</span></button>
+          <button class="fach-stop" data-v="100" role="tab" aria-selected="false"><i>03</i><span>Dormindo</span></button>
+        </div>
+        <div class="fach-rail" id="fachRail" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Ajuste fino do estado da fachada" tabindex="0">
+          <div class="fach-line"><i id="fachFill"></i></div>
+          <div class="fach-knob" id="fachKnob"></div>
+        </div>
+      </div>
     </div>
 
     <div class="fach-side">
@@ -139,23 +158,6 @@
         <b id="fachNome">Acordando</b>
         <i id="fachSub">Flex Cave em transição</i>
         <p id="fachDesc">Metade aberta, metade fechada. Cada morador decide o seu ponto. A fachada nunca é a mesma duas vezes, porque é a soma de dezoito escolhas.</p>
-      </div>
-
-      <!-- três botões grandes: clicar é o caminho principal.
-           O trilho continua arrastável, mas ninguém é obrigado a arrastar. -->
-      <div class="fach-ctrl reveal">
-        <div class="fach-btns" role="tablist" aria-label="Estado da fachada">
-          <button class="fach-stop" data-v="0" role="tab" aria-selected="true"><i>01</i><span>Acordando</span></button>
-          <button class="fach-stop" data-v="50" role="tab" aria-selected="false"><i>02</i><span>Trabalhando</span></button>
-          <button class="fach-stop" data-v="100" role="tab" aria-selected="false"><i>03</i><span>Dormindo</span></button>
-        </div>
-
-        <div class="fach-rail" id="fachRail" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Ajuste fino do estado da fachada" tabindex="0">
-          <div class="fach-line"><i id="fachFill"></i></div>
-          <div class="fach-knob" id="fachKnob"></div>
-        </div>
-
-        <div class="fach-hint"><s aria-hidden="true"></s><span>Deslize ou use as setas</span><em aria-hidden="true">→</em></div>
       </div>
     </div>
   </div>
@@ -176,8 +178,13 @@
 
   <div class="plotter reveal">
     <div class="plot-frame">
-      <img class="plot-img" src="mapa-local.jpg" alt="Mapa de localização do Morás Experience na Vila Madalena"
-           width="1600" height="1600" loading="lazy">
+      <!-- deitado no computador; no celular um recorte mais fechado,
+           em que os nomes de rua ficam 28% maiores -->
+      <picture>
+        <source media="(max-width:640px)" srcset="mapa-local-mob.jpg">
+        <img class="plot-img" src="mapa-local.jpg" alt="Mapa de localização do Morás Experience na Vila Madalena"
+             width="1800" height="1350" loading="lazy">
+      </picture>
       <span class="brk tl"></span><span class="brk tr"></span>
       <span class="brk bl"></span><span class="brk br"></span>
       <div class="plot-hud tl"><b>Rua Morás, 458</b><i>Vila Madalena · São Paulo</i></div>
@@ -185,7 +192,6 @@
       <div class="plot-hud bl"><b>1.685 m²</b><i>Área do terreno</i></div>
       <div class="plot-hud br"><b>01</b><i>Último lote da via</i></div>
     </div>
-    <p class="plot-arrasta"><s></s>Arraste o mapa para o lado</p>
     <aside class="plot-side">
       <span class="eyebrow">Eixos de acesso</span>
       <p class="plot-call">O Morás não está sobre<br>nenhum grande eixo.<br><b>Está no meio de todos.</b></p>
@@ -512,6 +518,8 @@ function largura(){return fRail.getBoundingClientRect()}
 let arrastando=false, origemX=0, origemV=0, noPalco=false;
 
 function inicia(e,dePalco){
+  /* os botões ficam por cima da imagem: tocar neles não é arrastar */
+  if(dePalco && e.target.closest('.fach-ctrl')) return;
   arrastando=true; noPalco=dePalco;
   origemX=e.clientX; origemV=fVal;
   secFach.classList.add('arrastando');
@@ -748,15 +756,22 @@ try{
    Os painéis fecham conforme o scroll e a onça rupestre aparece.
    O símbolo da marca ocupa o lugar da arte rupestre até a curadoria definir o artista.
    ══════════════════════════════════════════════════════ */
-const NP=7,fc=document.getElementById('flexcave'),fcp=document.getElementById('fcp'),
+/* sete placas numa tela de celular viram tiras de 50px e a cena some.
+   Três placas mantêm o gesto legível no telefone. */
+const NP=innerWidth<=640?3:7,
+      fc=document.getElementById('flexcave'),fcp=document.getElementById('fcp'),
       fconca=document.getElementById('fconca'),
       fcbar=document.getElementById('fcbar'),fcs0=document.getElementById('fcs0'),fcs1=document.getElementById('fcs1'),
       fcview=document.getElementById('fcview');
 /* A cena atrás das placas é a MULHER NA VARANDA (Infinitamente Verde).
-   Assim que varanda.jpg existir na pasta SITE, ela assume sozinha.
-   Enquanto não existe, o navegador cai na segunda camada. */
-fcview.style.backgroundImage=
-  'url("varanda.jpg"), url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2400&auto=format&fit=crop")';
+   Dois recortes da mesma foto: deitado no computador, em pé no
+   celular. Sem isso o navegador corta as laterais e ela fica gigante. */
+function cenaVaranda(){
+  fcview.style.backgroundImage =
+    innerWidth<=640 ? 'url("varanda-mob.jpg")' : 'url("varanda.jpg")';
+}
+cenaVaranda();
+addEventListener('resize',cenaVaranda);
 fcp.innerHTML=Array.from({length:NP},()=>'<div class="fc-p"><i></i></div>').join('');
 
 fconca.innerHTML='<span class="corten-sym" aria-label="Símbolo Morás Experience"></span>';
