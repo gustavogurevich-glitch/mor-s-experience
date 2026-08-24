@@ -1,19 +1,18 @@
-SUBIR NO GITHUB — 3 arquivos
-================================================
+SUBIR NO GITHUB — TUDO, DE UMA VEZ
+=========================================================
 
-O QUE MUDOU
-  index.html      hero nova, endereço 458, menu de celular/iPad
-  style.css       versões mobile e iPad completas
-  hero-paper.jpg  a foto nova da mulher com o jornal
+Suba SEMPRE a pasta inteira. Não tente escolher só os que
+mudaram: é assim que o site fica pela metade.
 
-COMO SUBIR
-  1. github.com  ->  seu repositório  mor-s-experience
-  2. botão  Add file  ->  Upload files
-  3. arraste os 3 arquivos desta pasta
-  4. botão verde  Commit changes  no fim da página
-  5. espere 30 segundos
+COMO
+ 1. github.com/gustavogurevich-glitch/mor-s-experience
+    (o primeiro, SEM o .2 no nome — é esse que a Vercel publica)
+ 2. Add file  ->  Upload files
+ 3. Abra esta pasta, Cmd+A para selecionar tudo, e arraste
+    ATENÇÃO: a pasta bichos tem que ir junto. Arraste ela também.
+ 4. Commit changes, botão verde no fim da página
+ 5. Espere 40 segundos
 
-  Ele vai avisar que os arquivos já existem. É isso mesmo: substitui.
-
-DEPOIS
-  Abra morasexperience.com.br no celular e no iPad.
+CONFERIR SE DEU CERTO
+ Abra morasexperience.com.br e procure por "Rua Morás, 458"
+ no rodapé. Se ainda estiver 466, o upload não pegou.
