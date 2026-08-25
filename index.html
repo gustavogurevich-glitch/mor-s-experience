@@ -87,11 +87,10 @@
   <div class="hero-in">
     <h1 class="lockup reveal"><img src="logo-corten.png" alt="Morás Experience" width="1400" height="1204"></h1>
     <div class="hero-sig reveal">Estado da Arte · Infinitamente Verde</div>
+    <!-- limpa: sem caixa, sem moldura, sem ícone. Só o dado. -->
     <div class="hero-metros reveal" role="group" aria-label="Área privativa das unidades">
-      <span class="hm-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 3h18v18H3z"/><path d="M3 9h4M17 3v4M21 15h-4M7 21v-4"/></svg></span>
       <span class="hm-lbl">Área privativa</span>
-      <span class="hm-rule" aria-hidden="true"></span>
-      <span class="hm-val">238,74<i>—</i>477,78</span><span class="hm-un">m²</span>
+      <span class="hm-linha"><span class="hm-val">238,74<i>—</i>477,78</span><span class="hm-un">m²</span></span>
     </div>
   </div>
   <div class="cue"><i></i><span>Desça</span></div>
@@ -193,11 +192,17 @@
       <div class="plot-hud br"><b>01</b><i>Último lote da via</i></div>
     </div>
     <aside class="plot-side">
-      <span class="eyebrow">Eixos de acesso</span>
-      <p class="plot-call">O Morás não está sobre<br>nenhum grande eixo.<br><b>Está no meio de todos.</b></p>
-      <p class="plot-txt">Seis vias estruturais da cidade a poucos minutos de carro — sem o ruído, o trânsito e a exposição de quem mora em cima de uma delas.</p>
-      <div class="dest" id="dest"></div>
-      <p class="plot-nota">Mapa esquemático, sem escala.<br>Tempos de deslocamento a serem fornecidos pela RRG.</p>
+      <span class="eyebrow">Como ler o mapa</span>
+      <p class="plot-call">Cada mancha é um<br>tempo de caminhada.<br><b>A pé, não de carro.</b></p>
+      <p class="plot-txt">As áreas mais escuras em volta do pino mostram até onde você chega andando, saindo da porta do Morás.</p>
+      <ol class="anel">
+        <li><b>05</b><span>min</span><em>A padaria, a academia, o mercado do dia a dia</em></li>
+        <li><b>10</b><span>min</span><em>Restaurantes, cafés e as galerias da Vila</em></li>
+        <li><b>15</b><span>min</span><em>Escolas, clínicas e o Beco do Batman</em></li>
+        <li><b>30</b><span>min</span><em>Parque Villa-Lobos, Faria Lima, metrô</em></li>
+        <li><b>60</b><span>min</span><em>Paulista, Ibirapuera e o centro velho</em></li>
+      </ol>
+      <p class="plot-nota">Mapa esquemático, sem escala.<br>Tempos aproximados, a pé.</p>
     </aside>
   </div>
  </div>
@@ -286,16 +291,45 @@
     <div class="typo-panel" id="tpanel" role="tabpanel"></div>
   </div>
 
-  <div class="trio">
-    <div class="reveal"><span class="eyebrow">Fachada da torre</span>
-      <h4>Aço corten<br>e vegetação</h4>
-      <p>Uma rocha ascendente. Painéis revestidos em corten com vegetação integrada ao desenho, em continuidade visual com a Vila Madalena.</p></div>
-    <div class="reveal"><span class="eyebrow">O easter egg</span>
-      <h4>A onça<br>rupestre</h4>
-      <p>Com os painéis fechados, o encaixe revela uma onça-pintada em pintura rupestre que se projeta verticalmente até o topo do edifício.</p></div>
-    <div class="reveal"><span class="eyebrow">Da terra ao mar</span>
-      <h4>Floresta,<br>depois praia</h4>
-      <p>Térreo elevado, escada escultural e um percurso de madeira tratada, rocha aparente, areia e vegetação nativa.</p></div>
+  <!-- TRÊS PLACAS · o mesmo gesto do Flex Cave.
+       Fechadas mostram só o número e o título. A placa desliza no
+       toque e revela o conteúdo. A 02 revela a própria onça. -->
+  <div class="trio reveal" id="trio">
+    <button class="tri" aria-expanded="false">
+      <span class="tri-fundo"></span>
+      <span class="tri-in">
+        <span class="eyebrow">Fachada da torre</span>
+        <h4>Aço corten<br>e vegetação</h4>
+        <p>Uma rocha ascendente. Painéis revestidos em corten com vegetação integrada ao desenho, em continuidade visual com a Vila Madalena.</p>
+      </span>
+      <span class="tri-placa">
+        <i>01</i><b>Aço corten<br>e vegetação</b><em>Toque para revelar</em>
+      </span>
+    </button>
+
+    <button class="tri tri-onca" aria-expanded="false">
+      <span class="tri-fundo"></span>
+      <span class="tri-in">
+        <span class="eyebrow">O easter egg</span>
+        <h4>A onça<br>rupestre</h4>
+        <p>Com os painéis fechados, o encaixe revela uma onça-pintada em pintura rupestre que se projeta verticalmente até o topo do edifício.</p>
+      </span>
+      <span class="tri-placa">
+        <i>02</i><b>A onça<br>rupestre</b><em>Toque para revelar</em>
+      </span>
+    </button>
+
+    <button class="tri" aria-expanded="false">
+      <span class="tri-fundo"></span>
+      <span class="tri-in">
+        <span class="eyebrow">Da terra ao mar</span>
+        <h4>Floresta,<br>depois praia</h4>
+        <p>Térreo elevado, escada escultural e um percurso de madeira tratada, rocha aparente, areia e vegetação nativa.</p>
+      </span>
+      <span class="tri-placa">
+        <i>03</i><b>Floresta,<br>depois praia</b><em>Toque para revelar</em>
+      </span>
+    </button>
   </div>
 
   <!-- PROTÓTIPO DIGITAL · antes era seção própria, agora fecha AS CASAS -->
@@ -308,7 +342,13 @@
     <a class="bim-cta" href="#" target="_blank" rel="noopener">
       <span class="bim-panel"></span>
       <span class="bim-lbl"><b>Entrar no protótipo</b><em>Link externo · a definir</em></span>
-      <span class="bim-arrow">↗</span>
+      <!-- seta desenhada: o caractere ↗ virava emoji azul no iPhone -->
+      <span class="bim-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17 17 7"/><path d="M9 7h8v8"/>
+        </svg>
+      </span>
     </a>
   </div>
  </div>
@@ -353,7 +393,7 @@
           <div style="color:var(--branco)"><div style="font-family:var(--serif);font-size:17px;letter-spacing:.16em">MORÁS</div>
           <div class="eyebrow" style="margin-top:3px;color:var(--dim)">Experience</div></div></div>
         <p style="margin-top:26px;font-size:12.5px;color:var(--dim);max-width:30ch;line-height:1.85">Rua Morás, 458. Vila Madalena, São Paulo.<br>Estado da Arte, Infinitamente Verde.</p>
-        <a class="frrg" href="https://rrg.com.br" target="_blank" rel="noopener">Conheça a RRG →</a>
+        <a class="frrg" href="https://rrg.com.br" target="_blank" rel="noopener">Conheça a RRG <svg class="ico-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
       </div>
       <div><span class="eyebrow">Os 3 Cs</span>
         <div class="f3c" style="margin-top:18px">
@@ -371,7 +411,7 @@
           <a class="flink" href="#produto">As Casas</a>
           <a class="flink" href="#produto">Protótipo digital</a>
           <a class="flink" href="#contato">Agendar visita</a>
-          <a class="flink" href="https://rrg.com.br" target="_blank" rel="noopener">rrg.com.br ↗</a>
+          <a class="flink" href="https://rrg.com.br" target="_blank" rel="noopener">rrg.com.br <svg class="ico-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg></a>
         </div></div>
     </div>
     <div class="fbot">
@@ -392,7 +432,12 @@ try{
 const FB=['#1E2415','#2A1A10','#141C18','#22190F','#182016'];
 function paintPh(){document.querySelectorAll('.ph[data-img],.perfil-bg[data-img]').forEach((t,i)=>{
   t.style.backgroundColor=FB[i%FB.length];
-  t.style.backgroundImage=`url("https://images.unsplash.com/photo-${t.dataset.img}?q=80&w=1600&auto=format&fit=crop"),linear-gradient(160deg,${FB[(i+1)%FB.length]},${FB[i%FB.length]})`})}
+  /* a foto local vem primeiro. Se o arquivo ainda não existe, o
+     navegador simplesmente pula para a camada de baixo. */
+  const local = t.dataset.arq ? `url("perfis/${t.dataset.arq}.jpg"),` : '';
+  t.style.backgroundImage = local +
+    `url("https://images.unsplash.com/photo-${t.dataset.img}?q=80&w=1600&auto=format&fit=crop"),`+
+    `linear-gradient(160deg,${FB[(i+1)%FB.length]},${FB[i%FB.length]})`})}
 }catch(e){console.error('[Morás] bloco falhou:',e)}
 try{
 /* marquee, vocabulário oficial da marca */
@@ -417,11 +462,67 @@ TIPOS.forEach((t,i)=>{const b=document.createElement('button');b.setAttribute('r
   b.setAttribute('aria-selected',i===0);b.innerHTML=`<i>0${i+1}</i><b>${t.k}</b>`;
   b.onclick=()=>{[...tnav.children].forEach(c=>c.setAttribute('aria-selected','false'));
     b.setAttribute('aria-selected','true');paintTipo(i)};tnav.appendChild(b)});
-function paintTipo(i){const t=TIPOS[i];
-  tpanel.innerHTML=`<div class="typo-txt fade"><h3><small>Tipologia 0${i+1}</small>${t.n}</h3>
-    <p class="body" style="margin-top:22px">${t.d}</p>
-    <div class="specs">${t.s.map(s=>`<div><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div></div>
-    <div class="slot fade" style="aspect-ratio:4/5"><span>Perspectiva<br>${t.n}<br><br>CGI em produção</span></div>`}
+/* ── CARROSSEL · três imagens por tipologia ────────────────────
+   Enquanto as fotos não chegam, os três quadros ficam em corten,
+   numerados, dizendo o que vai em cada um. Basta salvar os
+   arquivos com o nome certo em tipologias/ que eles assumem.
+   ──────────────────────────────────────────────────────────── */
+const VISTAS=['Perspectiva geral','Estar e varanda','Suíte principal'];
+const ARQ=['tipo','garden-a','garden-b','cobertura'];
+
+function paintTipo(i){
+  const t=TIPOS[i];
+  const quadros=VISTAS.map((v,n)=>`
+    <figure class="carr-q" data-n="${n}">
+      <img src="tipologias/${ARQ[i]}-0${n+1}.jpg" alt="${t.n} · ${v}" loading="lazy"
+           onerror="this.remove()">
+      <figcaption><i>0${n+1}</i><span>${v}</span><em>CGI em produção</em></figcaption>
+    </figure>`).join('');
+
+  tpanel.innerHTML=`
+    <div class="typo-txt fade"><h3><small>Tipologia 0${i+1}</small>${t.n}</h3>
+      <p class="body" style="margin-top:22px">${t.d}</p>
+      <div class="specs">${t.s.map(s=>`<div><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div>
+    </div>
+    <div class="carr fade" data-i="0">
+      <div class="carr-trilho">${quadros}</div>
+      <button class="carr-seta ant" aria-label="Imagem anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="carr-seta prox" aria-label="Próxima imagem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <div class="carr-cont"><b>01</b><s></s><span>03</span></div>
+    </div>`;
+  ligaCarrossel(tpanel.querySelector('.carr'));
+}
+
+function ligaCarrossel(c){
+  if(!c)return;
+  const trilho=c.querySelector('.carr-trilho'), n=c.querySelectorAll('.carr-q').length;
+  const conta=c.querySelector('.carr-cont b');
+  const vai=d=>{
+    const i=Math.max(0,Math.min(n-1,(+c.dataset.i)+d));
+    c.dataset.i=i;
+    trilho.style.transform=`translate3d(${-i*100}%,0,0)`;
+    conta.textContent='0'+(i+1);
+    c.querySelector('.ant').disabled = i===0;
+    c.querySelector('.prox').disabled = i===n-1;
+  };
+  c.querySelector('.ant').addEventListener('click',()=>vai(-1));
+  c.querySelector('.prox').addEventListener('click',()=>vai(1));
+  /* arrastar também funciona, que é o gesto que o dedo tenta primeiro */
+  let x0=null;
+  c.addEventListener('pointerdown',e=>{if(!e.target.closest('.carr-seta'))x0=e.clientX});
+  c.addEventListener('pointerup',e=>{
+    if(x0===null)return;
+    const d=e.clientX-x0; x0=null;
+    if(Math.abs(d)>40) vai(d<0?1:-1);
+  });
+  vai(0);
+}
 paintTipo(0);
 }catch(e){console.error('[Morás] bloco falhou:',e)}
 try{
@@ -431,17 +532,17 @@ try{
 const PERFIS=[
  {k:'Luxo Intelectual',e:'A cultura como valor',c:'#3A2A16',
   p:'A arte e a cultura como novos vetores de valor. Em um mundo onde o luxo material é onipresente, o luxo cultural define a verdadeira exclusividade. A residência vira um manifesto de valores pessoais.',
-  img:'1577720580479-7d839d829c73'},
+  img:'1577720580479-7d839d829c73', arq:'perfil-01-intelectual'},
  {k:'Quiet Luxury',e:'Sofisticação discreta',c:'#2C2A22',
   p:'Paleta neutra e terrosa, estética minimalista e materialidade autoral. A comunicação de exclusividade através do silêncio.',
-  img:'1615529162924-f8605388461d'},
+  img:'1615529162924-f8605388461d', arq:'perfil-02-quiet'},
  {k:'Luxo Tradicional',e:'Sofisticação declarada',c:'#3E1A10',
   p:'Paletas ricas, parcerias de grife e linguagem visual que celebra a própria conquista sem hesitar.',
-  img:'1618221195710-dd6b41faaea6'}];
+  img:'1618221195710-dd6b41faaea6', arq:'perfil-03-tradicional'}];
 const pbox=document.getElementById('perfisGrid');
 pbox.innerHTML=PERFIS.map((p,i)=>`
  <button class="perfil" aria-pressed="false" data-k="${p.k}">
-   <span class="perfil-bg" data-img="${p.img}"></span>
+   <span class="perfil-bg" data-img="${p.img}" data-arq="${p.arq}"></span>
    <span class="perfil-tint" style="background:linear-gradient(180deg,transparent 30%,${p.c}dd)"></span>
    <span class="perfil-placa"></span>
    <span class="perfil-num">0${i+1}</span>
@@ -579,6 +680,17 @@ pintaFachada(0);
 const DESTINO='gustavo@rrg.com.br';
 const CHAVE_FORM='';        /* <<< cole a chave do Web3Forms aqui */
 
+/* ══ AS TRÊS PLACAS ════════════════════════════════════════════
+   Mesma gramática do Flex Cave: a placa de corten desliza para o
+   lado e revela o que estava atrás. A 02 revela a onça.
+   ════════════════════════════════════════════════════════════ */
+document.querySelectorAll('#trio .tri').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const aberta=b.getAttribute('aria-expanded')==='true';
+    b.setAttribute('aria-expanded', aberta?'false':'true');
+  });
+});
+
 /* ══ MENU DE CELULAR E IPAD ════════════════════════════════════ */
 const burger=document.getElementById('burger'), mm=document.getElementById('menuMob');
 function menuAbre(){
@@ -689,14 +801,7 @@ fv.addEventListener('submit', async ev=>{
 });
 }catch(e){console.error('[Morás] bloco falhou:',e)}
 try{
-/* ══ EIXOS DE ACESSO ═══════════════════════════════════════════
-   A prancha virou imagem (mapa-local.jpg), que já traz os nomes
-   das vias impressos. A lista ao lado ficou só como referência.
-   ════════════════════════════════════════════════════════════ */
-const DEST=['Av. Pedroso de Morais','Av. Brig. Faria Lima','Av. Rebouças',
-            'Av. Nove de Julho','Av. Brasil','Av. Paulista'];
-document.getElementById('dest').innerHTML=DEST.map((n,i)=>
-  `<div class="dest-i"><em>${String(i+1).padStart(2,'0')}</em><span>${n}</span></div>`).join('');
+/* a lista de avenidas virou a explicação dos anéis, escrita direto no HTML */
 }catch(e){console.error('[Morás] bloco falhou:',e)}
 try{
 /* ══ MAPA DE CALOR ══ */
@@ -840,13 +945,15 @@ function countUp(el){
 }
 }catch(e){console.error('[Morás] bloco falhou:',e)}
 try{
+/* As imagens são pintadas ANTES de qualquer rede de segurança:
+   se a animação falhar, as fotos ainda assim precisam existir. */
+paintPh();
+
 /* rede de segurança: se algo impedir a animação, o conteúdo aparece do mesmo jeito */
 if(!('IntersectionObserver' in window)){
   document.querySelectorAll('.reveal,.scale,.kline').forEach(e=>e.classList.add('in'));
   throw new Error('sem IntersectionObserver, conteúdo revelado direto');
 }
-/* reveal, por último para pegar o conteúdo injetado */
-paintPh();
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){
   x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.1});
 document.querySelectorAll('.reveal,.scale').forEach(e=>io.observe(e));
