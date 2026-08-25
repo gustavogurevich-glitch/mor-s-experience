@@ -189,7 +189,6 @@
       <div class="plot-hud tl"><b>Rua Morás, 458</b><i>Vila Madalena · São Paulo</i></div>
       <div class="plot-hud tr"><b>Z1</b><i>Zona estritamente residencial</i></div>
       <div class="plot-hud bl"><b>1.685 m²</b><i>Área do terreno</i></div>
-      <div class="plot-hud br"><b>01</b><i>Último lote da via</i></div>
     </div>
     <aside class="plot-side">
       <span class="eyebrow">Como ler o mapa</span>
@@ -299,36 +298,48 @@
     <button class="tri" aria-expanded="false">
       <span class="tri-fundo"></span>
       <span class="tri-in">
-        <span class="eyebrow">Fachada da torre</span>
-        <h4>Aço corten<br>e vegetação</h4>
-        <p>Uma rocha ascendente. Painéis revestidos em corten com vegetação integrada ao desenho, em continuidade visual com a Vila Madalena.</p>
+        <span class="eyebrow">Mais Morás, menos carbono</span>
+        <h4>ESG e<br>Sustentabilidade</h4>
+        <p>Quilômetros Solares: os painéis captam sol e guardam energia dedicada à recarga de elétricos. WELL, LEED for Homes, EDGE e IPTU Verde. Ventilação cruzada e luz natural em todos os ambientes.</p>
       </span>
       <span class="tri-placa">
-        <i>01</i><b>Aço corten<br>e vegetação</b><em>Toque para revelar</em>
+        <i>01</i><b>ESG e<br>Sustentabilidade</b><em>Toque para revelar</em>
       </span>
     </button>
 
     <button class="tri tri-onca" aria-expanded="false">
       <span class="tri-fundo"></span>
       <span class="tri-in">
-        <span class="eyebrow">O easter egg</span>
-        <h4>A onça<br>rupestre</h4>
-        <p>Com os painéis fechados, o encaixe revela uma onça-pintada em pintura rupestre que se projeta verticalmente até o topo do edifício.</p>
+        <span class="eyebrow">A fachada é a obra</span>
+        <h4>Arte e<br>Concurso</h4>
+        <p>Artistas brasileiros vão disputar espaço nos painéis internos e externos e na onça rupestre da fachada. A obra não entra no edifício. Ela é o edifício.</p>
       </span>
       <span class="tri-placa">
-        <i>02</i><b>A onça<br>rupestre</b><em>Toque para revelar</em>
+        <i>02</i><b>Arte e<br>Concurso</b><em>Toque para revelar</em>
       </span>
     </button>
 
     <button class="tri" aria-expanded="false">
       <span class="tri-fundo"></span>
       <span class="tri-in">
-        <span class="eyebrow">Da terra ao mar</span>
-        <h4>Floresta,<br>depois praia</h4>
-        <p>Térreo elevado, escada escultural e um percurso de madeira tratada, rocha aparente, areia e vegetação nativa.</p>
+        <span class="eyebrow">Recuperação é treino</span>
+        <h4>Wellness e<br>Performance</h4>
+        <p>Piscina climatizada com raia, sauna, banheira de gelo, banheira quente, academia de última geração, cockpit simulador de Fórmula 1 e a Arena Multiverso.</p>
       </span>
       <span class="tri-placa">
-        <i>03</i><b>Floresta,<br>depois praia</b><em>Toque para revelar</em>
+        <i>03</i><b>Wellness e<br>Performance</b><em>Toque para revelar</em>
+      </span>
+    </button>
+
+    <button class="tri" aria-expanded="false">
+      <span class="tri-fundo"></span>
+      <span class="tri-in">
+        <span class="eyebrow">Construído no metaverso</span>
+        <h4>Tecnologia</h4>
+        <p>Cenarium: luz, clima, piso aquecido e cortina por toque, voz ou rotina. Seu Zé .Smart.IA, o porteiro virtual. E o protótipo BIM, onde o edifício existe inteiro antes do concreto.</p>
+      </span>
+      <span class="tri-placa">
+        <i>04</i><b>Tecnologia</b><em>Toque para revelar</em>
       </span>
     </button>
   </div>
@@ -362,6 +373,7 @@
       <span class="eyebrow reveal">Pré-lançamento</span>
       <h2 class="h2 reveal" style="margin:20px 0 26px">A visita é<br><em>por convite.</em></h2>
       <p class="body reveal">O estande de vendas do Morás Experience recebe por agendamento. Deixe seus dados e nossa equipe entra em contato para definir dia e horário.</p>
+      <div class="perfil-eco" id="perfilEco" aria-live="polite"></div>
       <div class="gate reveal"><span class="eyebrow">Acesso antecipado</span>
         <p>Tem um código de convite? Plantas, tipologias e o tour no protótipo digital são liberados antes da abertura pública.</p></div>
     </div>
@@ -371,8 +383,13 @@
         <div class="field"><label for="e">E-mail</label><input id="e" type="email" required autocomplete="email"></div>
         <div class="field"><label for="t">Telefone</label><input id="t" type="tel" required autocomplete="tel"></div>
         <div class="field"><label for="i">Interesse</label><select id="i">
-          <option>Visita ao estande de vendas</option><option>Material do pré-lançamento</option>
-          <option>Sou corretor ou parceiro</option><option>Arquitetura, arte ou paisagismo</option><option>Imprensa</option></select></div>
+          <option>Visita à Loja e material técnico</option>
+          <option>Corretagem</option>
+          <option>Parceria comercial</option>
+          <option>Arquitetura</option>
+          <option>Arte e curadoria</option>
+          <option>Paisagismo</option>
+          <option>Imprensa</option></select></div>
         <input type="hidden" id="perfilField" name="perfil">
         <button class="submit" type="submit">Agendar visita</button>
         <p class="legal">Placeholder. Substituir por texto de consentimento validado pelo jurídico (LGPD) e integrar ao CRM.</p>
@@ -550,15 +567,46 @@ pbox.innerHTML=PERFIS.map((p,i)=>`
    <span class="perfil-pick">✓</span>
    <span class="perfil-in"><em>${p.e}</em><h3>${p.k}</h3><p>${p.p}</p></span>
  </button>`).join('');
+/* ══ A ESCOLHA DO PERFIL ATRAVESSA O SITE ══════════════════════
+   Escolher não pode ser um clique que morre ali. A escolha é
+   confirmada na hora, reaparece lá embaixo na hora de agendar,
+   entra no formulário e vai junto na mensagem do WhatsApp.
+   O visitante percebe que foi ouvido, e o time já recebe o
+   contato sabendo em que chave conversar.
+   ════════════════════════════════════════════════════════════ */
 const chip=document.getElementById('pickchip');
+const ECO={
+ 'Luxo Intelectual':'Vamos separar o que há de arte e curadoria no projeto.',
+ 'Quiet Luxury':'Vamos pela materialidade: pedra, madeira, linho, silêncio.',
+ 'Luxo Tradicional':'Vamos pelas assinaturas: acabamento, grife e presença.'
+};
+window.perfilEscolhido=null;
+
+function marcaPerfil(k){
+  window.perfilEscolhido=k;
+  const f=document.getElementById('perfilField'); if(f)f.value=k||'';
+
+  /* eco na seção da Visita, lá embaixo */
+  const alvo=document.getElementById('perfilEco');
+  if(alvo){
+    if(k){
+      alvo.innerHTML=`<em>Anotado</em><b>${k}</b><span>${ECO[k]||''}</span>`;
+      alvo.classList.add('on');
+    }else alvo.classList.remove('on');
+  }
+  /* e vai junto na conversa do WhatsApp */
+  if(typeof atualizaZap==='function') atualizaZap();
+}
+
 let escolhido=null;
 pbox.querySelectorAll('.perfil').forEach(b=>{b.onclick=()=>{
   const on=b.getAttribute('aria-pressed')==='true';
   pbox.querySelectorAll('.perfil').forEach(x=>x.setAttribute('aria-pressed','false'));
   if(on){escolhido=null;pbox.classList.remove('has-pick');chip.classList.remove('on')}
   else{b.setAttribute('aria-pressed','true');escolhido=b.dataset.k;
-       pbox.classList.add('has-pick');chip.textContent='Seu perfil · '+escolhido;chip.classList.add('on')}
-  const f=document.getElementById('perfilField'); if(f)f.value=escolhido||'';
+       pbox.classList.add('has-pick');
+       chip.innerHTML='<s></s>Anotado · '+escolhido;chip.classList.add('on')}
+  marcaPerfil(escolhido);
 }});
 }catch(e){console.error('[Morás] bloco falhou:',e)}
 try{
@@ -634,7 +682,8 @@ function move(e){
   if(noPalco){
     /* na imagem: a largura toda do palco cobre o curso inteiro,
        então o gesto é curto e o edifício acompanha a mão */
-    agenda(origemV+(e.clientX-origemX)/palco.offsetWidth*115);
+    /* arrastar para a direita volta para o 01, como puxar a própria placa */
+    agenda(origemV-(e.clientX-origemX)/palco.offsetWidth*115);
   }else{
     const r=largura();
     agenda((e.clientX-r.left)/r.width*100);
@@ -724,9 +773,14 @@ const fab=document.getElementById('zapFab'), zBtn=document.getElementById('zapBt
       zMenu=document.getElementById('zapMenu'), zX=document.getElementById('zapX'),
       heroEl=document.getElementById('hero');
 
-document.querySelectorAll('.zap-op').forEach(a=>{
-  a.href=`https://wa.me/${ZAP}?text=${encodeURIComponent(ZAP_MSGS[a.dataset.msg])}`;
-});
+function atualizaZap(){
+  const p=window.perfilEscolhido;
+  const assinatura = p ? ` Meu perfil no site foi ${p}.` : '';
+  document.querySelectorAll('.zap-op').forEach(a=>{
+    a.href=`https://wa.me/${ZAP}?text=${encodeURIComponent(ZAP_MSGS[a.dataset.msg]+assinatura)}`;
+  });
+}
+atualizaZap();
 
 /* só existe depois que o hero sai da tela */
 let visivel=false;
@@ -765,7 +819,7 @@ fv.addEventListener('submit', async ev=>{
     email: fv.querySelector('#e').value.trim(),
     tel:   fv.querySelector('#t').value.trim(),
     interesse: fv.querySelector('#i').value,
-    perfil: (fv.querySelector('#perfilField')||{}).value || 'não informado'
+    perfil: window.perfilEscolhido || (fv.querySelector('#perfilField')||{}).value || 'não informado'
   };
 
   /* rede de segurança: sem chave, abre o e-mail já escrito */

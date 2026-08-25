@@ -1942,3 +1942,46 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .anel li{grid-template-columns:auto auto auto 1fr}
   .anel em{grid-column:1/-1;margin-top:4px}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   39. QUATRO PLACAS, O PERFIL QUE ATRAVESSA O SITE
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── QUATRO PLACAS em vez de três ────────────────────────────── */
+@media(min-width:820px){.trio{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1180px){.trio{grid-template-columns:repeat(4,1fr)}}
+.tri{min-height:clamp(300px,30vw,380px)}
+.tri-placa b,.tri-in h4{font-size:clamp(20px,2vw,27px)}
+
+/* ── A ESCOLHA DO PERFIL ─────────────────────────────────────
+   Confirmação na hora, e eco lá embaixo na hora de agendar.
+   ──────────────────────────────────────────────────────────── */
+.pickchip{gap:9px}
+.pickchip s{width:14px;height:1px;background:currentColor;opacity:.6;
+  text-decoration:none;flex:none}
+
+.perfil-eco{display:grid;gap:6px;overflow:hidden;
+  max-height:0;opacity:0;margin-top:0;padding:0 0 0 clamp(16px,1.8vw,24px);
+  border-left:2px solid transparent;
+  transition:max-height .8s var(--e),opacity .6s var(--e),
+             margin-top .8s var(--e),padding-top .8s var(--e),
+             padding-bottom .8s var(--e),border-color .6s var(--e)}
+.perfil-eco.on{max-height:200px;opacity:1;
+  margin-top:clamp(26px,3vw,38px);padding-top:clamp(14px,1.6vw,20px);
+  padding-bottom:clamp(14px,1.6vw,20px);border-left-color:var(--acc)}
+.perfil-eco em{font-style:normal;font-size:8.5px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--acc)}
+.perfil-eco b{font-family:var(--serif);font-weight:400;
+  font-size:clamp(21px,2.2vw,29px);line-height:1.05;letter-spacing:-.02em;
+  color:var(--fg)}
+.perfil-eco span{font-size:13.5px;line-height:1.7;color:var(--dim);max-width:38ch}
+
+/* ── HERO NO CELULAR · a assinatura estava invadindo a poltrona ─ */
+@media(max-width:640px){
+  .hero-in{max-width:min(46vw,190px)}
+  .hero-sig{font-size:6px;letter-spacing:.16em;line-height:1.8;
+    max-width:100%;overflow-wrap:break-word}
+  .hero-metros{max-width:100%}
+  .hm-val{font-size:15px;gap:5px;flex-wrap:nowrap}
+  .hm-val i{width:11px}
+}
