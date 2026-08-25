@@ -1890,3 +1890,55 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .hm-un{font-size:8.5px}
   .cue,.hero-note{display:none}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   38. PESO NA METRAGEM, ARRASTE NO CELULAR E ORDEM DO MAPA
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── METRAGEM · mesma cor e mesmo corpo, só mais peso ────────
+   O número estava fino demais para a cor corten sobre papel.
+   Subo o peso da fonte e tiro a transparência do m².
+   ──────────────────────────────────────────────────────────── */
+.hm-val{font-weight:700;letter-spacing:-.025em}
+.hm-val i{opacity:.45;height:1.5px}
+.hm-un{font-weight:600;opacity:.8}
+.hm-lbl{color:var(--acc);opacity:.62;font-weight:500}
+
+/* ── FACHADA · o arraste volta a funcionar no telefone ───────
+   Sem esta linha o navegador entende o gesto lateral como
+   rolagem e cancela o arraste. 'pan-y' devolve o horizontal
+   para o site e deixa o vertical com o navegador, então rolar
+   a página passando o dedo sobre a imagem continua normal.
+   ──────────────────────────────────────────────────────────── */
+.fach-stage{touch-action:pan-y}
+.fach-rail{touch-action:none}
+/* a barra escura de baixo não pode roubar o gesto da imagem */
+.fach-ctrl{pointer-events:none}
+.fach-btns,.fach-rail,.fach-stop{pointer-events:auto}
+
+/* ── MAPA DE CALOR · no celular o desenho vem primeiro ───────
+   A pessoa precisa ver a coisa antes de mexer nos controles.
+   No computador nada muda: painel à esquerda, gráfico à direita.
+   ──────────────────────────────────────────────────────────── */
+@media(max-width:1059px){
+  .mshell{display:flex;flex-direction:column}
+  .stage{order:1;margin-top:0}
+  .panel{order:2}
+}
+
+/* ── A FAIXA · Z1 é texto, não número, e não deve contar ───── */
+.band b{font-variant-numeric:lining-nums tabular-nums}
+
+/* ── ANÉIS · a lista virou legenda dos selos do mapa ─────────
+   O mapa novo traz os selos 01 a 05. A coluna repete o mesmo
+   número na frente, então o olho liga um ao outro sozinho.
+   ──────────────────────────────────────────────────────────── */
+.anel li{grid-template-columns:auto auto auto 1fr;gap:5px 10px}
+.anel i{font-style:normal;font-family:var(--serif);font-size:11px;
+  letter-spacing:.1em;color:var(--acc);opacity:.55;min-width:20px}
+.anel em{grid-column:4}
+.plot-txt b{font-weight:500;color:var(--acc);font-family:var(--serif)}
+@media(max-width:640px){
+  .anel li{grid-template-columns:auto auto auto 1fr}
+  .anel em{grid-column:1/-1;margin-top:4px}
+}
