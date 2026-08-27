@@ -579,13 +579,13 @@ try{
    ══════════════════════════════════════════════════════ */
 const PERFIS=[
  {k:'Luxo Intelectual',e:'A cultura como valor',c:'#3A2A16',
-  p:'A arte e a cultura como novos vetores de valor. Em um mundo onde o luxo material é onipresente, o luxo cultural define a verdadeira exclusividade. A residência vira um manifesto de valores pessoais.',
+  p:'A cultura como novo vetor de valor. Onde o material é onipresente, a residência vira manifesto.',
   img:'1577720580479-7d839d829c73', arq:'perfil-01-intelectual'},
  {k:'Quiet Luxury',e:'Sofisticação discreta',c:'#2C2A22',
-  p:'Paleta neutra e terrosa, estética minimalista e materialidade autoral. A comunicação de exclusividade através do silêncio.',
+  p:'Paleta terrosa, estética contida e materialidade autoral. Exclusividade comunicada pelo silêncio.',
   img:'1615529162924-f8605388461d', arq:'perfil-02-quiet'},
  {k:'Luxo Tradicional',e:'Sofisticação declarada',c:'#3E1A10',
-  p:'Paletas ricas, parcerias de grife e linguagem visual que celebra a própria conquista sem hesitar.',
+  p:'Paletas ricas, parcerias de grife e uma linguagem visual que celebra a conquista sem hesitar.',
   img:'1618221195710-dd6b41faaea6', arq:'perfil-03-tradicional'}];
 const pbox=document.getElementById('perfisGrid');
 pbox.innerHTML=PERFIS.map((p,i)=>`
@@ -595,7 +595,8 @@ pbox.innerHTML=PERFIS.map((p,i)=>`
    <span class="perfil-placa"></span>
    <span class="perfil-num">0${i+1}</span>
    <span class="perfil-pick">✓</span>
-   <span class="perfil-in"><em>${p.e}</em><h3>${p.k}</h3><p>${p.p}</p></span>
+   <span class="perfil-in"><em>${p.e}</em><h3>${p.k}</h3><p>${p.p}</p>
+     <span class="perfil-cta">Escolher</span></span>
  </button>`).join('');
 /* ══ A ESCOLHA DO PERFIL ATRAVESSA O SITE ══════════════════════
    Escolher não pode ser um clique que morre ali. A escolha é
@@ -1036,22 +1037,19 @@ paintPh();
 
 /* ══ ANIMAÇÃO ══════════════════════════════════════════════════
    Um gesto só, repetido: a chapa de aço corre. É a gramática que
-   o Flex Cave inventou e que o site inteiro deveria falar.
+   o Flex Cave inventou e que o site inteiro fala.
 
-   Aqui NÃO uso limiar de IntersectionObserver. Ele falha quando o
-   alvo é mais alto que a tela — foi o que matou a fachada, o mapa
-   de calor e as placas de tema. Uso a posição real do elemento,
-   que é previsível em qualquer altura.
+   Gatilho por POSIÇÃO, não por fração visível. IntersectionObserver
+   com limiar alto falha quando o alvo é mais alto que a tela — foi
+   o que matou a fachada, o mapa de calor e as placas de tema.
    ════════════════════════════════════════════════════════════ */
 try{
 const consulta=q=>typeof matchMedia==='function'&&matchMedia(q).matches;
 const semMovimento=consulta('(prefers-reduced-motion: reduce)');
 
-/* dispara uma vez, quando o elemento cruza dois terços da tela */
 const naFila=[];
 function aoAparecer(el,acao,gatilho){
-  if(!el)return;
-  naFila.push({el,acao,gatilho:gatilho||0.72,feito:false});
+  if(el)naFila.push({el,acao,gatilho:gatilho||0.78,feito:false});
 }
 let pedido=null;
 function varre(){
@@ -1059,49 +1057,69 @@ function varre(){
   naFila.forEach(o=>{
     if(o.feito)return;
     const r=o.el.getBoundingClientRect();
-    if(r.top < H*o.gatilho && r.bottom > H*0.12){ o.feito=true; o.acao(o.el); }
+    if(r.top < H*o.gatilho && r.bottom > H*0.08){ o.feito=true; o.acao(o.el); }
   });
 }
 function agenda(){ if(pedido)return; pedido=requestAnimationFrame(()=>{pedido=null;varre()}); }
 addEventListener('scroll',agenda,{passive:true});
 addEventListener('resize',agenda);
 
-if(!semMovimento){
-  /* ── PERFIS · três portas, uma de cada vez ─────────────────
-     Abre, segura, fecha. Nunca duas ao mesmo tempo. O motor não
-     é mais a rolagem: amarrar ao dedo dava sensação de atraso,
-     porque a chapa voltava junto com o movimento de volta. */
-  document.querySelectorAll('#perfisGrid .perfil').forEach((c,i)=>{
-    aoAparecer(c,el=>{
-      setTimeout(()=>{
-        el.classList.add('demonstra');
-        setTimeout(()=>el.classList.remove('demonstra'),2700);
-      }, i*2200);
-    },0.80);
-  });
+if(semMovimento){
+  /* quem pediu menos movimento recebe tudo aberto, sem coreografia */
+  document.querySelectorAll('#perfisGrid .perfil').forEach(c=>c.classList.add('aberto'));
+}else{
+  /* ── PERFIS · três portas, esquerda para a direita ─────────
+     Abrem e NÃO fecham. A chapa é a cortina de entrada: a pessoa
+     sente o corten, ele sai, e o cartão passa a pedir a escolha.
+     No computador as três entram juntas na tela, então o intervalo
+     de 0,7s é que cria a sequência. No celular cada cartão dispara
+     sozinho quando aparece — é o ritmo natural de uma lista.
+     ──────────────────────────────────────────────────────── */
+  const cartoes=[...document.querySelectorAll('#perfisGrid .perfil')];
+  const grade=document.getElementById('perfisGrid');
+  const emLinha=()=>grade && cartoes[0] && grade.offsetWidth > cartoes[0].offsetWidth*1.6;
 
-  /* ── PLACAS DE TEMA · a espiada, que você aprovou ────────── */
-  document.querySelectorAll('#trio .tri').forEach((el,i)=>{
-    aoAparecer(el,e=>{
-      setTimeout(()=>{
-        e.classList.add('espia');
-        setTimeout(()=>e.classList.remove('espia'),1500);
-      }, i*260);
-    },0.80);
-  });
+  if(cartoes.length){
+    if(emLinha()){
+      aoAparecer(grade,()=>{
+        cartoes.forEach((c,i)=>setTimeout(()=>c.classList.add('aberto'), i*700));
+      },0.80);
+    }else{
+      cartoes.forEach(c=>aoAparecer(c,e=>e.classList.add('aberto'),0.80));
+    }
+  }
+
+  /* ── PLACAS DE TEMA · a onda ───────────────────────────────
+     Lado a lado no computador: espiam em cascata de 0,2s e viram
+     uma onda. Empilhadas no celular: cada uma espia ao aparecer.
+     ──────────────────────────────────────────────────────── */
+  const quadros=[...document.querySelectorAll('#trio .tri')];
+  const trio=document.getElementById('trio');
+  const trioEmLinha=()=>trio && quadros[0] && trio.offsetWidth > quadros[0].offsetWidth*1.6;
+  const espiar=(el,atraso)=>setTimeout(()=>{
+    el.classList.add('espia');
+    setTimeout(()=>el.classList.remove('espia'),1500);
+  },atraso);
+
+  if(quadros.length){
+    if(trioEmLinha()){
+      aoAparecer(trio,()=>quadros.forEach((q,i)=>espiar(q,i*200)),0.80);
+    }else{
+      quadros.forEach(q=>aoAparecer(q,e=>espiar(e,0),0.80));
+    }
+  }
 
   /* ── FACHADA · a imagem fica parada; o comando se anuncia ── */
-  const btns=document.querySelector('#fachada .fach-btns');
-  aoAparecer(btns,()=>{
+  aoAparecer(document.querySelector('#fachada .fach-btns'),()=>{
     const sec=document.getElementById('fachada');
     setTimeout(()=>sec.classList.add('anuncia'),260);
     setTimeout(()=>sec.classList.remove('anuncia'),4600);
-  },0.86);
+  },0.88);
 
   /* ── MAPA DE CALOR · o controle pede o dedo ──────────────── */
   const raio=document.getElementById('rad'), dica=document.getElementById('dicaRaio');
   if(raio&&dica){
-    aoAparecer(raio,()=>{ dica.classList.add('on'); raio.classList.add('pulsa'); },0.88);
+    aoAparecer(raio,()=>{ dica.classList.add('on'); raio.classList.add('pulsa'); },0.90);
     const cala=()=>{dica.classList.remove('on');raio.classList.remove('pulsa')};
     ['input','pointerdown','touchstart'].forEach(ev=>
       raio.addEventListener(ev,cala,{once:true,passive:true}));
