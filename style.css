@@ -2062,103 +2062,113 @@ input[type=range].pulsa::-moz-range-thumb{animation:pulsaBola 2.4s var(--e) 3}
   .progresso i{transition:none}
 }
 
+
 /* ═══════════════════════════════════════════════════════════════
-   41. O SCROLL ABRE AS CHAPAS
-   A espiada nos perfis era o gesto errado: ela promete e retira.
-   Aqui a mão que abre é a sua rolagem — mesmo motor do Flex Cave,
-   que é a coisa mais valiosa que este projeto inventou.
-   Cada chapa parte de um ponto diferente do percurso, então nunca
-   abrem juntas. Sobe de volta e fecham: o gesto não se gasta.
+   41. TRÊS PORTAS, UMA DE CADA VEZ
+   Amarrar a chapa ao dedo dava sensação de atraso: ela voltava
+   junto com o movimento de volta e nunca completava um gesto.
+   Aqui a abertura é um movimento inteiro e fechado — abre,
+   segura, fecha — e as três nunca acontecem juntas.
    ═══════════════════════════════════════════════════════════════ */
-.perfil{--abre:0}
-.perfil-placa{
-  transform:translateX(calc(var(--abre) * -101%));
-  transition:transform .18s linear}
-/* escolher ou passar o mouse manda mais que a rolagem */
+.perfil-placa{transform:translateX(0)}
+@keyframes portaAbreFecha{
+   0%  {transform:translateX(0)}
+  30%  {transform:translateX(-101%)}
+  66%  {transform:translateX(-101%)}
+ 100%  {transform:translateX(0)}
+}
+/* a foto assenta enquanto a porta corre: entra grande e repousa.
+   É o movimento das maisons — a imagem não aparece, ela pousa. */
+@keyframes fotoPousa{
+   0%  {scale:1.12;filter:saturate(.35) brightness(.6)}
+  34%  {scale:1;   filter:saturate(1)   brightness(.76)}
+  64%  {scale:1;   filter:saturate(1)   brightness(.76)}
+ 100%  {scale:1.12;filter:saturate(.35) brightness(.6)}
+}
+/* o convite some antes de a porta correr, senão aparece cortado */
+@keyframes convitesSome{
+   0%  {opacity:1} 10%{opacity:0} 78%{opacity:0} 100%{opacity:1}
+}
+.perfil.demonstra .perfil-placa{animation:portaAbreFecha 2.7s var(--e) 1}
+.perfil.demonstra .perfil-bg  {animation:fotoPousa      2.7s var(--e) 1}
+.perfil.demonstra .perfil-placa::after{animation:convitesSome 2.7s var(--e) 1}
+.perfil.demonstra .perfil-num,
+.perfil.demonstra .perfil-in{z-index:5}
+
+/* escolher ou passar o mouse manda mais que a demonstração */
 .perfil:hover .perfil-placa,
 .perfil[aria-pressed="true"] .perfil-placa{
-  transform:translateX(-101%);transition:transform 1s var(--e)}
-
-/* a foto assenta enquanto a chapa sai: entra em 1,12 e pousa em 1,00.
-   É a assinatura de movimento das maisons — a imagem não aparece,
-   ela repousa. */
-.perfil-bg{
-  scale:calc(1.12 - 0.12 * var(--abre));
-  filter:saturate(calc(.35 + .65 * var(--abre)))
-         brightness(calc(.62 + .12 * var(--abre)));
-  transition:scale .2s linear,filter .3s linear}
+  transform:translateX(-101%);animation:none;transition:transform 1s var(--e)}
 .perfil:hover .perfil-bg,.perfil[aria-pressed="true"] .perfil-bg{
-  scale:1;filter:saturate(1) brightness(.74);
-  transition:scale 1.2s var(--e),filter 1s var(--e)}
+  scale:1;filter:saturate(1) brightness(.74);animation:none}
+.perfil:hover .perfil-placa::after{opacity:0;animation:none}
 
-/* fio de luz na aresta dianteira: é o que separa "um retângulo
-   que se move" de "uma chapa de aço deslizando" */
+/* fio de luz na aresta: é o que separa "um retângulo que se move"
+   de "uma chapa de aço deslizando sob a luz" */
 .perfil-placa::before{content:"";position:absolute;top:0;bottom:0;right:-1px;
-  width:2px;pointer-events:none;
-  background:linear-gradient(180deg,transparent,rgba(255,236,208,.85) 22%,
-             rgba(255,236,208,.9) 78%,transparent);
-  opacity:calc(var(--abre) * 1.4);
-  box-shadow:0 0 18px 2px rgba(255,214,170,.35)}
-.perfil:hover .perfil-placa::before{opacity:0}
+  width:2px;pointer-events:none;opacity:0;
+  background:linear-gradient(180deg,transparent,rgba(255,236,208,.9) 20%,
+             rgba(255,236,208,.95) 80%,transparent);
+  box-shadow:0 0 20px 3px rgba(255,214,170,.45)}
+@keyframes fioCorre{0%,100%{opacity:0} 12%,88%{opacity:1}}
+.perfil.demonstra .perfil-placa::before{animation:fioCorre 2.7s var(--e) 1}
+.perfil:hover .perfil-placa::before,
+.perfil[aria-pressed="true"] .perfil-placa::before{opacity:0}
 
-/* o texto de apoio acompanha a abertura */
-.perfil-in p{opacity:var(--abre);translate:0 calc((1 - var(--abre)) * 10px)}
-.perfil:hover .perfil-in p,.perfil[aria-pressed="true"] .perfil-in p{
-  opacity:1;translate:0}
-
-/* ── FACHADA · só o comando se anuncia ──────────────────────
-   Um fio de corten percorre os três botões, e o ativo pulsa.
-   A imagem não se mexe: mover um render parado é mentira visível.
+/* ── FACHADA · a imagem não se mexe. O comando se anuncia. ───
+   O fio corre POR CIMA dos botões, com z-index acima deles,
+   senão o desfoque de fundo dos botões o esconde.
    ──────────────────────────────────────────────────────────── */
 .fach-btns{position:relative}
-.fach-btns::after{content:"";position:absolute;left:0;bottom:0;height:2px;
-  width:33.333%;background:var(--marca);opacity:0;pointer-events:none}
-#fachada.anuncia .fach-btns::after{animation:corredor 3.4s var(--e) 1}
+.fach-btns::after{content:"";position:absolute;left:0;top:0;z-index:4;
+  height:100%;width:33.333%;pointer-events:none;opacity:0;
+  background:linear-gradient(90deg,transparent,rgba(255,236,208,.16) 45%,transparent);
+  border-bottom:2px solid var(--marca)}
+#fachada.anuncia .fach-btns::after{animation:corredor 4.2s var(--e) 1}
 @keyframes corredor{
    0%  {opacity:0;transform:translateX(0)}
-  10%  {opacity:.9}
-  38%  {transform:translateX(100%)}
-  66%  {transform:translateX(200%)}
-  90%  {opacity:.9;transform:translateX(0)}
- 100%  {opacity:0;transform:translateX(0)}
+   8%  {opacity:1}
+  30%  {transform:translateX(100%)}
+  52%  {transform:translateX(200%)}
+  76%  {transform:translateX(0)}
+  92%  {opacity:1;transform:translateX(0)}
+ 100%  {opacity:0}
 }
-#fachada.anuncia .fach-stop.on{animation:respiraBotao 1.5s var(--e) 2}
-@keyframes respiraBotao{
-  0%,100%{box-shadow:inset 0 0 0 0 rgba(255,236,208,0)}
-  50%    {box-shadow:inset 0 0 0 2px rgba(255,236,208,.55)}
-}
-#fachada.anuncia .fach-hint{animation:acendeDica 3.4s var(--e) 1}
-@keyframes acendeDica{
-  0%,100%{opacity:.62} 20%,70%{opacity:1}
+#fachada.anuncia .fach-hint{animation:acendeDica 4.2s var(--e) 1}
+@keyframes acendeDica{0%,100%{opacity:.6} 14%,72%{opacity:1}}
+
+/* ── MAPA DE CALOR · a bolinha pede o dedo ─────────────────── */
+.dica-arrasta.on{opacity:1;translate:0}
+input[type=range].pulsa::-webkit-slider-thumb{animation:pulsaBola 1.8s var(--e) 4}
+input[type=range].pulsa::-moz-range-thumb{animation:pulsaBola 1.8s var(--e) 4}
+@keyframes pulsaBola{
+  0%,100%{box-shadow:0 0 0 1px var(--acc),0 0 0 0 rgba(81,29,5,.45)}
+  55%    {box-shadow:0 0 0 1px var(--acc),0 0 0 14px rgba(81,29,5,0)}
 }
 
-/* ── PERFIS NO CELULAR · número em cima, convite no meio,
-   definição embaixo. Nada mais se atropela.
+/* ── CELULAR · o convite não pode sair cortado ──────────────
+   Ele fica no cartão, centralizado, e some por opacidade quando
+   a porta corre. Antes ele viajava com a chapa e era decepado
+   pela borda da tela.
    ──────────────────────────────────────────────────────────── */
 @media(max-width:640px){
   .perfil{min-height:122vw}
-  .perfil-num{top:20px;left:22px;bottom:auto;font-size:13px;z-index:4}
+  .perfil-num{top:20px;left:22px;bottom:auto;font-size:13px;z-index:5}
   .perfil-placa::after{
     top:50%;left:50%;bottom:auto;translate:-50% -50%;
-    padding:13px 24px;font-size:9px;letter-spacing:.28em;
-    animation:respiraConvite 2.6s var(--e) infinite}
+    padding:14px 26px;font-size:9px;letter-spacing:.26em;white-space:nowrap;
+    background:rgba(20,7,1,.34);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
   .perfil-in{padding:22px 22px 26px}
-  .perfil-in em{font-size:8px;margin-bottom:8px}
   .perfil-in h3{font-size:25px;line-height:1.05}
-  .perfil-in p{font-size:13.5px;margin-top:11px;max-width:none}
-  .perfil-pick{top:20px;right:20px;opacity:.45}
+  .perfil-in p{font-size:13.5px;margin-top:11px;max-width:none;opacity:1;translate:0}
+  .perfil-pick{top:20px;right:20px;opacity:.5}
   .perfil[aria-pressed="true"] .perfil-pick{opacity:1}
+  .dica-arrasta{font-size:8.5px}
 }
-@keyframes respiraConvite{
-  0%,100%{opacity:.9;transform:translate(-50%,-50%) scale(1)}
-  50%    {opacity:1;transform:translate(-50%,-50%) scale(1.035)}
-}
-/* aberta a chapa, o convite vai embora com ela */
-.perfil-placa::after{transition:opacity .5s var(--e)}
 
 @media(prefers-reduced-motion:reduce){
-  .perfil-placa,.perfil-bg{transition:none}
-  #fachada.anuncia .fach-btns::after,
-  #fachada.anuncia .fach-stop.on,
-  .perfil-placa::after{animation:none!important}
+  .perfil.demonstra .perfil-placa,.perfil.demonstra .perfil-bg,
+  .perfil.demonstra .perfil-placa::after,.perfil.demonstra .perfil-placa::before,
+  #fachada.anuncia .fach-btns::after,.tri.espia .tri-placa,
+  input[type=range].pulsa::-webkit-slider-thumb{animation:none!important}
 }
