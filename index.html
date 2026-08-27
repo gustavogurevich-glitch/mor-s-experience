@@ -14,6 +14,9 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- fio de progresso: a única pista de "quanto falta" que o site dá -->
+<div class="progresso" aria-hidden="true"><i id="progFio"></i></div>
+
 <div class="grid" aria-hidden="true">
   <i class="v" style="left:var(--rail)"></i>
   <i class="v" style="right:var(--rail)"></i>
@@ -225,6 +228,7 @@
       <span class="eyebrow">Seu raio de caminhada</span>
       <div class="ctrl"><b id="radv">30</b><span class="eyebrow">min a pé</span></div>
       <input type="range" id="rad" min="3" max="75" value="30" step="1" aria-label="Minutos a pé">
+      <p class="dica-arrasta" id="dicaRaio"><s></s>Arraste para o lado</p>
       <div class="ticks"><span>3</span><span>15</span><span>30</span><span>45</span><span>75</span></div>
       <div class="cats" id="cats"></div>
       <div style="margin-top:24px;padding-top:18px;border-top:1px solid var(--rule)">
@@ -444,6 +448,32 @@
 try{
 
 addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('solid',scrollY>40),{passive:true});
+
+/* ══ ORIENTAÇÃO ════════════════════════════════════════════════
+   Duas coisas, nenhuma decorativa: quanto falta, e onde eu estou.
+   É o que responde à reclamação de "site confuso".
+   ════════════════════════════════════════════════════════════ */
+const fio=document.getElementById('progFio');
+function marcaProgresso(){
+  const h=document.documentElement.scrollHeight-innerHeight;
+  fio.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0).toFixed(4)+')';
+}
+addEventListener('scroll',marcaProgresso,{passive:true});
+addEventListener('resize',marcaProgresso); marcaProgresso();
+
+/* o item do menu acende conforme a seção passa */
+const elos=[...document.querySelectorAll('.nl, .mm-links a')];
+const secoes=[...document.querySelectorAll('header[id], section[id]')];
+if('IntersectionObserver' in window){
+  const ioNav=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const id='#'+e.target.id;
+      elos.forEach(a=>a.classList.toggle('on',a.getAttribute('href')===id));
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secoes.forEach(s=>ioNav.observe(s));
+}
 }catch(e){console.error('[Morás] bloco falhou:',e)}
 try{
 /* imagens de referência (fallback cromático embutido) */
@@ -1003,6 +1033,107 @@ try{
 /* As imagens são pintadas ANTES de qualquer rede de segurança:
    se a animação falhar, as fotos ainda assim precisam existir. */
 paintPh();
+
+/* ══ A ESPIADA ═════════════════════════════════════════════════
+   Um gesto só, repetido no site inteiro: a placa de aço corre.
+   Ao entrar na tela cada placa desliza um pouco, mostra um pedaço
+   do que tem atrás e volta. Ninguém precisa ler "toque aqui" —
+   a placa mostrou que se move. É a mesma ideia de uma gaveta
+   entreaberta: a forma explica a função.
+
+   No celular não existe hover, então os perfis abrem de vez,
+   em cascata, conforme a pessoa rola.
+   ════════════════════════════════════════════════════════════ */
+try{
+const consulta=q=>typeof matchMedia==='function'&&matchMedia(q).matches;
+const semMovimento=consulta('(prefers-reduced-motion: reduce)');
+const toque=consulta('(hover: none)');
+
+if('IntersectionObserver' in window && !semMovimento){
+  /* placas que apenas espiam */
+  const espia=new IntersectionObserver((es,obs)=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target, atraso=(+el.dataset.ordem||0)*160;
+      setTimeout(()=>el.classList.add('espia'),atraso);
+      setTimeout(()=>el.classList.remove('espia'),atraso+1400);
+      obs.unobserve(el);
+    });
+  },{threshold:.45});
+
+  document.querySelectorAll('#trio .tri').forEach((el,i)=>{
+    el.dataset.ordem=i; espia.observe(el);
+  });
+
+  /* ── PERFIS · o scroll é a mão que corre as chapas ──────────
+     Mesmo motor do Flex Cave. Cada chapa começa a abrir num
+     ponto diferente da rolagem, então nunca abrem juntas. Sobe
+     de volta e elas fecham: o gesto nunca se gasta.
+     ──────────────────────────────────────────────────────── */
+  const cartoes=[...document.querySelectorAll('#perfisGrid .perfil')];
+  const grade=document.getElementById('perfisGrid');
+  const INICIO=[0.20,0.35,0.50], CURSO=0.34;
+  let pedidoP=null;
+  function correChapas(){
+    if(!grade||!cartoes.length)return;
+    const r=grade.getBoundingClientRect();
+    /* progresso do bloco atravessando a tela, de 0 a 1 */
+    const p=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height*0.55)));
+    cartoes.forEach((c,i)=>{
+      const t=Math.max(0,Math.min(1,(p-INICIO[i])/CURSO));
+      /* suaviza as pontas para a chapa nunca começar nem parar seco */
+      const e=t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+      c.style.setProperty('--abre',e.toFixed(4));
+    });
+  }
+  function agendaChapas(){
+    if(pedidoP)return;
+    pedidoP=requestAnimationFrame(()=>{pedidoP=null;correChapas()});
+  }
+  addEventListener('scroll',agendaChapas,{passive:true});
+  addEventListener('resize',agendaChapas);
+  correChapas();
+
+  /* ── FACHADA · a imagem fica parada. Prédio não anda, e mover
+     um render parado o olho reconhece como mentira em meio
+     segundo. Quem se anuncia é o comando: um fio de corten corre
+     pelos três botões e o ativo pulsa duas vezes.
+     ──────────────────────────────────────────────────────── */
+  const fachSec=document.getElementById('fachada');
+  if(fachSec){
+    const ioF=new IntersectionObserver((es,obs)=>es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      setTimeout(()=>fachSec.classList.add('anuncia'),400);
+      setTimeout(()=>fachSec.classList.remove('anuncia'),4200);
+      obs.unobserve(e.target);
+    }),{threshold:.4});
+    ioF.observe(fachSec);
+  }
+
+  /* mapa de calor: o controle pulsa e a dica some no primeiro uso */
+  const raio=document.getElementById('rad'), dica=document.getElementById('dicaRaio');
+  if(raio&&dica){
+    const ioR=new IntersectionObserver((es,obs)=>es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      dica.classList.add('on'); raio.classList.add('pulsa');
+      obs.unobserve(e.target);
+    }),{threshold:.5});
+    ioR.observe(raio.closest('.panel')||raio);
+    const cala=()=>{dica.classList.remove('on');raio.classList.remove('pulsa')};
+    raio.addEventListener('input',cala,{once:true});
+    raio.addEventListener('pointerdown',cala,{once:true});
+  }
+}else{
+  /* Sem observador ou com movimento reduzido, as chapas ficariam
+     fechadas para sempre e as fotos nunca apareceriam. Abre tudo. */
+  document.querySelectorAll('#perfisGrid .perfil')
+          .forEach(c=>c.style.setProperty('--abre','1'));
+}
+}catch(e){
+  console.error('[Morás] animação falhou:',e);
+  document.querySelectorAll('#perfisGrid .perfil')
+          .forEach(c=>c.style.setProperty('--abre','1'));
+}
 
 /* rede de segurança: se algo impedir a animação, o conteúdo aparece do mesmo jeito */
 if(!('IntersectionObserver' in window)){
