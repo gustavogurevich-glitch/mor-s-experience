@@ -646,11 +646,6 @@ section{padding:clamp(58px,6.2vw,108px) var(--pad)}
 .hero-metros:hover::after{opacity:.9}
 .hm-lbl{font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;
   color:var(--dim);white-space:nowrap}
-.hm-val{display:flex;align-items:baseline;gap:9px;font-family:var(--sans);
-  font-weight:500;font-size:clamp(21px,2.05vw,29px);letter-spacing:-.012em;
-  color:var(--acc);font-variant-numeric:tabular-nums lining-nums;
-  font-feature-settings:"tnum" 1,"lnum" 1;white-space:nowrap}
-.hm-val i{font-style:normal;opacity:.42;font-weight:300;font-size:.72em}
 .hm-un{font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.06em;
   color:var(--acc);opacity:.62;align-self:flex-end;padding-bottom:.28em}
 
@@ -803,8 +798,7 @@ section{padding:clamp(58px,6.2vw,108px) var(--pad)}
   .lead{font-size:17px;max-width:none}
   .body,.dimtxt{max-width:none;font-size:15px}
   .hero-metros{flex-wrap:wrap;gap:12px;padding:13px 16px}
-  .hm-val{font-size:23px}
-  .stage,    .fach-stage{aspect-ratio:1/1}
+    .stage,    .fach-stage{aspect-ratio:1/1}
   #contato .h2{font-size:clamp(26px,7.4vw,38px)}
   .field input,.field select{font-size:16px}
 }
@@ -848,12 +842,6 @@ section{padding:clamp(58px,6.2vw,108px) var(--pad)}
 .hero-metros{gap:clamp(12px,1.2vw,18px);padding:13px clamp(16px,1.6vw,22px)}
 .hm-lbl{font-size:8px;letter-spacing:.28em}
 /* os dois números com um traço de intervalo entre eles, tipo escala */
-.hm-val{gap:11px;font-size:clamp(20px,1.95vw,27px);font-weight:600;letter-spacing:-.02em}
-.hm-val i{position:relative;width:26px;height:1px;background:currentColor;opacity:.35;
-  align-self:center;font-size:0;overflow:hidden;text-indent:-99px}
-.hm-val i::before,.hm-val i::after{content:"";position:absolute;top:-2.5px;
-  width:1px;height:6px;background:currentColor}
-.hm-val i::before{left:0}.hm-val i::after{right:0}
 .hm-un{font-size:10.5px;letter-spacing:.1em;opacity:.55}
 
 /* ── EPICENTRO · a prancha precisa de contraste, não de outro chão
@@ -1202,9 +1190,7 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .lockup{width:min(240px,62vw)}
   .hero-sig{margin-top:16px;font-size:8px;letter-spacing:.3em}
   .hero-metros{width:100%;flex-wrap:wrap;gap:10px;padding:13px 15px;margin-top:22px}
-  .hm-val{font-size:22px;gap:8px}
-  .hm-val i{width:20px}
-  .cue,.hero-note{display:none}
+      .cue,.hero-note{display:none}
 
   /* MARQUEE mais discreto */
   .marq{padding:13px 0}
@@ -1398,9 +1384,7 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .lockup{width:min(190px,50vw)}
   .hero-sig{margin-top:11px;font-size:7.5px;letter-spacing:.26em}
   .hero-metros{margin-top:16px;padding:11px 14px;gap:9px}
-  .hm-val{font-size:20px;gap:7px}
-  .hm-val i{width:18px}
-  .hm-un{font-size:9.5px}
+      .hm-un{font-size:9.5px}
 
   /* PERFIS · o rótulo sobe para o topo e para de bater no nome */
   .perfil{min-height:74vw}
@@ -1597,14 +1581,8 @@ body.mm-on .mm-links a{opacity:1;translate:0}
 .tri:hover .tri-placa{transform:translateX(-5px)}
 .tri[aria-expanded="true"]:hover .tri-placa{transform:translateX(-101%)}
 
-/* atrás da 02 mora a onça, que é o easter egg do próprio edifício */
-.tri-onca .tri-fundo{background:
-  radial-gradient(90% 70% at 50% 40%,rgba(74,26,5,.55),rgba(18,14,10,.96)),var(--bg2)}
-.tri-onca .tri-fundo::after{content:"";position:absolute;inset:0;
-  background:url(simbolo-corten.png) center 38%/58% no-repeat;
-  filter:brightness(0) invert(1) sepia(.4) saturate(2.6) hue-rotate(-14deg);
-  opacity:0;scale:.88;transition:opacity 1.1s var(--e) .25s,scale 1.4s var(--e) .25s}
-.tri-onca[aria-expanded="true"] .tri-fundo::after{opacity:.3;scale:1}
+/* A placa 02 tinha um fundo proprio com o simbolo da marca, de quando
+   ainda nao existia foto. Agora existe: o simbolo sairia por cima dela. */
 
 /* ── SETA DESENHADA ─────────────────────────────────────────── */
 .bim-arrow{display:grid;place-items:center;width:clamp(30px,3vw,40px);height:clamp(30px,3vw,40px)}
@@ -1637,9 +1615,7 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .hero-metros{position:absolute;left:var(--pad);right:var(--pad);bottom:14px;
     z-index:4;margin:0;width:auto;justify-content:center;
     padding:10px 12px;gap:8px;background:rgba(239,235,226,.72)}
-  .hm-val{font-size:18px;gap:6px}
-  .hm-val i{width:16px}
-  .hm-un{font-size:9px}
+      .hm-un{font-size:9px}
     .cue,.hero-note{display:none}
 
   /* FACHADA · ar entre o bloco de estado e a próxima seção */
@@ -1775,9 +1751,7 @@ body.mm-on .mm-links a{opacity:1;translate:0}
     background:var(--branco);border:0;border-top:1px solid var(--rule);
     -webkit-backdrop-filter:none;backdrop-filter:none}
   .hero-metros::before,.hero-metros::after{display:none}
-  .hm-val{font-size:21px;gap:8px}
-  .hm-val i{width:20px}
-  .hm-un{font-size:10px}
+      .hm-un{font-size:10px}
     #hero{display:flex;flex-direction:column}
   .plate{order:1}
   .hero-metros{order:2}
@@ -1808,14 +1782,6 @@ body.mm-on .mm-links a{opacity:1;translate:0}
 .hm-ico,.hm-lbl{display:block;font-size:8px;letter-spacing:.3em;text-transform:uppercase;
   color:var(--dim);margin-bottom:9px}
 .hm-linha{display:flex;align-items:baseline;gap:7px}
-.hm-val{font-family:var(--sans);font-weight:500;letter-spacing:-.02em;
-  font-size:clamp(22px,2.1vw,30px);color:var(--acc);
-  font-variant-numeric:tabular-nums lining-nums;gap:10px}
-.hm-val i{width:24px;height:1px;background:currentColor;opacity:.3;
-  align-self:center;font-size:0;overflow:hidden}
-.hm-val i::before,.hm-val i::after{content:none}
-.hm-un{font-family:var(--sans);font-size:11px;font-weight:400;
-  letter-spacing:.06em;color:var(--acc);opacity:.55}
 
 /* ── OS ANÉIS · o que cada mancha do mapa quer dizer ─────────
    A lista de avenidas repetia o que o mapa já escreve. Trocada
@@ -1882,9 +1848,7 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .hero-sig{margin-top:9px;font-size:6.5px;letter-spacing:.2em;line-height:1.7}
   .hero-metros{margin-top:14px;padding-top:11px;max-width:none}
   .hm-lbl{font-size:6.5px;letter-spacing:.24em;margin-bottom:6px}
-  .hm-val{font-size:16px;gap:6px}
-  .hm-val i{width:14px}
-  .hm-un{font-size:8.5px}
+      .hm-un{font-size:8.5px}
   .cue,.hero-note{display:none}
 }
 
@@ -1896,8 +1860,6 @@ body.mm-on .mm-links a{opacity:1;translate:0}
    O número estava fino demais para a cor corten sobre papel.
    Subo o peso da fonte e tiro a transparência do m².
    ──────────────────────────────────────────────────────────── */
-.hm-val{font-weight:700;letter-spacing:-.025em}
-.hm-val i{opacity:.45;height:1.5px}
 .hm-un{font-weight:600;opacity:.8}
 .hm-lbl{color:var(--acc);opacity:.62;font-weight:500}
 
@@ -1979,9 +1941,7 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .hero-sig{font-size:6px;letter-spacing:.16em;line-height:1.8;
     max-width:100%;overflow-wrap:break-word}
   .hero-metros{max-width:100%}
-  .hm-val{font-size:15px;gap:5px;flex-wrap:nowrap}
-  .hm-val i{width:11px}
-}
+    }
 
 /* ═══════════════════════════════════════════════════════════════
    40. A ESPIADA · um gesto só, repetido
@@ -2212,4 +2172,129 @@ input[type=range].pulsa::-moz-range-thumb{animation:pulsaBola 1.8s var(--e) 4}
   .perfil.aberto .perfil-placa::before,#fachada.anuncia .fach-btns::after,
   .tri.espia .tri-placa,
   input[type=range].pulsa::-webkit-slider-thumb{animation:none!important}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   42. AS FOTOS DAS QUATRO PLACAS
+   A caixa muda de 0,74 (retrato, monitor) para 1,28 (paisagem,
+   celular). Uma imagem só seria cortada de formas opostas nos
+   dois. Por isso são dois recortes da mesma foto — o mesmo que
+   fizemos na varanda e no mapa.
+   Se o arquivo não existir, o navegador pula a camada e mostra
+   o chão da seção. Nada quebra.
+   ═══════════════════════════════════════════════════════════════ */
+.tri-fundo{background:var(--foto-d,none) center/cover no-repeat,var(--bg2)}
+/* A caixa e deitada ate 1179px (uma e duas colunas) e so vira em pe
+   a partir de 1180, quando sao quatro colunas. O recorte tem que
+   seguir esse limite, nao o do celular. */
+@media(max-width:1179px){
+  .tri-fundo{background:var(--foto-m,none) center/cover no-repeat,var(--bg2)}
+}
+/* véu: o texto entra na metade de baixo e precisa de contraste */
+.tri-fundo::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(18,7,1,.2) 0%,rgba(18,7,1,.5) 46%,rgba(18,7,1,.9) 100%)}
+
+/* ═══════════════════════════════════════════════════════════════
+   43. INSTRUMENTO, BOTÕES QUE NÃO SOMEM
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── METRAGEM · leitura de instrumento ───────────────────────
+   A assinatura saiu do hero (foi para a faixa corrente), então
+   logo e metragem se aproximam: o que pertence junto tem que
+   estar mais perto entre si do que do resto. Lei da proximidade.
+   O traço longo virou curto, sob os números, e parou de cortar
+   a imagem.
+   ──────────────────────────────────────────────────────────── */
+.hero-metros{display:block;background:none;border:0;box-shadow:none;
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+  margin-top:clamp(14px,1.6vw,22px);padding-top:0;max-width:max-content}
+.hero-metros::before,.hero-metros::after{content:none;display:none}
+.hm-lbl{display:block;font-size:8px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--corten);opacity:.7;font-weight:500;margin-bottom:10px}
+.hm-linha{display:flex;align-items:baseline;gap:9px}
+.hm-n{font-family:var(--sans);font-weight:700;letter-spacing:-.025em;
+  font-size:clamp(22px,2.1vw,30px);color:#3F1604;
+  font-variant-numeric:tabular-nums lining-nums;
+  font-feature-settings:"tnum" 1,"lnum" 1}
+.hm-tra{width:20px;height:1.5px;background:#3F1604;opacity:.4;
+  align-self:center;flex:none}
+.hm-un{font-family:var(--sans);font-size:11px;font-weight:600;
+  letter-spacing:.06em;color:#3F1604;opacity:.75}
+
+/* a régua: marca em cada ponta, o intervalo preenchido entre elas,
+   e o ponto vivo pulsando na direita */
+.hm-regua{position:relative;display:flex;align-items:center;
+  width:100%;height:9px;margin-top:11px}
+.hm-marca{width:1.5px;height:9px;background:#3F1604;opacity:.55;
+  text-decoration:none;flex:none}
+.hm-fill{flex:1;height:1.5px;background:#3F1604;opacity:.28;
+  text-decoration:none;transform-origin:left center;transform:scaleX(0);
+  transition:transform .85s cubic-bezier(.16,1,.3,1)}
+.hero-metros.enchendo .hm-fill{transform:scaleX(1)}
+.hm-vivo{position:absolute;right:-3px;top:50%;translate:0 -50%;
+  width:6px;height:6px;border-radius:50%;background:var(--corten);
+  text-decoration:none;opacity:0;transition:opacity .5s var(--e)}
+.hero-metros.calibrado .hm-vivo{opacity:1;animation:pontoVivo 2.6s ease-in-out infinite}
+@keyframes pontoVivo{
+  0%,100%{box-shadow:0 0 0 0 rgba(81,29,5,.5);opacity:1}
+  55%    {box-shadow:0 0 0 7px rgba(81,29,5,0);opacity:.72}
+}
+
+/* ── AGENDAR VISITA · sólido, e nunca some ───────────────────
+   Contorno vazado desaparecia nas seções de chão claro. Agora é
+   preenchido, e a cor acompanha o chão em que ele está.
+   ──────────────────────────────────────────────────────────── */
+.ctan{background:var(--corten);color:var(--branco);border-color:var(--corten);
+  font-weight:500;transition:background .55s var(--e),color .55s var(--e),
+  border-color .55s var(--e),transform .4s var(--e),box-shadow .5s var(--e)}
+.ctan:hover{background:#3F1604;border-color:#3F1604;color:var(--branco);
+  transform:translateY(-1px)}
+body[data-chao="corten"] .ctan,body[data-chao="escuro"] .ctan{
+  background:var(--marca);color:#3A1304;border-color:var(--marca)}
+body[data-chao="corten"] .ctan:hover,body[data-chao="escuro"] .ctan:hover{
+  background:var(--marca-lit);border-color:var(--marca-lit)}
+/* uma pulsada a cada seção nova */
+.ctan.lembra{animation:lembrete 2s var(--e) 1}
+@keyframes lembrete{
+  0%,100%{box-shadow:0 0 0 0 rgba(81,29,5,0)}
+  22%    {box-shadow:0 0 0 9px rgba(81,29,5,.22)}
+  55%    {box-shadow:0 0 0 16px rgba(81,29,5,0)}
+}
+body[data-chao="corten"] .ctan.lembra,body[data-chao="escuro"] .ctan.lembra{
+  animation:lembreteClaro 2s var(--e) 1}
+@keyframes lembreteClaro{
+  0%,100%{box-shadow:0 0 0 0 rgba(232,205,166,0)}
+  22%    {box-shadow:0 0 0 9px rgba(232,205,166,.3)}
+  55%    {box-shadow:0 0 0 16px rgba(232,205,166,0)}
+}
+
+/* ── WHATSAPP · 40% maior, pulso 40% mais forte, cor do chão ── */
+.zap-btn{height:clamp(70px,6.6vw,80px)}
+.zap-btn::before{width:clamp(70px,6.6vw,80px)}
+.zap-btn svg{width:clamp(70px,6.6vw,80px);height:30px}
+/* em chão corten ou escuro ele vira bege: senão some dentro da
+   própria cor. Este é o motivo de existir a troca. */
+body[data-chao="corten"] .zap-btn,body[data-chao="escuro"] .zap-btn{
+  background:var(--marca);color:#3A1304;border-color:var(--marca-lit)}
+body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
+  filter:none}
+.zap-btn{transition:background .6s var(--e),color .6s var(--e),
+  border-color .6s var(--e),box-shadow .5s var(--e),transform .4s var(--e)}
+/* chamada periódica, a cada 10s */
+.zap-fab.chama .zap-btn{animation:chamaZap 2.4s var(--e) 1}
+@keyframes chamaZap{
+  0%,100%{box-shadow:0 8px 28px rgba(30,8,0,.4),0 0 0 0 rgba(232,205,166,.55);transform:scale(1)}
+  30%    {transform:scale(1.06)}
+  60%    {box-shadow:0 8px 28px rgba(30,8,0,.4),0 0 0 26px rgba(232,205,166,0);transform:scale(1)}
+}
+@media(max-width:640px){
+  .zap-btn{height:72px}
+  .zap-btn::before,.zap-btn svg{width:72px}
+  .zap-btn svg{height:28px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-metros.calibrado .hm-vivo,.ctan.lembra,
+  .zap-fab.chama .zap-btn{animation:none!important}
+  .hm-fill{transition:none;transform:scaleX(1)}
 }

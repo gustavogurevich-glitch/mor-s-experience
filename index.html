@@ -89,11 +89,21 @@
   <div class="veil"></div>
   <div class="hero-in">
     <h1 class="lockup reveal"><img src="logo-corten.png" alt="Morás Experience" width="1400" height="1204"></h1>
-    <div class="hero-sig reveal">Estado da Arte · Infinitamente Verde</div>
-    <!-- limpa: sem caixa, sem moldura, sem ícone. Só o dado. -->
+    <!-- Leitura de instrumento: os dois números são um INTERVALO,
+         então ganham uma régua com marca em cada ponta e o trecho
+         entre elas preenchido. O ponto na ponta direita pulsa. -->
     <div class="hero-metros reveal" role="group" aria-label="Área privativa das unidades">
       <span class="hm-lbl">Área privativa</span>
-      <span class="hm-linha"><span class="hm-val">238,74<i>—</i>477,78</span><span class="hm-un">m²</span></span>
+      <span class="hm-linha">
+        <b class="hm-n" id="hmMin" data-alvo="238,74">0,00</b>
+        <i class="hm-tra"></i>
+        <b class="hm-n" id="hmMax" data-alvo="477,78">0,00</b>
+        <span class="hm-un">m²</span>
+      </span>
+      <span class="hm-regua" aria-hidden="true">
+        <s class="hm-marca"></s><s class="hm-fill"></s><s class="hm-marca"></s>
+        <s class="hm-vivo"></s>
+      </span>
     </div>
   </div>
   <div class="cue"><i></i><span>Desça</span></div>
@@ -300,7 +310,7 @@
        toque e revela o conteúdo. A 02 revela a própria onça. -->
   <div class="trio reveal" id="trio">
     <button class="tri" aria-expanded="false">
-      <span class="tri-fundo"></span>
+      <span class="tri-fundo" style="--foto-d:url(placas/placa-01-esg.jpg);--foto-m:url(placas/placa-01-esg-mob.jpg)"></span>
       <span class="tri-in">
         <span class="eyebrow">Mais Morás, menos carbono</span>
         <h4>ESG e<br>Sustentabilidade</h4>
@@ -311,8 +321,8 @@
       </span>
     </button>
 
-    <button class="tri tri-onca" aria-expanded="false">
-      <span class="tri-fundo"></span>
+    <button class="tri" aria-expanded="false">
+      <span class="tri-fundo" style="--foto-d:url(placas/placa-02-arte.jpg);--foto-m:url(placas/placa-02-arte-mob.jpg)"></span>
       <span class="tri-in">
         <span class="eyebrow">A fachada é a obra</span>
         <h4>Arte e<br>Concurso</h4>
@@ -324,7 +334,7 @@
     </button>
 
     <button class="tri" aria-expanded="false">
-      <span class="tri-fundo"></span>
+      <span class="tri-fundo" style="--foto-d:url(placas/placa-03-wellness.jpg);--foto-m:url(placas/placa-03-wellness-mob.jpg)"></span>
       <span class="tri-in">
         <span class="eyebrow">Recuperação é treino</span>
         <h4>Wellness e<br>Performance</h4>
@@ -336,7 +346,7 @@
     </button>
 
     <button class="tri" aria-expanded="false">
-      <span class="tri-fundo"></span>
+      <span class="tri-fundo" style="--foto-d:url(placas/placa-04-tecnologia.jpg);--foto-m:url(placas/placa-04-tecnologia-mob.jpg)"></span>
       <span class="tri-in">
         <span class="eyebrow">Construído no metaverso</span>
         <h4>Tecnologia</h4>
@@ -449,6 +459,40 @@ try{
 
 addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('solid',scrollY>40),{passive:true});
 
+/* ══ METRAGEM · o instrumento calibrando ═══════════════════════
+   Os dois números correm de zero, um depois do outro, como um
+   aparelho se calibrando. Em sequência, nunca juntos: dois
+   contadores simultâneos leem como instabilidade, não como
+   tecnologia. A régua embaixo preenche junto com o segundo.
+   ════════════════════════════════════════════════════════════ */
+try{
+const fmtBR=new Intl.NumberFormat('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const suave=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+function corre(el,dur,aoFim){
+  const alvo=parseFloat(el.dataset.alvo.replace('.','').replace(',','.'));
+  const t0=performance.now();
+  (function passo(t){
+    const p=Math.min(1,(t-t0)/dur);
+    el.textContent=fmtBR.format(alvo*suave(p));
+    if(p<1)requestAnimationFrame(passo); else if(aoFim)aoFim();
+  })(t0);
+}
+const hMin=document.getElementById('hmMin'), hMax=document.getElementById('hmMax'),
+      hFill=document.querySelector('.hm-fill'), hMetros=document.querySelector('.hero-metros');
+if(hMin&&hMax){
+  const semMov=typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(semMov){
+    hMin.textContent=hMin.dataset.alvo; hMax.textContent=hMax.dataset.alvo;
+    if(hMetros)hMetros.classList.add('calibrado');
+  }else{
+    setTimeout(()=>corre(hMin,800,()=>{
+      if(hMetros)hMetros.classList.add('enchendo');
+      corre(hMax,800,()=>{ if(hMetros)hMetros.classList.add('calibrado'); });
+    }),700);
+  }
+}
+}catch(e){console.error('[Morás] metragem falhou:',e)}
+
 /* ══ ORIENTAÇÃO ════════════════════════════════════════════════
    Duas coisas, nenhuma decorativa: quanto falta, e onde eu estou.
    É o que responde à reclamação de "site confuso".
@@ -461,19 +505,50 @@ function marcaProgresso(){
 addEventListener('scroll',marcaProgresso,{passive:true});
 addEventListener('resize',marcaProgresso); marcaProgresso();
 
-/* o item do menu acende conforme a seção passa */
+/* o item do menu acende conforme a seção passa, e o CHÃO da seção
+   passa a governar a cor dos dois botões flutuantes: em corten ou
+   preto eles viram bege, senão ficam corten. Sem isso o WhatsApp
+   sumia dentro das seções da própria cor dele. */
 const elos=[...document.querySelectorAll('.nl, .mm-links a')];
 const secoes=[...document.querySelectorAll('header[id], section[id]')];
+const chaoDe=el=>el.classList.contains('g-corten')?'corten'
+              :(el.classList.contains('g-preto')||el.classList.contains('fc'))?'escuro':'papel';
+
+let secAtual=null, passadas=0;
+function pulsaCTA(){
+  const b=document.querySelector('.ctan');
+  if(!b)return;
+  b.classList.remove('lembra'); void b.offsetWidth; b.classList.add('lembra');
+  setTimeout(()=>b.classList.remove('lembra'),2000);
+}
+
 if('IntersectionObserver' in window){
   const ioNav=new IntersectionObserver(es=>{
     es.forEach(e=>{
       if(!e.isIntersecting)return;
-      const id='#'+e.target.id;
+      const alvo=e.target, id='#'+alvo.id;
       elos.forEach(a=>a.classList.toggle('on',a.getAttribute('href')===id));
+      document.body.dataset.chao=chaoDe(alvo);
+      /* uma pulsada do "Agendar visita" a cada seção nova */
+      if(secAtual && secAtual!==alvo.id){ passadas++; pulsaCTA(); }
+      secAtual=alvo.id;
     });
   },{rootMargin:'-45% 0px -50% 0px'});
   secoes.forEach(s=>ioNav.observe(s));
 }
+
+/* ══ WHATSAPP · pulso periódico, alternado com o CTA ═══════════
+   A cada 10 segundos, e nunca no mesmo instante que o botão do
+   topo: dois pulsos simultâneos leem como piscar de erro.
+   ════════════════════════════════════════════════════════════ */
+setInterval(()=>{
+  const f=document.getElementById('zapFab');
+  if(!f||!f.classList.contains('on'))return;
+  const cta=document.querySelector('.ctan');
+  if(cta&&cta.classList.contains('lembra'))return;   /* espera a vez */
+  f.classList.add('chama');
+  setTimeout(()=>f.classList.remove('chama'),2400);
+},10000);
 }catch(e){console.error('[Morás] bloco falhou:',e)}
 try{
 /* imagens de referência (fallback cromático embutido) */
@@ -489,7 +564,7 @@ function paintPh(){document.querySelectorAll('.ph[data-img],.perfil-bg[data-img]
 }catch(e){console.error('[Morás] bloco falhou:',e)}
 try{
 /* marquee, vocabulário oficial da marca */
-const VOC=['Escultura viva','Estilize seu cenário','Infinitamente Verde','A estética do sport luxury',
+const VOC=['Estado da Arte','Escultura viva','Estilize seu cenário','Infinitamente Verde','A estética do sport luxury',
  'Habita a arte','Mais Morás e menos carbono','O palco do seu cenário','Atemporal','Carbono Zero',
  'Morás é Mais','Intensidade refinada','Liberdade acústica','Metaverso georreferenciado','Feito para durar'];
 document.getElementById('marq').innerHTML=[...VOC,...VOC].map(v=>`<span>${v}</span>`).join('');
@@ -1095,17 +1170,22 @@ if(semMovimento){
      ──────────────────────────────────────────────────────── */
   const quadros=[...document.querySelectorAll('#trio .tri')];
   const trio=document.getElementById('trio');
-  const trioEmLinha=()=>trio && quadros[0] && trio.offsetWidth > quadros[0].offsetWidth*1.6;
+  /* Medir largura falhava no celular: o teste rodava antes do layout
+     terminar e as quatro disparavam juntas. matchMedia responde a
+     mesma pergunta que o CSS usa, e responde certo desde o começo. */
+  const emColuna=()=>consulta('(max-width:819px)');
   const espiar=(el,atraso)=>setTimeout(()=>{
     el.classList.add('espia');
     setTimeout(()=>el.classList.remove('espia'),1500);
   },atraso);
 
   if(quadros.length){
-    if(trioEmLinha()){
-      aoAparecer(trio,()=>quadros.forEach((q,i)=>espiar(q,i*200)),0.80);
+    if(emColuna()){
+      /* empilhadas: cada uma espia quando você chega nela */
+      quadros.forEach(q=>aoAparecer(q,e=>espiar(e,0),0.82));
     }else{
-      quadros.forEach(q=>aoAparecer(q,e=>espiar(e,0),0.80));
+      /* lado a lado: a onda, 0,5s entre uma e outra */
+      aoAparecer(trio,()=>quadros.forEach((q,i)=>espiar(q,i*500)),0.80);
     }
   }
 
