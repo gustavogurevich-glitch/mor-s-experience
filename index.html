@@ -37,7 +37,7 @@
     <a href="#local" class="nl">Localização</a>
     <a href="#mapa" class="nl">Mapa de Calor</a>
     <a href="#flexcave" class="nl">Flex Cave</a>
-    <a href="#produto" class="nl">As Casas</a>
+    <a href="#produto" class="nl">Tipologia</a>
     <a href="#contato" class="ctan">Agendar visita</a>
     <!-- abaixo de 1180px os links somem: este botão devolve a navegação -->
     <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuMob">
@@ -54,7 +54,7 @@
     <a href="#local"><i>03</i>Localização</a>
     <a href="#mapa"><i>04</i>Mapa de Calor</a>
     <a href="#flexcave"><i>05</i>Flex Cave</a>
-    <a href="#produto"><i>06</i>As Casas</a>
+    <a href="#produto"><i>06</i>Tipologia</a>
   </nav>
   <div class="mm-pe">
     <a class="mm-cta" href="#contato">Agendar visita</a>
@@ -97,7 +97,6 @@
          então ganham uma régua com marca em cada ponta e o trecho
          entre elas preenchido. O ponto na ponta direita pulsa. -->
     <div class="hero-metros reveal" role="group" aria-label="Área privativa das unidades">
-      <span class="hm-lbl">Área privativa</span>
       <span class="hm-linha">
         <b class="hm-n" id="hmMin" data-alvo="238,74">0,00</b>
         <i class="hm-tra"></i>
@@ -112,7 +111,6 @@
     </div>
   </div>
   <div class="cue"><i></i><span>Desça</span></div>
-  <div class="hero-note">Imagem provisória. O plano-sequência da fachada em CGI entra aqui quando ficar pronto.</div>
 </header>
 
 <div class="marq"><div class="marq-t" id="marq"></div></div>
@@ -124,12 +122,12 @@
   </a>
 
  <div class="wrap">
-  <span class="eyebrow reveal">Perfis</span>
-  <h2 class="kicker reveal" style="margin-top:18px;color:var(--acc)">O ordinário<br>não serve.</h2>
-  <p class="perfis-call reveal">Três perfis. Uma exigência em comum.<br><b>Escolha o seu.</b></p>
+  <span class="eyebrow reveal">Perfil | Comprador</span>
+  <h2 class="kicker reveal" style="margin-top:18px;color:var(--acc)">Quem é você?</h2>
+  <p class="perfis-call reveal">O espaço que te define.<br><b>Escolha o que mais combina com o seu gosto.</b></p>
  </div>
  <div class="perfis" id="perfisGrid"></div>
- <div class="wrap"><p class="perfis-nota">Sua escolha acompanha você até o fim e chega ao nosso time antes da primeira conversa.</p>
+ <div class="wrap"><p class="perfis-nota">Sua escolha acompanha você até o fim dessa jornada e chega ao nosso time antes da primeira conversa.</p>
   <div class="pickchip" id="pickchip"></div></div>
 </section>
 
@@ -168,18 +166,25 @@
 
     <div class="fach-side">
       <span class="eyebrow reveal">Sistema Camaleão</span>
-      <h2 class="kicker reveal">A fachada<br>tem rotina.</h2>
-      <p class="lead reveal" style="color:var(--dim)">O mesmo edifício, três estados.</p>
+      <h2 class="kicker reveal">A fachada se adapta<br>ao meio ambiente</h2>
+      
+
+      <!-- as duas peles: mesma imagem, camadas diferentes -->
+      <div class="pele-sel reveal" role="tablist" aria-label="Camadas da fachada">
+        <button class="pele on" data-p="ext" role="tab" aria-selected="true"><i>01</i>Pele externa</button>
+        <button class="pele"    data-p="int" role="tab" aria-selected="false"><i>02</i>Pele interna</button>
+      </div>
+      <p class="pele-txt" id="peleTxt"><b>Flex Cave.</b> Placas com propriedades isolantes acústicas e de luminosidade.</p>
 
       <div class="fach-state reveal">
         <b id="fachNome">Acordando</b>
         <i id="fachSub">Flex Cave em transição</i>
-        <p id="fachDesc">Metade aberta, metade fechada. Cada morador decide o seu ponto. A fachada nunca é a mesma duas vezes, porque é a soma de dezoito escolhas.</p>
+        <p id="fachDesc">Metade aberta, metade fechada. Cada morador decide o seu momento. A fachada nunca é a mesma, porque é a soma de infinitas escolhas.</p>
       </div>
 
   <!-- convite de fim de seção: continua o argumento, não interrompe -->
   <a class="fecho" href="#contato">
-    <span class="fecho-txt"><b>A fachada muda de verdade.</b><em>Na Loja você vê as placas correndo, em escala real.</em></span>
+    <span class="fecho-txt"><b>Venha entender o movimento.</b><em>Agende sua visita.</em></span>
     <span class="fecho-ir"><s></s>Agendar visita
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -199,8 +204,8 @@
   <div class="shead">
     <div><span class="eyebrow reveal">Localização · 23°33′16″S 46°41′26″W</span>
       <h2 class="kicker reveal">O epicentro.</h2></div>
-    <div><p class="lead reveal">No centro de tudo, existe um núcleo.</p>
-      <p class="dimtxt reveal" style="margin-top:16px">A poucos minutos dos principais eixos, sem se expor ao fluxo de nenhum deles.</p></div>
+    <div><p class="lead reveal">Rua Morás.<br>No centro de tudo.</p>
+      <p class="dimtxt reveal" style="margin-top:16px">A pé e a poucos minutos dos principais eixos da cidade.</p></div>
   </div>
 
   <div class="plotter reveal">
@@ -219,22 +224,22 @@
       <div class="plot-hud bl"><b>1.685 m²</b><i>Área do terreno</i></div>
     </div>
     <aside class="plot-side">
-      <span class="eyebrow">Como ler o mapa</span>
-      <p class="plot-call">Cada mancha é um<br>tempo de caminhada.<br><b>A pé, não de carro.</b></p>
-      <p class="plot-txt">Os selos <b>01</b> a <b>05</b> no mapa marcam até onde você chega andando, saindo da porta do Morás.</p>
+      <span class="eyebrow">Entenda a ler o mapa</span>
+      <p class="plot-call">Cada zona é o limite<br>de uma caminhada.<br><b>Sempre a pé.</b></p>
+      <p class="plot-txt">Os pins <b>01</b> a <b>05</b> no mapa marcam até onde você chega andando, saindo da porta da Morás Experience.</p>
       <!-- os números batem com os selos 01 a 05 marcados no mapa -->
       <ol class="anel">
-        <li><i>01</i><b>05</b><span>min</span><em>A padaria, a academia, o mercado do dia a dia</em></li>
-        <li><i>02</i><b>10</b><span>min</span><em>Restaurantes, cafés e as galerias da Vila</em></li>
-        <li><i>03</i><b>15</b><span>min</span><em>Escolas, clínicas e o Beco do Batman</em></li>
-        <li><i>04</i><b>30</b><span>min</span><em>Parque Villa-Lobos, Faria Lima, metrô</em></li>
-        <li><i>05</i><b>60</b><span>min</span><em>Paulista, Ibirapuera e o centro velho</em></li>
+        <li><i>PIN 01</i><b>05</b><span>min</span><em>Caminhada até 5 minutos</em></li>
+        <li><i>PIN 02</i><b>10</b><span>min</span><em>Caminhada até 10 minutos</em></li>
+        <li><i>PIN 03</i><b>15</b><span>min</span><em>Caminhada até 15 minutos</em></li>
+        <li><i>PIN 04</i><b>30</b><span>min</span><em>Caminhada até 30 minutos</em></li>
+        <li><i>PIN 05</i><b>60</b><span>min</span><em>Caminhada até 1 hora</em></li>
       </ol>
       <p class="plot-nota">Mapa esquemático, sem escala.<br>Tempos aproximados, a pé.</p>
 
   <!-- convite de fim de seção: continua o argumento, não interrompe -->
   <a class="fecho" href="#contato">
-    <span class="fecho-txt"><b>Ande esses cinco minutos com a gente.</b><em>A Loja fica na própria Rua Morás.</em></span>
+    <span class="fecho-txt"><b>Ande esses 5 minutos com a gente.</b><em>Fique no centro de tudo. Agende uma visita.</em></span>
     <span class="fecho-ir"><s></s>Agendar visita
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -253,21 +258,21 @@
 
  <div class="wrap">
   <div class="mhead">
-    <div><span class="eyebrow reveal">Centralidades · 08 órbitas</span>
+    <div><span class="eyebrow reveal">Centralidades</span>
       <h2 class="kicker reveal" style="margin-top:18px">Mapa<br>de Calor</h2></div>
     <div><p class="lead reveal">Centralidade, no Morás, se mede andando.</p>
-      <p class="dimtxt reveal" style="margin-top:18px">Cada anel é um intervalo real de caminhada. Você decide o quanto quer andar.</p></div>
+      <p class="dimtxt reveal" style="margin-top:18px">8 vetores de interesse, divididos em 5 raios de proximidade.</p></div>
   </div>
   <div class="mshell">
     <aside class="panel">
-      <span class="eyebrow">Seu raio de caminhada</span>
+      <span class="eyebrow">Defina seu raio de caminhada</span>
       <div class="ctrl"><b id="radv">30</b><span class="eyebrow">min a pé</span></div>
       <input type="range" id="rad" min="3" max="75" value="30" step="1" aria-label="Minutos a pé">
       <div class="ticks"><span>3</span><span>15</span><span>30</span><span>45</span><span>75</span></div>
       <p class="dica-arrasta" id="dicaRaio"><s></s>Arraste para o lado</p>
       <div class="cats" id="cats"></div>
       <div style="margin-top:24px;padding-top:18px;border-top:1px solid var(--rule)">
-        <span class="eyebrow">Ao seu alcance</span>
+        <span class="eyebrow">Encontrados ao seu alcance</span>
         <div id="count" style="font-family:var(--serif);font-size:42px;font-weight:500;color:var(--acc);line-height:1;margin-top:9px;letter-spacing:-.03em">0</div>
         <div class="eyebrow" style="margin-top:7px">endereços</div>
       </div>
@@ -281,7 +286,7 @@
   </div>
 
   <a class="fecho" href="#contato">
-    <span class="fecho-txt"><b>Cento e setenta e quatro endereços.</b><em>Levamos a lista impressa na visita.</em></span>
+    <span class="fecho-txt"><b>As melhores localizações, andando a pé.</b><em>Venha conhecer a Morás Experience.</em></span>
     <span class="fecho-ir"><s></s>Agendar visita
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -302,20 +307,20 @@
         <a class="egg" href="#contato" data-bicho="Lobo-guará" aria-label="Agendar visita">
       <i style="--bicho:url(bichos/lobo.png)"></i><span>Agendar visita</span>
     </a>
-    <div class="fc-meter"><span>Fechamento</span><i><b id="fcbar"></b></i></div>
+    <div class="fc-meter"><span>Desça para o fechamento</span><i><b id="fcbar"></b></i></div>
     <div class="fc-copy">
-      <span class="eyebrow" style="color:rgba(239,235,226,.5)">Sistema Camaleão · Pele externa</span>
+      <span class="eyebrow" style="color:rgba(239,235,226,.5)">Pele externa</span>
       <h2>Flex Cave</h2>
       <a class="fecho fecho-claro" href="#contato">
-        <span class="fecho-ir"><s></s>Ver a placa correr na Loja
+        <span class="fecho-ir"><s></s>A privacidade da sua caverna
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
         </span>
       </a>
       <div class="fc-state">
-        <p id="fcs0">Aberto, expõe a vista Z1 como <b>extensão natural da unidade</b>.</p>
-        <p id="fcs1" class="off">Fechado, cria uma <b>caverna pessoal</b> e grava a marca na fachada.</p>
+        <p id="fcs0">Aberto, a Z1 vira um jardim como <b>extensão natural do apartamento</b>.</p>
+        <p id="fcs1" class="off">Fechado, cria uma <b>caverna protegida</b> de ruídos e luminosidade. Se transformando em arte.</p>
       </div>
     </div>
   </div>
@@ -328,10 +333,10 @@
 
  <div class="wrap">
   <div class="shead">
-    <div><span class="eyebrow reveal">O Produto</span>
+    <div><span class="eyebrow reveal">O Empreendimento</span>
       <h2 class="kicker reveal" style="color:var(--acc)">Casas<br>Sobrepostas</h2></div>
     <div><p class="lead reveal">Toda casa tem jardim. Aqui, cada apartamento tem o seu na varanda.</p>
-      <p class="dimtxt reveal" style="margin-top:16px"><b style="color:var(--acc);font-weight:400">E o jardim é a Z1.</b> A zona preservada em frente não é vista: é o quintal de cada unidade, e ninguém pode construir nela.</p></div>
+      <p class="dimtxt reveal" style="margin-top:16px"><b style="color:var(--acc);font-weight:400">E o jardim é a Z1.</b> A zona verde eternamente preservada. O quintal de cada apartamento.</p></div>
   </div>
 
   <div class="band reveal">
@@ -355,7 +360,7 @@
       <span class="tri-in">
         <span class="eyebrow">Mais Morás, menos carbono</span>
         <h4>ESG e<br>Sustentabilidade</h4>
-        <p>Quilômetros Solares: os painéis captam sol e guardam energia dedicada à recarga de elétricos. WELL, LEED for Homes, EDGE e IPTU Verde. Ventilação cruzada e luz natural em todos os ambientes.</p>
+        <p>Quilômetros Solares: os painéis captam o sol e guardam energia dedicada à recarga de elétricos. Certificações WELL, LEED for Homes e EDGE. IPTU Verde, ventilação cruzada e luz natural em todos os ambientes.</p>
       </span>
       <span class="tri-placa">
         <i>01</i><b>ESG e<br>Sustentabilidade</b><em>Toque para revelar</em>
@@ -367,7 +372,7 @@
       <span class="tri-in">
         <span class="eyebrow">A fachada é a obra</span>
         <h4>Arte e<br>Concurso</h4>
-        <p>Artistas brasileiros vão disputar espaço nos painéis internos e externos e na onça rupestre da fachada. A obra não entra no edifício. Ela é o edifício.</p>
+        <p>Artistas brasileiros vão disputar espaço nos painéis internos e externos. A obra não entra no edifício. Ela é o edifício.</p>
       </span>
       <span class="tri-placa">
         <i>02</i><b>Arte e<br>Concurso</b><em>Toque para revelar</em>
@@ -377,9 +382,9 @@
     <button class="tri" aria-expanded="false">
       <span class="tri-fundo" style="--foto-d:url(placas/placa-03-wellness.jpg);--foto-m:url(placas/placa-03-wellness-mob.jpg)"></span>
       <span class="tri-in">
-        <span class="eyebrow">Recuperação é treino</span>
+        <span class="eyebrow">Estado do Flow</span>
         <h4>Wellness e<br>Performance</h4>
-        <p>Piscina climatizada com raia, sauna, banheira de gelo, banheira quente, academia de última geração, cockpit simulador de Fórmula 1 e a Arena Multiverso.</p>
+        <p>Piscina climatizada com raia, sauna, banheira de gelo, banheira quente, academia de última geração, cockpit simulador de Fórmula 1, e-sports e a Arena Multiverso.</p>
       </span>
       <span class="tri-placa">
         <i>03</i><b>Wellness e<br>Performance</b><em>Toque para revelar</em>
@@ -389,9 +394,9 @@
     <button class="tri" aria-expanded="false">
       <span class="tri-fundo" style="--foto-d:url(placas/placa-04-tecnologia.jpg);--foto-m:url(placas/placa-04-tecnologia-mob.jpg)"></span>
       <span class="tri-in">
-        <span class="eyebrow">Construído no metaverso</span>
+        <span class="eyebrow">Construída no Metaverso</span>
         <h4>Tecnologia</h4>
-        <p>Cenarium: luz, clima, piso aquecido e cortina por toque, voz ou rotina. Seu Zé .Smart.IA, o porteiro virtual. E o protótipo BIM, onde o edifício existe inteiro antes do concreto.</p>
+        <p>Cenarium: o apartamento vira palco — luz, clima, piso aquecido e cortina por toque, voz ou rotina. O Sistema Camaleão responde na pele. Seu Zé .Smart.IA atende a portaria. E o protótipo BIM, onde cada peça existe antes do concreto.</p>
       </span>
       <span class="tri-placa">
         <i>04</i><b>Tecnologia</b><em>Toque para revelar</em>
@@ -403,8 +408,8 @@
   <div class="bim-in reveal">
     <div class="bim-head">
       <span class="eyebrow">Protótipo digital</span>
-      <p class="h2" style="margin-top:14px">O edifício existe inteiro<br>antes do concreto.</p>
-      <p class="dimtxt" style="margin-top:16px">Percorra sua unidade em escala real, escolha acabamentos e acompanhe a obra.</p>
+      <p class="h2" style="margin-top:14px">O edifício nasce digital<br>para depois virar concreto.</p>
+      <p class="dimtxt" style="margin-top:16px">O protótipo é o modelo que representa toda a construção do empreendimento. Cada parte tem a sua própria identidade. Controle e rastreabilidade absoluta.</p>
     </div>
     <a class="bim-cta" href="#" target="_blank" rel="noopener">
       <span class="bim-panel"></span>
@@ -427,7 +432,7 @@
     <div>
       <span class="eyebrow reveal">Pré-lançamento</span>
       <h2 class="h2 reveal" style="margin:20px 0 26px">A visita é<br><em>por convite.</em></h2>
-      <p class="body reveal">O estande de vendas do Morás Experience recebe por agendamento. Deixe seus dados e nossa equipe entra em contato para definir dia e horário.</p>
+      <p class="body reveal">O estande de vendas da Morás Experience recebe por agendamento. Deixe seus dados e nossa equipe entrará em contato.</p>
       <!-- resumo do percurso: monta sozinho com o que a pessoa fez -->
       <div class="resumo" id="resumo" aria-live="polite">
         <span class="eyebrow">Sua visita já começou</span>
@@ -635,9 +640,9 @@ function paintPh(){document.querySelectorAll('.ph[data-img],.perfil-bg[data-img]
 }catch(e){console.error('[Morás] bloco falhou:',e)}
 try{
 /* marquee, vocabulário oficial da marca */
-const VOC=['Estado da Arte','Escultura viva','Estilize seu cenário','Infinitamente Verde','A estética do sport luxury',
- 'Habita a arte','Mais Morás e menos carbono','O palco do seu cenário','Atemporal','Carbono Zero',
- 'Morás é Mais','Intensidade refinada','Liberdade acústica','Metaverso georreferenciado','Feito para durar'];
+const VOC=['Estado da Arte','Infinitamente Verde','Escultura viva','Estilize seu cenário',
+ 'A estética do sport luxury','Mais Morás e menos carbono','O palco do seu cenário','Atemporal',
+ 'Carbono Zero','Morás é Mais','Liberdade acústica','Metaverso georreferenciado','Feito para durar'];
 document.getElementById('marq').innerHTML=[...VOC,...VOC].map(v=>`<span>${v}</span>`).join('');
 }catch(e){console.error('[Morás] bloco falhou:',e)}
 try{
@@ -726,12 +731,12 @@ try{
    ══════════════════════════════════════════════════════ */
 const PERFIS=[
  {k:'Luxo Intelectual',e:'A cultura como valor',c:'#3A2A16',
-  p:'A cultura como novo vetor de valor. Onde o material é onipresente, a residência vira manifesto.',
+  p:'A cultura como novo vetor de valor. A residência vira seu próprio manifesto.',
   img:'1577720580479-7d839d829c73', arq:'perfil-01-intelectual'},
  {k:'Quiet Luxury',e:'Sofisticação discreta',c:'#2C2A22',
   p:'Paleta terrosa, estética contida e materialidade autoral. Exclusividade comunicada pelo silêncio.',
   img:'1615529162924-f8605388461d', arq:'perfil-02-quiet'},
- {k:'Luxo Tradicional',e:'Sofisticação declarada',c:'#3E1A10',
+ {k:'Luxo Tradicional',e:'Sofisticação clássica',c:'#3E1A10',
   p:'Paletas ricas, parcerias de grife e uma linguagem visual que celebra a conquista sem hesitar.',
   img:'1618221195710-dd6b41faaea6', arq:'perfil-03-tradicional'}];
 const pbox=document.getElementById('perfisGrid');
@@ -795,11 +800,11 @@ try{
    ══════════════════════════════════════════════════════════════ */
 const EST=[
  {v:0,  n:'Acordando',   s:'Flex Cave em transição',
-  d:'Metade aberta, metade fechada. Cada morador decide o seu ponto. A fachada nunca é a mesma duas vezes, porque é a soma de dezoito escolhas.'},
+  d:'Metade aberta, metade fechada. Cada morador decide o seu momento. A fachada nunca é a mesma, porque é a soma de infinitas escolhas.'},
  {v:50, n:'Trabalhando', s:'Flex Cave aberto',
   d:'Placas recolhidas. A Z1 entra como extensão natural da unidade. Luz, ventilação cruzada e a copa das árvores dentro de casa.'},
  {v:100,n:'Dormindo',    s:'Flex Cave fechado',
-  d:'Placas totalmente fechadas. O edifício vira um bloco maciço. Privacidade absoluta, isolamento acústico e térmico no limite. A caverna pessoal.'}];
+  d:'Placas totalmente fechadas. O edifício vira um bloco maciço. Privacidade absoluta, isolamento acústico e térmico no limite. A sua caverna pessoal.'}];
 
 const fRail=document.getElementById('fachRail'), fKnob=document.getElementById('fachKnob'),
       fFill=document.getElementById('fachFill'), fImgs=[...document.querySelectorAll('.fach-img')],
@@ -896,6 +901,27 @@ secFach.addEventListener('keydown',e=>{
 });
 
 fStops.forEach(s=>s.addEventListener('click',ev=>{ev.stopPropagation();pintaFachada(+s.dataset.v)}));
+
+/* ══ AS DUAS PELES ═════════════════════════════════════════════
+   A fachada tem duas camadas e a imagem é a mesma nas duas. Em vez
+   de repetir a foto, o seletor troca o texto e acende a camada
+   correspondente sobre o render: a externa é a placa de corten, a
+   interna é a cortina de vidro. Uma interface, dois aprendizados.
+   ════════════════════════════════════════════════════════════ */
+const PELES={
+  ext:['Flex Cave.','Placas com propriedades isolantes acústicas e de luminosidade.'],
+  int:['Cortina de Vidro.','Barra os raios UV e condiciona o ambiente por dentro.']
+};
+const peleTxt=document.getElementById('peleTxt');
+document.querySelectorAll('.pele').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.pele').forEach(x=>{
+    const on=x===b; x.classList.toggle('on',on); x.setAttribute('aria-selected',on);
+  });
+  const [t,d]=PELES[b.dataset.p];
+  peleTxt.innerHTML=`<b>${t}</b> ${d}`;
+  secFach.dataset.pele=b.dataset.p;
+}));
+secFach.dataset.pele='ext';
 addEventListener('resize',()=>pintaFachada(fVal));
 pintaFachada(0);
 

@@ -2218,12 +2218,6 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
 
 /* rótulo mais presente: corpo maior, mais opaco, e um fio curto
    antes dele. Ele para de parecer solto porque ganha âncora. */
-.hero-metros .hm-lbl{display:flex;align-items:center;gap:9px;margin:0 0 9px;
-  font-family:var(--sans);font-size:8.5px;font-weight:600;
-  letter-spacing:.34em;text-transform:uppercase;
-  color:var(--corten);opacity:.9}
-.hero-metros .hm-lbl::before{content:"";width:16px;height:1px;
-  background:currentColor;opacity:.55;flex:none}
 
 .hero-metros .hm-linha{display:flex;align-items:baseline;gap:10px}
 .hero-metros .hm-n{font-family:var(--serif);font-weight:400;
@@ -2268,9 +2262,7 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
 /* ── CELULAR · 118px de parede limpa, medidos na foto ──────── */
 @media(max-width:640px){
   .hero-metros{margin-top:11px;max-width:104px}
-  .hero-metros .hm-lbl{font-size:6px;letter-spacing:.24em;gap:5px;margin-bottom:6px}
-  .hero-metros .hm-lbl::before{width:9px}
-  .hero-metros .hm-linha{flex-wrap:wrap;gap:1px 7px}
+      .hero-metros .hm-linha{flex-wrap:wrap;gap:1px 7px}
   .hero-metros .hm-n{font-size:16.5px}
   .hero-metros .hm-tra{width:12px}
   .hero-metros .hm-un{font-size:7px;padding-bottom:.24em}
@@ -2384,8 +2376,7 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
     top:50%;translate:0 -50%;max-width:min(40vw,320px);padding:0;background:none}
   .lockup{width:min(240px,30vw)}
   .hero-metros{margin-top:16px;max-width:none}
-  .hero-metros .hm-lbl{font-size:7.5px;letter-spacing:.3em}
-  .hero-metros .hm-n{font-size:20px}
+    .hero-metros .hm-n{font-size:20px}
   .hero-metros .hm-tra{width:14px}
   .hero-metros .hm-un{font-size:8px}
   .hero-metros .hm-regua{width:56px}
@@ -2479,30 +2470,30 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
    ──────────────────────────────────────────────────────────── */
 /* a transparencia mora no stroke-opacity, nao na cor: assim a
    passagem da onda tem para onde subir */
-.ring{fill:none;stroke:var(--corten);stroke-width:1.3;stroke-opacity:.24;
-  animation:orbita 10s ease-in-out infinite}
-.ring:nth-of-type(1){animation-delay:.35s}
-.ring:nth-of-type(2){animation-delay:.75s}
-.ring:nth-of-type(3){animation-delay:1.15s}
-.ring:nth-of-type(4){animation-delay:1.85s}
-.ring:nth-of-type(5){animation-delay:2.7s}
+.ring{fill:none;stroke:var(--corten);stroke-width:1.4;stroke-opacity:.42;
+  animation:orbita 7s ease-in-out infinite}
+.ring:nth-of-type(1){animation-delay:.3s}
+.ring:nth-of-type(2){animation-delay:.6s}
+.ring:nth-of-type(3){animation-delay:.95s}
+.ring:nth-of-type(4){animation-delay:1.5s}
+.ring:nth-of-type(5){animation-delay:2.2s}
 @keyframes orbita{
-  0%,16%,100%{stroke-opacity:.24}
-  6%         {stroke-opacity:.62}
+  0%,18%,100%{stroke-opacity:.42}
+  7%         {stroke-opacity:.85}
 }
 
-.varre{fill:none;stroke:var(--corten);stroke-width:1.1;opacity:0;
+.varre{fill:none;stroke:var(--corten);stroke-width:1.3;opacity:0;
   transform-origin:300px 300px}
-.v1{animation:varrer 10s cubic-bezier(.25,.6,.35,1) infinite}
+.v1{animation:varrer 7s cubic-bezier(.25,.6,.35,1) infinite}
 /* a segunda vem logo atrás da primeira: uma onda com profundidade,
    não duas ondas separadas */
-.v2{animation:varrer 10s cubic-bezier(.25,.6,.35,1) infinite .55s;
+.v2{animation:varrer 7s cubic-bezier(.25,.6,.35,1) infinite .5s;
   stroke-width:.7;opacity:0}
 @keyframes varrer{
    0%  {r:12;  opacity:0}
-   3%  {opacity:.5}
-  22%  {opacity:.22}
-  33%  {r:236; opacity:0}
+   4%  {opacity:.75}
+  28%  {opacity:.34}
+  44%  {r:236; opacity:0}
  100%  {r:236; opacity:0}
 }
 @media(prefers-reduced-motion:reduce){
@@ -2579,4 +2570,55 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
   .cat{font-size:12.5px;padding:13px 0}
   .cat-lista li span{font-size:13px}
   .cat-lista{max-height:none}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   48. AS DUAS PELES E OS TEXTOS NOVOS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── SISTEMA CAMALEÃO · a etiqueta pulsa ─────────────────────
+   É o nome do sistema que a seção inteira demonstra. Merece peso.
+   ──────────────────────────────────────────────────────────── */
+#fachada .fach-side>.eyebrow{font-weight:700;letter-spacing:.3em;
+  color:var(--marca);animation:camaleao 3.4s ease-in-out infinite}
+@keyframes camaleao{0%,100%{opacity:.72} 50%{opacity:1}}
+
+/* ── AS DUAS PELES ───────────────────────────────────────────
+   Duas camadas físicas, uma imagem só. O seletor troca o texto e
+   acende a camada correspondente sobre o render.
+   ──────────────────────────────────────────────────────────── */
+.pele-sel{display:flex;gap:0;margin-top:clamp(20px,2.4vw,30px);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.pele{all:unset;flex:1;cursor:pointer;display:flex;align-items:baseline;gap:9px;
+  padding:clamp(12px,1.4vw,17px) 0;font-family:var(--sans);
+  font-size:9px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--dim);transition:color .45s var(--e)}
+.pele i{font-style:normal;font-family:var(--serif);font-size:11px;
+  letter-spacing:.1em;opacity:.65;transition:opacity .4s var(--e)}
+.pele:hover{color:var(--fg)}
+.pele.on{color:var(--marca-lit)}
+.pele.on i{opacity:1;color:var(--marca)}
+.pele+.pele{border-left:1px solid var(--rule);padding-left:clamp(14px,1.8vw,24px)}
+.pele:focus-visible{outline:1px solid var(--marca);outline-offset:3px}
+
+.pele-txt{margin-top:clamp(13px,1.5vw,18px);font-size:13.5px;line-height:1.8;
+  color:var(--dim);max-width:38ch;min-height:3.4em}
+.pele-txt b{font-family:var(--serif);font-weight:400;font-size:15px;
+  color:var(--marca-lit);margin-right:4px}
+
+/* a camada acesa aparece sobre o render, discreta */
+.fach-stage::after{content:"";position:absolute;inset:0;z-index:3;
+  pointer-events:none;opacity:0;transition:opacity .8s var(--e)}
+#fachada[data-pele="ext"] .fach-stage::after{opacity:1;
+  background:linear-gradient(180deg,transparent 55%,rgba(81,29,5,.24))}
+#fachada[data-pele="int"] .fach-stage::after{opacity:1;
+  background:linear-gradient(180deg,rgba(120,170,200,.14),transparent 62%)}
+
+@media(max-width:640px){
+  .pele{font-size:8px;letter-spacing:.16em;gap:6px;padding:12px 0}
+  .pele+.pele{padding-left:12px}
+  .pele-txt{font-size:13px;min-height:0;max-width:none}
+}
+@media(prefers-reduced-motion:reduce){
+  #fachada .fach-side>.eyebrow{animation:none}
 }
