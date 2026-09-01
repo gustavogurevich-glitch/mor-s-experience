@@ -140,14 +140,10 @@ section{position:relative;padding:clamp(48px,5.6vw,92px) var(--pad)}
 .hero-note{position:absolute;right:var(--pad);bottom:16px;z-index:4;max-width:220px;
   font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);
   line-height:1.9;text-align:right}
-@media(max-width:900px){
+/* Empilhar o hero so faz sentido em celular. Ate 900px isto pegava
+   o iPad inteiro e produzia a faixa cinza sob a foto. */
+@media(max-width:640px){
   #hero{height:auto;min-height:0;padding-bottom:clamp(28px,6vw,48px)}
-  /* no celular a foto vira uma faixa própria, com a mulher enquadrada */
-  .plate{position:relative;inset:auto;width:100%;aspect-ratio:4/3;
-    background-position:78% center;background-size:cover}
-  .veil{display:none}
-  .hero-in{position:relative;top:auto;translate:0;max-width:none;
-    padding:clamp(24px,6vw,40px) var(--pad) 0}
   .cue,.hero-note{display:none}
 }
 
@@ -761,7 +757,8 @@ section{padding:clamp(58px,6.2vw,108px) var(--pad)}
   .fach{grid-template-columns:1fr}
   .fach-state{min-height:0}
 }
-@media(max-width:820px){
+/* era escrito para celular mas valia ate 820px, invadindo o iPad */
+@media(max-width:640px){
   section{padding:52px var(--pad)}
   #hero{height:auto;min-height:0;padding:0}
   #fachada{padding:0}
@@ -769,7 +766,7 @@ section{padding:clamp(58px,6.2vw,108px) var(--pad)}
   .h2{font-size:clamp(22px,6.4vw,32px)}
   .lead{font-size:17px;max-width:none}
   .body,.dimtxt{max-width:none;font-size:15px}
-    .stage,    .fach-stage{aspect-ratio:1/1}
+  .stage,.fach-stage{aspect-ratio:1/1}
   #contato .h2{font-size:clamp(26px,7.4vw,38px)}
   .field input,.field select{font-size:16px}
 }
@@ -1918,7 +1915,7 @@ body.mm-on .mm-links a{opacity:1;translate:0}
 .tri.espia .tri-in{opacity:.5;translate:0 6px;transition:opacity .5s var(--e)}
 
 /* ── MAPA DE CALOR · o controle pede para ser arrastado ────── */
-.dica-arrasta{display:flex;align-items:center;gap:9px;margin-top:10px;
+.dica-arrasta{display:flex;align-items:center;gap:9px;margin-top:16px;
   font-size:8px;letter-spacing:.26em;text-transform:uppercase;color:var(--acc);
   opacity:0;translate:-6px 0;
   transition:opacity .6s var(--e),translate .6s var(--e)}
@@ -2197,87 +2194,389 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
 
 
 /* ═══════════════════════════════════════════════════════════════
-   44. A METRAGEM · uma definição, e só uma
-   Isto estava escrito em DEZ lugares do arquivo, herança de todas
-   as rodadas anteriores. Uma delas dizia
-       .hero-metros b { font-family: serif; font-weight: 500 }
-   e os números são <b>. Aquela regra é mais específica que a que
-   eu tinha escrito, então venciam a serifada fina e o cinza —
-   e por isso os números liam apagados.
-   Tudo apagado, tudo reescrito aqui. Não replicar em outro lugar.
+   44. O BLOCO DE DADOS DO HERO
+   ═══════════════════════════════════════════════════════════════
+   O erro anterior era de FAMÍLIA, não de tamanho: Archivo Bold 700
+   é numeral de painel de controle. Lê como dashboard, não como
+   marca — daí "pesado" e "artificial".
+
+   A gramática de lançamento de superluxo para número é sempre a
+   mesma: a serifada de display da própria marca, em peso leve,
+   com rótulo minúsculo em versalete muito espaçado por cima.
+   O número não grita; ele assina. Aqui é Bodoni Moda 400 — a
+   mesma serifada do logo — então a metragem passa a PERTENCER
+   à assinatura em vez de flutuar solta ao lado dela.
+
+   São dois dados com hierarquias diferentes: a metragem é a
+   manchete, as vagas são nota de rodapé. Tratá-los igual
+   achataria os dois.
    ═══════════════════════════════════════════════════════════════ */
 .hero-metros{display:block;background:none;border:0;padding:0;box-shadow:none;
   -webkit-backdrop-filter:none;backdrop-filter:none;
-  margin-top:clamp(16px,1.8vw,24px);max-width:max-content}
+  margin-top:clamp(14px,1.6vw,21px);max-width:max-content}
 .hero-metros::before,.hero-metros::after{content:none;display:none}
 
-.hero-metros .hm-lbl{display:block;margin:0 0 8px;
+/* rótulo mais presente: corpo maior, mais opaco, e um fio curto
+   antes dele. Ele para de parecer solto porque ganha âncora. */
+.hero-metros .hm-lbl{display:flex;align-items:center;gap:9px;margin:0 0 9px;
   font-family:var(--sans);font-size:8.5px;font-weight:600;
-  letter-spacing:.3em;text-transform:uppercase;color:#5A2408}
+  letter-spacing:.34em;text-transform:uppercase;
+  color:var(--corten);opacity:.9}
+.hero-metros .hm-lbl::before{content:"";width:16px;height:1px;
+  background:currentColor;opacity:.55;flex:none}
 
-/* os números: Archivo bold, tabular, corten escuro.
-   Especificidade acima de qualquer .hero-metros b que reapareça. */
 .hero-metros .hm-linha{display:flex;align-items:baseline;gap:10px}
-.hero-metros .hm-n{font-family:var(--sans);font-weight:700;
-  font-size:clamp(21px,2vw,29px);line-height:1;letter-spacing:-.025em;
-  color:#3F1604;font-variant-numeric:tabular-nums lining-nums;
+.hero-metros .hm-n{font-family:var(--serif);font-weight:400;
+  font-size:clamp(20px,1.85vw,27px);line-height:1;letter-spacing:0;
+  color:#411805;font-variant-numeric:lining-nums tabular-nums;
   font-feature-settings:"tnum" 1,"lnum" 1}
-.hero-metros .hm-tra{width:22px;height:2px;background:#3F1604;opacity:.45;
+.hero-metros .hm-tra{width:17px;height:1px;background:#411805;opacity:.42;
   align-self:center;flex:none;margin:0}
-.hero-metros .hm-un{font-family:var(--sans);font-size:11.5px;font-weight:600;
-  letter-spacing:.05em;color:#3F1604;opacity:.7;align-self:flex-end;
-  padding-bottom:.18em}
+.hero-metros .hm-un{font-family:var(--sans);font-size:9px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--corten);
+  opacity:.6;align-self:flex-end;padding-bottom:.34em}
 
-/* a régua acompanha exatamente a largura dos números, porque o
-   bloco é max-content. Ela mede o intervalo, não a tela. */
+/* régua de largura fixa: nunca alcança a poltrona, em tela nenhuma */
 .hero-metros .hm-regua{position:relative;display:flex;align-items:center;
-  width:100%;height:9px;margin-top:10px}
-.hero-metros .hm-marca{width:2px;height:9px;background:#3F1604;opacity:.6;
+  width:62px;height:7px;margin-top:10px}
+.hero-metros .hm-marca{width:1px;height:7px;background:#411805;opacity:.45;
   text-decoration:none;flex:none}
-.hero-metros .hm-fill{flex:1;height:2px;background:#3F1604;opacity:.3;
+.hero-metros .hm-fill{flex:1;height:1px;background:#411805;opacity:.28;
   text-decoration:none;transform-origin:left center;transform:scaleX(0);
   transition:transform .85s cubic-bezier(.16,1,.3,1)}
 .hero-metros.enchendo .hm-fill{transform:scaleX(1)}
-
-/* o ponto pulsa três vezes ao calibrar e depois fica aceso.
-   Piscar sem parar vira tique. */
-.hero-metros .hm-vivo{position:absolute;right:-3px;top:50%;translate:0 -50%;
-  width:7px;height:7px;border-radius:50%;background:var(--corten);
+.hero-metros .hm-vivo{position:absolute;right:-2px;top:50%;translate:0 -50%;
+  width:5px;height:5px;border-radius:50%;background:var(--corten);
   text-decoration:none;opacity:0;transition:opacity .5s var(--e)}
-.hero-metros.calibrado .hm-vivo{opacity:1;animation:pontoVivo 2.2s ease-in-out 3}
+.hero-metros.calibrado .hm-vivo{opacity:.9;animation:pontoVivo 2.2s ease-in-out 3}
 @keyframes pontoVivo{
-  0%,100%{box-shadow:0 0 0 0 rgba(81,29,5,.55)}
-  55%    {box-shadow:0 0 0 8px rgba(81,29,5,0)}
+  0%,100%{box-shadow:0 0 0 0 rgba(81,29,5,.45)}
+  55%    {box-shadow:0 0 0 6px rgba(81,29,5,0)}
 }
 
-/* ── CELULAR · medido na própria foto ────────────────────────
-   Medi onde a poltrona começa na altura em que este bloco fica:
-   sobram 118px de parede limpa. Eu tinha travado em 178px — 50px
-   a mais, e era por isso que o 477,78 caía em cima do sofá.
+/* as vagas: segundo dado, hierarquia menor. O numeral na serifada
+   para amarrar com a metragem; o rótulo em versalete. */
+.hero-metros .hm-extra{display:flex;align-items:baseline;gap:7px;
+  margin-top:clamp(11px,1.3vw,16px);
+  font-family:var(--sans);font-size:8.5px;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:var(--corten);opacity:.72}
+.hero-metros .hm-extra b{font-family:var(--serif);font-weight:400;
+  font-size:clamp(14px,1.15vw,17px);letter-spacing:0;color:#411805;
+  opacity:1;font-variant-numeric:lining-nums}
 
-   Em UMA linha, caber em 118px exigiria 11px de fonte: ilegível.
-   Em DUAS linhas cabe a 17px com folga. Então o intervalo quebra:
-   o mínimo e o traço em cima, o máximo e a unidade embaixo.
-   ──────────────────────────────────────────────────────────── */
+/* ── CELULAR · 118px de parede limpa, medidos na foto ──────── */
 @media(max-width:640px){
-  .hero-metros{margin-top:12px;max-width:104px}
-  .hero-metros .hm-lbl{font-size:6px;letter-spacing:.2em;margin-bottom:5px}
-  .hero-metros .hm-linha{flex-wrap:wrap;gap:2px 6px;align-items:baseline}
-  .hero-metros .hm-n{font-size:17px;letter-spacing:-.035em}
-  .hero-metros .hm-tra{width:13px;height:1.5px;opacity:.5}
-  .hero-metros .hm-un{font-size:8.5px;padding-bottom:.1em;opacity:.65}
-  .hero-metros .hm-regua{height:6px;margin-top:8px}
-  .hero-metros .hm-marca{height:6px;width:1.5px}
-  .hero-metros .hm-fill{height:1.5px}
-  .hero-metros .hm-vivo{width:5px;height:5px;right:-2px}
+  .hero-metros{margin-top:11px;max-width:104px}
+  .hero-metros .hm-lbl{font-size:6px;letter-spacing:.24em;gap:5px;margin-bottom:6px}
+  .hero-metros .hm-lbl::before{width:9px}
+  .hero-metros .hm-linha{flex-wrap:wrap;gap:1px 7px}
+  .hero-metros .hm-n{font-size:16.5px}
+  .hero-metros .hm-tra{width:12px}
+  .hero-metros .hm-un{font-size:7px;padding-bottom:.24em}
+  .hero-metros .hm-regua{width:48px;height:6px;margin-top:8px}
+  .hero-metros .hm-marca{height:6px}
+  .hero-metros .hm-vivo{width:4px;height:4px}
+  .hero-metros .hm-extra{margin-top:9px;font-size:6px;letter-spacing:.2em;gap:5px}
+  .hero-metros .hm-extra b{font-size:12px}
 }
 @media(max-width:380px){
-  .hero-metros{max-width:96px}
-  .hero-metros .hm-n{font-size:15.5px}
-  .hero-metros .hm-tra{width:11px}
+  .hero-metros{max-width:94px}
+  .hero-metros .hm-n{font-size:15px}
+  .hero-metros .hm-regua{width:40px}
 }
-
 @media(prefers-reduced-motion:reduce){
   .hero-metros.calibrado .hm-vivo{animation:none}
   .hero-metros .hm-fill{transition:none;transform:scaleX(1)}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   45. CONVITES DE FIM DE SEÇÃO E O RESUMO DO PERCURSO
+   ═══════════════════════════════════════════════════════════════
+   O buraco real de conversão: dava para atravessar Fachada,
+   Localização, Mapa de Calor e Flex Cave sem um único convite.
+   Só os botões flutuantes, que a pessoa aprende a ignorar.
+
+   Aqui o convite CONTINUA o argumento da seção em vez de
+   interromper: quem acabou de mexer na fachada é convidado a ver
+   as placas correndo de verdade; quem leu o mapa é convidado a
+   andar os cinco minutos. É a diferença entre um botão e uma
+   consequência.
+   ═══════════════════════════════════════════════════════════════ */
+.fecho{display:flex;align-items:center;justify-content:space-between;
+  gap:clamp(18px,2.6vw,44px);flex-wrap:wrap;
+  margin-top:clamp(30px,3.4vw,52px);padding-top:clamp(22px,2.6vw,32px);
+  border-top:1px solid var(--rule);text-decoration:none;
+  transition:border-color .5s var(--e)}
+.fecho:hover{border-top-color:var(--acc)}
+.fecho-txt{display:grid;gap:5px;min-width:min(100%,22ch)}
+.fecho-txt b{font-family:var(--serif);font-weight:400;
+  font-size:clamp(17px,1.6vw,23px);line-height:1.16;letter-spacing:-.015em;
+  color:var(--fg)}
+.fecho-txt em{font-style:normal;font-size:12.5px;line-height:1.6;color:var(--dim)}
+.fecho-ir{display:inline-flex;align-items:center;gap:10px;flex:none;
+  font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--acc);white-space:nowrap;
+  transition:gap .45s var(--e)}
+.fecho-ir s{width:20px;height:1px;background:currentColor;opacity:.5;
+  text-decoration:none;transition:width .45s var(--e)}
+.fecho-ir svg{width:15px;height:15px;transition:transform .45s var(--e)}
+.fecho:hover .fecho-ir s{width:34px}
+.fecho:hover .fecho-ir svg{transform:translateX(4px)}
+/* dentro do Flex Cave o convite é só a linha, sobre a cena */
+.fecho-claro{border-top-color:rgba(239,235,226,.28);margin-top:22px;
+  padding-top:18px;justify-content:flex-start}
+.fecho-claro .fecho-ir{color:var(--marca-lit)}
+@media(max-width:640px){
+  .fecho{gap:14px;margin-top:26px;padding-top:20px}
+  .fecho-txt b{font-size:17px}
+  .fecho-txt em{font-size:12.5px}
+  .fecho-ir{font-size:8.5px;letter-spacing:.2em}
+}
+
+/* ── O RESUMO DO PERCURSO ────────────────────────────────────
+   O site já sabe o perfil, a tipologia aberta e o raio escolhido.
+   Devolver isso antes do formulário mostra que a pessoa foi
+   acompanhada — e o time recebe o contato já contextualizado.
+   ──────────────────────────────────────────────────────────── */
+.resumo{overflow:hidden;max-height:0;opacity:0;margin-top:0;
+  padding:0 0 0 clamp(16px,1.8vw,24px);border-left:2px solid transparent;
+  transition:max-height .9s var(--e),opacity .7s var(--e),
+             margin-top .9s var(--e),padding .9s var(--e),border-color .7s var(--e)}
+.resumo.on{max-height:340px;opacity:1;margin-top:clamp(26px,3vw,38px);
+  padding-top:clamp(16px,1.8vw,22px);padding-bottom:clamp(16px,1.8vw,22px);
+  border-left-color:var(--acc)}
+.resumo .eyebrow{color:var(--acc)}
+.resumo ul{list-style:none;margin:clamp(12px,1.4vw,18px) 0 0;display:grid;gap:11px}
+.resumo li{display:grid;gap:3px}
+.resumo li em{font-style:normal;font-size:8px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--dim)}
+.resumo li b{font-family:var(--serif);font-weight:400;
+  font-size:clamp(16px,1.5vw,21px);line-height:1.1;letter-spacing:-.015em;
+  color:var(--fg)}
+.resumo-pe{margin-top:clamp(12px,1.4vw,18px);font-size:11.5px;
+  line-height:1.7;color:var(--dim)}
+
+/* ═══════════════════════════════════════════════════════════════
+   46. IPAD · a faixa que não tinha dono
+   ═══════════════════════════════════════════════════════════════
+   Entre 641 e 1024px o site herdava regras do celular escritas
+   para 900px. O hero empilhava e aparecia a faixa cinza do fundo.
+
+   O iPad não é um celular grande nem um computador pequeno: é
+   uma tela ALTA e larga ao mesmo tempo. A foto do computador
+   (2312x941, bem deitada) cortada numa janela alta perde toda a
+   parede — sobra só a mulher. Por isso aqui entra a foto do
+   celular, que é quase quadrada e tem 36% de parede limpa.
+   ═══════════════════════════════════════════════════════════════ */
+@media(min-width:641px) and (max-width:1024px){
+  #fachada{padding:0}
+
+  /* ── HERO · a mesma composição do computador, com a foto certa ── */
+  #hero{position:relative;height:82svh;min-height:620px;padding:0;
+    overflow:hidden;background:var(--branco);display:block}
+  .plate{position:absolute;inset:0;order:0;
+    background:url(hero-paper-mob.jpg) center center/cover no-repeat;
+    aspect-ratio:auto}
+  .veil{display:block;position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(98deg,rgba(238,233,224,.6),rgba(238,233,224,.22) 38%,transparent 56%)}
+  .hero-in{position:absolute;z-index:3;left:var(--pad);right:auto;
+    top:50%;translate:0 -50%;max-width:min(40vw,320px);padding:0;background:none}
+  .lockup{width:min(240px,30vw)}
+  .hero-metros{margin-top:16px;max-width:none}
+  .hero-metros .hm-lbl{font-size:7.5px;letter-spacing:.3em}
+  .hero-metros .hm-n{font-size:20px}
+  .hero-metros .hm-tra{width:14px}
+  .hero-metros .hm-un{font-size:8px}
+  .hero-metros .hm-regua{width:56px}
+  .hero-metros .hm-extra{font-size:7.5px}
+  .hero-metros .hm-extra b{font-size:13px}
+  .cue{display:flex;bottom:26px}
+  .hero-note{display:none}
+
+  /* ── o resto do site nesta faixa ─────────────────────────────
+     Duas colunas onde couber, uma onde não couber. Nada de três. */
+  section{padding:clamp(56px,6vw,84px) var(--pad)}
+  .kicker{font-size:clamp(32px,4.8vw,52px)}
+  .lead{font-size:clamp(16px,1.9vw,20px);max-width:44ch}
+  .dimtxt{font-size:14px;max-width:46ch}
+
+  .perfis{grid-template-columns:repeat(3,1fr);height:clamp(360px,42vw,460px)}
+  .perfil-in h3{font-size:clamp(18px,2.4vw,24px)}
+  .perfil-in p{font-size:12.5px}
+  .perfil-cta{font-size:8px;letter-spacing:.22em}
+
+  .fach{grid-template-columns:1fr}
+  .fach-stage{aspect-ratio:16/11}
+  .fach-side{padding:clamp(34px,4.4vw,52px) var(--pad)}
+  .fach-state{min-height:0}
+
+  .plotter{grid-template-columns:1fr;gap:clamp(24px,3vw,40px)}
+  .plot-frame{max-width:min(100%,680px);margin-inline:auto}
+  .plot-side{max-width:680px;margin-inline:auto;width:100%}
+  .anel li{grid-template-columns:auto auto auto 1fr}
+
+  .mshell{display:flex;flex-direction:column;gap:26px}
+  .stage{order:1;max-width:min(100%,600px);margin-inline:auto}
+  .panel{order:2;max-width:680px;margin-inline:auto;width:100%}
+  .mfoot{justify-content:center;gap:16px 40px}
+
+  #flexcave{height:170vh}
+  .fc-copy h2{font-size:clamp(30px,4.4vw,44px)}
+
+  .band{grid-template-columns:repeat(2,1fr)}
+  .band>div:nth-child(3){border-left:0}
+  .typo-wrap{grid-template-columns:1fr}
+  .typo-nav{grid-template-columns:repeat(2,1fr);gap:0 clamp(18px,3vw,34px)}
+  .typo-panel{grid-template-columns:1fr}
+  .carr-q{aspect-ratio:16/11}
+  .trio{grid-template-columns:repeat(2,1fr)}
+  .tri{min-height:clamp(280px,34vw,360px)}
+
+  .conv{grid-template-columns:1fr;gap:clamp(32px,4.4vw,52px)}
+  .fg{grid-template-columns:1fr 1fr}
+  .fg>div:first-child{grid-column:1/-1}
+
+  /* o bicho e os botões flutuantes ganham escala de tablet */
+  .egg i{width:clamp(38px,4.4vw,50px)}
+  .zap-btn{height:66px}
+  .zap-btn::before,.zap-btn svg{width:66px}
+  .zap-btn svg{height:26px}
+}
+
+/* iPad em pé é mais estreito: os perfis param de caber em três */
+@media(min-width:641px) and (max-width:820px){
+  .perfis{grid-template-columns:1fr;height:auto}
+  .perfil{min-height:clamp(300px,44vw,400px)}
+  .trio{grid-template-columns:1fr}
+  .band{grid-template-columns:1fr}
+  .band>div{border-left:0;border-top:1px solid var(--rule)}
+  .band>div:first-child{border-top:0}
+  .fg{grid-template-columns:1fr}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   47. O MAPA DE CALOR VIRA RADAR, E A TABELA VIRA LISTA
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── A RÉGUA DO HERO acompanha a largura dos números ──────────
+   Largura fixa só faz sentido no celular, onde a parede é curta.
+   No computador e no tablet ela mede o que está acima dela.
+   ──────────────────────────────────────────────────────────── */
+@media(min-width:641px){
+  .hero-metros .hm-regua{width:100%}
+}
+
+/* ── VARREDURA · uma onda a cada 10 segundos ─────────────────
+   As órbitas eram cinza neutro (--rule). Agora são corten diluído
+   e um pouco mais grossas: o desenho ganha a cor da marca sem
+   ficar pesado.
+
+   A onda é um fio fino de corten puro que sai do centro e some
+   na última órbita em pouco mais de 3 segundos. Depois o mapa
+   descansa 7. Uma vez a cada 10 segundos é presença; a cada 3
+   seria tique.
+   ──────────────────────────────────────────────────────────── */
+/* a transparencia mora no stroke-opacity, nao na cor: assim a
+   passagem da onda tem para onde subir */
+.ring{fill:none;stroke:var(--corten);stroke-width:1.3;stroke-opacity:.24;
+  animation:orbita 10s ease-in-out infinite}
+.ring:nth-of-type(1){animation-delay:.35s}
+.ring:nth-of-type(2){animation-delay:.75s}
+.ring:nth-of-type(3){animation-delay:1.15s}
+.ring:nth-of-type(4){animation-delay:1.85s}
+.ring:nth-of-type(5){animation-delay:2.7s}
+@keyframes orbita{
+  0%,16%,100%{stroke-opacity:.24}
+  6%         {stroke-opacity:.62}
+}
+
+.varre{fill:none;stroke:var(--corten);stroke-width:1.1;opacity:0;
+  transform-origin:300px 300px}
+.v1{animation:varrer 10s cubic-bezier(.25,.6,.35,1) infinite}
+/* a segunda vem logo atrás da primeira: uma onda com profundidade,
+   não duas ondas separadas */
+.v2{animation:varrer 10s cubic-bezier(.25,.6,.35,1) infinite .55s;
+  stroke-width:.7;opacity:0}
+@keyframes varrer{
+   0%  {r:12;  opacity:0}
+   3%  {opacity:.5}
+  22%  {opacity:.22}
+  33%  {r:236; opacity:0}
+ 100%  {r:236; opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .varre,.ring{animation:none}
+  .varre{opacity:0}
+}
+
+/* ── A TABELA VIRA LISTA SUSPENSA ────────────────────────────
+   Cada categoria abre com os nomes e a distância real. Abrir uma
+   isola ela no desenho: uma ação, um resultado.
+   ──────────────────────────────────────────────────────────── */
+.cat-grupo{border-top:1px solid var(--rule)}
+.cat-grupo:first-child{border-top:0}
+.cat{all:unset;display:grid;grid-template-columns:auto 1fr auto auto;
+  align-items:center;gap:11px;width:100%;cursor:pointer;
+  padding:11px 0;font-family:var(--sans);font-size:11.5px;
+  transition:color .35s var(--e)}
+.cat .dot{width:7px;height:7px;border-radius:50%;flex:none;
+  transition:transform .4s var(--e),box-shadow .4s var(--e)}
+.cat-nome{text-align:left}
+.cat .n{font-size:10.5px;color:var(--dim);font-variant-numeric:tabular-nums;
+  transition:color .35s var(--e)}
+.cat .n.zero{opacity:.35}
+.cat-seta{position:relative;width:9px;height:9px;opacity:.45;
+  transition:transform .45s var(--e),opacity .35s var(--e)}
+.cat-seta::before,.cat-seta::after{content:"";position:absolute;background:currentColor}
+.cat-seta::before{left:0;top:4px;width:9px;height:1px}
+.cat-seta::after{top:0;left:4px;height:9px;width:1px;
+  transition:transform .45s var(--e)}
+.cat:hover{color:var(--acc)}
+.cat:hover .dot{transform:scale(1.35)}
+.cat:hover .cat-seta{opacity:1}
+.cat:focus-visible{outline:1px solid var(--acc);outline-offset:3px}
+
+.cat-grupo.aberta .cat{color:var(--acc)}
+.cat-grupo.aberta .cat .dot{transform:scale(1.5);
+  box-shadow:0 0 0 4px color-mix(in srgb,currentColor 12%,transparent)}
+.cat-grupo.aberta .cat-seta{opacity:1}
+.cat-grupo.aberta .cat-seta::after{transform:scaleY(0)}
+/* as outras recuam quando uma está aberta */
+.cats.isolando .cat-grupo:not(.aberta){opacity:.42}
+.cats .cat-grupo{transition:opacity .45s var(--e)}
+.cat-grupo.vazia .cat-nome{opacity:.4}
+
+/* o corpo que desce */
+.cat-corpo{display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .6s var(--e)}
+.cat-grupo.aberta .cat-corpo{grid-template-rows:1fr}
+.cat-corpo>div{overflow:hidden}
+.cat-resumo{margin:0 0 10px;padding-left:18px;
+  font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);
+  opacity:.75}
+.cat-lista{list-style:none;margin:0 0 14px;padding:0 0 0 18px;
+  display:grid;gap:1px;max-height:min(46vh,320px);overflow-y:auto;
+  scrollbar-width:thin}
+.cat-lista li{display:flex;align-items:baseline;justify-content:space-between;
+  gap:14px;padding:7px 10px 7px 0;border-radius:2px;
+  transition:background .4s var(--e)}
+.cat-lista li span{font-size:12px;line-height:1.45;color:var(--fg);opacity:.88}
+.cat-lista li em{font-style:normal;flex:none;font-family:var(--serif);
+  font-size:13px;color:var(--acc);font-variant-numeric:tabular-nums}
+.cat-lista li em i{font-style:normal;font-family:var(--sans);font-size:7.5px;
+  letter-spacing:.16em;text-transform:uppercase;opacity:.6;margin-left:3px}
+.cat-lista li.achado{background:color-mix(in srgb,var(--acc) 12%,transparent)}
+.cat-vazio{display:none;margin:0 0 14px;padding-left:18px;
+  font-size:11.5px;line-height:1.6;color:var(--dim)}
+.cat-grupo.vazia.aberta .cat-vazio{display:block}
+.cat-grupo.vazia.aberta .cat-lista,
+.cat-grupo.vazia.aberta .cat-resumo{display:none}
+
+/* o ponto no desenho fica clicável */
+.poi{cursor:pointer}
+@media(max-width:640px){
+  .cat{font-size:12.5px;padding:13px 0}
+  .cat-lista li span{font-size:13px}
+  .cat-lista{max-height:none}
 }

@@ -11,6 +11,10 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="favicon.png">
+<!-- o hero e o logo definem a primeira impressao: pedidos com prioridade -->
+<link rel="preload" as="image" href="hero-paper.jpg" media="(min-width:641px)" fetchpriority="high">
+<link rel="preload" as="image" href="hero-paper-mob.jpg" media="(max-width:640px)" fetchpriority="high">
+<link rel="preload" as="image" href="logo-corten.png" fetchpriority="high">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,7 +30,7 @@
 </div>
 
 <nav class="nav" id="nav">
-  <a href="#hero" class="nav-mark" aria-label="Morás Experience"><img src="simbolo-nav.png" alt="" width="400" height="264"></a>
+  <a href="#hero" class="nav-mark" aria-label="Morás Experience"><img src="simbolo-nav.png" alt="" width="400" height="264" decoding="async"></a>
   <div class="nav-right">
     <a href="#perfis" class="nl">Perfis</a>
     <a href="#fachada" class="nl">Fachada</a>
@@ -88,7 +92,7 @@
   <div class="plate"></div>
   <div class="veil"></div>
   <div class="hero-in">
-    <h1 class="lockup reveal"><img src="logo-corten.png" alt="Morás Experience" width="1400" height="1204"></h1>
+    <h1 class="lockup reveal"><img src="logo-corten.png" alt="Morás Experience" width="1400" height="1204" fetchpriority="high" decoding="async"></h1>
     <!-- Leitura de instrumento: os dois números são um INTERVALO,
          então ganham uma régua com marca em cada ponta e o trecho
          entre elas preenchido. O ponto na ponta direita pulsa. -->
@@ -104,6 +108,7 @@
         <s class="hm-marca"></s><s class="hm-fill"></s><s class="hm-marca"></s>
         <s class="hm-vivo"></s>
       </span>
+      <span class="hm-extra"><b>04</b>vagas por unidade</span>
     </div>
   </div>
   <div class="cue"><i></i><span>Desça</span></div>
@@ -171,6 +176,16 @@
         <i id="fachSub">Flex Cave em transição</i>
         <p id="fachDesc">Metade aberta, metade fechada. Cada morador decide o seu ponto. A fachada nunca é a mesma duas vezes, porque é a soma de dezoito escolhas.</p>
       </div>
+
+  <!-- convite de fim de seção: continua o argumento, não interrompe -->
+  <a class="fecho" href="#contato">
+    <span class="fecho-txt"><b>A fachada muda de verdade.</b><em>Na Loja você vê as placas correndo, em escala real.</em></span>
+    <span class="fecho-ir"><s></s>Agendar visita
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
+    </span>
+  </a>
     </div>
   </div>
 </section>
@@ -216,6 +231,16 @@
         <li><i>05</i><b>60</b><span>min</span><em>Paulista, Ibirapuera e o centro velho</em></li>
       </ol>
       <p class="plot-nota">Mapa esquemático, sem escala.<br>Tempos aproximados, a pé.</p>
+
+  <!-- convite de fim de seção: continua o argumento, não interrompe -->
+  <a class="fecho" href="#contato">
+    <span class="fecho-txt"><b>Ande esses cinco minutos com a gente.</b><em>A Loja fica na própria Rua Morás.</em></span>
+    <span class="fecho-ir"><s></s>Agendar visita
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
+    </span>
+  </a>
     </aside>
   </div>
  </div>
@@ -238,8 +263,8 @@
       <span class="eyebrow">Seu raio de caminhada</span>
       <div class="ctrl"><b id="radv">30</b><span class="eyebrow">min a pé</span></div>
       <input type="range" id="rad" min="3" max="75" value="30" step="1" aria-label="Minutos a pé">
-      <p class="dica-arrasta" id="dicaRaio"><s></s>Arraste para o lado</p>
       <div class="ticks"><span>3</span><span>15</span><span>30</span><span>45</span><span>75</span></div>
+      <p class="dica-arrasta" id="dicaRaio"><s></s>Arraste para o lado</p>
       <div class="cats" id="cats"></div>
       <div style="margin-top:24px;padding-top:18px;border-top:1px solid var(--rule)">
         <span class="eyebrow">Ao seu alcance</span>
@@ -254,6 +279,15 @@
     <div><span class="big">08</span> <span class="eyebrow" style="margin-left:9px">órbitas</span></div>
     <div><span class="big">05</span> <span class="eyebrow" style="margin-left:9px">anéis</span></div>
   </div>
+
+  <a class="fecho" href="#contato">
+    <span class="fecho-txt"><b>Cento e setenta e quatro endereços.</b><em>Levamos a lista impressa na visita.</em></span>
+    <span class="fecho-ir"><s></s>Agendar visita
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
+    </span>
+  </a>
  </div>
 </section>
 
@@ -272,6 +306,13 @@
     <div class="fc-copy">
       <span class="eyebrow" style="color:rgba(239,235,226,.5)">Sistema Camaleão · Pele externa</span>
       <h2>Flex Cave</h2>
+      <a class="fecho fecho-claro" href="#contato">
+        <span class="fecho-ir"><s></s>Ver a placa correr na Loja
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
       <div class="fc-state">
         <p id="fcs0">Aberto, expõe a vista Z1 como <b>extensão natural da unidade</b>.</p>
         <p id="fcs1" class="off">Fechado, cria uma <b>caverna pessoal</b> e grava a marca na fachada.</p>
@@ -387,6 +428,12 @@
       <span class="eyebrow reveal">Pré-lançamento</span>
       <h2 class="h2 reveal" style="margin:20px 0 26px">A visita é<br><em>por convite.</em></h2>
       <p class="body reveal">O estande de vendas do Morás Experience recebe por agendamento. Deixe seus dados e nossa equipe entra em contato para definir dia e horário.</p>
+      <!-- resumo do percurso: monta sozinho com o que a pessoa fez -->
+      <div class="resumo" id="resumo" aria-live="polite">
+        <span class="eyebrow">Sua visita já começou</span>
+        <ul id="resumoLista"></ul>
+        <p class="resumo-pe">Levamos isso pronto para a conversa.</p>
+      </div>
       <div class="perfil-eco" id="perfilEco" aria-live="polite"></div>
       <div class="gate reveal"><span class="eyebrow">Acesso antecipado</span>
         <p>Tem um código de convite? Plantas, tipologias e o tour no protótipo digital são liberados antes da abertura pública.</p></div>
@@ -405,6 +452,7 @@
           <option>Paisagismo</option>
           <option>Imprensa</option></select></div>
         <input type="hidden" id="perfilField" name="perfil">
+        <input type="hidden" id="resumoField" name="percurso">
         <button class="submit" type="submit">Agendar visita</button>
         <p class="legal">Placeholder. Substituir por texto de consentimento validado pelo jurídico (LGPD) e integrar ao CRM.</p>
       </form>
@@ -421,7 +469,7 @@
     <div class="fg">
       <div>
         <div style="display:flex;align-items:center;gap:14px;color:var(--marca)">
-          <img class="fmark" src="simbolo-creme.png" alt="" width="600" height="397">
+          <img class="fmark" src="simbolo-creme.png" alt="" width="600" height="397" loading="lazy" decoding="async">
           <div style="color:var(--branco)"><div style="font-family:var(--serif);font-size:17px;letter-spacing:.16em">MORÁS</div>
           <div class="eyebrow" style="margin-top:3px;color:var(--dim)">Experience</div></div></div>
         <p style="margin-top:26px;font-size:12.5px;color:var(--dim);max-width:30ch;line-height:1.85">Rua Morás, 458. Vila Madalena, São Paulo.<br>Estado da Arte, Infinitamente Verde.</p>
@@ -492,6 +540,29 @@ if(hMin&&hMax){
   }
 }
 }catch(e){console.error('[Morás] metragem falhou:',e)}
+
+/* ══ RESUMO DO PERCURSO ════════════════════════════════════════
+   O site já sabe três coisas sobre quem está lendo: o perfil que
+   escolheu, a tipologia que abriu e quantos minutos de caminhada
+   definiu. Em vez de perder isso, devolvo em forma de resumo logo
+   acima do formulário. A pessoa vê que foi acompanhada, e o time
+   recebe o contato já sabendo em que chave conversar.
+   ════════════════════════════════════════════════════════════ */
+window.RES={perfil:null,tipo:null,raio:null};
+window.pintaResumo=function(){
+  const cx=document.getElementById('resumo'), ul=document.getElementById('resumoLista');
+  if(!cx||!ul)return;
+  const itens=[];
+  const R=window.RES;
+  if(R.perfil) itens.push(['Perfil',R.perfil]);
+  if(R.tipo)   itens.push(['Tipologia que você abriu',R.tipo]);
+  if(R.raio)   itens.push(['Raio de caminhada',R.raio+' min a pé']);
+  if(!itens.length){cx.classList.remove('on');return;}
+  ul.innerHTML=itens.map(([a,b])=>`<li><em>${a}</em><b>${b}</b></li>`).join('');
+  cx.classList.add('on');
+  const campo=document.getElementById('resumoField');
+  if(campo)campo.value=itens.map(([a,b])=>a+': '+b).join(' | ');
+};
 
 /* ══ ORIENTAÇÃO ════════════════════════════════════════════════
    Duas coisas, nenhuma decorativa: quanto falta, e onde eu estou.
@@ -620,6 +691,7 @@ function paintTipo(i){
       <div class="carr-cont"><b>01</b><s></s><span>03</span></div>
     </div>`;
   ligaCarrossel(tpanel.querySelector('.carr'));
+  if(window.RES){window.RES.tipo=t.n;window.pintaResumo();}
 }
 
 function ligaCarrossel(c){
@@ -690,6 +762,7 @@ window.perfilEscolhido=null;
 
 function marcaPerfil(k){
   window.perfilEscolhido=k;
+  if(window.RES){window.RES.perfil=k;window.pintaResumo();}
   const f=document.getElementById('perfilField'); if(f)f.value=k||'';
 
   /* eco na seção da Visita, lá embaixo */
@@ -925,14 +998,15 @@ fv.addEventListener('submit', async ev=>{
     email: fv.querySelector('#e').value.trim(),
     tel:   fv.querySelector('#t').value.trim(),
     interesse: fv.querySelector('#i').value,
-    perfil: window.perfilEscolhido || (fv.querySelector('#perfilField')||{}).value || 'não informado'
+    perfil: window.perfilEscolhido || (fv.querySelector('#perfilField')||{}).value || 'não informado',
+    percurso: (fv.querySelector('#resumoField')||{}).value || '—'
   };
 
   /* rede de segurança: sem chave, abre o e-mail já escrito */
   if(!CHAVE_FORM){
     const corpo=encodeURIComponent(
       `Nome: ${d.nome}\nE-mail: ${d.email}\nTelefone: ${d.tel}\n`+
-      `Interesse: ${d.interesse}\nPerfil escolhido no site: ${d.perfil}\n`);
+      `Interesse: ${d.interesse}\nPerfil escolhido no site: ${d.perfil}\nPercurso no site: ${d.percurso}\n`);
     b.textContent='Abrindo seu e-mail…';
     location.href=`mailto:${DESTINO}?subject=${encodeURIComponent('Agendar visita — Morás Experience')}&body=${corpo}`;
     setTimeout(()=>{b.textContent=original},2500);
@@ -949,7 +1023,7 @@ fv.addEventListener('submit', async ev=>{
         subject:'Agendar visita — Morás Experience',
         from_name:'Site Morás Experience',
         Nome:d.nome, 'E-mail':d.email, Telefone:d.tel,
-        Interesse:d.interesse, 'Perfil escolhido':d.perfil
+        Interesse:d.interesse, 'Perfil escolhido':d.perfil, 'Percurso no site':d.percurso
       })
     });
     if(!(await r.json()).success) throw 0;
@@ -991,6 +1065,10 @@ const svg=document.getElementById('map'),tip=document.getElementById('tip'),stag
 const CX=300,CY=300;let parts='',total=0;
 RINGS.forEach(([m,r])=>{parts+=`<circle class="ring" cx="${CX}" cy="${CY}" r="${r*255}"/>
   <text class="rlbl" x="${CX+4}" y="${CY-r*255-5}">${m} min a pé</text>`});
+/* varredura: dois circulos defasados saindo do centro. E o que faz
+   o desenho parecer um radar vivo em vez de um grafico parado. */
+parts+=`<circle class="varre v1" cx="${CX}" cy="${CY}" r="10"/>
+  <circle class="varre v2" cx="${CX}" cy="${CY}" r="10"/>`;
 parts+=`<circle cx="${CX}" cy="${CY}" r="4.5" fill="var(--acc)"/>
   <circle cx="${CX}" cy="${CY}" r="13" fill="none" stroke="var(--acc)" stroke-width=".8" opacity=".5"/>
   <text class="corelbl" x="${CX}" y="${CY+30}" text-anchor="middle">Morás Experience</text>`;
@@ -1000,17 +1078,103 @@ CATS.forEach(cat=>{const LL=D[cat.k];total+=LL.length;
     parts+=`<g class="poi" data-c="${cat.k}" data-t="${it[1]}" data-n="${it[0].replace(/"/g,'')}" style="transform-origin:${CX}px ${CY}px">
       <circle cx="${x}" cy="${y}" r="3.1" fill="${cat.c}" opacity=".92"/><circle cx="${x}" cy="${y}" r="9" fill="transparent"/></g>`})});
 svg.innerHTML=parts;document.getElementById('total').textContent=total;
-const catBox=document.getElementById('cats'),on={};
-CATS.forEach(c=>{on[c.k]=true;const b=document.createElement('button');b.className='cat';
-  b.setAttribute('aria-pressed','true');
-  b.innerHTML=`<span class="dot" style="background:${c.c}"></span>${c.n}<span class="n">${D[c.k].length}</span>`;
-  b.onclick=()=>{on[c.k]=!on[c.k];b.setAttribute('aria-pressed',on[c.k]);draw()};catBox.appendChild(b)});
+/* ── A LISTA VIRA O CAMINHO PRINCIPAL ──────────────────────────
+   Antes: oito botões que ligavam e desligavam camadas, e os nomes
+   só apareciam passando o mouse em pontos de 3px. No celular isso
+   simplesmente não existia.
+
+   Agora cada categoria abre uma lista com os nomes e a distância
+   real, e abrir uma categoria ISOLA ela no desenho. Uma ação, um
+   resultado: cliquei em Gastronomia, vejo a gastronomia.
+
+   E tudo obedece ao raio: os números da tabela e os itens da lista
+   mostram só o que está dentro dos minutos escolhidos.
+   ──────────────────────────────────────────────────────────── */
+const catBox=document.getElementById('cats');
+let aberta=null;
+
+CATS.forEach(c=>{
+  const g=document.createElement('div');
+  g.className='cat-grupo'; g.dataset.k=c.k;
+  g.innerHTML=`
+    <button class="cat" aria-expanded="false">
+      <span class="dot" style="background:${c.c}"></span>
+      <span class="cat-nome">${c.n}</span>
+      <span class="n" data-total="${D[c.k].length}">${D[c.k].length}</span>
+      <span class="cat-seta" aria-hidden="true"></span>
+    </button>
+    <div class="cat-corpo"><div>
+      <p class="cat-resumo"></p>
+      <ul class="cat-lista"></ul>
+      <p class="cat-vazio">Nada nesse raio. Aumente os minutos e eles aparecem.</p>
+    </div></div>`;
+  g.querySelector('.cat').onclick=()=>{
+    aberta = (aberta===c.k) ? null : c.k;
+    catBox.querySelectorAll('.cat-grupo').forEach(x=>{
+      const ab = x.dataset.k===aberta;
+      x.classList.toggle('aberta',ab);
+      x.querySelector('.cat').setAttribute('aria-expanded',ab);
+    });
+    catBox.classList.toggle('isolando', !!aberta);
+    draw();
+  };
+  catBox.appendChild(g);
+});
+
 const rad=document.getElementById('rad'),radv=document.getElementById('radv'),cnt=document.getElementById('count');
-function draw(){const max=+rad.value;radv.textContent=max;let n=0;
-  svg.querySelectorAll('.poi').forEach(g=>{const v=on[g.dataset.c]&&+g.dataset.t<=max;
-    g.style.opacity=v?1:.05;g.style.transform=v?'scale(1)':'scale(.9)';if(v)n++});
-  cnt.textContent=n}
-rad.oninput=draw;draw();
+
+function draw(){
+  const max=+rad.value; radv.textContent=max;
+  if(window.RES&&window.RES.raio!==max){window.RES.raio=max;window.pintaResumo();}
+  let n=0;
+
+  /* pontos: dentro do raio, e se houver categoria aberta, só ela acende */
+  svg.querySelectorAll('.poi').forEach(g=>{
+    const dentro = +g.dataset.t<=max;
+    const foco   = !aberta || g.dataset.c===aberta;
+    if(dentro) n++;
+    g.style.opacity = dentro ? (foco?1:.09) : .04;
+    g.style.transform = dentro&&foco ? 'scale(1)' : 'scale(.9)';
+  });
+  cnt.textContent=n;
+
+  /* a tabela responde ao raio: número, lista e resumo */
+  CATS.forEach(c=>{
+    const g=catBox.querySelector(`.cat-grupo[data-k="${c.k}"]`);
+    const dentro=D[c.k].filter(it=>it[1]<=max).sort((a,b)=>a[1]-b[1]);
+    const num=g.querySelector('.n');
+    num.textContent=dentro.length;
+    num.classList.toggle('zero',dentro.length===0);
+    g.classList.toggle('vazia',dentro.length===0);
+
+    if(g.classList.contains('aberta')){
+      const ul=g.querySelector('.cat-lista');
+      ul.innerHTML=dentro.map(([nome,t])=>
+        `<li><span>${nome}</span><em>${t}<i>min</i></em></li>`).join('');
+      const res=g.querySelector('.cat-resumo');
+      res.textContent = dentro.length
+        ? `${dentro.length} ${dentro.length===1?'endereço':'endereços'} · do mais perto, a ${dentro[0][1]} minutos`
+        : '';
+    }
+  });
+}
+rad.oninput=draw; draw();
+
+/* clicar num ponto abre a categoria dele e destaca o nome na lista */
+svg.addEventListener('click',e=>{
+  const g=e.target.closest('.poi'); if(!g||+g.style.opacity<.5)return;
+  const b=catBox.querySelector(`.cat-grupo[data-k="${g.dataset.c}"] .cat`);
+  if(b && !b.closest('.cat-grupo').classList.contains('aberta')) b.click();
+  setTimeout(()=>{
+    const alvo=[...catBox.querySelectorAll(`.cat-grupo[data-k="${g.dataset.c}"] .cat-lista li`)]
+      .find(li=>li.querySelector('span').textContent===g.dataset.n);
+    if(alvo){alvo.classList.add('achado');
+      alvo.scrollIntoView({block:'nearest',behavior:'smooth'});
+      setTimeout(()=>alvo.classList.remove('achado'),2600);}
+  },420);
+});
+
+/* no computador o nome ainda aparece ao passar o mouse */
 svg.addEventListener('mouseover',e=>{const g=e.target.closest('.poi');if(!g||+g.style.opacity<.5)return;
   const r=g.querySelector('circle').getBoundingClientRect(),s=stage.getBoundingClientRect();
   tip.innerHTML=`<b>${g.dataset.n}</b><i>${g.dataset.t} min</i>`;
