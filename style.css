@@ -3185,3 +3185,165 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
   .hero-metros{inline-size:82px}
   .hero-metros .hm-n{font-size:12.5px}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   54. RODADA · SELO, CARTÕES, FACHADA, MAPA, SLOGAN, ESPECS
+   ═══════════════════════════════════════════════════════════════
+   Bloco AUTORITATIVO. Última palavra sobre tudo que toca.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 54.1 · O SELO GANHA CORPO ──────────────────────────────────
+   Fio fino demais some no chão claro do celular. Os números
+   sobem de escala, o traço engrossa, e as vagas passam a ter a
+   mesma métrica do selo em vez de flutuarem soltas embaixo.
+   ──────────────────────────────────────────────────────────── */
+@media(max-width:640px){
+  .hero-metros{inline-size:clamp(112px,31vw,126px)}
+  .hero-metros .hm-n{font-size:clamp(17px,4.6vw,19.5px);
+    font-weight:500;color:#3E1503;letter-spacing:.004em}
+  .hero-metros .hm-tra{width:24px;background:#3E1503;opacity:.45;margin:3px 0}
+  .hero-metros .hm-un{bottom:15px;font-size:6.5px;letter-spacing:.26em;opacity:.62}
+  .hero-metros::before{
+    background:repeating-conic-gradient(from -90deg,
+      rgba(62,21,3,.62) 0deg .7deg,transparent .7deg 6deg);
+    -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 7px),#000 calc(100% - 7px));
+            mask:radial-gradient(farthest-side,transparent calc(100% - 7px),#000 calc(100% - 7px))}
+  .hero-metros .hm-regua{inset:-9px;
+    background:conic-gradient(from -90deg,
+      #3E1503 calc(var(--p) * 1%),rgba(62,21,3,.24) 0);
+    -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 1.4px),#000 calc(100% - 1.4px));
+            mask:radial-gradient(farthest-side,transparent calc(100% - 1.4px),#000 calc(100% - 1.4px))}
+  .hero-metros .hm-vivo{top:-9px;width:5px;height:5px;background:#3E1503}
+
+  /* as vagas viram legenda alinhada ao logo, com o mesmo peso da
+     assinatura: numeral serifado e rótulo em versalete */
+  .hero-metros .hm-extra{left:0;bottom:-22px;gap:6px;opacity:.7;
+    font-size:6.5px;letter-spacing:.22em;color:#3E1503}
+  .hero-metros .hm-extra b{font-size:12px;opacity:1;color:#3E1503}
+  #hero .hero-in{gap:14px}
+}
+
+/* ── 54.2 · O NÚMERO ASSUME O CARTÃO ────────────────────────────
+   O versalete quebrando em quatro linhas curtas era o problema —
+   letra espaçada precisa de linha longa. Agora o 01 é grande e
+   serifado, o tema corre numa linha só ao lado dele, e o 01 do
+   canto (que estava quase invisível) deixou de existir: um número
+   por cartão basta, e esse é legível de longe.
+   ──────────────────────────────────────────────────────────── */
+.perfil-cab{display:flex;align-items:baseline;gap:clamp(11px,1.2vw,16px)}
+.perfil-num{position:static;flex:none;
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(30px,3vw,44px);line-height:.86;
+  color:var(--marca-lit);opacity:.92;
+  font-variant-numeric:lining-nums;
+  text-shadow:0 2px 14px rgba(0,0,0,.4)}
+.perfil-in h3{font-size:clamp(9px,.78vw,10.5px);letter-spacing:.26em;
+  max-width:none;white-space:nowrap;display:block;
+  color:var(--branco);opacity:.9;line-height:1.4;
+  text-shadow:0 1px 10px rgba(0,0,0,.45)}
+.perfil-in h3::before{content:none}
+.perfil-in{gap:0}
+
+@media(max-width:640px){
+  .perfil-num{font-size:34px}
+  .perfil-in h3{font-size:9.5px;letter-spacing:.24em}
+}
+@media(min-width:641px) and (max-width:1024px){
+  .perfil-num{font-size:clamp(26px,3.2vw,34px)}
+  .perfil-in h3{font-size:8.5px;letter-spacing:.2em}
+}
+@media(max-width:400px){
+  .perfil-in h3{font-size:8.5px;letter-spacing:.18em}
+}
+
+/* ── 54.3 · A FACHADA FECHA COM A TESE ──────────────────────────
+   Nova ordem: imagem, o que você acabou de ver, e só então o
+   Sistema Camaleão. O bloco final ganha um fio em cima para
+   marcar que ali muda o registro — sai o relato, entra o conceito.
+   ──────────────────────────────────────────────────────────── */
+.fach-tese{margin-top:clamp(30px,3.4vw,48px);
+  padding-top:clamp(26px,3vw,40px);border-top:1px solid var(--rule)}
+.fach-tese .kicker{margin-top:clamp(14px,1.5vw,20px)}
+.fach-state{margin-top:0}
+
+/* ── 54.4 · O MAPA PEDE MENOS LEITURA ───────────────────────────
+   Saíram a chamada de três linhas e a nota de rodapé. O convite
+   virou gatilho: versalete grande em corten com um fio na frente.
+   ──────────────────────────────────────────────────────────── */
+.plot-chama{display:flex;align-items:center;gap:13px;margin:0 0 clamp(16px,1.8vw,22px);
+  font-family:var(--sans);font-weight:600;
+  font-size:clamp(13px,1.15vw,16px);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--corten);line-height:1.3}
+.plot-chama s{flex:none;width:clamp(22px,2.4vw,34px);height:2px;
+  text-decoration:none;background:var(--corten);opacity:.85}
+.plot-txt{margin-top:0}
+@media(max-width:640px){
+  .plot-chama{font-size:13px;letter-spacing:.13em;gap:10px}
+  .plot-chama s{width:20px}
+}
+
+/* o CTA do Mapa de Calor sai de cena */
+.fecho-fora{display:none!important}
+
+/* ── 54.5 · O SLOGAN ASSINA O LETREIRO ──────────────────────────
+   Fio, versalete espaçado em creme, fio. Na mesma linha, sem
+   competir com o título — assina embaixo dele.
+   ──────────────────────────────────────────────────────────── */
+.slogan{display:flex;align-items:center;gap:clamp(12px,1.4vw,20px);
+  margin:clamp(16px,1.8vw,24px) 0 0;max-width:520px}
+.slogan s{flex:1;height:1px;text-decoration:none;
+  background:linear-gradient(90deg,transparent,var(--acc));opacity:.5}
+.slogan s:last-child{background:linear-gradient(90deg,var(--acc),transparent)}
+.slogan span{flex:none;font-family:var(--sans);font-weight:600;
+  font-size:clamp(9px,.82vw,11px);letter-spacing:.42em;
+  text-transform:uppercase;color:var(--acc);
+  text-indent:.42em}
+@media(max-width:640px){
+  .slogan{gap:11px;max-width:none}
+  .slogan span{font-size:8.5px;letter-spacing:.32em;text-indent:.32em}
+}
+
+/* ── 54.6 · AS ESPECIFICAÇÕES VIRAM PLACA ───────────────────────
+   Grade 2×2, fundo de corten mais fundo que a seção, fio de creme
+   em volta e por dentro, números e rótulos em creme. E um brilho
+   que atravessa a placa devagar — a mesma luz que passa no botão
+   Escolher, agora em escala maior. O bloco encurta pela metade e
+   deixa de parecer uma lista.
+   ──────────────────────────────────────────────────────────── */
+.specs{position:relative;overflow:hidden;
+  grid-template-columns:repeat(2,1fr);gap:0;
+  margin-top:clamp(24px,2.6vw,34px);
+  background:linear-gradient(150deg,#3A1304,#280C02 58%,#1E0901);
+  border:1px solid rgba(232,205,166,.3)}
+.specs>div{position:relative;z-index:2;background:transparent;
+  padding:clamp(18px,2vw,26px) clamp(16px,1.9vw,26px)}
+.specs>div:nth-child(even){border-left:1px solid rgba(232,205,166,.22)}
+.specs>div:nth-child(n+3){border-top:1px solid rgba(232,205,166,.22)}
+.specs b{font-family:var(--serif);font-weight:400;
+  font-size:clamp(21px,2.3vw,31px);line-height:1;
+  color:var(--marca-lit);letter-spacing:-.01em}
+.specs span{margin-top:clamp(8px,.9vw,11px);
+  font-size:8px;letter-spacing:.24em;color:rgba(232,205,166,.62)}
+
+/* a luz que atravessa a placa */
+.specs::after{content:"";position:absolute;z-index:1;
+  top:-20%;bottom:-20%;left:0;width:34%;pointer-events:none;
+  transform:translateX(-160%) skewX(-14deg);
+  background:linear-gradient(100deg,transparent,
+    rgba(242,222,193,.05) 34%,rgba(242,222,193,.13) 50%,
+    rgba(242,222,193,.05) 66%,transparent);
+  animation:luzPlaca 7.5s cubic-bezier(.45,0,.3,1) infinite}
+@keyframes luzPlaca{
+  0%  {transform:translateX(-160%) skewX(-14deg)}
+  34% {transform:translateX(430%)  skewX(-14deg)}
+  100%{transform:translateX(430%)  skewX(-14deg)}
+}
+@media(max-width:640px){
+  .specs{grid-template-columns:repeat(2,1fr)}
+  .specs>div{padding:16px 14px}
+  .specs b{font-size:23px}
+  .specs span{font-size:7.5px;letter-spacing:.2em;line-height:1.55}
+}
+@media(prefers-reduced-motion:reduce){
+  .specs::after{animation:none;opacity:0}
+}

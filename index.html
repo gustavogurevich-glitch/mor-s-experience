@@ -165,21 +165,27 @@
     </div>
 
     <div class="fach-side">
-      <span class="eyebrow reveal">Sistema Camaleão</span>
-      <h2 class="kicker reveal">A fachada se adapta<br>ao meio ambiente</h2>
-      
-
-      <!-- as duas peles: mesma imagem, camadas diferentes -->
-      <div class="pele-sel reveal" role="tablist" aria-label="Camadas da fachada">
-        <button class="pele on" data-p="ext" role="tab" aria-selected="true"><i>01</i>Pele externa</button>
-        <button class="pele"    data-p="int" role="tab" aria-selected="false"><i>02</i>Pele interna</button>
-      </div>
-      <p class="pele-txt" id="peleTxt"><b>Flex Cave.</b> Placas com propriedades isolantes acústicas e de luminosidade.</p>
-
+      <!-- ORDEM DE LEITURA (definida pelo Gustavo):
+           1. a imagem, que a pessoa já arrastou lá em cima
+           2. o que ela acabou de ver: Acordando / Trabalhando / Dormindo
+           3. só então a tese — Sistema Camaleão e as duas peles.
+           O argumento vem depois da experiência, não antes dela. -->
       <div class="fach-state reveal">
         <b id="fachNome">Acordando</b>
         <i id="fachSub">Flex Cave em transição</i>
         <p id="fachDesc">Metade aberta, metade fechada. Cada morador decide o seu momento. A fachada nunca é a mesma, porque é a soma de infinitas escolhas.</p>
+      </div>
+
+      <div class="fach-tese">
+        <span class="eyebrow reveal">Sistema Camaleão</span>
+        <h2 class="kicker reveal">A fachada se adapta<br>ao meio ambiente</h2>
+
+        <!-- as duas peles: mesma imagem, camadas diferentes -->
+        <div class="pele-sel reveal" role="tablist" aria-label="Camadas da fachada">
+          <button class="pele on" data-p="ext" role="tab" aria-selected="true"><i>01</i>Pele externa</button>
+          <button class="pele"    data-p="int" role="tab" aria-selected="false"><i>02</i>Pele interna</button>
+        </div>
+        <p class="pele-txt" id="peleTxt"><b>Flex Cave.</b> Placas com propriedades isolantes acústicas e de luminosidade.</p>
       </div>
 
   <!-- convite de fim de seção: continua o argumento, não interrompe -->
@@ -224,8 +230,9 @@
       <div class="plot-hud bl"><b>1.685 m²</b><i>Área do terreno</i></div>
     </div>
     <aside class="plot-side">
-      <span class="eyebrow">Entenda a ler o mapa</span>
-      <p class="plot-call">Cada zona é o limite<br>de uma caminhada.<br><b>Sempre a pé.</b></p>
+      <!-- menos leitura, mais gatilho: o convite virou chamada
+           grande e o texto de apoio virou uma linha só -->
+      <p class="plot-chama"><s aria-hidden="true"></s>Entenda a ler o mapa</p>
       <p class="plot-txt">Os cinco anéis desenhados no mapa marcam até onde você chega andando, saindo da porta da Morás Experience.</p>
       <!-- uma régua só: cinco tempos lado a lado, na ordem do mapa.
            Antes eram cinco blocos empilhados repetindo a mesma frase;
@@ -236,17 +243,6 @@
         </ol>
         <span class="regua-un">minutos a pé</span>
       </div>
-      <p class="plot-nota">Mapa esquemático, sem escala.<br>Tempos aproximados, a pé.</p>
-
-  <!-- convite de fim de seção: continua o argumento, não interrompe -->
-  <a class="fecho" href="#contato">
-    <span class="fecho-txt"><b>Ande esses 5 minutos com a gente.</b><em>Fique no centro de tudo. Agende uma visita.</em></span>
-    <span class="fecho-ir"><s></s>Agendar visita
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
-           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
-    </span>
-  </a>
     </aside>
   </div>
  </div>
@@ -286,7 +282,7 @@
     <div><span class="big">05</span> <span class="eyebrow" style="margin-left:9px">anéis</span></div>
   </div>
 
-  <a class="fecho" href="#contato">
+  <a class="fecho fecho-fora" href="#contato">
     <span class="fecho-txt"><b>As melhores localizações, andando a pé.</b><em>Venha conhecer a Morás Experience.</em></span>
     <span class="fecho-ir"><s></s>Agendar visita
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
@@ -336,6 +332,9 @@
   <div class="shead">
     <div><span class="eyebrow reveal">O Empreendimento</span>
       <h2 class="kicker reveal" style="color:var(--acc)">Casas<br>Sobrepostas</h2>
+      <!-- o slogan assina o letreiro: fio atravessando e versalete
+           espaçado por cima, na mesma linha -->
+      <p class="slogan reveal"><s aria-hidden="true"></s><span>Infinitamente Verde</span><s aria-hidden="true"></s></p>
       <!-- A ficha técnica mora DENTRO do cabeçalho, colada ao título.
            Antes era uma faixa solta de quatro blocos altos: no celular
            virava meia tela de rolagem sem dizer de que assunto era. -->
@@ -774,9 +773,9 @@ pbox.innerHTML=PERFIS.map((p,i)=>`
    <span class="perfil-bg" data-img="${p.img}" data-arq="${p.arq}"></span>
    <span class="perfil-tint" style="background:linear-gradient(180deg,transparent 30%,${p.c}dd)"></span>
    <span class="perfil-placa"></span>
-   <span class="perfil-num">0${i+1}</span>
    <span class="perfil-pick">✓</span>
-   <span class="perfil-in"><h3>${p.e}</h3>
+   <span class="perfil-in">
+     <span class="perfil-cab"><b class="perfil-num">0${i+1}</b><h3>${p.e}</h3></span>
      <span class="perfil-cta"><s aria-hidden="true"></s><em>Escolher</em></span></span>
  </button>`).join('');
 /* ══ A ESCOLHA DO PERFIL ATRAVESSA O SITE ══════════════════════
