@@ -806,7 +806,11 @@ pbox.querySelectorAll('.perfil').forEach(b=>{b.onclick=()=>{
   if(on){escolhido=null;pbox.classList.remove('has-pick');chip.classList.remove('on')}
   else{b.setAttribute('aria-pressed','true');escolhido=b.dataset.k;
        pbox.classList.add('has-pick');
-       chip.innerHTML='<s></s>Anotado · '+escolhido;chip.classList.add('on')}
+       /* a confirmação responde a pergunta que a escolha abriu:
+          que luxo é esse? O nome sozinho não explicava nada. */
+       chip.innerHTML='<i><s></s>Anotado</i><b>'+escolhido+'</b>'+
+                      '<span>'+(window.PERFIL_DESC[escolhido]||'')+'</span>';
+       chip.classList.add('on')}
   marcaPerfil(escolhido);
 }});
 }catch(e){console.error('[Morás] bloco falhou:',e)}

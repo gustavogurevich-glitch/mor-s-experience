@@ -2799,3 +2799,389 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
   .perfil:hover .perfil-cta s{animation:none;background:#3A1304;
     box-shadow:none;opacity:1}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   50. AJUSTE DE PROPORÇÃO · CELULAR, CARTÕES E CONFIRMAÇÃO
+   ═══════════════════════════════════════════════════════════════
+   Bloco AUTORITATIVO, sobrepõe a seção 49 onde houver conflito.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 50.1 · A ASSINATURA ENCOLHE NO CELULAR ─────────────────────
+   A tela do celular tem menos de metade da largura do computador,
+   mas a assinatura estava ocupando 57% dela — e a metragem, colada
+   embaixo com a mesma largura, virava um bloco de texto grande
+   sobre a parede. Duas coisas grandes brigando pelo mesmo silêncio.
+   Medido na foto nova: a parede limpa vai até 47% da altura. O
+   conjunto inteiro precisa caber ali com folga, então ele encolhe
+   para 46% da largura e a metragem baixa um degrau de escala.
+   ──────────────────────────────────────────────────────────── */
+@media(max-width:640px){
+  #hero{--lock-w:min(174px,46vw)}
+  #hero .hero-in{top:clamp(78px,10.5vh,104px)}
+
+  .hero-metros{margin-top:12px;padding-top:9px}
+  .hero-metros .hm-linha{gap:6px}
+  .hero-metros .hm-n{font-size:17px}
+  .hero-metros .hm-tra{width:9px}
+  .hero-metros .hm-un{font-size:6.5px;padding-bottom:.24em}
+  .hero-metros .hm-regua{margin-top:7px;height:6px}
+  .hero-metros .hm-marca{height:6px}
+  .hero-metros .hm-extra{margin-top:8px;padding-top:7px;
+    font-size:6px;letter-spacing:.18em;gap:5px}
+  .hero-metros .hm-extra b{font-size:11px}
+}
+@media(max-width:380px){
+  #hero{--lock-w:min(158px,45vw)}
+  .hero-metros .hm-n{font-size:15.5px}
+}
+/* telas curtas (SE, minis): sobe tudo e aperta a escala */
+@media(max-width:640px) and (max-height:700px){
+  #hero{--lock-w:min(150px,42vw)}
+  #hero .hero-in{top:70px}
+  .hero-metros .hm-n{font-size:15px}
+}
+
+/* ── 50.2 · O TÍTULO CEDE ESPAÇO PARA A IMAGEM ──────────────────
+   O subtítulo virou título e eu o subi de escala demais: três
+   linhas de serifada grande cobriam justamente o que a foto tinha
+   de melhor. O cartão não precisa gritar o tema — ele precisa
+   deixar a imagem falar e pedir o toque com clareza.
+   Título desce, botão sobe. A hierarquia se inverte de propósito:
+   quem manda no cartão é a ação, não o rótulo.
+   ──────────────────────────────────────────────────────────── */
+.perfil-in h3{font-size:clamp(17px,1.55vw,23px);line-height:1.14;
+  letter-spacing:.005em;max-width:15ch;opacity:.94}
+
+.perfil-cta{font-size:10px;letter-spacing:.24em;
+  padding:15px 30px;gap:11px;border-width:1px;
+  margin-top:clamp(15px,1.6vw,20px)}
+.perfil.aberto .perfil-cta{padding:15px 30px;margin-top:clamp(15px,1.6vw,20px)}
+.perfil-cta s{width:7px;height:7px}
+
+@media(max-width:640px){
+  .perfil-in h3{font-size:20px;max-width:13ch}
+  .perfil-cta,.perfil.aberto .perfil-cta{font-size:10px;letter-spacing:.22em;
+    padding:15px 28px;margin-top:15px}
+}
+@media(min-width:641px) and (max-width:1024px){
+  .perfil-in h3{font-size:clamp(16px,2vw,20px)}
+  .perfil-cta,.perfil.aberto .perfil-cta{font-size:9px;letter-spacing:.2em;
+    padding:13px 24px}
+}
+
+/* pulso sutil mas declarado: a borda acende num ritmo lento e o
+   ponto dá um anel único a cada volta. Nada de piscar — é uma
+   respiração que o olho pega pelo canto e entende como convite. */
+@keyframes respiraEscolha{
+  0%,100%{border-color:rgba(232,205,166,.4);background:rgba(232,205,166,.06)}
+  46%    {border-color:rgba(232,205,166,1);background:rgba(232,205,166,.19)}
+}
+@keyframes chamaEscolha{
+  0%,100%{box-shadow:0 0 0 0 rgba(232,205,166,.55);opacity:.72}
+  46%    {box-shadow:0 0 0 9px rgba(232,205,166,0);opacity:1}
+}
+.perfil-cta{animation-duration:3.1s}
+.perfil-cta s{animation-duration:3.1s}
+
+/* ── 50.3 · A CONFIRMAÇÃO EXPLICA A ESCOLHA ─────────────────────
+   Antes a confirmação era uma pílula com o nome: "Anotado · Luxo
+   Intelectual". O nome sozinho não responde a pergunta que a
+   escolha acabou de abrir — que luxo é esse? Agora a descrição
+   que saiu dos cartões aparece aqui, na hora, e reaparece depois
+   no resumo da Visita. Mesma linguagem nos dois lugares.
+   ──────────────────────────────────────────────────────────── */
+.pickchip{display:grid;gap:5px;border:0;border-left:2px solid var(--acc);
+  border-radius:0;padding:2px 0 2px clamp(15px,1.6vw,20px);
+  margin-top:clamp(18px,2vw,26px);max-width:46ch;
+  text-transform:none;letter-spacing:0;font-size:inherit;
+  opacity:0;translate:0 8px;transition:opacity .55s var(--e),translate .55s var(--e)}
+.pickchip.on{opacity:1;translate:0}
+.pickchip i{display:flex;align-items:center;gap:9px;font-style:normal;
+  font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--acc);opacity:.9}
+.pickchip i s{width:14px;height:1px;flex:none;text-decoration:none;
+  background:currentColor;opacity:.65}
+.pickchip b{font-family:var(--serif);font-weight:400;
+  font-size:clamp(19px,1.8vw,26px);line-height:1.12;color:var(--fg);
+  letter-spacing:-.005em}
+.pickchip span{font-size:13.5px;line-height:1.72;color:var(--dim)}
+@media(max-width:640px){
+  .pickchip{max-width:none;padding-left:14px;margin-top:18px}
+  .pickchip b{font-size:20px}
+  .pickchip span{font-size:13px}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   51. CELULAR · A FOTO MANDA, A ASSINATURA ASSINA
+   ═══════════════════════════════════════════════════════════════
+   Ordem de leitura invertida de propósito: primeiro a mulher com
+   o jornal, ocupando a tela inteira; só depois, no rodapé, a
+   marca pequena e a metragem. O logo deixa de disputar com a
+   imagem e passa a assinar embaixo dela.
+
+   A metragem vira selo: um disco de corten com os dois números
+   em bege, e um anel que se preenche enquanto os números correm.
+   O preenchimento é o que transforma o dado em instrumento — a
+   pessoa vê a medida sendo calibrada, não escrita.
+
+   Só ≤640px. O computador está fechado e não se toca.
+   ═══════════════════════════════════════════════════════════════ */
+@property --p{syntax:'<number>';inherits:false;initial-value:100}
+
+@media(max-width:640px){
+
+  /* o véu de cima sai: a parede agora é da foto, não da tipografia.
+     entra um de baixo, que abre o rodapé para a assinatura */
+  #hero .veil{background:linear-gradient(180deg,
+    rgba(238,233,224,.34) 0%,transparent 16%,
+    transparent 62%,rgba(238,233,224,.62) 84%,rgba(238,233,224,.93) 100%)}
+
+  #hero .plate{background-position:center 22%}
+
+  /* a assinatura desce para o rodapé e vira uma linha só */
+  #hero .hero-in{top:auto;bottom:clamp(26px,5.4vh,52px);
+    left:var(--pad);right:var(--pad);
+    display:flex;align-items:flex-end;justify-content:space-between;
+    gap:16px;max-width:none}
+
+  #hero{--lock-w:min(112px,31vw)}
+  .lockup{flex:none}
+
+  /* ── O SELO ──────────────────────────────────────────────── */
+  .hero-metros{position:relative;flex:none;width:auto;max-width:none;
+    margin:0 0 2px;padding:0;border:0;
+    aspect-ratio:1;inline-size:clamp(84px,23vw,96px);
+    display:grid;place-items:center;border-radius:50%;
+    background:
+      radial-gradient(120% 120% at 30% 22%,rgba(255,222,186,.22),transparent 58%),
+      linear-gradient(155deg,#6A2A08,#4A1904 62%,#3A1304);
+    box-shadow:0 10px 26px -12px rgba(58,19,4,.6),
+               inset 0 1px 0 rgba(255,224,190,.16)}
+
+  /* anel de preenchimento: corre de 0 a 100 junto com os números */
+  .hero-metros .hm-regua{position:absolute;inset:-6px;width:auto;height:auto;
+    margin:0;border-radius:50%;display:block;
+    background:conic-gradient(from -90deg,
+      var(--marca-lit) calc(var(--p) * 1%),rgba(232,205,166,.15) 0);
+    -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 1.6px),#000 calc(100% - 1.6px));
+            mask:radial-gradient(farthest-side,transparent calc(100% - 1.6px),#000 calc(100% - 1.6px))}
+  .hero-metros .hm-regua s{display:none}
+  .hero-metros.enchendo .hm-regua{animation:calibra 1.5s cubic-bezier(.16,1,.3,1) forwards}
+  @keyframes calibra{from{--p:0}to{--p:100}}
+
+  /* os dois números, empilhados, em bege sobre o corten */
+  .hero-metros .hm-linha{flex-direction:column;align-items:center;
+    gap:3px;width:auto}
+  .hero-metros .hm-n{color:var(--branco);font-size:clamp(13px,3.5vw,15px);
+    line-height:1;opacity:.97}
+  .hero-metros .hm-tra{width:15px;height:1px;background:var(--marca);
+    opacity:.5;margin:1px 0}
+  .hero-metros .hm-un{position:absolute;bottom:11px;left:50%;translate:-50% 0;
+    margin:0;padding:0;color:var(--marca);opacity:.7;
+    font-size:6px;letter-spacing:.2em}
+
+  /* as vagas saem do selo e viram legenda sob o logo */
+  .hero-metros .hm-extra{position:absolute;left:0;bottom:-19px;
+    width:max-content;margin:0;padding:0;border:0;
+    color:var(--corten);opacity:.72;
+    font-size:6px;letter-spacing:.18em;gap:5px}
+  .hero-metros .hm-extra b{font-size:10px}
+
+  /* o ponto vivo passa a orbitar a borda do selo */
+  .hero-metros .hm-vivo{top:-6px;right:auto;left:50%;translate:-50% 0;
+    width:5px;height:5px;background:var(--marca-lit)}
+
+  /* o "Desça" sairia por cima do selo: sai de cena no celular */
+  #hero .cue{display:none}
+}
+
+@media(max-width:640px) and (max-height:700px){
+  #hero{--lock-w:min(96px,28vw)}
+  #hero .hero-in{bottom:22px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-metros.enchendo .hm-regua{animation:none}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   52. CARTÕES DE PERFIL · CORREÇÃO
+   ═══════════════════════════════════════════════════════════════
+   Bloco AUTORITATIVO. Cancela o tratamento das seções 49 e 50.
+
+   Três erros meus, corrigidos aqui:
+   · o botão virou caixa preenchida em creme — peso de botão de
+     formulário, não de convite de superluxo;
+   · a serifada num rótulo curto sobre foto ficou frouxa: serifada
+     grande pede frase, não etiqueta;
+   · o pulso mexia em borda e fundo ao mesmo tempo, e piscava.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 52.1 · O RÓTULO VIRA ETIQUETA TÉCNICA ──────────────────────
+   Sai da chave editorial e entra na chave de interface: Archivo
+   em versalete muito espaçado, pequeno, com um fio curto antes.
+   O fio é o que ancora — sem ele, versalete solto sobre foto
+   flutua. Agora o cartão tem duas vozes limpas: a etiqueta diz
+   o tema, o botão pede a ação. A foto fica com o resto da tela.
+   ──────────────────────────────────────────────────────────── */
+.perfil-in h3{font-family:var(--sans);font-weight:600;
+  font-size:clamp(9.5px,.82vw,11.5px);letter-spacing:.3em;
+  text-transform:uppercase;line-height:1.75;
+  color:var(--branco);opacity:.96;max-width:19ch;
+  display:flex;align-items:baseline;gap:11px}
+.perfil-in h3::before{content:"";flex:none;width:20px;height:1px;
+  background:var(--marca);opacity:.85;translate:0 -.36em}
+
+/* ── 52.2 · O BOTÃO VOLTA A SER FIO ─────────────────────────────
+   Vazado, um fio de creme, letra creme. Preenche só no toque e
+   quando fica escolhido — aí sim o peso significa alguma coisa.
+   ──────────────────────────────────────────────────────────── */
+.perfil-cta{position:relative;overflow:hidden;
+  background:transparent;border:1px solid rgba(232,205,166,.5);
+  color:var(--marca-lit);
+  padding:13px 27px;gap:0;
+  font-size:9px;letter-spacing:.3em;
+  margin-top:clamp(15px,1.7vw,21px);
+  animation:none;
+  transition:background .4s var(--e),border-color .4s var(--e),
+             color .4s var(--e),opacity .4s var(--e)}
+.perfil.aberto .perfil-cta{padding:13px 27px;margin-top:clamp(15px,1.7vw,21px)}
+.perfil-cta s{display:none}
+.perfil-cta em{position:relative;z-index:2;font-style:normal}
+
+/* ── 52.3 · O BRILHO QUE ATRAVESSA ──────────────────────────────
+   Luz passando no metal: uma faixa clara cruza o botão em pouco
+   mais de um segundo e some. Volta a cada 4,2s. Nada muda de
+   tamanho, de borda ou de cor — só a luz anda. É contínuo sem
+   ser inquieto, e o olho pega pelo canto.
+   ──────────────────────────────────────────────────────────── */
+.perfil-cta::after{content:"";position:absolute;z-index:1;
+  top:0;bottom:0;left:0;width:54%;pointer-events:none;
+  transform:translateX(-190%);
+  background:linear-gradient(104deg,transparent,
+    rgba(242,222,193,.16) 30%,rgba(242,222,193,.5) 50%,
+    rgba(242,222,193,.16) 70%,transparent);
+  animation:brilhaEscolha 4.2s cubic-bezier(.42,0,.3,1) infinite}
+@keyframes brilhaEscolha{
+  0%  {transform:translateX(-190%)}
+  30% {transform:translateX(330%)}
+  100%{transform:translateX(330%)}
+}
+/* cada cartão pega a luz num tempo diferente: vira onda, não coro */
+#perfisGrid .perfil:nth-of-type(2) .perfil-cta::after{animation-delay:.45s}
+#perfisGrid .perfil:nth-of-type(3) .perfil-cta::after{animation-delay:.9s}
+
+/* toque e escolha: a luz para e o botão fica sólido */
+@media(hover:hover){
+  .perfil:hover .perfil-cta{background:var(--marca);border-color:var(--marca);
+    color:#3A1304}
+  .perfil:hover .perfil-cta::after{animation:none;opacity:0}
+}
+.perfil[aria-pressed="true"] .perfil-cta{background:var(--marca);
+  border-color:var(--marca);color:#3A1304}
+.perfil[aria-pressed="true"] .perfil-cta::after{animation:none;opacity:0}
+.perfis.has-pick .perfil[aria-pressed="false"] .perfil-cta{opacity:.42}
+.perfis.has-pick .perfil[aria-pressed="false"] .perfil-cta::after{animation:none}
+
+@media(max-width:640px){
+  .perfil-in h3{font-size:10.5px;letter-spacing:.28em;max-width:17ch;gap:10px}
+  .perfil-in h3::before{width:17px}
+  .perfil-cta,.perfil.aberto .perfil-cta{font-size:9.5px;letter-spacing:.28em;
+    padding:14px 26px;margin-top:16px}
+}
+@media(min-width:641px) and (max-width:1024px){
+  .perfil-in h3{font-size:9.5px;letter-spacing:.26em}
+  .perfil-cta,.perfil.aberto .perfil-cta{font-size:8.5px;letter-spacing:.26em;
+    padding:12px 22px}
+}
+@media(prefers-reduced-motion:reduce){
+  .perfil-cta::after{animation:none;opacity:0}
+}
+
+/* enquanto a foto nova não chega, o enquadramento volta ao pé:
+   assim os sapatos e a mesa não ficam cortados */
+@media(max-width:640px){
+  #hero .plate{background-position:center bottom}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   53. O SELO VIRA INSTRUMENTO GRAVADO
+   ═══════════════════════════════════════════════════════════════
+   Bloco AUTORITATIVO. Cancela o selo da seção 51.
+
+   O erro: um disco cheio, com degradê de luz e sombra projetada.
+   Massa e brilho falso — parece botão renderizado, e sobre uma
+   foto real qualquer coisa renderizada denuncia na hora.
+
+   A correção é tirar a massa. Superluxo não é volume, é traço:
+   um mostrador GRAVADO no chão claro, todo em fio de corten.
+   Aro externo de 1px, sessenta marcações finas por dentro como
+   escala de instrumento, e o arco de calibragem correndo por
+   fora enquanto os números sobem. Nada preenchido, nada com
+   sombra, nada com brilho. Só linha, e as linhas são da mesma
+   cor do logo — então o rodapé lê como uma assinatura só.
+
+   A foto nova deixa 44% de chão limpo embaixo. É ali que o
+   conjunto pousa, sem cobrir a mulher nem a mesa.
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:640px){
+
+  #hero .plate{background-position:center top}
+
+  /* o véu de baixo quase some: o chão da foto já é claro */
+  #hero .veil{background:linear-gradient(180deg,
+    rgba(238,233,224,.22) 0%,transparent 14%,
+    transparent 72%,rgba(238,233,224,.3) 100%)}
+
+  #hero .hero-in{bottom:clamp(30px,6vh,58px);align-items:center}
+
+  /* ── o mostrador ─────────────────────────────────────────── */
+  .hero-metros{position:relative;flex:none;margin:0;padding:0;border:0;
+    inline-size:clamp(90px,25vw,104px);aspect-ratio:1;
+    display:grid;place-items:center;border-radius:50%;
+    background:radial-gradient(circle,rgba(81,29,5,.05),rgba(81,29,5,.02) 72%,transparent 73%);
+    box-shadow:none}
+
+  /* escala: sessenta marcações gravadas na borda interna */
+  .hero-metros::before{content:"";position:absolute;inset:0;border-radius:50%;
+    pointer-events:none;
+    background:repeating-conic-gradient(from -90deg,
+      rgba(65,24,5,.5) 0deg .5deg,transparent .5deg 6deg);
+    -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 6px),#000 calc(100% - 6px));
+            mask:radial-gradient(farthest-side,transparent calc(100% - 6px),#000 calc(100% - 6px))}
+
+  /* aro externo + arco de calibragem, um fio só */
+  .hero-metros .hm-regua{position:absolute;inset:-8px;width:auto;height:auto;
+    margin:0;border-radius:50%;display:block;
+    background:conic-gradient(from -90deg,
+      var(--corten) calc(var(--p) * 1%),rgba(81,29,5,.2) 0);
+    -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 1px),#000 calc(100% - 1px));
+            mask:radial-gradient(farthest-side,transparent calc(100% - 1px),#000 calc(100% - 1px))}
+  .hero-metros .hm-regua s{display:none}
+  .hero-metros.enchendo .hm-regua{animation:calibra 1.6s cubic-bezier(.16,1,.3,1) forwards}
+
+  /* os números, gravados em corten sobre o chão claro */
+  .hero-metros .hm-linha{flex-direction:column;align-items:center;gap:2px;width:auto}
+  .hero-metros .hm-n{color:#4A1904;font-size:clamp(13.5px,3.6vw,15.5px);
+    line-height:1.06;opacity:1}
+  .hero-metros .hm-tra{width:17px;height:1px;background:#4A1904;
+    opacity:.34;margin:2px 0}
+  .hero-metros .hm-un{position:absolute;bottom:13px;left:50%;translate:-50% 0;
+    margin:0;padding:0;color:var(--corten);opacity:.5;
+    font-size:5.5px;letter-spacing:.24em}
+
+  /* marca de zero: o ponto que a agulha deixou no topo da escala */
+  .hero-metros .hm-vivo{top:-8px;right:auto;left:50%;translate:-50% 0;
+    width:4px;height:4px;background:var(--corten);opacity:0}
+  .hero-metros.calibrado .hm-vivo{opacity:.85}
+
+  /* as vagas: legenda miúda sob o logo, alinhada com ele */
+  .hero-metros .hm-extra{position:absolute;left:0;bottom:-20px;
+    width:max-content;margin:0;padding:0;border:0;
+    color:var(--corten);opacity:.6;
+    font-size:5.5px;letter-spacing:.2em;gap:5px}
+  .hero-metros .hm-extra b{font-size:9.5px;opacity:.85}
+}
+@media(max-width:640px) and (max-height:700px){
+  .hero-metros{inline-size:82px}
+  .hero-metros .hm-n{font-size:12.5px}
+}
