@@ -226,15 +226,16 @@
     <aside class="plot-side">
       <span class="eyebrow">Entenda a ler o mapa</span>
       <p class="plot-call">Cada zona é o limite<br>de uma caminhada.<br><b>Sempre a pé.</b></p>
-      <p class="plot-txt">Os pins <b>01</b> a <b>05</b> no mapa marcam até onde você chega andando, saindo da porta da Morás Experience.</p>
-      <!-- os números batem com os selos 01 a 05 marcados no mapa -->
-      <ol class="anel">
-        <li><i>PIN 01</i><b>05</b><span>min</span><em>Caminhada até 5 minutos</em></li>
-        <li><i>PIN 02</i><b>10</b><span>min</span><em>Caminhada até 10 minutos</em></li>
-        <li><i>PIN 03</i><b>15</b><span>min</span><em>Caminhada até 15 minutos</em></li>
-        <li><i>PIN 04</i><b>30</b><span>min</span><em>Caminhada até 30 minutos</em></li>
-        <li><i>PIN 05</i><b>60</b><span>min</span><em>Caminhada até 1 hora</em></li>
-      </ol>
+      <p class="plot-txt">Os cinco anéis desenhados no mapa marcam até onde você chega andando, saindo da porta da Morás Experience.</p>
+      <!-- uma régua só: cinco tempos lado a lado, na ordem do mapa.
+           Antes eram cinco blocos empilhados repetindo a mesma frase;
+           o número já diz tudo, então o resto era altura desperdiçada. -->
+      <div class="regua" aria-label="Raios de caminhada, em minutos">
+        <ol class="regua-min">
+          <li><b>05</b></li><li><b>10</b></li><li><b>15</b></li><li><b>30</b></li><li><b>60</b></li>
+        </ol>
+        <span class="regua-un">minutos a pé</span>
+      </div>
       <p class="plot-nota">Mapa esquemático, sem escala.<br>Tempos aproximados, a pé.</p>
 
   <!-- convite de fim de seção: continua o argumento, não interrompe -->
@@ -334,16 +335,19 @@
  <div class="wrap">
   <div class="shead">
     <div><span class="eyebrow reveal">O Empreendimento</span>
-      <h2 class="kicker reveal" style="color:var(--acc)">Casas<br>Sobrepostas</h2></div>
+      <h2 class="kicker reveal" style="color:var(--acc)">Casas<br>Sobrepostas</h2>
+      <!-- A ficha técnica mora DENTRO do cabeçalho, colada ao título.
+           Antes era uma faixa solta de quatro blocos altos: no celular
+           virava meia tela de rolagem sem dizer de que assunto era. -->
+      <dl class="ficha reveal">
+        <div><dt>1.685</dt><dd>m² de terreno</dd></div>
+        <div><dt>09</dt><dd>Pavimentos<br>torre única</dd></div>
+        <div><dt>18</dt><dd>Unidades<br>no total</dd></div>
+        <div><dt>Z1</dt><dd>Zona estritamente<br>residencial</dd></div>
+      </dl>
+    </div>
     <div><p class="lead reveal">Toda casa tem jardim. Aqui, cada apartamento tem o seu na varanda.</p>
       <p class="dimtxt reveal" style="margin-top:16px"><b style="color:var(--acc);font-weight:400">E o jardim é a Z1.</b> A zona verde eternamente preservada. O quintal de cada apartamento.</p></div>
-  </div>
-
-  <div class="band reveal">
-    <div><b>1.685</b><span>m² de terreno</span></div>
-    <div><b>09</b><span>Pavimentos, torre única</span></div>
-    <div><b>18</b><span>Unidades no total</span></div>
-    <div><b>Z1</b><span>Zona estritamente residencial</span></div>
   </div>
 
   <div class="typo-wrap">
@@ -433,13 +437,16 @@
       <span class="eyebrow reveal">Pré-lançamento</span>
       <h2 class="h2 reveal" style="margin:20px 0 26px">A visita é<br><em>por convite.</em></h2>
       <p class="body reveal">O estande de vendas da Morás Experience recebe por agendamento. Deixe seus dados e nossa equipe entrará em contato.</p>
-      <!-- resumo do percurso: monta sozinho com o que a pessoa fez -->
+      <!-- Um bloco só. Antes o perfil aparecia duas vezes seguidas:
+           uma no resumo do percurso, outra no "Anotado" logo abaixo.
+           Agora o perfil escolhido é o próprio cabeçalho do resumo,
+           com a descrição que saiu dos cartões lá de cima. -->
       <div class="resumo" id="resumo" aria-live="polite">
         <span class="eyebrow">Sua visita já começou</span>
+        <div class="resumo-perfil" id="resumoPerfil"></div>
         <ul id="resumoLista"></ul>
         <p class="resumo-pe">Levamos isso pronto para a conversa.</p>
       </div>
-      <div class="perfil-eco" id="perfilEco" aria-live="polite"></div>
       <div class="gate reveal"><span class="eyebrow">Acesso antecipado</span>
         <p>Tem um código de convite? Plantas, tipologias e o tour no protótipo digital são liberados antes da abertura pública.</p></div>
     </div>
@@ -547,26 +554,43 @@ if(hMin&&hMax){
 }catch(e){console.error('[Morás] metragem falhou:',e)}
 
 /* ══ RESUMO DO PERCURSO ════════════════════════════════════════
-   O site já sabe três coisas sobre quem está lendo: o perfil que
-   escolheu, a tipologia que abriu e quantos minutos de caminhada
-   definiu. Em vez de perder isso, devolvo em forma de resumo logo
-   acima do formulário. A pessoa vê que foi acompanhada, e o time
-   recebe o contato já sabendo em que chave conversar.
+   O site sabe duas coisas sobre quem está lendo: o perfil que
+   escolheu e a tipologia que abriu. Em vez de perder isso, devolvo
+   em forma de resumo logo acima do formulário.
+
+   O perfil não é mais um item de lista igual aos outros: ele é o
+   cabeçalho do bloco, com a descrição inteira. Foi ela que saiu
+   dos cartões lá em cima, e este é o lugar onde ela faz sentido —
+   depois da escolha, não antes.
+
+   O raio de caminhada saiu: mexer no cursor do mapa é explorar,
+   não decidir. Levar isso para a conversa era ruído.
    ════════════════════════════════════════════════════════════ */
-window.RES={perfil:null,tipo:null,raio:null};
+window.RES={perfil:null,tipo:null};
+window.PERFIL_DESC={};
 window.pintaResumo=function(){
   const cx=document.getElementById('resumo'), ul=document.getElementById('resumoLista');
   if(!cx||!ul)return;
-  const itens=[];
   const R=window.RES;
-  if(R.perfil) itens.push(['Perfil',R.perfil]);
-  if(R.tipo)   itens.push(['Tipologia que você abriu',R.tipo]);
-  if(R.raio)   itens.push(['Raio de caminhada',R.raio+' min a pé']);
-  if(!itens.length){cx.classList.remove('on');return;}
+  const cab=document.getElementById('resumoPerfil');
+  if(cab){
+    cab.innerHTML = R.perfil
+      ? `<b>${R.perfil}</b><span>${window.PERFIL_DESC[R.perfil]||''}</span>`
+      : '';
+    cab.classList.toggle('on', !!R.perfil);
+  }
+  const itens=[];
+  if(R.tipo) itens.push(['Tipologia que você abriu',R.tipo]);
+  if(!R.perfil && !itens.length){cx.classList.remove('on');return;}
   ul.innerHTML=itens.map(([a,b])=>`<li><em>${a}</em><b>${b}</b></li>`).join('');
   cx.classList.add('on');
   const campo=document.getElementById('resumoField');
-  if(campo)campo.value=itens.map(([a,b])=>a+': '+b).join(' | ');
+  if(campo){
+    const linhas=[];
+    if(R.perfil)linhas.push('Perfil: '+R.perfil);
+    itens.forEach(([a,b])=>linhas.push(a+': '+b));
+    campo.value=linhas.join(' | ');
+  }
 };
 
 /* ══ ORIENTAÇÃO ════════════════════════════════════════════════
@@ -739,16 +763,21 @@ const PERFIS=[
  {k:'Luxo Tradicional',e:'Sofisticação clássica',c:'#3E1A10',
   p:'Paletas ricas, parcerias de grife e uma linguagem visual que celebra a conquista sem hesitar.',
   img:'1618221195710-dd6b41faaea6', arq:'perfil-03-tradicional'}];
+/* As descrições vivem aqui, não nos cartões. O cartão é a pergunta;
+   a descrição é a resposta, e ela aparece depois da escolha, no
+   resumo da Visita. Cartão limpo, foto respirando, decisão óbvia. */
+PERFIS.forEach(p=>{window.PERFIL_DESC[p.k]=p.p});
+
 const pbox=document.getElementById('perfisGrid');
 pbox.innerHTML=PERFIS.map((p,i)=>`
- <button class="perfil" aria-pressed="false" data-k="${p.k}">
+ <button class="perfil" aria-pressed="false" data-k="${p.k}" aria-label="Escolher o perfil ${p.k}: ${p.e}">
    <span class="perfil-bg" data-img="${p.img}" data-arq="${p.arq}"></span>
    <span class="perfil-tint" style="background:linear-gradient(180deg,transparent 30%,${p.c}dd)"></span>
    <span class="perfil-placa"></span>
    <span class="perfil-num">0${i+1}</span>
    <span class="perfil-pick">✓</span>
-   <span class="perfil-in"><em>${p.e}</em><h3>${p.k}</h3><p>${p.p}</p>
-     <span class="perfil-cta">Escolher</span></span>
+   <span class="perfil-in"><h3>${p.e}</h3>
+     <span class="perfil-cta"><s aria-hidden="true"></s><em>Escolher</em></span></span>
  </button>`).join('');
 /* ══ A ESCOLHA DO PERFIL ATRAVESSA O SITE ══════════════════════
    Escolher não pode ser um clique que morre ali. A escolha é
@@ -758,26 +787,14 @@ pbox.innerHTML=PERFIS.map((p,i)=>`
    contato sabendo em que chave conversar.
    ════════════════════════════════════════════════════════════ */
 const chip=document.getElementById('pickchip');
-const ECO={
- 'Luxo Intelectual':'Vamos separar o que há de arte e curadoria no projeto.',
- 'Quiet Luxury':'Vamos pela materialidade: pedra, madeira, linho, silêncio.',
- 'Luxo Tradicional':'Vamos pelas assinaturas: acabamento, grife e presença.'
-};
 window.perfilEscolhido=null;
 
 function marcaPerfil(k){
   window.perfilEscolhido=k;
+  /* o resumo da Visita é agora o único lugar onde o perfil reaparece:
+     nome, descrição completa e tipologia, num bloco só */
   if(window.RES){window.RES.perfil=k;window.pintaResumo();}
   const f=document.getElementById('perfilField'); if(f)f.value=k||'';
-
-  /* eco na seção da Visita, lá embaixo */
-  const alvo=document.getElementById('perfilEco');
-  if(alvo){
-    if(k){
-      alvo.innerHTML=`<em>Anotado</em><b>${k}</b><span>${ECO[k]||''}</span>`;
-      alvo.classList.add('on');
-    }else alvo.classList.remove('on');
-  }
   /* e vai junto na conversa do WhatsApp */
   if(typeof atualizaZap==='function') atualizaZap();
 }
@@ -913,15 +930,54 @@ const PELES={
   int:['Cortina de Vidro.','Barra os raios UV e condiciona o ambiente por dentro.']
 };
 const peleTxt=document.getElementById('peleTxt');
-document.querySelectorAll('.pele').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.pele').forEach(x=>{
+const peleBtns=[...document.querySelectorAll('.pele')];
+
+function acendePele(b,manual){
+  peleBtns.forEach(x=>{
     const on=x===b; x.classList.toggle('on',on); x.setAttribute('aria-selected',on);
   });
   const [t,d]=PELES[b.dataset.p];
-  peleTxt.innerHTML=`<b>${t}</b> ${d}`;
+  peleTxt.classList.add('trocando');
+  setTimeout(()=>{
+    peleTxt.innerHTML=`<b>${t}</b> ${d}`;
+    peleTxt.classList.remove('trocando');
+  },180);
   secFach.dataset.pele=b.dataset.p;
-}));
+  if(manual){
+    /* a pessoa entendeu: a interface para de se explicar */
+    secFach.classList.add('pele-usada');
+    clearTimeout(demoT1);clearTimeout(demoT2);
+  }
+}
+peleBtns.forEach(b=>b.addEventListener('click',()=>acendePele(b,true)));
 secFach.dataset.pele='ext';
+
+/* ── A INTERFACE SE APRESENTA SOZINHA ────────────────────────────
+   Dois botões parados não pedem nada. Quando a seção entra na tela,
+   o site troca de pele sozinho uma vez e volta: o texto muda, a
+   camada de cor desliza sobre o render e o selecionador se acende.
+   Em dois segundos a pessoa viu a interface funcionando sem ler
+   uma única instrução. Depois do primeiro toque dela, isso nunca
+   mais acontece — a demonstração já cumpriu o papel.
+   ─────────────────────────────────────────────────────────────── */
+let demoT1=0, demoT2=0, demoFeita=false;
+function demoPeles(){
+  if(demoFeita||secFach.classList.contains('pele-usada'))return;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){
+    secFach.classList.add('pele-chama');return;
+  }
+  demoFeita=true;
+  secFach.classList.add('pele-demo');
+  demoT1=setTimeout(()=>{ if(!secFach.classList.contains('pele-usada')) acendePele(peleBtns[1]); },900);
+  demoT2=setTimeout(()=>{
+    if(!secFach.classList.contains('pele-usada')){
+      acendePele(peleBtns[0]);
+      secFach.classList.remove('pele-demo');
+      secFach.classList.add('pele-chama');   /* o inativo segue chamando */
+    }
+  },2900);
+}
+(window.__aparecer=window.__aparecer||[]).push([document.querySelector('.pele-sel'),demoPeles,0.82]);
 addEventListener('resize',()=>pintaFachada(fVal));
 pintaFachada(0);
 
@@ -1151,7 +1207,6 @@ const rad=document.getElementById('rad'),radv=document.getElementById('radv'),cn
 
 function draw(){
   const max=+rad.value; radv.textContent=max;
-  if(window.RES&&window.RES.raio!==max){window.RES.raio=max;window.pintaResumo();}
   let n=0;
 
   /* pontos: dentro do raio, e se houver categoria aberta, só ela acende */
@@ -1316,6 +1371,11 @@ const naFila=[];
 function aoAparecer(el,acao,gatilho){
   if(el)naFila.push({el,acao,gatilho:gatilho||0.78,feito:false});
 }
+/* blocos anteriores se inscrevem antes desta função existir:
+   cada try{} tem escopo próprio, então eles deixam o pedido numa
+   fila global e ela é recolhida aqui. */
+(window.__aparecer||[]).forEach(a=>aoAparecer(a[0],a[1],a[2]));
+window.__aparecer={push:a=>aoAparecer(a[0],a[1],a[2])};
 let pedido=null;
 function varre(){
   const H=innerHeight;
@@ -1408,7 +1468,7 @@ const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){
 document.querySelectorAll('.reveal,.scale').forEach(e=>io.observe(e));
 /* réguas de números não têm .reveal em todos os casos */
 const ioN=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){countUp(x.target);ioN.unobserve(x.target)}}),{threshold:.6});
-document.querySelectorAll('.band b, .tnum b').forEach(e=>ioN.observe(e));
+document.querySelectorAll('.ficha dt, .tnum b').forEach(e=>ioN.observe(e));
 /* títulos entram por linha */
 const ioK=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){
   [...x.target.children].forEach((l,i)=>setTimeout(()=>l.classList.add('in'),i*90));ioK.unobserve(x.target)}}),{threshold:.25});

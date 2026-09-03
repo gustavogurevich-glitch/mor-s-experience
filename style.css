@@ -187,13 +187,8 @@ section{position:relative;padding:clamp(48px,5.6vw,92px) var(--pad)}
 .perfil-num{position:absolute;top:clamp(20px,2.4vw,34px);left:clamp(20px,2.4vw,34px);z-index:3;
   font-family:var(--serif);font-size:15px;color:var(--marca);opacity:.75}
 .perfil-in{position:absolute;inset:auto 0 0 0;z-index:3;padding:clamp(22px,2.8vw,40px);color:var(--branco)}
-.perfil-in em{display:block;font-style:normal;font-size:8.5px;letter-spacing:.28em;
-  text-transform:uppercase;color:var(--marca);margin-bottom:12px}
 .perfil-in h3{font-family:var(--serif);font-weight:400;font-size:clamp(21px,2.2vw,32px);
   line-height:1.02;letter-spacing:-.02em}
-.perfil-in p{margin-top:14px;font-size:13px;line-height:1.8;max-width:34ch;
-  color:rgba(239,235,226,.78);opacity:0;translate:0 12px;transition:.7s var(--e) .15s}
-.perfil:hover .perfil-in p,.perfil[aria-pressed="true"] .perfil-in p{opacity:1;translate:0}
 .perfil-pick{position:absolute;top:clamp(18px,2.2vw,30px);right:clamp(18px,2.2vw,30px);z-index:4;
   display:grid;place-items:center;width:26px;height:26px;border-radius:50%;
   border:1px solid rgba(239,235,226,.4);color:var(--marca);font-size:12px;opacity:0;transition:.5s var(--e)}
@@ -325,8 +320,6 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
   background:linear-gradient(180deg,rgba(15,14,13,.25),transparent 40%,rgba(15,14,13,.4))}
 .bleedcap{position:absolute;left:var(--pad);bottom:22px;z-index:2;
   font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(239,235,226,.72)}
-.band{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border-top:1px solid var(--rule)}
-.band>div:first-child{border-left:0;padding-left:0}
 .typo-wrap{display:grid;gap:clamp(22px,2.6vw,42px);grid-template-columns:1fr;
   margin-top:clamp(30px,3.4vw,54px)}
 @media(min-width:1040px){.typo-wrap{grid-template-columns:266px 1fr}}
@@ -505,8 +498,6 @@ footer>*{position:relative;z-index:2}
 
   /* perfis: no toque não existe hover, então a placa some ao tocar */
   .perfil-placa::after{content:"Toque para escolher"}
-  .perfil-in p{opacity:1;translate:0}
-  .perfil[aria-pressed="false"] .perfil-in p{display:none}
 
   /* prancha de localização */
   .plot-hud{position:static;max-width:none}
@@ -521,8 +512,6 @@ footer>*{position:relative;z-index:2}
   .cat{font-size:12px;padding:11px 0}
   input[type=range]{height:2px;margin:22px 0 8px}
   input[type=range]::-webkit-slider-thumb{width:22px;height:22px}
-
-  /* elenco e casas */  .band>div:first-child{border-top:0}
   .typo-nav button b{font-size:17px}
   .specs{grid-template-columns:repeat(2,1fr)}
 
@@ -623,7 +612,6 @@ section{padding:clamp(58px,6.2vw,108px) var(--pad)}
 .perfis-nota{margin-top:clamp(20px,2.2vw,28px);font-size:12.5px}
 .perfil-in{padding:clamp(22px,2.6vw,36px)}
 .perfil-in h3{font-size:clamp(22px,2.3vw,33px)}
-.perfil-in p{font-size:13.5px;margin-top:13px}
 
 /* ── FACHADA · imagem inteira, sangrando na borda ────────────
    O render é 1:1. A coluna da esquerda é 1:1 e sangra até a
@@ -1110,7 +1098,6 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .fach-side{padding:clamp(34px,5vw,52px) var(--pad)}
   .fach-state{min-height:0}
   .perfil-in h3{font-size:clamp(18px,2.6vw,24px)}
-  .perfil-in p{font-size:12px}
   /* epicentro e mapa: uma coluna, desenho grande e centralizado */
   .plotter,.mshell{grid-template-columns:1fr}
   .plot-frame{max-width:min(100%,620px);margin-inline:auto}
@@ -1118,9 +1105,6 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .stage{max-width:min(100%,560px)}
   .panel{max-width:620px;margin-inline:auto;width:100%}
   .mfoot{justify-content:center}
-  /* casas */
-  .band{grid-template-columns:repeat(2,1fr)}
-  .band>div:nth-child(3){border-left:0}
   .typo-wrap{grid-template-columns:1fr}
   .typo-nav{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(16px,3vw,32px)}
   .conv{grid-template-columns:1fr;gap:clamp(34px,5vw,54px)}
@@ -1166,7 +1150,6 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .perfil{min-height:70vw}
   .perfil-in{padding:22px}
   .perfil-in h3{font-size:25px}
-  .perfil-in p{font-size:13.5px;max-width:none}
   .perfis-call{font-size:19px;margin-top:16px}
   .perfis-nota{font-size:12px}
 
@@ -1197,10 +1180,6 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .fc-copy h2{font-size:32px}
   .fc-state p{font-size:16px}
   .corten-sym{width:min(64vw,300px)}
-
-  /* AS CASAS */
-  .band{grid-template-columns:1fr}
-  .band>div:first-child{border-top:0;padding-top:0}
     .typo-nav{grid-template-columns:1fr}
   .typo-panel{grid-template-columns:1fr}
   .specs{grid-template-columns:repeat(2,1fr)}
@@ -1355,9 +1334,6 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .perfil-num{top:auto;bottom:clamp(20px,5vw,30px);left:22px;z-index:4}
   .perfil-in{padding:22px 22px 54px}
   .perfil-in h3{font-size:24px;line-height:1.04}
-  .perfil-in em{font-size:8px;margin-bottom:9px}
-  .perfil-in p{font-size:13px;margin-top:11px}
-  .perfil[aria-pressed="true"] .perfil-in p{display:block}
 
   /* FACHADA · imagem e comando na mesma tela */
   .fach-stage{aspect-ratio:3/4}
@@ -1593,26 +1569,16 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   margin-left:.3em;transition:transform .5s var(--e)}
 .frrg:hover .ico-seta,.flink:hover .ico-seta{transform:translateX(3px)}
 .flink:hover .ico-seta{transform:translate(2px,-2px)}
-
 /* ═══════════════════════════════════════════════════════════════
-   36. A FAIXA DE NÚMEROS, O CARROSSEL E OS ACERTOS FINAIS
+   36. A FAIXA DE NÚMEROS,O CARROSSEL E OS ACERTOS FINAIS
    ═══════════════════════════════════════════════════════════════ */
 
 /* ── A FAIXA DE NÚMEROS · uma definição só ───────────────────
-   Isto estava escrito em dez lugares diferentes do arquivo, cada
-   um mandando um valor, e o último vencia por acaso. Por isso o
+   Isto estava escrito em dez lugares diferentes do arquivo,cada
+   um mandando um valor,e o último vencia por acaso. Por isso o
    espaçamento nunca colava. Agora vive aqui e em nenhum outro
-   lugar: o número respira embaixo do fio, e o rótulo fica colado
-   nele, para os dois lerem como uma coisa só.
-   ──────────────────────────────────────────────────────────── */
-.band{margin-top:clamp(40px,4.4vw,68px)}
-.band>div{padding:clamp(34px,3.4vw,48px) clamp(20px,2.2vw,36px) clamp(30px,3vw,42px)}
-.band>div:first-child{padding-left:0}
-.band b{display:block;font-family:var(--serif);font-weight:500;
-  font-size:clamp(30px,3.2vw,44px);line-height:1;letter-spacing:-.03em;
-  color:var(--acc)}
-.band span{display:block;margin-top:clamp(10px,1vw,14px);
-  font-size:12px;line-height:1.6;color:var(--dim);max-width:22ch}
+   lugar: o número respira embaixo do fio,e o rótulo fica colado
+   nele{margin-top:clamp(40px,4.4vw,68px)}
 
 /* ── TIPOLOGIAS · a lista precisa chamar ─────────────────────
    Estava em serifada pequena e cor apagada. Agora é bege da marca,
@@ -1711,38 +1677,15 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .carr-seta{width:36px}
   .typo-nav button b{font-size:22px}
 }
-
 /* ═══════════════════════════════════════════════════════════════
-   37. METRAGEM LIMPA, ANÉIS EXPLICADOS E ACERTOS DE COR
+   37. METRAGEM LIMPA,ANÉIS EXPLICADOS E ACERTOS DE COR
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── METRAGEM · sem caixa, sem moldura, sem ícone ────────────
-   Era um painel com borda, fundo translúcido, cantoneiras e um
-   ícone. Empilhado, virava um bloco pesado bem no meio da marca.
-   Agora é só o dado: rótulo pequeno, fio, número. Nada mais.
-   ──────────────────────────────────────────────────────────── */
-
-/* ── OS ANÉIS · o que cada mancha do mapa quer dizer ─────────
-   A lista de avenidas repetia o que o mapa já escreve. Trocada
-   pela única coisa que o desenho NÃO explica sozinho: quanto
-   tempo de caminhada cada mancha representa.
-   ──────────────────────────────────────────────────────────── */
-.anel{list-style:none;margin-top:clamp(24px,2.6vw,34px);
+/* ── METRAGEM · sem caixa,sem moldura,sem ícone ────────────
+   Era um painel com borda,fundo translúcido,cantoneiras e um
+   ícone. Empilhado,virava um bloco pesado bem no meio da marca.
+   Agora é só o dado: rótulo pequeno,fio{list-style:none;margin-top:clamp(24px,2.6vw,34px);
   border-top:1px solid var(--rule)}
-.anel li{display:grid;grid-template-columns:auto auto 1fr;
-  align-items:baseline;gap:5px 12px;padding:13px 0;
-  border-bottom:1px solid var(--rule)}
-.anel b{font-family:var(--serif);font-weight:500;font-size:22px;
-  line-height:1;letter-spacing:-.03em;color:var(--acc)}
-.anel span{font-size:9px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--dim)}
-.anel em{grid-column:3;font-style:normal;font-size:12.5px;line-height:1.55;
-  color:var(--fg);opacity:.82}
-@media(max-width:640px){
-  .anel em{grid-column:1/-1;margin-top:3px;font-size:13px}
-  .anel li{gap:0 10px;padding:14px 0}
-  .anel b{font-size:24px}
-}
 
 /* ── TIPOLOGIAS · os números em bege, não em corten ──────────
    Corten sobre chão corten some. Bege claro é o par certo.
@@ -1759,16 +1702,9 @@ body.mm-on .mm-links a{opacity:1;translate:0}
 .fc-light{background:radial-gradient(78% 62% at 50% 34%,rgba(255,208,150,.08),transparent 62%),
   linear-gradient(180deg,rgba(8,6,4,.3),transparent 22%,transparent 58%,rgba(8,6,4,.62))}
 .fc-scrim{height:48%;background:linear-gradient(180deg,transparent,rgba(8,6,4,.22) 42%,rgba(8,6,4,.72))}
-
 /* ── A FAIXA DE NÚMEROS · o primeiro item também respira ─────
    ESTA era a causa real: no celular o primeiro bloco levava
-   padding-top:0, então "1.685" encostava no fio de cima.
-   ──────────────────────────────────────────────────────────── */
-.band>div:first-child{padding-left:0;padding-top:clamp(34px,3.4vw,48px)!important}
-@media(max-width:640px){
-  .band>div{padding:30px 0 26px!important}
-  .band>div:first-child{border-top:0;padding-top:30px!important}
-}
+   padding-top:0{padding-left:0;padding-top:clamp(34px,3.4vw,48px)!important}
 
 /* ── HERO NO CELULAR · marca e metragem juntas, sobre a foto ─
    Igual ao computador: logo, assinatura e metragem empilhados
@@ -1818,23 +1754,11 @@ body.mm-on .mm-links a{opacity:1;translate:0}
   .stage{order:1;margin-top:0}
   .panel{order:2}
 }
-
-/* ── A FAIXA · Z1 é texto, não número, e não deve contar ───── */
-.band b{font-variant-numeric:lining-nums tabular-nums}
-
+/* ── A FAIXA · Z1 é texto,não número{font-variant-numeric:lining-nums tabular-nums}
 /* ── ANÉIS · a lista virou legenda dos selos do mapa ─────────
    O mapa novo traz os selos 01 a 05. A coluna repete o mesmo
-   número na frente, então o olho liga um ao outro sozinho.
-   ──────────────────────────────────────────────────────────── */
-.anel li{grid-template-columns:auto auto auto 1fr;gap:5px 10px}
-.anel i{font-style:normal;font-family:var(--serif);font-size:11px;
-  letter-spacing:.1em;color:var(--acc);opacity:.55;min-width:20px}
-.anel em{grid-column:4}
+   número na frente{grid-template-columns:auto auto auto 1fr;gap:5px 10px}
 .plot-txt b{font-weight:500;color:var(--acc);font-family:var(--serif)}
-@media(max-width:640px){
-  .anel li{grid-template-columns:auto auto auto 1fr}
-  .anel em{grid-column:1/-1;margin-top:4px}
-}
 
 /* ═══════════════════════════════════════════════════════════════
    39. QUATRO PLACAS, O PERFIL QUE ATRAVESSA O SITE
@@ -1852,22 +1776,6 @@ body.mm-on .mm-links a{opacity:1;translate:0}
 .pickchip{gap:9px}
 .pickchip s{width:14px;height:1px;background:currentColor;opacity:.6;
   text-decoration:none;flex:none}
-
-.perfil-eco{display:grid;gap:6px;overflow:hidden;
-  max-height:0;opacity:0;margin-top:0;padding:0 0 0 clamp(16px,1.8vw,24px);
-  border-left:2px solid transparent;
-  transition:max-height .8s var(--e),opacity .6s var(--e),
-             margin-top .8s var(--e),padding-top .8s var(--e),
-             padding-bottom .8s var(--e),border-color .6s var(--e)}
-.perfil-eco.on{max-height:200px;opacity:1;
-  margin-top:clamp(26px,3vw,38px);padding-top:clamp(14px,1.6vw,20px);
-  padding-bottom:clamp(14px,1.6vw,20px);border-left-color:var(--acc)}
-.perfil-eco em{font-style:normal;font-size:8.5px;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--acc)}
-.perfil-eco b{font-family:var(--serif);font-weight:400;
-  font-size:clamp(21px,2.2vw,29px);line-height:1.05;letter-spacing:-.02em;
-  color:var(--fg)}
-.perfil-eco span{font-size:13.5px;line-height:1.7;color:var(--dim);max-width:38ch}
 
 /* ── HERO NO CELULAR · a assinatura estava invadindo a poltrona ─ */
 @media(max-width:640px){
@@ -1940,7 +1848,6 @@ input[type=range].pulsa::-moz-range-thumb{animation:pulsaBola 2.4s var(--e) 3}
   .perfil{min-height:118vw}
   .perfil-in{padding:24px 22px 30px}
   .perfil-in h3{font-size:26px}
-  .perfil-in p{font-size:13.5px;max-width:none}
   .perfil-placa::after{top:auto;bottom:clamp(22px,6vw,34px)}
 }
 @media(min-width:641px){
@@ -1994,19 +1901,12 @@ input[type=range].pulsa::-moz-range-thumb{animation:pulsaBola 2.4s var(--e) 3}
 .perfil-placa::after{transition:opacity .16s linear}
 .perfil.aberto .perfil-placa::after,
 .perfil:hover .perfil-placa::after{opacity:0}
-
 /* ── DEPOIS DA CHAPA · caracterizar o luxo e pedir a escolha ──
    O parágrafo escondido continuava ocupando altura e empurrava o
    título do primeiro cartão para cima. Agora ele só existe quando
-   é lido, e os três títulos nascem na mesma linha.
-   ──────────────────────────────────────────────────────────── */
-.perfil-in p{max-height:0;opacity:0;overflow:hidden;margin-top:0;
+   é lido{max-height:0;opacity:0;overflow:hidden;margin-top:0;
   transition:max-height .7s var(--e) .18s,opacity .6s var(--e) .24s,
              margin-top .7s var(--e) .18s}
-.perfil.aberto .perfil-in p,
-.perfil:hover .perfil-in p,
-.perfil[aria-pressed="true"] .perfil-in p{
-  max-height:9em;opacity:.82;margin-top:13px}
 
 .perfil-cta{display:inline-flex;align-items:center;gap:10px;
   margin-top:0;max-height:0;opacity:0;overflow:hidden;
@@ -2090,15 +1990,13 @@ input[type=range].pulsa::-moz-range-thumb{animation:pulsaBola 1.8s var(--e) 4}
     background:rgba(20,7,1,.36);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
   .perfil-in{padding:22px 22px 26px}
   .perfil-in h3{font-size:25px;line-height:1.05}
-  .perfil-in p{font-size:13.5px}
-  .perfil.aberto .perfil-in p{max-height:10em}
   .perfil-cta{font-size:9px;letter-spacing:.26em}
   .perfil.aberto .perfil-cta{padding:13px 24px;max-height:46px;margin-top:16px}
   .perfil-pick{top:20px;right:20px}
 }
 
 @media(prefers-reduced-motion:reduce){
-  .perfil-placa,.perfil-bg,.perfil-in p,.perfil-cta{transition:none!important}
+.perfil-placa,.perfil-bg,.perfil-cta{transition:none!important}
   .perfil.aberto .perfil-placa::before,#fachada.anuncia .fach-btns::after,
   .tri.espia .tri-placa,
   input[type=range].pulsa::-webkit-slider-thumb{animation:none!important}
@@ -2394,7 +2292,6 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
 
   .perfis{grid-template-columns:repeat(3,1fr);height:clamp(360px,42vw,460px)}
   .perfil-in h3{font-size:clamp(18px,2.4vw,24px)}
-  .perfil-in p{font-size:12.5px}
   .perfil-cta{font-size:8px;letter-spacing:.22em}
 
   .fach{grid-template-columns:1fr}
@@ -2405,7 +2302,6 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
   .plotter{grid-template-columns:1fr;gap:clamp(24px,3vw,40px)}
   .plot-frame{max-width:min(100%,680px);margin-inline:auto}
   .plot-side{max-width:680px;margin-inline:auto;width:100%}
-  .anel li{grid-template-columns:auto auto auto 1fr}
 
   .mshell{display:flex;flex-direction:column;gap:26px}
   .stage{order:1;max-width:min(100%,600px);margin-inline:auto}
@@ -2414,9 +2310,6 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
 
   #flexcave{height:170vh}
   .fc-copy h2{font-size:clamp(30px,4.4vw,44px)}
-
-  .band{grid-template-columns:repeat(2,1fr)}
-  .band>div:nth-child(3){border-left:0}
   .typo-wrap{grid-template-columns:1fr}
   .typo-nav{grid-template-columns:repeat(2,1fr);gap:0 clamp(18px,3vw,34px)}
   .typo-panel{grid-template-columns:1fr}
@@ -2440,9 +2333,6 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
   .perfis{grid-template-columns:1fr;height:auto}
   .perfil{min-height:clamp(300px,44vw,400px)}
   .trio{grid-template-columns:1fr}
-  .band{grid-template-columns:1fr}
-  .band>div{border-left:0;border-top:1px solid var(--rule)}
-  .band>div:first-child{border-top:0}
   .fg{grid-template-columns:1fr}
 }
 
@@ -2621,4 +2511,291 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
 }
 @media(prefers-reduced-motion:reduce){
   #fachada .fach-side>.eyebrow{animation:none}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   49. RODADA DE AJUSTE · HERO, PERFIS, RÉGUA, FICHA, PELES
+   ═══════════════════════════════════════════════════════════════
+   Bloco AUTORITATIVO. Tudo que estiver aqui é a última palavra.
+   NÃO replicar estas regras em outras seções do arquivo: foi
+   exatamente essa duplicação que já quebrou a metragem, a faixa
+   de números e os botões da fachada em rodadas anteriores.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 49.1 · A METRAGEM PERTENCE AO LOGO ─────────────────────────
+   O problema não era tamanho, era ancoragem: um bloco estreito
+   pendurado no canto de uma assinatura larga lê como sobra.
+   A correção é geométrica. A metragem passa a ter EXATAMENTE a
+   largura do logo — mesma variável, um valor só — e ganha os fios
+   de uma cota de projeto: número à esquerda, unidade encostada na
+   borda direita, régua atravessando de ponta a ponta.
+   Agora os dois elementos compartilham eixo e medida. Deixam de
+   ser duas coisas próximas e viram uma assinatura só.
+   ──────────────────────────────────────────────────────────── */
+#hero{--lock-w:clamp(230px,23vw,360px)}
+.lockup{width:var(--lock-w)}
+
+.hero-metros{width:var(--lock-w);max-width:none;
+  margin-top:clamp(15px,1.7vw,22px);
+  padding-top:clamp(11px,1.3vw,16px);
+  border-top:1px solid rgba(65,24,5,.3)}
+
+.hero-metros .hm-linha{display:flex;align-items:baseline;gap:clamp(8px,.8vw,12px);
+  width:100%;flex-wrap:nowrap}
+.hero-metros .hm-n{font-size:clamp(23px,2.25vw,34px)}
+.hero-metros .hm-tra{width:clamp(13px,1.1vw,18px)}
+.hero-metros .hm-un{margin-left:auto;opacity:.72;
+  font-size:clamp(8.5px,.72vw,10.5px);padding-bottom:.3em}
+
+/* a régua atravessa a largura inteira do logo: é ela que costura
+   os dois blocos e faz o alinhamento ficar visível */
+.hero-metros .hm-regua{width:100%;margin-top:clamp(9px,1vw,13px)}
+
+.hero-metros .hm-extra{margin-top:clamp(10px,1.1vw,14px);
+  padding-top:clamp(9px,1vw,13px);
+  border-top:1px solid rgba(65,24,5,.16);
+  width:100%;opacity:.8}
+
+@media(max-width:640px){
+  .hero-metros{width:var(--lock-w);max-width:none;margin-top:13px;
+    padding-top:10px}
+  .hero-metros .hm-linha{flex-wrap:nowrap;gap:7px}
+  .hero-metros .hm-n{font-size:20px}
+  .hero-metros .hm-tra{width:11px}
+  .hero-metros .hm-un{font-size:7.5px;padding-bottom:.26em}
+  .hero-metros .hm-regua{width:100%;margin-top:8px}
+  .hero-metros .hm-extra{margin-top:9px;padding-top:8px;
+    font-size:6.5px;letter-spacing:.2em}
+  .hero-metros .hm-extra b{font-size:12.5px}
+}
+@media(max-width:380px){
+  .hero-metros{max-width:none}
+  .hero-metros .hm-n{font-size:18px}
+}
+
+/* ── 49.2 · O HERO DO CELULAR OCUPA A TELA INTEIRA ──────────────
+   A referência que o Gustavo trouxe preenche 100% do primeiro
+   scroll, e é isso que dá o impacto. A foto agora é vertical
+   (9:16), a mulher com o jornal ocupa a metade de baixo em
+   tamanho real e a parede limpa da metade de cima recebe o logo
+   e a metragem. Nada de imagem pequena com bege sobrando.
+
+   O background é declarado em duas camadas: se hero-mob.jpg
+   existir, ela vale; se um dia sumir, o navegador pula a camada
+   e cai na versão antiga sozinho.
+   ──────────────────────────────────────────────────────────── */
+@media(max-width:640px){
+  #hero{position:relative;display:block;height:100svh;min-height:560px;
+    padding:0;overflow:hidden;background:var(--branco);
+    --lock-w:min(216px,57vw)}
+  #hero .plate{position:absolute;inset:0;width:auto;height:auto;
+    aspect-ratio:auto;border:0;
+    background-image:url(hero-mob.jpg),url(hero-paper-mob.jpg);
+    background-position:center bottom;background-size:cover;
+    background-repeat:no-repeat}
+  #hero .veil{display:block;position:absolute;inset:0;z-index:2;
+    pointer-events:none;
+    background:linear-gradient(180deg,
+      rgba(238,233,224,.8) 0%,rgba(238,233,224,.46) 22%,
+      rgba(238,233,224,.1) 38%,transparent 50%)}
+  #hero .hero-in{position:absolute;z-index:3;
+    left:var(--pad);right:var(--pad);top:clamp(78px,12vh,124px);
+    translate:0;max-width:none;padding:0;background:none}
+  #hero .cue{position:absolute;z-index:4;left:50%;bottom:22px;
+    translate:-50% 0;display:flex}
+}
+
+/* ── 49.3 · O CARTÃO DE PERFIL É UMA PERGUNTA, NÃO UM VERBETE ───
+   Antes cada cartão carregava etiqueta, nome e um parágrafo de
+   descrição por cima da foto: três níveis de leitura disputando
+   espaço com a imagem, e a decisão perdida no meio.
+   Agora o cartão diz uma coisa só — o subtítulo, que virou o
+   título — e logo abaixo o botão de escolher, sempre visível e
+   pulsando em todas as telas. A descrição migrou para depois da
+   escolha, no resumo da Visita, que é onde ela responde algo.
+   ──────────────────────────────────────────────────────────── */
+.perfil-in{display:flex;flex-direction:column;align-items:flex-start}
+.perfil-in h3{font-family:var(--serif);font-weight:400;
+  font-size:clamp(23px,2.5vw,36px);line-height:1.06;letter-spacing:-.01em;
+  color:var(--branco);max-width:13ch;margin:0}
+
+/* o convite é permanente: nada de esperar hover ou a placa abrir */
+.perfil-cta{max-height:none;overflow:visible;opacity:1;
+  margin-top:clamp(16px,1.8vw,24px);padding:12px 22px;
+  gap:9px;background:rgba(232,205,166,.06);
+  transition:background .45s var(--e),color .45s var(--e),
+             border-color .45s var(--e),opacity .45s var(--e)}
+.perfil.aberto .perfil-cta{max-height:none;opacity:1;
+  margin-top:clamp(16px,1.8vw,24px);padding:12px 22px}
+.perfil-cta em{font-style:normal}
+.perfil-cta s{width:6px;height:6px;border-radius:50%;flex:none;
+  text-decoration:none;background:var(--marca-lit);
+  animation:chamaEscolha 2.6s ease-in-out infinite}
+.perfil-cta{animation:respiraEscolha 2.6s ease-in-out infinite}
+@keyframes respiraEscolha{
+  0%,100%{border-color:rgba(232,205,166,.34);background:rgba(232,205,166,.05)}
+  50%    {border-color:rgba(232,205,166,.85);background:rgba(232,205,166,.13)}
+}
+@keyframes chamaEscolha{
+  0%,100%{box-shadow:0 0 0 0 rgba(232,205,166,.5);opacity:.75}
+  55%    {box-shadow:0 0 0 7px rgba(232,205,166,0);opacity:1}
+}
+/* escolhido: para de pulsar e vira estado sólido */
+.perfil[aria-pressed="true"] .perfil-cta,
+.perfil[aria-pressed="true"] .perfil-cta s{animation:none}
+.perfil[aria-pressed="true"] .perfil-cta{
+  background:var(--marca);border-color:var(--marca);color:#3A1304}
+.perfil[aria-pressed="true"] .perfil-cta s{background:#3A1304;box-shadow:none;opacity:1}
+.perfis.has-pick .perfil[aria-pressed="false"] .perfil-cta{opacity:.5;animation:none}
+.perfis.has-pick .perfil[aria-pressed="false"] .perfil-cta s{animation:none}
+
+@media(max-width:640px){
+  .perfil-in{padding:22px 22px 26px}
+  .perfil-in h3{font-size:26px;max-width:11ch}
+  .perfil-cta{margin-top:15px;padding:12px 20px;
+    font-size:8.5px;letter-spacing:.26em}
+  .perfil.aberto .perfil-cta{margin-top:15px;padding:12px 20px}
+}
+@media(min-width:641px) and (max-width:1024px){
+  .perfil-in h3{font-size:clamp(20px,2.7vw,27px)}
+  .perfil-cta{font-size:8px;letter-spacing:.22em;padding:11px 18px}
+  .perfil.aberto .perfil-cta{padding:11px 18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .perfil-cta,.perfil-cta s{animation:none!important}
+  .perfil-cta{border-color:rgba(232,205,166,.7)}
+}
+
+/* ── 49.4 · A RÉGUA DE MINUTOS ──────────────────────────────────
+   Cinco blocos empilhados repetindo "Caminhada até X minutos"
+   custavam meia tela e não diziam nada que o número já não
+   dissesse. Vira uma régua: cinco tempos numa linha, na ordem
+   dos anéis do mapa, com a unidade uma vez só no fim.
+   ──────────────────────────────────────────────────────────── */
+.regua{margin-top:clamp(22px,2.4vw,32px);
+  padding:clamp(15px,1.7vw,22px) 0;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.regua-min{list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(5,1fr);align-items:baseline}
+.regua-min li{position:relative;text-align:center}
+.regua-min li+li::before{content:"";position:absolute;left:0;top:50%;
+  translate:0 -50%;width:1px;height:1.05em;background:currentColor;opacity:.18}
+.regua-min b{font-family:var(--serif);font-weight:500;
+  font-size:clamp(22px,2.35vw,34px);line-height:1;
+  font-variant-numeric:lining-nums tabular-nums;letter-spacing:0}
+.regua-un{display:block;margin-top:clamp(9px,1vw,13px);text-align:center;
+  font-size:8px;letter-spacing:.3em;text-transform:uppercase;opacity:.55}
+@media(max-width:640px){
+  .regua{margin-top:20px;padding:14px 0}
+  .regua-min b{font-size:24px}
+  .regua-un{margin-top:9px;font-size:7.5px;letter-spacing:.26em}
+}
+
+/* ── 49.5 · A FICHA TÉCNICA DENTRO DO CABEÇALHO ─────────────────
+   A faixa solta de quatro blocos altos era a maior queixa de
+   rolagem do celular: ocupava quase uma tela e chegava sem
+   contexto, longe do título que explicava do que se tratava.
+   Agora ela é uma placa 2×2 colada em "Casas Sobrepostas" —
+   lê como legenda do título, não como seção nova.
+   ──────────────────────────────────────────────────────────── */
+.ficha{display:grid;grid-template-columns:repeat(2,1fr);
+  margin:clamp(26px,3vw,40px) 0 0;max-width:440px;
+  border-top:1px solid var(--rule)}
+.ficha>div{padding:clamp(15px,1.6vw,20px) clamp(16px,1.8vw,24px)
+  clamp(13px,1.4vw,18px) 0}
+.ficha>div:nth-child(even){padding-left:clamp(16px,1.8vw,24px);
+  border-left:1px solid var(--rule)}
+.ficha>div:nth-child(n+3){border-top:1px solid var(--rule)}
+.ficha dt{font-family:var(--serif);font-weight:500;
+  font-size:clamp(26px,2.9vw,42px);line-height:1;color:var(--acc);
+  font-variant-numeric:lining-nums tabular-nums}
+.ficha dd{margin:clamp(7px,.8vw,10px) 0 0;
+  font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  line-height:1.6;opacity:.62}
+@media(max-width:640px){
+  .ficha{margin-top:22px;max-width:none}
+  .ficha>div{padding:14px 14px 12px 0}
+  .ficha>div:nth-child(even){padding-left:14px}
+  .ficha dt{font-size:29px}
+  .ficha dd{font-size:8px;letter-spacing:.16em;margin-top:7px}
+}
+
+/* ── 49.6 · O RESUMO DA VISITA, UM BLOCO SÓ ─────────────────────
+   O perfil escolhido virou o cabeçalho do resumo, com a descrição
+   que saiu dos cartões. Antes o mesmo nome aparecia duas vezes
+   seguidas, em dois blocos diferentes.
+   ──────────────────────────────────────────────────────────── */
+.resumo.on{max-height:520px}
+.resumo-perfil{display:grid;gap:6px;max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .6s var(--e),opacity .5s var(--e) .1s,
+             margin-top .6s var(--e)}
+.resumo-perfil.on{max-height:220px;opacity:1;
+  margin-top:clamp(12px,1.4vw,17px)}
+.resumo-perfil b{font-family:var(--serif);font-weight:400;
+  font-size:clamp(20px,1.9vw,27px);line-height:1.1;color:var(--fg)}
+.resumo-perfil span{font-size:13.5px;line-height:1.72;
+  color:var(--dim);max-width:40ch}
+.resumo ul:empty{display:none}
+@media(max-width:640px){
+  .resumo.on{max-height:600px}
+  .resumo-perfil b{font-size:21px}
+  .resumo-perfil span{font-size:13px;max-width:none}
+}
+
+/* ── 49.7 · AS DUAS PELES SE APRESENTAM SOZINHAS ────────────────
+   Dois botões parados não pedem nada. Quando a seção entra na
+   tela o site troca de pele sozinho e volta: o texto desliza, a
+   camada de cor cruza o render e o seletor se acende. Depois do
+   primeiro toque da pessoa, a demonstração nunca mais roda.
+   ──────────────────────────────────────────────────────────── */
+.pele-txt{transition:opacity .18s linear,translate .18s linear}
+.pele-txt.trocando{opacity:0;translate:0 4px}
+
+/* o botão inativo respira até alguém tocar */
+#fachada.pele-chama .pele:not(.on){animation:chamaPele 2.8s ease-in-out infinite}
+#fachada.pele-usada .pele{animation:none}
+@keyframes chamaPele{
+  0%,100%{color:var(--dim)}
+  50%    {color:var(--marca)}
+}
+/* durante a demonstração, o selecionador ganha um fio que corre */
+.pele-sel{position:relative;overflow:hidden}
+.pele-sel::after{content:"";position:absolute;left:0;bottom:0;height:1px;
+  width:100%;transform-origin:left center;transform:scaleX(0);opacity:0;
+  background:linear-gradient(90deg,transparent,var(--marca),transparent)}
+#fachada.pele-demo .pele-sel::after{
+  animation:correPele 2s cubic-bezier(.5,0,.2,1) 1}
+@keyframes correPele{
+  0%  {transform:scaleX(0);opacity:0}
+  14% {opacity:.9}
+  100%{transform:scaleX(1);opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  #fachada.pele-chama .pele:not(.on){animation:none;color:var(--marca)}
+  #fachada.pele-demo .pele-sel::after{animation:none}
+  .pele-txt{transition:none}
+}
+
+/* ── 49.8 · REMENDOS DE COERÊNCIA ───────────────────────────────
+   Três ajustes finos que dependem dos blocos acima.
+   ──────────────────────────────────────────────────────────── */
+
+/* tablet: a assinatura tem largura própria, entre as duas outras */
+@media(min-width:641px) and (max-width:1024px){
+  #hero{--lock-w:min(252px,31vw)}
+}
+
+/* o "Desça" reaparece no celular, centrado no pé da tela cheia */
+@media(max-width:640px){
+  #hero .cue{display:flex;left:50%;right:auto;bottom:22px;translate:-50% 0}
+  #hero .cue i{width:34px}
+}
+
+/* no computador, o mouse interrompe o pulso e o botão vira estado
+   sólido: a animação não pode engolir a resposta ao ponteiro */
+@media(hover:hover){
+  .perfil:hover .perfil-cta{animation:none;
+    background:var(--marca);border-color:var(--marca);color:#3A1304}
+  .perfil:hover .perfil-cta s{animation:none;background:#3A1304;
+    box-shadow:none;opacity:1}
 }

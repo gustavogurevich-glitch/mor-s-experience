@@ -1,18 +1,18 @@
 SUBIR NO GITHUB — TUDO, DE UMA VEZ
 =========================================================
 
-Suba SEMPRE a pasta inteira. Não tente escolher só os que
-mudaram: é assim que o site fica pela metade.
+Suba SEMPRE a pasta inteira, incluindo a subpasta bichos.
+Escolher só os que mudaram foi o que quebrou o site da outra vez.
 
 COMO
  1. github.com/gustavogurevich-glitch/mor-s-experience
-    (o primeiro, SEM o .2 no nome — é esse que a Vercel publica)
+    (o primeiro, SEM o .2 no nome)
  2. Add file  ->  Upload files
- 3. Abra esta pasta, Cmd+A para selecionar tudo, e arraste
-    ATENÇÃO: a pasta bichos tem que ir junto. Arraste ela também.
- 4. Commit changes, botão verde no fim da página
+ 3. Abra esta pasta, Cmd+A, arraste tudo
+    CONFIRA que a pasta bichos apareceu na lista
+ 4. Commit changes
  5. Espere 40 segundos
 
-CONFERIR SE DEU CERTO
- Abra morasexperience.com.br e procure por "Rua Morás, 458"
- no rodapé. Se ainda estiver 466, o upload não pegou.
+CONFERIR
+ morasexperience.com.br no celular.
+ No rodape tem que estar "Rua Moras, 458".
