@@ -3347,3 +3347,55 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
 @media(prefers-reduced-motion:reduce){
   .specs::after{animation:none;opacity:0}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   55. RODAPÉ DA HERO · EQUILÍBRIO FINAL (celular)
+   ═══════════════════════════════════════════════════════════════
+   Três correções pedidas, todas sobre a mesma linha do rodapé:
+
+   · a marca precisa mandar. O selo tinha ficado maior que o logo,
+     e isso inverte a hierarquia — primeiro quem é, depois quanto
+     tem. O logo cresce; o selo fica onde está.
+   · Bodoni em peso 400 num corpo pequeno vira fio e some no chão
+     claro. Sobe para 600, que é onde o desenho da fonte engrossa
+     sem perder a elegância das serifas.
+   · as vagas estavam encostadas na bola. Continuam embaixo dela,
+     como ele pediu, mas com o dobro do respiro e ancoradas pela
+     direita, para não furar a margem da tela.
+
+   Bloco AUTORITATIVO. Só ≤640px. O computador não é tocado.
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:640px){
+
+  /* a marca volta a mandar no rodapé */
+  #hero{--lock-w:min(152px,42vw)}
+  #hero .hero-in{bottom:clamp(48px,8.5vh,76px);gap:18px}
+
+  /* os números engrossam e ganham um degrau de corpo */
+  .hero-metros .hm-n{font-weight:600;
+    font-size:clamp(18px,4.9vw,21px);letter-spacing:.006em;
+    color:#3A1303}
+  .hero-metros .hm-tra{width:26px;height:1.4px;background:#3A1303;opacity:.5}
+  .hero-metros .hm-un{bottom:16px;font-size:6.5px;letter-spacing:.28em;
+    opacity:.66;color:#3A1303}
+
+  /* as vagas: embaixo da bola, com o dobro do respiro, alinhadas
+     pela direita para caberem dentro da margem */
+  .hero-metros .hm-extra{left:auto;right:0;bottom:-38px;
+    justify-content:flex-end;text-align:right;
+    gap:7px;opacity:.72;color:#3A1303;
+    font-size:6.5px;letter-spacing:.24em}
+  .hero-metros .hm-extra b{font-size:12.5px;font-weight:500;color:#3A1303}
+}
+@media(max-width:380px){
+  #hero{--lock-w:min(134px,40vw)}
+  .hero-metros{inline-size:108px}
+  .hero-metros .hm-n{font-size:17px}
+  .hero-metros .hm-extra{font-size:6px;letter-spacing:.2em;bottom:-34px}
+}
+@media(max-width:640px) and (max-height:700px){
+  #hero{--lock-w:min(132px,38vw)}
+  .hero-metros{inline-size:104px}
+  .hero-metros .hm-n{font-size:16.5px}
+  #hero .hero-in{bottom:42px}
+}

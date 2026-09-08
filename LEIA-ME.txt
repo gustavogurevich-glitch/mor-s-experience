@@ -1,18 +1,19 @@
-SUBIR NO GITHUB — TUDO, DE UMA VEZ
-=========================================================
+MORÁS EXPERIENCE — SITE PRONTO
 
-Suba SEMPRE a pasta inteira, incluindo a subpasta bichos.
-Escolher só os que mudaram foi o que quebrou o site da outra vez.
+COMO ABRIR NO CHROME
+--------------------
+Clique com o botão DIREITO em "index.html"
+→ Abrir com → Google Chrome
 
-COMO
- 1. github.com/gustavogurevich-glitch/mor-s-experience
-    (o primeiro, SEM o .2 no nome)
- 2. Add file  ->  Upload files
- 3. Abra esta pasta, Cmd+A, arraste tudo
-    CONFIRA que a pasta bichos apareceu na lista
- 4. Commit changes
- 5. Espere 40 segundos
+Se abrir em branco, é cache. Recarregue com Cmd + Shift + R.
 
-CONFERIR
- morasexperience.com.br no celular.
- No rodape tem que estar "Rua Moras, 458".
+COMO VER A VERSÃO CELULAR
+-------------------------
+Com o site aberto no Chrome:
+Cmd + Option + I  → clique no ícone de celular no topo da janela
+                    (ou Cmd + Shift + M)
+
+COMO SUBIR PARA O AR
+--------------------
+No GitHub, envie TODO o conteúdo desta pasta — arquivos e subpastas.
+Não envie só o index.html: o site precisa do style.css e das imagens.
