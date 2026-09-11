@@ -3531,3 +3531,117 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
    ═══════════════════════════════════════════════════════════════ */
 .perfis-call b{font-weight:700;color:var(--corten);
   letter-spacing:-.004em}
+
+/* ═══════════════════════════════════════════════════════════════
+   59. CELULAR · FECHAMENTO DEFINITIVO
+   ═══════════════════════════════════════════════════════════════
+   Auditei a cascata: #hero estava redefinido DEZ vezes dentro de
+   max-width:640px e .plate NOVE. Com esse tanto de camada, cada
+   ajuste novo tinha chance de perder para uma regra antiga que
+   ninguém lembrava. Este bloco encerra o assunto: as propriedades
+   ESTRUTURAIS do hero de celular ficam aqui, com !important, e
+   nenhuma outra regra pode mais derrubá-las.
+
+   NÃO replicar nada daqui em outro lugar do arquivo.
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:640px){
+
+  /* ── 59.1 · A HOME OCUPA A TELA E A ASSINATURA POUSA NELA ─────
+     A foto preenche 100% da altura visível. O logo, o selo e as
+     vagas vivem sobre o chão claro do rodapé, dentro da área
+     segura — nada mais é cortado pela borda.
+     ─────────────────────────────────────────────────────────── */
+  #hero{position:relative!important;display:block!important;
+    height:100svh!important;min-height:540px!important;
+    padding:0!important;overflow:hidden!important;
+    background:var(--branco)!important}
+
+  #hero>.plate{position:absolute!important;inset:0!important;
+    width:auto!important;height:auto!important;aspect-ratio:auto!important;
+    border:0!important;margin:0!important;
+    background-image:url(hero-mob.jpg),url(hero-paper-mob.jpg)!important;
+    background-repeat:no-repeat!important;
+    background-size:cover!important;
+    background-position:center top!important}
+
+  #hero>.veil{display:block!important;position:absolute!important;
+    inset:0!important;z-index:2!important;pointer-events:none!important;
+    background:linear-gradient(180deg,
+      rgba(238,233,224,.3) 0%,transparent 13%,
+      transparent 60%,rgba(238,233,224,.5) 82%,rgba(238,233,224,.9) 100%)!important}
+
+  /* a assinatura: ancorada no rodapé, com folga para as vagas que
+     ficam penduradas abaixo do selo */
+  #hero>.hero-in{position:absolute!important;z-index:3!important;
+    left:var(--pad)!important;right:var(--pad)!important;
+    top:auto!important;bottom:max(58px,9vh)!important;
+    translate:0!important;transform:none!important;
+    max-width:none!important;padding:0!important;background:none!important;
+    display:flex!important;align-items:flex-end!important;
+    justify-content:space-between!important;gap:16px!important}
+
+  #hero .cue{display:none!important}
+}
+
+/* ── 59.2 · O FLEX CAVE NÃO CORTA MAIS O TEXTO ──────────────────
+   A causa: os dois parágrafos eram position:absolute dentro de um
+   contêiner com min-height CHUTADO em 5.2em. Quando o texto do
+   fechamento passou a ter três linhas, ele estourou a caixa e o
+   overflow:hidden do palco comeu a última linha.
+
+   A correção certa não é aumentar o chute: é empilhar os dois no
+   MESMO espaço de grade. Aí a altura reservada passa a ser a do
+   maior dos dois, medida pelo navegador, e nunca mais falta.
+   ──────────────────────────────────────────────────────────── */
+.fc-state{display:grid;min-height:0;position:static}
+.fc-state p{grid-area:1/1;position:static;inset:auto;margin:0}
+
+@media(max-width:640px){
+  .fc-copy{bottom:max(52px,8vh)!important;max-width:none}
+  .fc-copy h2{font-size:29px;line-height:1.02}
+  .fc-rot{height:auto;min-height:1.2em;margin:11px 0 9px}
+  .fc-rot b{font-size:19px}
+  .fc-state p{font-size:15px;line-height:1.55;max-width:28ch}
+  .fc-copy .fecho{margin-top:13px;padding-top:13px}
+}
+@media(max-width:640px) and (max-height:740px){
+  .fc-copy{bottom:44px!important}
+  .fc-copy h2{font-size:26px}
+  .fc-state p{font-size:14px}
+}
+
+/* ── 59.3 · OS MINUTOS VOLTAM A APARECER ────────────────────────
+   O recorte estava no <ol> e os números são netos dele, dentro de
+   <li>. background-clip:text só recorta o texto do PRÓPRIO
+   elemento — no computador o efeito pegava por sorte de pintura,
+   no Safari do iPhone os algarismos simplesmente sumiram, porque
+   ficaram transparentes sem ter gradiente atrás.
+
+   Agora cada número carrega o seu próprio gradiente, e o que cria
+   a onda é o atraso entre eles. Mais robusto e mais bonito: a luz
+   percorre a régua número a número, na ordem dos anéis.
+   ──────────────────────────────────────────────────────────── */
+.regua-min{background:none;animation:none}
+.regua-min b{
+  background-image:linear-gradient(100deg,
+    #2E0F02 0%,#511D05 26%,#A85A2E 46%,#C07A3E 52%,#8A4A22 60%,#511D05 78%,#2E0F02 100%);
+  background-size:320% 100%;background-position:100% 50%;
+  -webkit-background-clip:text;background-clip:text;
+  color:#511D05;-webkit-text-fill-color:transparent;
+  animation:acendeMin 4.6s linear infinite}
+.regua-min li:nth-child(1) b{animation-delay:0s}
+.regua-min li:nth-child(2) b{animation-delay:.22s}
+.regua-min li:nth-child(3) b{animation-delay:.44s}
+.regua-min li:nth-child(4) b{animation-delay:.66s}
+.regua-min li:nth-child(5) b{animation-delay:.88s}
+@keyframes acendeMin{
+  0%  {background-position:100% 50%}
+  100%{background-position:-60% 50%}
+}
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){
+  .regua-min b{-webkit-text-fill-color:currentColor;color:var(--corten);
+    background:none;animation:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .regua-min b{animation:none;background-position:40% 50%}
+}
