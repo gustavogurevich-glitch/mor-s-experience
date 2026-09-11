@@ -3399,3 +3399,135 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
   .hero-metros .hm-n{font-size:16.5px}
   #hero .hero-in{bottom:42px}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   56. RODADA DE TEXTOS · SUBTÍTULOS, ROTULAGEM E LUZ
+   ═══════════════════════════════════════════════════════════════
+   Bloco AUTORITATIVO.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 56.1 · O BRILHO DO "ESCOLHER" PELA METADE DO TEMPO ─────────
+   De 4,2s para 2,1s. A luz cruza com o dobro da frequência sem
+   mudar de desenho — só o intervalo entre as passagens encurta.
+   ──────────────────────────────────────────────────────────── */
+.perfil-cta::after{animation-duration:2.1s}
+#perfisGrid .perfil:nth-of-type(2) .perfil-cta::after{animation-delay:.24s}
+#perfisGrid .perfil:nth-of-type(3) .perfil-cta::after{animation-delay:.48s}
+
+/* ── 56.2 · A CHAMADA DOS PERFIS SEM ITÁLICO ────────────────────
+   Itálico numa linha curta de instrução lê como legenda de foto,
+   não como convite. Reto, o corten manda mais.
+   ──────────────────────────────────────────────────────────── */
+.perfis-call,.perfis-call b,.perfis-call em{font-style:normal}
+.perfis-call b{font-weight:400;color:var(--corten)}
+
+/* ── 56.3 · O ESTADO DO FLEX CAVE TEM NOME ──────────────────────
+   Antes a frase carregava o rótulo dentro dela ("Aberto, a Z1
+   vira..."). Agora Aberto e Fechado são um título próprio que
+   troca sozinho, e a frase começa direto no argumento.
+   Os dois ocupam o mesmo lugar: um sai, o outro entra.
+   ──────────────────────────────────────────────────────────── */
+.fc-rot{position:relative;height:1.15em;
+  margin:clamp(14px,1.6vw,20px) 0 clamp(10px,1.2vw,14px)}
+.fc-rot b{position:absolute;left:0;top:0;
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(19px,1.9vw,27px);line-height:1.15;
+  color:var(--branco);letter-spacing:.01em;
+  opacity:1;translate:0 0;
+  transition:opacity .45s var(--e),translate .45s var(--e)}
+.fc-rot b.off{opacity:0;translate:0 8px;pointer-events:none}
+
+/* ── 56.4 · O SUBTÍTULO DA TIPOLOGIA ────────────────────────────
+   Uma linha em serifada creme com peso, entre o nome e o corpo.
+   É o que dá a promessa antes da explicação.
+   ──────────────────────────────────────────────────────────── */
+.typo-sub{margin:clamp(12px,1.4vw,18px) 0 0;
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(17px,1.6vw,23px);line-height:1.2;
+  color:var(--marca-lit);letter-spacing:.004em}
+
+/* ── 56.5 · O TEXTO DOS JARDINS EM DUAS VOZES ───────────────────
+   Antes eram dois parágrafos parecidos, e a tese ("o jardim é a
+   Z1") morria no meio do segundo. Agora a abertura é chamada
+   grande; um fio separa; e a Z1 vira o destaque do bloco de baixo.
+   ──────────────────────────────────────────────────────────── */
+.jardim-call{margin:0;font-family:var(--serif);font-weight:400;
+  font-size:clamp(21px,2.05vw,31px);line-height:1.28;
+  color:var(--acc);letter-spacing:-.006em;max-width:20ch}
+.jardim-nota{margin-top:clamp(20px,2.2vw,30px);
+  padding-top:clamp(18px,2vw,26px);border-top:1px solid var(--rule);
+  display:grid;gap:clamp(8px,.9vw,12px);max-width:34ch}
+.jardim-nota b{font-family:var(--sans);font-weight:600;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--acc)}
+.jardim-nota span{font-size:14px;line-height:1.85;
+  color:rgba(239,235,226,.72)}
+@media(max-width:640px){
+  .jardim-call{font-size:22px;max-width:none}
+  .jardim-nota{max-width:none;margin-top:18px;padding-top:16px}
+}
+
+/* ── 56.6 · A RÉGUA DE MINUTOS ACENDE ───────────────────────────
+   Os cinco tempos deixam de ser texto parado: um degradê de
+   corten atravessa os números da esquerda para a direita, na
+   ordem dos anéis do mapa. Recorta no próprio desenho da letra,
+   então a luz corre DENTRO dos algarismos — mesma lógica do mapa
+   de calor, onde a intensidade é que conta a história.
+   ──────────────────────────────────────────────────────────── */
+.regua-min{position:relative;
+  background:linear-gradient(100deg,
+    #8A4A22 0%,#511D05 16%,#2E0F02 30%,#511D05 44%,#9A5A2E 52%,
+    #511D05 60%,#2E0F02 74%,#511D05 88%,#8A4A22 100%);
+  background-size:260% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  animation:corrreLuz 6.4s linear infinite}
+.regua-min b{color:transparent;
+  -webkit-text-fill-color:transparent}
+@keyframes corrreLuz{
+  0%  {background-position:180% 50%}
+  100%{background-position:-80% 50%}
+}
+/* os fios entre os números não entram no recorte */
+.regua-min li+li::before{color:var(--corten)}
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){
+  .regua-min{background:none;animation:none}
+  .regua-min b{color:var(--corten);-webkit-text-fill-color:currentColor}
+}
+@media(prefers-reduced-motion:reduce){
+  .regua-min{animation:none;background-position:50% 50%}
+}
+
+/* ── 56.7 · TIPOLOGIA VIROU SEÇÃO PRÓPRIA ───────────────────────
+   Casas Sobrepostas fecha no cabeçalho; o Flex Cave entra no
+   meio; a Tipologia abre de novo com título próprio.
+   ──────────────────────────────────────────────────────────── */
+.tipo-head{margin-bottom:clamp(30px,3.4vw,52px)}
+#tipologia .typo-wrap{margin-top:0}
+
+/* ═══════════════════════════════════════════════════════════════
+   57. "E O JARDIM É A Z1" GANHA CORPO
+   ═══════════════════════════════════════════════════════════════
+   A linha estava no mesmo corpo miúdo de uma etiqueta qualquer,
+   mas ela é a tese da seção — é o que transforma zoneamento em
+   quintal. Mesma tipografia e mesmo espaçamento de versalete,
+   só que num degrau de escala acima, para virar título do bloco
+   em vez de rótulo dele.
+   ═══════════════════════════════════════════════════════════════ */
+.jardim-nota b{font-size:clamp(13px,1.15vw,16px);letter-spacing:.2em;
+  line-height:1.5;color:var(--acc)}
+.jardim-nota{gap:clamp(11px,1.2vw,15px)}
+@media(max-width:640px){
+  .jardim-nota b{font-size:13px;letter-spacing:.17em}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   58. A CHAMADA DOS PERFIS EM BOLD
+   ═══════════════════════════════════════════════════════════════
+   "Escolha o que mais combina com você." é a instrução da seção
+   inteira — ela precisa pesar mais que a linha de cima. Mesmo
+   corpo, mesma fonte, mesma cor: só o peso sobe, de 400 para 700.
+   Em Bodoni essa diferença é grande, porque os traços finos
+   engrossam junto com os grossos.
+   ═══════════════════════════════════════════════════════════════ */
+.perfis-call b{font-weight:700;color:var(--corten);
+  letter-spacing:-.004em}
