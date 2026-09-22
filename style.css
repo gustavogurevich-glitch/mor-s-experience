@@ -3645,3 +3645,507 @@ body[data-chao="corten"] .zap-btn svg,body[data-chao="escuro"] .zap-btn svg{
 @media(prefers-reduced-motion:reduce){
   .regua-min b{animation:none;background-position:40% 50%}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   60. O CONVITE VIRA OBJETO · E O EPICENTRO GANHA CORPO
+   ═══════════════════════════════════════════════════════════════
+   Bloco AUTORITATIVO.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 60.1 · A PASTILHA DE CORTEN ────────────────────────────────
+   "Escolha o que mais combina com você" era uma linha de texto
+   colorida — e linha de texto, por mais bold que esteja, lê como
+   continuação da frase de cima, não como instrução.
+
+   Virando pastilha ela muda de categoria: passa a ser um objeto
+   na página, com massa, borda e área própria. Corten sólido,
+   letra creme, cantos totalmente arredondados. Em volta, um halo
+   de corten que expande e some a cada 2,8s — o mesmo gesto do
+   ponto vivo da hero, em escala maior.
+
+   O halo vive num ::after com escala, não em box-shadow animado:
+   sombra animada repinta a cada quadro e engasga no celular;
+   transform roda na GPU e fica liso.
+   ──────────────────────────────────────────────────────────── */
+.perfis-selo{margin:clamp(14px,1.6vw,20px) 0 0;line-height:1}
+.perfis-selo b{position:relative;display:inline-flex;align-items:center;
+  padding:clamp(13px,1.35vw,18px) clamp(24px,2.4vw,34px);
+  border-radius:99px;
+  background:linear-gradient(145deg,#6A2A08,#511D05 52%,#3E1503);
+  color:var(--branco);
+  font-family:var(--sans);font-weight:600;
+  font-size:clamp(11px,.95vw,13px);letter-spacing:.14em;
+  text-transform:uppercase;line-height:1.35;
+  box-shadow:0 10px 26px -14px rgba(62,21,3,.75);
+  isolation:isolate}
+
+/* o halo: expande do próprio contorno e desaparece */
+.perfis-selo b::after{content:"";position:absolute;inset:0;z-index:-1;
+  border-radius:99px;border:1px solid var(--corten);
+  transform-origin:center;
+  animation:haloCorten 2.8s cubic-bezier(.3,0,.4,1) infinite}
+@keyframes haloCorten{
+  0%  {transform:scale(1);opacity:.55}
+  70% {transform:scale(1.13);opacity:0}
+  100%{transform:scale(1.13);opacity:0}
+}
+/* brilho interno lento, para o corten não ficar chapado */
+.perfis-selo b::before{content:"";position:absolute;inset:0;z-index:-1;
+  border-radius:99px;pointer-events:none;
+  background:linear-gradient(110deg,transparent 30%,
+    rgba(255,226,190,.16) 50%,transparent 70%);
+  background-size:260% 100%;
+  animation:luzSelo 5.6s ease-in-out infinite}
+@keyframes luzSelo{
+  0%,100%{background-position:150% 50%}
+  50%    {background-position:-50% 50%}
+}
+@media(max-width:640px){
+  .perfis-selo{margin-top:15px}
+  .perfis-selo b{font-size:10.5px;letter-spacing:.11em;
+    padding:13px 20px;max-width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .perfis-selo b::after,.perfis-selo b::before{animation:none}
+  .perfis-selo b::after{opacity:.5;transform:scale(1.05)}
+}
+
+/* ── 60.2 · O PAINEL DO MAPA NO COMPUTADOR ──────────────────────
+   No celular o painel usa a largura toda e a leitura fica boa. No
+   computador ele estava espremido numa coluna de 320px, herdada
+   de quando ali cabiam cinco blocos de PIN. Com a régua enxuta,
+   sobra espaço: a coluna abre e as três vozes — chamada, apoio e
+   números — sobem de corpo na mesma proporção.
+   ──────────────────────────────────────────────────────────── */
+@media(min-width:1040px){
+  .plotter{grid-template-columns:minmax(0,1fr) clamp(340px,26vw,420px)}
+  .plot-chama{font-size:clamp(16px,1.35vw,20px);letter-spacing:.14em;gap:15px}
+  .plot-chama s{width:clamp(28px,2.6vw,38px);height:2px}
+  .plot-txt{font-size:clamp(14.5px,1.12vw,16.5px);line-height:1.78;
+    max-width:32ch}
+  .regua{margin-top:clamp(28px,2.8vw,38px);padding:clamp(19px,1.9vw,26px) 0}
+  .regua-min b{font-size:clamp(28px,2.55vw,38px)}
+  .regua-un{margin-top:clamp(12px,1.2vw,16px);
+    font-size:9px;letter-spacing:.32em}
+}
+@media(min-width:1280px){
+  .plot-txt{font-size:17px;line-height:1.8}
+  .regua-min b{font-size:40px}
+}
+
+/* ── 60.3 · O CABEÇALHO DA TIPOLOGIA ────────────────────────────
+   Só o título. Sem etiqueta e sem frase de apoio — a seção se
+   apresenta pelo nome e entrega o conteúdo logo abaixo.
+   ──────────────────────────────────────────────────────────── */
+.tipo-head{grid-template-columns:1fr;margin-bottom:clamp(26px,3vw,44px)}
+
+/* ═══════════════════════════════════════════════════════════════
+   61. SISTEMA TIPOGRÁFICO · UMA ESCALA PARA O SITE INTEIRO
+   ═══════════════════════════════════════════════════════════════
+   O diagnóstico: 371 declarações de font-size em 59 tamanhos
+   distintos. Havia 6,5px e 6,6px. Havia 8,2px e 8,4px. Nenhum olho
+   humano separa esses pares — mas o conjunto deles é exatamente o
+   que fazia cada ajuste parecer desproporcional, porque não havia
+   proporção nenhuma para respeitar.
+
+   A correção é uma ESCALA MODULAR de dez degraus, razão ~1,26
+   (terça maior). Cada degrau existe por um motivo, e cada papel
+   tipográfico do site mora num degrau só:
+
+     --t-micro    rótulo dentro de instrumento
+     --t-tag      etiqueta de seção, navegação, botão
+     --t-nota     nota, legenda, texto auxiliar
+     --t-destaque versalete de destaque
+     --t-apoio    texto de apoio
+     --t-corpo    corpo de leitura
+     --t-lead     chamada
+     --t-sub      subtítulo
+     --t-h2       título secundário
+     --t-num      número grande
+     --t-titulo   título de seção
+
+   Todo degrau é um clamp: o primeiro valor é o celular, o último
+   é o computador, e a interpolação cobre tudo entre os dois. Assim
+   a proporção entre os degraus é a MESMA nas duas pontas — que é
+   o que faz a página parecer a mesma página nos dois aparelhos.
+
+   Piso de legibilidade respeitado: corpo nunca abaixo de 15px,
+   texto de apoio nunca abaixo de 14px, e nenhum rótulo abaixo de
+   9px (e os de 9px são todos versalete com muito espacejamento,
+   onde a letra maiúscula compensa o corpo pequeno).
+
+   ⚠ Bloco AUTORITATIVO e FINAL. Qualquer font-size novo no site
+   deve usar um destes tokens. Não escrever px solto nunca mais.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --t-micro:    clamp(9px,   .72vw,  10px);
+  --t-tag:      clamp(10px,  .82vw,  11.5px);
+  --t-nota:     clamp(11.5px, .95vw, 13px);
+  --t-destaque: clamp(13px,  1.1vw,  15px);
+  --t-apoio:    clamp(14px,  1.15vw, 15.5px);
+  --t-corpo:    clamp(15.5px,1.3vw,  17.5px);
+  --t-lead:     clamp(18px,  1.6vw,  22px);
+  --t-sub:      clamp(21px,  2.05vw, 28px);
+  --t-h2:       clamp(26px,  2.6vw,  35px);
+  --t-num:      clamp(30px,  3.1vw,  42px);
+  --t-titulo:   clamp(36px,  4.5vw,  60px);
+}
+
+/* ── 61.1 · MICRO · rótulo dentro de instrumento ──────────────── */
+.hero-sig,.hero-note,.cue,.legal,.avlbl,.ticks,.plot-scale span,
+.corelbl,.parklbl,.pinlbl,.rlbl,.plot-hud i,.plot-nota,
+.fach-hint,.fach-stop span,.fach-stop i,.fach-state i,.dica-arrasta,
+.fc-meter span,.carr-cont,.carr-q figcaption span,.carr-q figcaption em,
+.carr-q figcaption i,.typo-nav button i,.typo-txt h3 small,
+.tri-placa em,.tri-placa i,.bim-lbl em,.bleed-slot span,.bleedcap,.slot span,
+.ficha dd,.specs span,.regua-un,.cat-vazio,.cat-lista li em i,
+.resumo li em,.pickchip i,.dest button em,.dest-i em,
+.mm-links i,.f3c div span,.zap-pe,.zap-op i,.zap-lbl,.zap-x,
+.egg span,.perfil-pick,.perfil-placa::after,
+.mfoot .eyebrow,.plot-side .eyebrow,
+.perfil-in h3,.perfil-cta,.perfil.aberto .perfil-cta,.pele,.pele i
+{font-size:var(--t-micro)!important}
+
+/* ── 61.2 · TAG · etiqueta de seção, navegação, botão ─────────── */
+.eyebrow,.nl,.mm-cta,.mm-links a,.ctan,.submit,.flink,.fbot,.frrg,
+.marq span,.slogan span,.field label,.fecho-ir,.cat,.cat .n,
+.typo-nav button b,.dest button span,.dest-i span
+{font-size:var(--t-tag)!important}
+
+/* ── 61.3 · NOTA · legenda e texto auxiliar ───────────────────── */
+.perfis-nota,.resumo-pe,.cat-resumo,.cat-lista li span,.cat-lista li em,
+.tip,.mm-pe p,.gate p,.f3c div,.bim-arrow
+{font-size:var(--t-nota)!important}
+
+/* ── 61.4 · DESTAQUE · versalete que precisa ser visto ────────── */
+.plot-chama,.jardim-nota b,.perfis-selo b,.bim-lbl b,
+.zap-op span,.zap-top b,.fecho-txt b,.fecho-txt em
+{font-size:var(--t-destaque)!important}
+
+/* ── 61.5 · APOIO · texto secundário ──────────────────────────── */
+.dimtxt,#local .dimtxt,#produto .dimtxt,.plot-txt,.resumo-perfil span,
+.pickchip span,.tri-in p,.jardim-nota span,.pele-txt
+{font-size:var(--t-apoio)!important}
+
+/* ── 61.6 · CORPO · leitura contínua ──────────────────────────── */
+.body,#contato .body,.field input,.field select
+{font-size:var(--t-corpo)!important}
+
+/* ── 61.7 · LEAD · chamada de abertura ────────────────────────── */
+.lead,#local .lead,#produto .lead,.fc-state p,.perfis-call,.plot-call
+{font-size:var(--t-lead)!important}
+
+/* ── 61.8 · SUB · subtítulo ───────────────────────────────────── */
+.fach-state b,.typo-sub,.resumo-perfil b,.pickchip b,.fc-rot b,
+.tri-in h4,.jardim-call,.pele-txt b,.typo-txt h3,.resumo li b
+{font-size:var(--t-sub)!important}
+
+/* ── 61.9 · H2 · título secundário ────────────────────────────── */
+.h2,#contato .h2,.bim-head .h2,.fc-copy h2,.plot-hud b,.tri-placa b
+{font-size:var(--t-h2)!important}
+
+/* ── 61.10 · NUM · número grande ──────────────────────────────── */
+.ficha dt,.specs b,.regua-min b,.mfoot .big,.perfil-num,.ctrl b
+{font-size:var(--t-num)!important}
+
+/* ── 61.11 · TÍTULO · nome da seção ───────────────────────────── */
+.kicker,#local .kicker,#produto .kicker
+{font-size:var(--t-titulo)!important}
+
+/* ── 61.12 · ENTRELINHA PROPORCIONAL ──────────────────────────────
+   Corpo grande pede entrelinha curta; corpo pequeno pede folgada.
+   Sem isso, unificar os tamanhos deixaria os títulos arejados
+   demais e os textos apertados.
+   ──────────────────────────────────────────────────────────── */
+.kicker,#local .kicker,#produto .kicker{line-height:.92}
+.h2,#contato .h2,.bim-head .h2,.fc-copy h2{line-height:1.06}
+.ficha dt,.specs b,.regua-min b,.mfoot .big,.perfil-num,.ctrl b{line-height:1}
+.fach-state b,.typo-sub,.resumo-perfil b,.pickchip b,.fc-rot b,
+.tri-in h4,.jardim-call,.typo-txt h3{line-height:1.18}
+.lead,#local .lead,#produto .lead,.fc-state p,.perfis-call{line-height:1.42}
+.body,#contato .body{line-height:1.8}
+.dimtxt,.plot-txt,.tri-in p,.resumo-perfil span,.pele-txt{line-height:1.78}
+
+/* ── 61.13 · O SELO DA HERO FICA FORA, E COM MOTIVO ───────────────
+   Ele não é texto: é um mostrador circular de 126px. O corpo dos
+   números ali não responde à escala da página, responde ao
+   diâmetro do disco — como num relógio. Forçá-lo para --t-h2
+   estouraria o círculo. Fica com a geometria dele, calibrada à mão.
+   ──────────────────────────────────────────────────────────── */
+/* (sem regra: as definições da seção 55 seguem valendo) */
+
+/* ── 61.14 · O QUE ESTA RODADA TINHA EXAGERADO ────────────────────
+   A pastilha e o painel do mapa entram na escala como todo o
+   resto, então os dois voltam ao tamanho certo por consequência,
+   não por remendo.
+   ──────────────────────────────────────────────────────────── */
+.perfis-selo b{padding:clamp(12px,1.15vw,15px) clamp(22px,2vw,30px);
+  letter-spacing:.13em}
+@media(min-width:1040px){
+  .plotter{grid-template-columns:minmax(0,1fr) clamp(320px,24vw,380px)}
+  .plot-chama{gap:13px}
+  .plot-chama s{width:clamp(24px,2.2vw,32px);height:2px}
+  .plot-txt{max-width:34ch}
+  .regua{margin-top:clamp(24px,2.4vw,32px);padding:clamp(16px,1.6vw,22px) 0}
+}
+@media(min-width:1280px){
+  .plot-txt{max-width:34ch}
+}
+
+/* ── 61.15 · OS ÚLTIMOS TRÊS QUE FALTAVAM ─────────────────────────
+   Auditoria final: sobravam nove seletores fora da escala. Cinco
+   são o selo da hero (fora por desenho, ver 61.13), um é o `body`
+   (a base) e um é `inherit`. Estes três aqui eram esquecimento.
+   ──────────────────────────────────────────────────────────── */
+.fach-state p{font-size:var(--t-apoio)!important}
+.zap-op span b{font-size:var(--t-nota)!important}
+.zap-op s{font-size:var(--t-micro)!important}
+
+/* ── 61.16 · DOIS ERROS DA MINHA CLASSIFICAÇÃO ────────────────────
+   Revisando a escala aplicada, dois grupos estavam no degrau
+   errado — e os dois por confundir PAPEL com aparência:
+
+   · ÍCONES não são tipografia. O "×" de fechar e o "✓" de escolhido
+     são desenhos feitos com caractere; o corpo deles responde à
+     área de toque, não à escala de leitura. Em 9px viravam sujeira.
+
+   · NUMERAIS DE ORDEM (01, 02, 03) parecem rótulo, mas fazem
+     trabalho de numeração: precisam ser lidos de relance, à
+     distância do polegar. Ganham degrau próprio, entre o micro
+     e a nota.
+   ──────────────────────────────────────────────────────────── */
+:root{ --t-ord: clamp(10.5px,.92vw,12.5px) }
+
+/* numerais de ordem */
+.fach-stop i,.typo-nav button i,.tri-placa i,.carr-q figcaption i,
+.mm-links i,.cat-lista li em i,.pele i,.carr-cont
+{font-size:var(--t-ord)!important}
+
+/* ícones: área de toque manda, não a escala */
+.zap-x{font-size:20px!important;line-height:1}
+.perfil-pick{font-size:13px!important;line-height:1}
+.bim-arrow{font-size:0!important}
+.zap-op s,.fecho-ir s,.plot-chama s,.slogan s,.pickchip i s
+{font-size:0!important}
+
+/* ── 61.17 · A ESCALA CORRIGIDA ───────────────────────────────────
+   Conferindo os degraus calculados nas duas pontas, dois estavam
+   fora de ordem: --t-ord tinha ficado MAIOR que --t-tag, e
+   --t-apoio quase encostava em --t-destaque. Escala com degrau
+   invertido não é escala — é a mesma bagunça de antes, só que
+   com nome bonito.
+
+   Estes são os valores finais, verificados em 390px, 768px e
+   1440px, estritamente crescentes nas três larguras:
+
+     celular   9 · 9,5 · 11 · 12 · 13 · 14,5 · 15,5 · 18 · 21 · 26 · 30 · 36
+     desktop  10 ·  11 · 12,5 · 13,5 · 15 · 16 · 17,5 · 22 · 28 · 35 · 44 · 60
+
+   Substituem os valores das seções 61 e 61.16.
+   ──────────────────────────────────────────────────────────── */
+:root{
+  --t-micro:    clamp(9px,    .72vw, 10px);
+  --t-tag:      clamp(9.5px,  .78vw, 11px);
+  --t-ord:      clamp(11px,   .88vw, 12.5px);
+  --t-nota:     clamp(12px,   .95vw, 13.5px);
+  --t-destaque: clamp(13px,   1.05vw,15px);
+  --t-apoio:    clamp(14.5px, 1.12vw,16px);
+  --t-corpo:    clamp(15.5px, 1.25vw,17.5px);
+  --t-lead:     clamp(18px,   1.58vw,22px);
+  --t-sub:      clamp(21px,   2vw,   28px);
+  --t-h2:       clamp(26px,   2.5vw, 35px);
+  --t-num:      clamp(30px,   3.2vw, 44px);
+  --t-titulo:   clamp(36px,   4.4vw, 60px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   62. A ESCALA CALIBRADA PARA BAIXO
+   ═══════════════════════════════════════════════════════════════
+   Erro meu na rodada anterior: padronizar e AUMENTAR são coisas
+   diferentes, e eu fiz as duas de uma vez. O corpo de leitura
+   subiu de 15px para 17,5px, o texto de apoio de 13 para 16, e a
+   chamada de 19 para 22. Três degraus inchados ao mesmo tempo
+   fazem cada seção crescer meia tela — foi exatamente o que você
+   viu.
+
+   Esta versão mantém a escala (um papel, um degrau) mas ancora os
+   valores nos que o site já tinha e que você aprovava:
+   corpo 15,5 · apoio 14,5 · chamada 20 · título 60.
+   A proporção fica; o peso volta ao lugar.
+
+   Referência dos valores originais do site, para conferência:
+     .body 15 · .dimtxt 14 · .lead 19,4 · .plot-txt 13 · .kicker 63
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --t-micro:    clamp(8.5px,  .68vw, 9.5px);
+  --t-tag:      clamp(9px,    .73vw, 10px);
+  --t-ord:      clamp(10px,   .82vw, 11.5px);
+  --t-nota:     clamp(11px,   .9vw,  12.5px);
+  --t-destaque: clamp(12px,   .98vw, 13.5px);
+  --t-apoio:    clamp(13.5px, 1.05vw,14.5px);
+  --t-corpo:    clamp(15px,   1.12vw,15.5px);
+  --t-lead:     clamp(16.5px, 1.42vw,20px);
+  --t-sub:      clamp(19px,   1.85vw,26px);
+  --t-h2:       clamp(24px,   2.6vw, 36px);
+  --t-num:      clamp(26px,   2.9vw, 40px);
+  --t-titulo:   clamp(32px,   4.3vw, 60px);
+}
+
+/* ── 62.1 · DOIS SELETORES NO DEGRAU ERRADO ───────────────────────
+   Rótulo dentro de HUD não é título de seção. "Rua Morás, 458"
+   sobre o mapa e o nome na placa fechada estavam em --t-h2, que
+   no computador dá 36px: o endereço quebrava em duas linhas e
+   cobria o mapa. Os dois descem para o degrau de chamada e de
+   subtítulo, que é o trabalho real que fazem.
+   ──────────────────────────────────────────────────────────── */
+.plot-hud b{font-size:var(--t-lead)!important;line-height:1.14}
+.tri-placa b{font-size:var(--t-sub)!important;line-height:1.14}
+
+/* ═══════════════════════════════════════════════════════════════
+   63. RITMO VERTICAL · O QUE REALMENTE PESAVA
+   ═══════════════════════════════════════════════════════════════
+   Medindo a página em vez de olhar para ela: cada seção tinha
+   179px de respiro vertical (89 em cima, 89 embaixo), e cada
+   bloco interno somava mais 50 a 60px de margem. Numa tela de
+   900px, sobram ~820px úteis depois do menu — e só o esqueleto
+   da seção já comia 300px antes de qualquer conteúdo aparecer.
+
+   Era isso que estava desgastante, não o corpo das letras. Um
+   site cinematográfico precisa de ar, mas ar demais vira caminhada.
+
+   Agora o espaço vertical também tem escala, com três degraus:
+
+     --v-sec    respiro da seção contra a anterior
+     --v-bloco  entre blocos de uma mesma seção
+     --v-item   entre itens de um mesmo bloco
+
+   Redução de ~30% no computador e ~28% no celular. A hierarquia
+   de espaço é preservada: o que era maior continua maior.
+
+   ⚠ Bloco AUTORITATIVO. Espaçamento vertical novo usa estes
+   tokens — não escrever clamp de padding solto.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --v-sec:   clamp(42px,4.3vw,62px);
+  --v-bloco: clamp(22px,2.4vw,36px);
+  --v-item:  clamp(13px,1.35vw,20px);
+}
+
+section{padding:var(--v-sec) var(--pad)!important}
+
+/* cabeçalhos e blocos principais */
+.shead{gap:var(--v-bloco)!important;margin-bottom:0!important}
+.tipo-head{margin-bottom:var(--v-bloco)!important}
+.plotter{margin-top:var(--v-bloco)!important;gap:var(--v-bloco)!important}
+.typo-wrap{margin-top:var(--v-bloco)!important;gap:var(--v-bloco)!important}
+.trio{margin-top:var(--v-bloco)!important}
+.perfis{margin-top:var(--v-bloco)!important}
+.mfoot{margin-top:var(--v-bloco)!important}
+.bim-in{margin-top:var(--v-bloco)!important}
+
+/* itens dentro de um bloco */
+.ficha{margin-top:var(--v-item)!important}
+.regua{margin-top:var(--v-item)!important;
+  padding:var(--v-item) 0!important}
+.slogan{margin-top:var(--v-item)!important}
+.jardim-nota{margin-top:var(--v-item)!important;
+  padding-top:var(--v-item)!important}
+.perfis-selo{margin-top:var(--v-item)!important}
+.perfis-nota{margin-top:var(--v-item)!important}
+.pickchip{margin-top:var(--v-item)!important}
+.resumo.on{margin-top:var(--v-item)!important}
+.resumo-perfil.on{margin-top:var(--v-item)!important}
+.fach-tese{margin-top:var(--v-bloco)!important;
+  padding-top:var(--v-item)!important}
+.pele-sel{margin-top:var(--v-item)!important}
+.pele-txt{margin-top:var(--v-item)!important}
+.specs{margin-top:var(--v-item)!important}
+.typo-sub{margin-top:var(--v-item)!important}
+.gate{margin-top:var(--v-bloco)!important;padding-top:var(--v-item)!important}
+.fecho{margin-top:var(--v-bloco)!important;padding-top:var(--v-item)!important}
+
+/* o corpo logo abaixo de um título não precisa de margem própria:
+   a entrelinha do título já separa os dois */
+.shead .lead{margin-top:0!important}
+.kicker+.slogan{margin-top:var(--v-item)!important}
+
+/* no celular o aperto é maior, porque cada pixel vertical é uma
+   rolagem a mais de polegar */
+@media(max-width:640px){
+  :root{
+    --v-sec:  40px;
+    --v-bloco:20px;
+    --v-item: 12px;
+  }
+  .trio{margin-top:20px!important}
+  .plotter{margin-top:18px!important}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   64. A PASTILHA NUMA LINHA · E O FLEX CAVE SEM O PRETO
+   ═══════════════════════════════════════════════════════════════
+
+   ── 64.1 · A PASTILHA NÃO QUEBRA MAIS ──────────────────────────
+   No celular a frase tem 36 caracteres. Em 12px com 0,13em de
+   espacejamento ela pede 324px, mais 44 de respiro interno: 368.
+   A tela útil é 356. Estourava por doze pixels — e por doze pixels
+   o navegador joga tudo para a segunda linha.
+
+   Em vez de encurtar o texto, o corpo passa a acompanhar a tela:
+   2,9vw com piso e teto, espacejamento menor e respiro interno
+   menor. Com nowrap, a pastilha fica numa linha em qualquer
+   telefone, do iPhone SE em diante — e continua legível porque
+   versalete com pouco espacejamento ganha densidade, não perde.
+   ──────────────────────────────────────────────────────────── */
+@media(max-width:640px){
+  .perfis-selo b{
+    font-size:clamp(9.5px,2.75vw,12px)!important;
+    letter-spacing:.075em;
+    padding:13px 17px;
+    white-space:nowrap;
+    max-width:none}
+}
+@media(max-width:360px){
+  .perfis-selo b{letter-spacing:.05em;padding:12px 14px}
+}
+
+/* ── 64.2 · A CENA DO FLEX CAVE OCUPA TUDO ───────────────────────
+   O preto não era fundo exposto: eram TRÊS camadas escuras
+   somadas sobre a mesma base. O degradê do ::after fechava em 90%
+   de preto no rodapé, o .fc-scrim punha mais 72% nos 48% de baixo,
+   e o próprio .fc-view vinha com brilho reduzido. Empilhadas, elas
+   apagavam o terço inferior da imagem — que é justamente onde
+   estão as árvores e a varanda.
+
+   Agora há uma camada só, e ela existe pelo único motivo legítimo:
+   manter o texto legível sobre a foto. Escurece o necessário no
+   canto de baixo à esquerda, onde o texto vive, e solta o resto.
+   A cena volta a aparecer inteira, de ponta a ponta.
+   ──────────────────────────────────────────────────────────── */
+.fc,.fc-stage{background:#1A1109!important}
+.fc-view{filter:saturate(1.02) brightness(1)!important;
+  background-position:center 38%!important;
+  background-size:cover!important}
+
+/* uma camada, direcional: protege o texto e libera a paisagem */
+.fc-view::after{
+  background:
+    linear-gradient(100deg,rgba(14,9,5,.72) 0%,rgba(14,9,5,.42) 26%,
+                    transparent 52%),
+    linear-gradient(180deg,rgba(14,9,5,.34) 0%,transparent 22%,
+                    transparent 74%,rgba(14,9,5,.34) 100%)!important}
+
+/* o scrim de rodapé perde a função e sai de cena */
+.fc-scrim{height:34%!important;
+  background:linear-gradient(180deg,transparent,rgba(14,9,5,.26))!important}
+.fc-light{background:radial-gradient(80% 64% at 50% 36%,
+  rgba(255,208,150,.07),transparent 64%)!important}
+
+@media(max-width:640px){
+  /* no celular o texto ocupa a largura toda, então o degradê
+     protege por baixo em vez de pela lateral */
+  .fc-view::after{
+    background:linear-gradient(180deg,rgba(14,9,5,.3) 0%,transparent 20%,
+      transparent 46%,rgba(14,9,5,.5) 72%,rgba(14,9,5,.76) 100%)!important}
+  .fc-scrim{height:44%!important}
+}
