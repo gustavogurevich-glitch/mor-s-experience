@@ -460,6 +460,20 @@
  </div>
 </section>
 
+<!-- ═══ A ONÇA · respiro entre o protótipo e o formulário ═══════
+     Uma tela inteira sem argumento nenhum. Depois de nove seções
+     explicando, o site cala a boca e mostra. É a pausa que faz o
+     convite seguinte parecer convite, e não mais uma seção.
+     ══════════════════════════════════════════════════════════ -->
+<section id="onca" class="onca" aria-label="Control Your Experience">
+  <div class="onca-foto"></div>
+  <div class="onca-veu"></div>
+  <div class="onca-in">
+    <h2 class="onca-tit reveal">Control Your<br>Experience</h2>
+    <p class="onca-leg reveal"><s aria-hidden="true"></s>onde a onça bebe água</p>
+  </div>
+</section>
+
 <section id="contato" style="background:var(--bg2)">
  <div class="wrap">
   <div class="conv">
@@ -1455,15 +1469,42 @@ if(semMovimento){
   const grade=document.getElementById('perfisGrid');
   const emLinha=()=>grade && cartoes[0] && grade.offsetWidth > cartoes[0].offsetWidth*1.6;
 
+  /* ── TEMPO DE CONTEMPLAÇÃO ──────────────────────────────────
+     O gatilho estava em 0.80: a chapa abria assim que a borda de
+     cima do cartão entrava pela base da tela. No celular isso
+     significa que, quando o polegar termina o gesto e os olhos
+     chegam no cartão, a abertura JÁ ACONTECEU. A pessoa via o
+     resultado, nunca o gesto — e o corten, que é a matéria da
+     marca inteira, passava despercebido.
+
+     Duas correções. O gatilho fica muito mais tarde (o cartão
+     precisa estar de fato ocupando a tela), e entra uma espera
+     depois dele: um segundo inteiro de corten parado no celular,
+     meio segundo no computador, onde os três já entram juntos e
+     o intervalo entre eles já cria o ritmo.
+     ──────────────────────────────────────────────────────── */
+  const noCelular = innerWidth<=640;
+  const ESPERA    = noCelular ? 1000 : 520;
+
   if(cartoes.length){
     if(emLinha()){
       aoAparecer(grade,()=>{
-        cartoes.forEach((c,i)=>setTimeout(()=>c.classList.add('aberto'), i*700));
-      },0.80);
+        setTimeout(()=>{
+          cartoes.forEach((c,i)=>setTimeout(()=>c.classList.add('aberto'), i*700));
+        },ESPERA);
+      },0.62);
     }else{
-      cartoes.forEach(c=>aoAparecer(c,e=>e.classList.add('aberto'),0.80));
+      /* no celular o gatilho é 0.46: o topo do cartão já passou da
+         metade da tela, então ele está inteiro à vista antes de abrir */
+      cartoes.forEach(c=>aoAparecer(c,e=>{
+        setTimeout(()=>e.classList.add('aberto'),ESPERA);
+      },0.46));
     }
   }
+
+  /* a onça entra com um recuo lento de câmera: a foto começa
+     4% maior e assenta no lugar enquanto a seção sobe */
+  aoAparecer(document.getElementById('onca'),e=>e.classList.add('in'),0.9);
 
   /* ── PLACAS DE TEMA · a onda ───────────────────────────────
      Lado a lado no computador: espiam em cascata de 0,2s e viram

@@ -4149,3 +4149,131 @@ section{padding:var(--v-sec) var(--pad)!important}
       transparent 46%,rgba(14,9,5,.5) 72%,rgba(14,9,5,.76) 100%)!important}
   .fc-scrim{height:44%!important}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   65. A ONÇA · A PAUSA ANTES DO CONVITE
+   ═══════════════════════════════════════════════════════════════
+   Depois de nove seções argumentando, uma tela sem argumento
+   nenhum. Só a imagem, a marca e uma legenda curta. É a respiração
+   que faz o formulário seguinte parecer convite, e não mais uma
+   seção — e é onde a onça, que atravessa o site inteiro escondida
+   nos cantos como easter egg, finalmente aparece por inteiro.
+
+   Sem padding de seção: ela é sangria total, de borda a borda.
+   ═══════════════════════════════════════════════════════════════ */
+.onca{position:relative;padding:0!important;overflow:hidden;
+  min-height:clamp(440px,74svh,760px);
+  display:flex;align-items:flex-end;background:#0B0A06}
+
+.onca-foto{position:absolute;inset:0;z-index:1;
+  background:url(onca.jpg) center 46%/cover no-repeat;
+  transform:scale(1.04);transform-origin:center 40%;
+  transition:transform 1.6s cubic-bezier(.16,1,.3,1)}
+.onca.in .onca-foto{transform:scale(1)}
+
+/* o véu abre espaço para o texto sem apagar a floresta:
+   escuro embaixo à esquerda, transparente onde a onça está */
+.onca-veu{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:
+    linear-gradient(74deg,rgba(6,5,3,.86) 0%,rgba(6,5,3,.52) 30%,transparent 58%),
+    linear-gradient(180deg,rgba(6,5,3,.5) 0%,transparent 26%,
+      transparent 52%,rgba(6,5,3,.72) 100%)}
+
+.onca-in{position:relative;z-index:3;width:100%;
+  padding:0 var(--pad) clamp(38px,6vw,74px)}
+
+.onca-tit{font-family:var(--serif);font-weight:400;
+  font-size:var(--t-titulo);line-height:.94;letter-spacing:-.015em;
+  color:var(--branco);margin:0;
+  text-shadow:0 4px 40px rgba(0,0,0,.6)}
+
+.onca-leg{display:flex;align-items:center;gap:14px;
+  margin:clamp(14px,1.6vw,22px) 0 0;
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:var(--t-lead);line-height:1.3;
+  color:var(--marca-lit);letter-spacing:.005em;
+  text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.onca-leg s{flex:none;width:clamp(28px,3vw,48px);height:1px;
+  text-decoration:none;background:var(--marca);opacity:.75}
+
+@media(max-width:640px){
+  .onca{min-height:78svh}
+  .onca-foto{background-image:url(onca-mob.jpg);
+    background-position:center 34%}
+  .onca-veu{background:linear-gradient(180deg,
+    rgba(6,5,3,.42) 0%,transparent 22%,
+    transparent 44%,rgba(6,5,3,.72) 76%,rgba(6,5,3,.9) 100%)}
+  .onca-in{padding-bottom:clamp(34px,7vw,52px)}
+  .onca-leg{gap:11px}
+  .onca-leg s{width:24px}
+}
+@media(prefers-reduced-motion:reduce){
+  .onca-foto{transition:none;transform:none}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   66. OS MINUTOS COM MAIS INTENSIDADE
+   ═══════════════════════════════════════════════════════════════
+   O efeito funciona, mas a diferença entre o ponto mais claro e o
+   mais escuro do degradê era pequena demais para o olho registrar
+   a onda passando. Três ajustes, todos na mesma direção:
+
+   · a crista fica mais clara e mais estreita, então ela LÊ como
+     luz e não como variação de tinta;
+   · o vale fica mais escuro, o que aumenta o contraste interno
+     sem clarear nada no conjunto;
+   · o ciclo encurta de 4,6s para 3,4s, e o atraso entre números
+     cai de 0,22 para 0,17 — a onda fica mais coesa, mais parecida
+     com uma coisa só atravessando cinco algarismos.
+   ═══════════════════════════════════════════════════════════════ */
+.regua-min b{
+  background-image:linear-gradient(100deg,
+    #2A0D01 0%,#3E1503 20%,#7A3A14 38%,
+    #C98A4E 47%,#E8B478 50%,#C98A4E 53%,
+    #7A3A14 62%,#3E1503 80%,#2A0D01 100%)!important;
+  background-size:340% 100%!important;
+  animation-duration:3.4s!important}
+.regua-min li:nth-child(1) b{animation-delay:0s!important}
+.regua-min li:nth-child(2) b{animation-delay:.17s!important}
+.regua-min li:nth-child(3) b{animation-delay:.34s!important}
+.regua-min li:nth-child(4) b{animation-delay:.51s!important}
+.regua-min li:nth-child(5) b{animation-delay:.68s!important}
+
+/* os fios entre os números acompanham a passagem da luz, bem de
+   leve: sem isso a régua parecia partida em cinco pedaços */
+.regua-min li+li::before{opacity:.26}
+
+/* ═══════════════════════════════════════════════════════════════
+   67. A ONÇA NOVA · ENQUADRAMENTO EXATO E VÉU ALIVIADO
+   ═══════════════════════════════════════════════════════════════
+   As imagens novas chegaram nas proporções certas — 2,606:1 no
+   computador e 0,593:1 no celular — então o navegador não precisa
+   mais esticar nada para encher a área. O background-position
+   volta para o centro: com a proporção batendo, centralizar é o
+   único enquadramento que não sacrifica lado nenhum.
+
+   E o véu pode aliviar. Medi a luminância exatamente onde o texto
+   pousa: 53 no canto inferior esquerdo do computador, 73 no
+   rodapé do celular — os dois já abaixo dos 88 que o creme precisa
+   para ler com folga. A foto se protege sozinha. O véu que estava
+   lá foi calibrado para a imagem ANTERIOR, que era mais clara
+   naquelas zonas, e agora só estava apagando floresta à toa.
+
+   Fica um véu leve, de segurança: garante a leitura em telas que
+   cortem diferente, sem roubar a mata.
+   ═══════════════════════════════════════════════════════════════ */
+.onca-foto{background-position:center center!important}
+
+.onca-veu{background:
+  /* protege o canto do texto, e só ele */
+  linear-gradient(78deg,rgba(6,5,3,.62) 0%,rgba(6,5,3,.28) 26%,transparent 50%),
+  /* fecha as bordas de cima e de baixo, bem de leve */
+  linear-gradient(180deg,rgba(6,5,3,.26) 0%,transparent 18%,
+    transparent 70%,rgba(6,5,3,.34) 100%)!important}
+
+@media(max-width:640px){
+  .onca-foto{background-position:center center!important}
+  .onca-veu{background:linear-gradient(180deg,
+    rgba(6,5,3,.2) 0%,transparent 16%,
+    transparent 52%,rgba(6,5,3,.4) 78%,rgba(6,5,3,.66) 100%)!important}
+}
