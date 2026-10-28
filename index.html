@@ -596,10 +596,13 @@ if(hMin&&hMax){
     hMin.textContent=hMin.dataset.alvo; hMax.textContent=hMax.dataset.alvo;
     if(hMetros)hMetros.classList.add('calibrado');
   }else{
-    setTimeout(()=>corre(hMin,800,()=>{
+    /* mais veloz: a contagem é confirmação de um dado, não espetáculo.
+       Arrancada mais curta (420ms de espera) e cada número em 460ms,
+       então o par inteiro resolve em menos de um segundo. */
+    setTimeout(()=>corre(hMin,460,()=>{
       if(hMetros)hMetros.classList.add('enchendo');
-      corre(hMax,800,()=>{ if(hMetros)hMetros.classList.add('calibrado'); });
-    }),700);
+      corre(hMax,460,()=>{ if(hMetros)hMetros.classList.add('calibrado'); });
+    }),420);
   }
 }
 }catch(e){console.error('[Morás] metragem falhou:',e)}

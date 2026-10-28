@@ -4277,3 +4277,82 @@ section{padding:var(--v-sec) var(--pad)!important}
     rgba(6,5,3,.2) 0%,transparent 16%,
     transparent 52%,rgba(6,5,3,.4) 78%,rgba(6,5,3,.66) 100%)!important}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   68. A COLUNA DA TIPOLOGIA E O RODAPÉ DA HERO
+   ═══════════════════════════════════════════════════════════════
+
+   ── 68.1 · OS NOMES DAS PLANTAS GANHAM CORPO ───────────────────
+   A coluna da esquerda é um índice CLICÁVEL: cada nome é um alvo
+   de toque e a principal navegação da seção. Em 18px de serifada
+   fina, sobre corten escuro, ela pesava menos que o texto de apoio
+   ao lado — e um índice que pesa menos que o corpo deixa de ser
+   lido como índice.
+
+   Sobe para o degrau de subtítulo, que é o papel real dele, e o
+   numeral de ordem acompanha. Mais corpo também significa alvo de
+   toque maior, que é o que faltava no celular.
+   ──────────────────────────────────────────────────────────── */
+.typo-nav button{padding:clamp(15px,1.7vw,22px) 0!important;gap:clamp(14px,1.5vw,20px)}
+.typo-nav button b{font-size:var(--t-sub)!important;line-height:1.14;
+  font-weight:400;letter-spacing:-.008em}
+.typo-nav button i{font-size:var(--t-ord)!important;min-width:26px;
+  letter-spacing:.18em}
+.typo-nav button[aria-selected="true"]{padding-left:clamp(11px,1.2vw,16px)}
+@media(max-width:640px){
+  .typo-nav button{padding:14px 0!important;gap:12px}
+  .typo-nav button i{min-width:22px}
+}
+
+/* ── 68.2 · AS VAGAS E A METRAGEM, LEGÍVEIS ──────────────────────
+   "04 vagas por unidade" estava em 6,5px — abaixo do piso de
+   legibilidade de qualquer texto, versalete ou não. Era uma linha
+   que existia sem poder ser lida, o que é pior do que não existir.
+
+   Sobe para 8px com mais peso e menos espacejamento (letra
+   espaçada demais em corpo pequeno espalha e some), e o numeral
+   ganha corpo junto. A metragem engrossa de 600 para 700: sobre o
+   chão claro da foto, Bodoni em peso médio some; em 700 ela crava.
+   ──────────────────────────────────────────────────────────── */
+@media(max-width:640px){
+  .hero-metros .hm-n{font-weight:700!important;
+    font-size:clamp(19px,5.1vw,22px)!important;
+    color:#381202!important}
+  .hero-metros .hm-extra{font-size:8px!important;letter-spacing:.15em!important;
+    opacity:.88!important;font-weight:700!important;
+    bottom:-40px!important;gap:8px!important}
+  .hero-metros .hm-extra b{font-size:15px!important;font-weight:600!important;
+    opacity:1!important}
+  #hero .hero-in{bottom:max(62px,9.5vh)!important}
+}
+/* no computador a mesma correção, em escala */
+.hero-metros .hm-n{font-weight:700}
+.hero-metros .hm-extra{font-size:9px;letter-spacing:.17em;
+  opacity:.86;font-weight:700}
+.hero-metros .hm-extra b{font-size:clamp(15px,1.25vw,18px);font-weight:600;opacity:1}
+
+/* ═══════════════════════════════════════════════════════════════
+   69. O PESO DO NÚMERO · 60% DO CAMINHO
+   ═══════════════════════════════════════════════════════════════
+   Escala de referência: 400 era o fino de origem, 700 o cheio da
+   rodada passada. 60% desse intervalo dá 580.
+
+   Por que 580 é o ponto certo e não um meio-termo qualquer: a
+   Bodoni é uma serifada de alto contraste — o que a define é a
+   diferença entre a haste grossa e o filete fino. Quando o peso
+   sobe muito, o filete engorda junto, o contraste achata e a
+   letra perde o que a tornava Bodoni; vira só um número gordo.
+   Em 580 a haste já crava sobre a parede clara da foto, mas o
+   filete continua fino o bastante para a serifa ler como serifa.
+
+   O "04" das vagas desce junto, para 500 — um degrau abaixo. O
+   dado principal fica sempre mais pesado que o secundário; se os
+   dois empatam, a hierarquia se desfaz.
+   ═══════════════════════════════════════════════════════════════ */
+.hero-metros .hm-n{font-weight:580!important}
+.hero-metros .hm-extra b{font-weight:500!important}
+
+@media(max-width:640px){
+  .hero-metros .hm-n{font-weight:580!important}
+  .hero-metros .hm-extra b{font-weight:500!important}
+}
